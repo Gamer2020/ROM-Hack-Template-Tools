@@ -6,4 +6,4 @@ This is a project of tools to be used with the ROM hack template.
 Requirements
 ====================
 
-.Net Framework
+.Net Framework 4.5.2
