@@ -9,3 +9,14 @@ C:\Users\Gamer2020\Desktop\MapDumper\MapDumper\obj\Debug\MapDumper.vbproj.Genera
 C:\Users\Gamer2020\Desktop\MapDumper\MapDumper\obj\Debug\MapDumper.exe
 C:\Users\Gamer2020\Desktop\MapDumper\MapDumper\obj\Debug\MapDumper.xml
 C:\Users\Gamer2020\Desktop\MapDumper\MapDumper\obj\Debug\MapDumper.pdb
+D:\SourceTree\ROM-Hack-Template-Tools\MapDumper\MapDumper\bin\Debug\MapDumper.exe.config
+D:\SourceTree\ROM-Hack-Template-Tools\MapDumper\MapDumper\obj\Debug\MapDumper.exe
+D:\SourceTree\ROM-Hack-Template-Tools\MapDumper\MapDumper\obj\Debug\MapDumper.xml
+D:\SourceTree\ROM-Hack-Template-Tools\MapDumper\MapDumper\obj\Debug\MapDumper.pdb
+D:\SourceTree\ROM-Hack-Template-Tools\MapDumper\MapDumper\bin\Debug\MapDumper.exe
+D:\SourceTree\ROM-Hack-Template-Tools\MapDumper\MapDumper\bin\Debug\MapDumper.pdb
+D:\SourceTree\ROM-Hack-Template-Tools\MapDumper\MapDumper\bin\Debug\MapDumper.xml
+D:\SourceTree\ROM-Hack-Template-Tools\MapDumper\MapDumper\obj\Debug\MapDumper.vbprojResolveAssemblyReference.cache
+D:\SourceTree\ROM-Hack-Template-Tools\MapDumper\MapDumper\obj\Debug\MapDumper.MnFrm.resources
+D:\SourceTree\ROM-Hack-Template-Tools\MapDumper\MapDumper\obj\Debug\MapDumper.Resources.resources
+D:\SourceTree\ROM-Hack-Template-Tools\MapDumper\MapDumper\obj\Debug\MapDumper.vbproj.GenerateResource.Cache

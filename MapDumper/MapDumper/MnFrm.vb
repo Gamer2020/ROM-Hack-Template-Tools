@@ -148,9 +148,34 @@ Public Class MnFrm
 
         Point2MapBankPointers = Int32.Parse(GetString(GetINIFileLocation(), header, "Pointer2PointersToMapBanks", ""), System.Globalization.NumberStyles.HexNumber)
 
-        MapBankPointers = Conversion.Hex((Conversion.Val(("&H" & ReverseHEX(ReadHEX(LoadedROM, Point2MapBankPointers, 4)))) - &H8000000))
+        MapBankPointers = ((Val(("&H" & ReverseHEX(ReadHEX(LoadedROM, Point2MapBankPointers, 4)))) - &H8000000))
 
         i = 0
+
+        While (ReadHEX(LoadedROM, MapBankPointers + (i * 4), "4") <> "02000000") Or ((("&H" & ReverseHEX(ReadHEX(mMain.LoadedROM, MapBankPointers + (i * 4), 4)))) < &H8000000)
+
+            MapsAndBanks.Nodes.Add(i)
+
+            Dim OriginalBankPointer As String = INI.GetString((AppPath & "ini\roms.ini"), mMain.header, ("OriginalBankPointer" & ToString(i)), "")
+            Dim NumberOfMapsInBank As String = INI.GetString((AppPath & "ini\roms.ini"), mMain.header, ("NumberOfMapsInBank" & ToString(i)), "")
+
+            x = 0
+
+            While (x <= 299)
+                HeaderPointer = (((Val(("&H" & ReverseHEX(ReadHEX(LoadedROM, MapBankPointers + (i * 4), 4)))) - &H8000000)))
+
+                If (HexFunctions.ReadHEX(mMain.LoadedROM, MapBankPointers + (i * 4), 4) = "F7F7F7F7") Then
+                    Exit While
+                End If
+
+
+
+                x = x + 1
+            End While
+
+            i = i + 1
+        End While
+
 
     End Sub
 
