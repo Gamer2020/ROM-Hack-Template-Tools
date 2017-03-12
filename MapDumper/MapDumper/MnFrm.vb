@@ -96,6 +96,8 @@ Public Class MnFrm
 
         End If
 
+        LoadMapList()
+
         LoadBanksAndMaps()
 
     End Sub
@@ -152,31 +154,100 @@ Public Class MnFrm
 
         i = 0
 
-        While (ReadHEX(LoadedROM, MapBankPointers + (i * 4), "4") <> "02000000") Or ((("&H" & ReverseHEX(ReadHEX(mMain.LoadedROM, MapBankPointers + (i * 4), 4)))) < &H8000000)
+        While (ReadHEX(LoadedROM, MapBankPointers + (i * 4), "4") <> "02000000") And (ReadHEX(LoadedROM, MapBankPointers + (i * 4), "4") <> "FFFFFFFF") 'And ((("&H" & ReverseHEX(ReadHEX(LoadedROM, MapBankPointers + (i * 4), 4)))) < &H8000000)
 
             MapsAndBanks.Nodes.Add(i)
 
-            Dim OriginalBankPointer As String = INI.GetString((AppPath & "ini\roms.ini"), mMain.header, ("OriginalBankPointer" & ToString(i)), "")
-            Dim NumberOfMapsInBank As String = INI.GetString((AppPath & "ini\roms.ini"), mMain.header, ("NumberOfMapsInBank" & ToString(i)), "")
+            Dim OriginalBankPointer As String = GetString((AppPath & "ini\roms.ini"), header, ("OriginalBankPointer" & i), "")
+            Dim NumberOfMapsInBank As String = GetString((AppPath & "ini\roms.ini"), header, ("NumberOfMapsInBank" & i), "")
+
 
             x = 0
 
-            While (x <= 299)
-                HeaderPointer = (((Val(("&H" & ReverseHEX(ReadHEX(LoadedROM, MapBankPointers + (i * 4), 4)))) - &H8000000)))
+            BankPointer = ((Val(("&H" & ReverseHEX(ReadHEX(LoadedROM, MapBankPointers + (i * 4), 4)))) - &H8000000))
 
-                If (HexFunctions.ReadHEX(mMain.LoadedROM, MapBankPointers + (i * 4), 4) = "F7F7F7F7") Then
+            While (x <= 299)
+
+                HeaderPointer = ((Val(("&H" & ReverseHEX(ReadHEX(LoadedROM, BankPointer + (x * 4), 4)))) - &H8000000))
+
+                If (ReadHEX(LoadedROM, BankPointer + (x * 4), 4) = "F7F7F7F7") Then
                     Exit While
                 End If
 
+                If OriginalBankPointer = Hex(BankPointer) Then
 
+                    Dim maplabelvar As Integer
+
+                    maplabelvar = CInt((Val(("&H" & ReadHEX(LoadedROM, HeaderPointer + 20, 1)))))
+
+                    If ((header2 = "BPR") Or (header2 = "BPG")) Then
+
+                        MapsAndBanks.Nodes.Item(i).Nodes.Add(New TreeNode(x & " - " & MapNameList.Items.Item(maplabelvar - &H58)))
+
+                    ElseIf (mMain.header2 = "BPE") Then
+
+                        MapsAndBanks.Nodes.Item(i).Nodes.Add(New TreeNode(x & " - " & MapNameList.Items.Item(maplabelvar)))
+
+                    ElseIf ((mMain.header2 = "AXP") Or (mMain.header2 = "AXV")) Then
+
+                        MapsAndBanks.Nodes.Item(i).Nodes.Add(New TreeNode(x & " - " & MapNameList.Items.Item(maplabelvar)))
+
+                    End If
+                    'MapsAndBanks.Nodes.Item(i).Nodes.Add(New TreeNode(x & " - " & GetMapLabelName(1)))
+
+                    If NumberOfMapsInBank = x Then
+
+                            Exit While
+
+                        End If
+
+                    Else
+
+                        If (ReadHEX(LoadedROM, BankPointer + (x * 4), 4) = "77777777") Then
+                        MapsAndBanks.Nodes.Item(i).Nodes.Add(New TreeNode((x & " - Reserved")))
+                    Else
+
+                        Dim maplabelvar As Integer
+
+                        maplabelvar = CInt((Val(("&H" & ReadHEX(LoadedROM, HeaderPointer + 20, 1)))))
+
+                        If ((header2 = "BPR") Or (header2 = "BPG")) Then
+
+                            MapsAndBanks.Nodes.Item(i).Nodes.Add(New TreeNode(x & " - " & MapNameList.Items.Item(maplabelvar - &H58)))
+
+                        ElseIf (mMain.header2 = "BPE") Then
+
+                            MapsAndBanks.Nodes.Item(i).Nodes.Add(New TreeNode(x & " - " & MapNameList.Items.Item(maplabelvar)))
+
+                        ElseIf ((mMain.header2 = "AXP") Or (mMain.header2 = "AXV")) Then
+
+                            MapsAndBanks.Nodes.Item(i).Nodes.Add(New TreeNode(x & " - " & MapNameList.Items.Item(maplabelvar)))
+
+                        End If
+
+                    End If
+
+                End If
 
                 x = x + 1
             End While
 
             i = i + 1
+
         End While
 
 
     End Sub
+
+    Private Sub LoadMapList()
+        MapNameList.Items.Clear()
+        Dim i As Integer
+        For i = 0 To (GetString((AppPath & "ini\roms.ini"), header, "NumberOfMapLabels", "")) - 1
+            MapNameList.Items.Add(GetMapLabelName(i))
+        Next i
+    End Sub
+
+
+
 
 End Class

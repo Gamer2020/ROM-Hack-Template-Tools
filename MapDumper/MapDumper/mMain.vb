@@ -20,6 +20,7 @@ Module mMain
     'For Map Edit
     Public Point2MapBankPointers As Integer
     Public MapBankPointers As Integer
+    Public BankPointer As Integer
     Public HeaderPointer As Integer
     Public MapBank As String
     Public MapNumber As String

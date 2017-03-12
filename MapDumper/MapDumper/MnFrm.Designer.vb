@@ -27,6 +27,7 @@ Partial Class MnFrm
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.fileOpenDialog = New System.Windows.Forms.OpenFileDialog()
         Me.MapsAndBanks = New System.Windows.Forms.TreeView()
+        Me.MapNameList = New System.Windows.Forms.ComboBox()
         Me.GroupBox4.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -68,8 +69,17 @@ Partial Class MnFrm
         '
         Me.MapsAndBanks.Location = New System.Drawing.Point(13, 110)
         Me.MapsAndBanks.Name = "MapsAndBanks"
-        Me.MapsAndBanks.Size = New System.Drawing.Size(242, 368)
+        Me.MapsAndBanks.Size = New System.Drawing.Size(309, 368)
         Me.MapsAndBanks.TabIndex = 13
+        '
+        'MapNameList
+        '
+        Me.MapNameList.FormattingEnabled = True
+        Me.MapNameList.Location = New System.Drawing.Point(693, 445)
+        Me.MapNameList.Name = "MapNameList"
+        Me.MapNameList.Size = New System.Drawing.Size(121, 24)
+        Me.MapNameList.TabIndex = 14
+        Me.MapNameList.Visible = False
         '
         'MnFrm
         '
@@ -77,6 +87,7 @@ Partial Class MnFrm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(826, 490)
+        Me.Controls.Add(Me.MapNameList)
         Me.Controls.Add(Me.MapsAndBanks)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.GroupBox4)
@@ -95,4 +106,5 @@ Partial Class MnFrm
     Friend WithEvents GroupBox4 As GroupBox
     Friend WithEvents fileOpenDialog As OpenFileDialog
     Friend WithEvents MapsAndBanks As TreeView
+    Friend WithEvents MapNameList As ComboBox
 End Class

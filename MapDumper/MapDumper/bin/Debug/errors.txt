@@ -1,0 +1,2 @@
+Error! OriginalBankPointer34 is missing for ROM BPEE!
+Error! NumberOfMapsInBank34 is missing for ROM BPEE!
