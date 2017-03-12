@@ -2,7 +2,14 @@
 Imports System.Windows.Forms.Application
 Imports System.Net
 
+Imports System.IO.Directory
+
 Public Class MnFrm
+
+    Dim outputtext As String
+    Dim outputlevel2 As String
+    Dim outputlevel4 As String
+
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         fileOpenDialog.FileName = ""
         fileOpenDialog.CheckFileExists = True
@@ -197,13 +204,13 @@ Public Class MnFrm
 
                     If NumberOfMapsInBank = x Then
 
-                            Exit While
+                        Exit While
 
-                        End If
+                    End If
 
-                    Else
+                Else
 
-                        If (ReadHEX(LoadedROM, BankPointer + (x * 4), 4) = "77777777") Then
+                    If (ReadHEX(LoadedROM, BankPointer + (x * 4), 4) = "77777777") Then
                         MapsAndBanks.Nodes.Item(i).Nodes.Add(New TreeNode((x & " - Reserved")))
                     Else
 
@@ -247,7 +254,238 @@ Public Class MnFrm
         Next i
     End Sub
 
+    Private Sub MapsAndBanks_AfterSelect(sender As Object, e As TreeViewEventArgs) Handles MapsAndBanks.AfterSelect
+
+        If (InStr(MapsAndBanks.SelectedNode.FullPath, "\", CompareMethod.Binary) > 0) Then
+
+            MapBank = (MapsAndBanks.SelectedNode.Parent.Index)
+            MapNumber = (MapsAndBanks.SelectedNode.Index)
+
+            Point2MapBankPointers = Int32.Parse(GetString(GetINIFileLocation(), header, "Pointer2PointersToMapBanks", ""), System.Globalization.NumberStyles.HexNumber)
+
+            MapBankPointers = ((Val(("&H" & ReverseHEX(ReadHEX(LoadedROM, Point2MapBankPointers, 4)))) - &H8000000))
+
+
+            BankPointer = ((Val(("&H" & ReverseHEX(ReadHEX(LoadedROM, MapBankPointers + (MapBank * 4), 4)))) - &H8000000))
+
+
+            HeaderPointer = ((Val(("&H" & ReverseHEX(ReadHEX(LoadedROM, BankPointer + (MapNumber * 4), 4)))) - &H8000000))
+
+            outputtext = ".text" & vbCrLf &
+    ".thumb" & vbCrLf &
+    ".align 2" & vbCrLf & vbCrLf
+
+            If ((mMain.header2 = "BPR") Or (mMain.header2 = "BPG")) Then
 
 
 
+
+            ElseIf (mMain.header2 = "BPE") Then
+
+                EMLoadOutput()
+
+            ElseIf ((mMain.header2 = "AXP") Or (mMain.header2 = "AXV")) Then
+
+
+            End If
+
+            OutputTextBox.Text = outputtext
+
+        End If
+
+    End Sub
+
+    Private Sub EMLoadOutput()
+
+        outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_Header:" & vbCrLf
+
+        'Header
+
+        Map_Footer = ("&H" & ReverseHEX(ReadHEX(LoadedROM, HeaderPointer, 4))) - &H8000000
+
+        outputtext = outputtext & "    .long    " & "Bank" & MapBank & "_Map" & MapNumber & "_Footer" & "  @Footer" & vbCrLf
+
+        Map_Events = ("&H" & ReverseHEX(ReadHEX(LoadedROM, HeaderPointer + 4, 4))) - &H8000000
+
+        outputtext = outputtext & "    .long    " & "Bank" & MapBank & "_Map" & MapNumber & "_Events" & "  @Events" & vbCrLf
+
+        Map_Level_Scripts = ("&H" & ReverseHEX(ReadHEX(LoadedROM, HeaderPointer + 8, 4))) - &H8000000
+
+        outputtext = outputtext & "    .long    " & "Bank" & MapBank & "_Map" & MapNumber & "_Level_Scripts" & "  @Level Scripts" & vbCrLf
+
+        Map_Connection_Header = ("&H" & ReverseHEX(ReadHEX(LoadedROM, HeaderPointer + 12, 4))) - &H8000000
+
+        outputtext = outputtext & "    .long    " & "Bank" & MapBank & "_Map" & MapNumber & "_Connections_Header" & "  @Connections" & vbCrLf
+
+        outputtext = outputtext & "    .short    0x" & ReverseHEX(ReadHEX(LoadedROM, HeaderPointer + 16, 2)) & "  @Music" & vbCrLf
+        outputtext = outputtext & "    .short    0x" & ReverseHEX(ReadHEX(LoadedROM, HeaderPointer + 18, 2)) & "  @Foorter ID" & vbCrLf
+        outputtext = outputtext & "    .byte    0x" & (ReadHEX(LoadedROM, HeaderPointer + 20, 1)) & "  @Name" & vbCrLf
+        outputtext = outputtext & "    .byte    0x" & (ReadHEX(LoadedROM, HeaderPointer + 21, 1)) & "  @Light" & vbCrLf
+        outputtext = outputtext & "    .byte    0x" & (ReadHEX(LoadedROM, HeaderPointer + 22, 1)) & "  @Weather" & vbCrLf
+        outputtext = outputtext & "    .byte    0x" & (ReadHEX(LoadedROM, HeaderPointer + 23, 1)) & "  @Type" & vbCrLf
+        outputtext = outputtext & "    .byte    0x" & (ReadHEX(LoadedROM, HeaderPointer + 24, 1)) & "  @Field_18" & vbCrLf
+        outputtext = outputtext & "    .byte    0x" & (ReadHEX(LoadedROM, HeaderPointer + 25, 1)) & "  @Can_Dig" & vbCrLf
+        outputtext = outputtext & "    .byte    0x" & (ReadHEX(LoadedROM, HeaderPointer + 26, 1)) & "  @Show_Name" & vbCrLf
+        outputtext = outputtext & "    .byte    0x" & (ReadHEX(LoadedROM, HeaderPointer + 27, 1)) & "  @BattleType" & vbCrLf
+
+        'Footer
+
+        outputtext = outputtext & vbCrLf
+
+        outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_Footer:" & vbCrLf
+
+        outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, Map_Footer, 4)) & "  @Map Width" & vbCrLf
+        outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, Map_Footer + 4, 4)) & "  @Map Height" & vbCrLf
+        outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, Map_Footer + 8, 4)) & "  @Border Data" & vbCrLf
+        outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, Map_Footer + 12, 4)) & "  @Map data / Movement Permissons" & vbCrLf
+        outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, Map_Footer + 16, 4)) & "  @Primary Tileset" & vbCrLf
+        outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, Map_Footer + 20, 4)) & "  @Secondary Tileset" & vbCrLf
+
+        'Events
+
+        outputtext = outputtext & vbCrLf
+
+        outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_Events:" & vbCrLf
+
+        outputtext = outputtext & "    .byte    0x" & (ReadHEX(LoadedROM, Map_Events, 1)) & "  @Number of NPC Events" & vbCrLf
+        outputtext = outputtext & "    .byte    0x" & (ReadHEX(LoadedROM, Map_Events + 1, 1)) & "  @Number of Warps" & vbCrLf
+        outputtext = outputtext & "    .byte    0x" & (ReadHEX(LoadedROM, Map_Events + 2, 1)) & "  @Number of Script Events" & vbCrLf
+        outputtext = outputtext & "    .byte    0x" & (ReadHEX(LoadedROM, Map_Events + 3, 1)) & "  @Number of Signposts" & vbCrLf
+
+        outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, Map_Events + 4, 4)) & "  @Pointer to NPC Events" & vbCrLf
+        outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, Map_Events + 8, 4)) & "  @Pointer to Warps" & vbCrLf
+        outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, Map_Events + 12, 4)) & "  @Pointer to Script Events" & vbCrLf
+        outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, Map_Events + 16, 4)) & "  @Pointer to Signposts" & vbCrLf
+
+        'Level Scripts
+
+        outputtext = outputtext & vbCrLf
+
+        outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_Level_Scripts:" & vbCrLf
+
+        Dim loopvar As Integer
+
+        loopvar = 0
+
+        While (ReadHEX(LoadedROM, Map_Level_Scripts + (loopvar * 5), 1) <> "00")
+
+
+
+            If (ReadHEX(LoadedROM, Map_Level_Scripts + (loopvar * 5), 1)) = "02" Then
+
+                outputtext = outputtext & "    .byte    0x" & (ReadHEX(LoadedROM, Map_Level_Scripts + (loopvar * 5), 1)) & "  @Type" & vbCrLf
+                outputtext = outputtext & "    .long    " & "Bank" & MapBank & "_Map" & MapNumber & "_Level_Scripts_2" & "  @Pointer" & vbCrLf
+
+                LevelScript2Pointer = ("&H" & ReverseHEX(ReadHEX(LoadedROM, Map_Level_Scripts + 1 + (loopvar * 5), 4))) - &H8000000
+
+                Dim loopvar2 As Integer
+
+                loopvar2 = 0
+
+                outputlevel2 = outputlevel2 & vbCrLf
+
+                outputlevel2 = outputlevel2 & "Bank" & MapBank & "_Map" & MapNumber & "_Level_Scripts_2:" & vbCrLf
+
+                While ReverseHEX(ReadHEX(LoadedROM, LevelScript2Pointer + (loopvar2 * 8), 2)) <> "0000"
+
+                    outputlevel2 = outputlevel2 & "    .short    0x" & ReverseHEX(ReadHEX(LoadedROM, LevelScript2Pointer + (loopvar2 * 8), 2)) & "  @Variable" & vbCrLf
+                    outputlevel2 = outputlevel2 & "    .short    0x" & ReverseHEX(ReadHEX(LoadedROM, LevelScript2Pointer + 2 + (loopvar2 * 8), 2)) & "  @Value to run" & vbCrLf
+                    outputlevel2 = outputlevel2 & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, LevelScript2Pointer + 4 + (loopvar2 * 8), 4)) & "  @Pointer" & vbCrLf
+
+                    loopvar2 = loopvar2 + 1
+                End While
+
+                outputlevel2 = outputlevel2 & "    .short    0x" & ReverseHEX(ReadHEX(LoadedROM, LevelScript2Pointer + (loopvar2 * 8), 2)) & "  @Terminator" & vbCrLf
+
+            ElseIf (ReadHEX(LoadedROM, Map_Level_Scripts + (loopvar * 5), 1)) = "04" Then
+
+                outputtext = outputtext & "    .byte    0x" & (ReadHEX(LoadedROM, Map_Level_Scripts + (loopvar * 5), 1)) & "  @Type" & vbCrLf
+                outputtext = outputtext & "    .long    " & "Bank" & MapBank & "_Map" & MapNumber & "_Level_Scripts_4" & "  @Pointer" & vbCrLf
+
+                LevelScript4Pointer = ("&H" & ReverseHEX(ReadHEX(LoadedROM, Map_Level_Scripts + 1 + (loopvar * 5), 4))) - &H8000000
+
+                Dim loopvar2 As Integer
+
+                loopvar2 = 0
+
+                outputlevel4 = outputlevel4 & vbCrLf
+
+                outputlevel4 = outputlevel4 & "Bank" & MapBank & "_Map" & MapNumber & "_Level_Scripts_4:" & vbCrLf
+
+                While ReverseHEX(ReadHEX(LoadedROM, LevelScript2Pointer + (loopvar2 * 8), 2)) <> "0000"
+
+                    outputlevel4 = outputlevel4 & "    .short    0x" & ReverseHEX(ReadHEX(LoadedROM, LevelScript4Pointer + (loopvar2 * 8), 2)) & "  @Variable" & vbCrLf
+                    outputlevel4 = outputlevel4 & "    .short    0x" & ReverseHEX(ReadHEX(LoadedROM, LevelScript4Pointer + 2 + (loopvar2 * 8), 2)) & "  @Value to run" & vbCrLf
+                    outputlevel4 = outputlevel4 & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, LevelScript4Pointer + 4 + (loopvar2 * 8), 4)) & "  @Pointer" & vbCrLf
+
+                    loopvar2 = loopvar2 + 1
+                End While
+
+                outputlevel4 = outputlevel4 & "    .short    0x" & ReverseHEX(ReadHEX(LoadedROM, LevelScript4Pointer + (loopvar2 * 8), 2)) & "  @Terminator" & vbCrLf
+
+            Else
+
+                outputtext = outputtext & "    .byte    0x" & (ReadHEX(LoadedROM, Map_Level_Scripts + (loopvar * 5), 1)) & "  @Type" & vbCrLf
+                outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, Map_Level_Scripts + 1 + (loopvar * 5), 4)) & "  @Pointer" & vbCrLf
+
+            End If
+
+            loopvar = loopvar + 1
+        End While
+
+        outputtext = outputtext & "    .byte    0x" & (ReadHEX(LoadedROM, Map_Level_Scripts + (loopvar * 5), 1)) & "  @Terminator" & vbCrLf
+
+        outputtext = outputtext & outputlevel2
+        outputtext = outputtext & outputlevel4
+
+        'Connections
+
+        outputtext = outputtext & vbCrLf
+
+        outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_Connections_Header:" & vbCrLf
+
+        Connection_Num = ("&H" & ReverseHEX(ReadHEX(LoadedROM, Map_Connection_Header, 4)))
+        Connection_Pointer = ("&H" & ReverseHEX(ReadHEX(LoadedROM, Map_Connection_Header + 4, 4))) - &H8000000
+
+        outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, Map_Connection_Header, 4)) & "  @Number of Connections" & vbCrLf
+        outputtext = outputtext & "    .long    " & "Bank" & MapBank & "_Map" & MapNumber & "_Connections" & "  @Pointer to Connections" & vbCrLf
+
+        loopvar = 0
+
+        outputtext = outputtext & vbCrLf
+
+        outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_Connections:" & vbCrLf
+
+        While loopvar < Connection_Num
+
+            outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, Connection_Pointer + (loopvar * 12), 4)) & "  @Direction" & vbCrLf
+            outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, Connection_Pointer + 4 + (loopvar * 12), 4)) & "  @Offset Reference" & vbCrLf
+            outputtext = outputtext & "    .byte    0x" & (ReadHEX(LoadedROM, Connection_Pointer + 8 + (loopvar * 12), 1)) & "  @Map Bank" & vbCrLf
+            outputtext = outputtext & "    .byte    0x" & (ReadHEX(LoadedROM, Connection_Pointer + 9 + (loopvar * 12), 1)) & "  @Map Number" & vbCrLf
+            outputtext = outputtext & "    .short    0x" & ReverseHEX(ReadHEX(LoadedROM, Connection_Pointer + 10 + (loopvar * 12), 2)) & "  @Filler" & vbCrLf
+
+            loopvar = loopvar + 1
+        End While
+
+
+    End Sub
+
+    Private Sub ExportBttn_Click(sender As Object, e As EventArgs) Handles ExportBttn.Click
+
+        FolderBrowserDialog1.Description = "Select folder to export to:"
+
+        If FolderBrowserDialog1.ShowDialog = DialogResult.OK Then
+            Me.Text = "Please wait..."
+            Me.UseWaitCursor = True
+
+
+
+
+            Me.Text = "Map Dumper"
+        Me.UseWaitCursor = False
+        Me.Enabled = True
+            Me.BringToFront()
+
+        End If
+    End Sub
 End Class

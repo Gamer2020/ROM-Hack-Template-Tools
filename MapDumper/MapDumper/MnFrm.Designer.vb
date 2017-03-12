@@ -28,6 +28,9 @@ Partial Class MnFrm
         Me.fileOpenDialog = New System.Windows.Forms.OpenFileDialog()
         Me.MapsAndBanks = New System.Windows.Forms.TreeView()
         Me.MapNameList = New System.Windows.Forms.ComboBox()
+        Me.OutputTextBox = New System.Windows.Forms.TextBox()
+        Me.ExportBttn = New System.Windows.Forms.Button()
+        Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.GroupBox4.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -75,11 +78,29 @@ Partial Class MnFrm
         'MapNameList
         '
         Me.MapNameList.FormattingEnabled = True
-        Me.MapNameList.Location = New System.Drawing.Point(693, 445)
+        Me.MapNameList.Location = New System.Drawing.Point(187, 472)
         Me.MapNameList.Name = "MapNameList"
         Me.MapNameList.Size = New System.Drawing.Size(121, 24)
         Me.MapNameList.TabIndex = 14
         Me.MapNameList.Visible = False
+        '
+        'OutputTextBox
+        '
+        Me.OutputTextBox.Location = New System.Drawing.Point(343, 110)
+        Me.OutputTextBox.Multiline = True
+        Me.OutputTextBox.Name = "OutputTextBox"
+        Me.OutputTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.OutputTextBox.Size = New System.Drawing.Size(455, 310)
+        Me.OutputTextBox.TabIndex = 15
+        '
+        'ExportBttn
+        '
+        Me.ExportBttn.Location = New System.Drawing.Point(343, 426)
+        Me.ExportBttn.Name = "ExportBttn"
+        Me.ExportBttn.Size = New System.Drawing.Size(116, 52)
+        Me.ExportBttn.TabIndex = 16
+        Me.ExportBttn.Text = "Export"
+        Me.ExportBttn.UseVisualStyleBackColor = True
         '
         'MnFrm
         '
@@ -87,6 +108,8 @@ Partial Class MnFrm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(826, 490)
+        Me.Controls.Add(Me.ExportBttn)
+        Me.Controls.Add(Me.OutputTextBox)
         Me.Controls.Add(Me.MapNameList)
         Me.Controls.Add(Me.MapsAndBanks)
         Me.Controls.Add(Me.Button4)
@@ -98,6 +121,7 @@ Partial Class MnFrm
         Me.Text = "Map Dumper"
         Me.GroupBox4.ResumeLayout(False)
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -107,4 +131,7 @@ Partial Class MnFrm
     Friend WithEvents fileOpenDialog As OpenFileDialog
     Friend WithEvents MapsAndBanks As TreeView
     Friend WithEvents MapNameList As ComboBox
+    Friend WithEvents OutputTextBox As TextBox
+    Friend WithEvents ExportBttn As Button
+    Friend WithEvents FolderBrowserDialog1 As FolderBrowserDialog
 End Class

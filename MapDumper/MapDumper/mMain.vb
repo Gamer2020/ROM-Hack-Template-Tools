@@ -22,15 +22,26 @@ Module mMain
     Public MapBankPointers As Integer
     Public BankPointer As Integer
     Public HeaderPointer As Integer
-    Public MapBank As String
-    Public MapNumber As String
-    Public BankOffset As String
-    Public HeaderOffset As String
+    Public MapBank As Integer
+    Public MapNumber As Integer
+    Public BankOffset As Integer
+    Public HeaderOffset As Integer
     Public MapData As String
     Public Const TileSetSize As Integer = 16
     Public Const TileSize As Integer = 8 'constant used for tile sizes.
     Public Const TileWidth As Integer = 8
     Public Const TilesPerRow As Integer = 16
+
+    Public Map_Footer As Integer
+    Public Map_Events As Integer
+    Public Map_Level_Scripts As Integer
+    Public Map_Connection_Header As Integer
+
+    Public LevelScript2Pointer As Integer
+    Public LevelScript4Pointer As Integer
+
+    Public Connection_Pointer As Integer
+    Public Connection_Num As Integer
 
     'These are all the buffers for creating the graphics for the tilesets.
     Public TilesBackbuffer As Bitmap
