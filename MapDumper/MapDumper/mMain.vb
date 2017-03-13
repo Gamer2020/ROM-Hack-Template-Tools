@@ -43,6 +43,16 @@ Module mMain
     Public Connection_Pointer As Integer
     Public Connection_Num As Integer
 
+    Public NPC_Num As Integer
+    Public Warp_Num As Integer
+    Public Script_Event_Num As Integer
+    Public SignPost_Num As Integer
+
+    Public NPC_Pointer As Integer
+    Public Warp_Pointer As Integer
+    Public Script_Event_Pointer As Integer
+    Public SignPost_Pointer As Integer
+
     'These are all the buffers for creating the graphics for the tilesets.
     Public TilesBackbuffer As Bitmap
     Public TilesetMapBackbuffer As Bitmap

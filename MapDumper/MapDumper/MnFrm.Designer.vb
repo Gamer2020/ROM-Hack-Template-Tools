@@ -89,6 +89,7 @@ Partial Class MnFrm
         Me.OutputTextBox.Location = New System.Drawing.Point(343, 110)
         Me.OutputTextBox.Multiline = True
         Me.OutputTextBox.Name = "OutputTextBox"
+        Me.OutputTextBox.ReadOnly = True
         Me.OutputTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both
         Me.OutputTextBox.Size = New System.Drawing.Size(455, 310)
         Me.OutputTextBox.TabIndex = 15
