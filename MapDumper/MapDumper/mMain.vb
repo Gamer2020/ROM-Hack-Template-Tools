@@ -53,6 +53,28 @@ Module mMain
     Public Script_Event_Pointer As Integer
     Public SignPost_Pointer As Integer
 
+    Public MapHeight As Integer
+    Public MapWidth As Integer
+    Public BorderPointer As Integer
+    Public MapDataPointer As Integer
+    Public PrimaryTilesetPointer As Integer
+    Public SecondaryTilesetPointer As Integer
+    Public BorderHeight As Integer
+    Public BorderWidth As Integer
+
+    Public PrimaryTilesetCompression As Integer
+    Public SecondaryTilesetCompression As Integer
+    Public PrimaryImagePointer As Integer
+    Public SecondaryImagePointer As Integer
+    Public PrimaryPalPointer As Integer
+    Public SecondaryPalPointer As Integer
+    Public PrimaryBlockSetPointer As Integer
+    Public SecondaryBlockSetPointer As Integer
+    Public PrimaryBehaviourPointer As Integer
+    Public SecondaryBehaviourPointer As Integer
+
+    Public BorderData As String
+
     'These are all the buffers for creating the graphics for the tilesets.
     Public TilesBackbuffer As Bitmap
     Public TilesetMapBackbuffer As Bitmap

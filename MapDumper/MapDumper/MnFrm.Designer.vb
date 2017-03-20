@@ -39,7 +39,7 @@ Partial Class MnFrm
         Me.Button4.Location = New System.Drawing.Point(424, 31)
         Me.Button4.Margin = New System.Windows.Forms.Padding(4)
         Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(374, 72)
+        Me.Button4.Size = New System.Drawing.Size(469, 72)
         Me.Button4.TabIndex = 11
         Me.Button4.Text = "Load ROM"
         Me.Button4.UseVisualStyleBackColor = True
@@ -91,11 +91,12 @@ Partial Class MnFrm
         Me.OutputTextBox.Name = "OutputTextBox"
         Me.OutputTextBox.ReadOnly = True
         Me.OutputTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.OutputTextBox.Size = New System.Drawing.Size(455, 310)
+        Me.OutputTextBox.Size = New System.Drawing.Size(551, 310)
         Me.OutputTextBox.TabIndex = 15
         '
         'ExportBttn
         '
+        Me.ExportBttn.Enabled = False
         Me.ExportBttn.Location = New System.Drawing.Point(343, 426)
         Me.ExportBttn.Name = "ExportBttn"
         Me.ExportBttn.Size = New System.Drawing.Size(116, 52)
@@ -108,7 +109,7 @@ Partial Class MnFrm
         Me.AllowDrop = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(826, 490)
+        Me.ClientSize = New System.Drawing.Size(906, 497)
         Me.Controls.Add(Me.ExportBttn)
         Me.Controls.Add(Me.OutputTextBox)
         Me.Controls.Add(Me.MapNameList)
