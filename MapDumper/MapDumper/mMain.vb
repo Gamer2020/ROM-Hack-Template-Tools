@@ -73,7 +73,11 @@ Module mMain
     Public PrimaryBehaviourPointer As Integer
     Public SecondaryBehaviourPointer As Integer
 
+    Public PrimaryPals As String
+    Public SecondaryPals As String
+
     Public BorderData As String
+    Public MapPermData As String
 
     'These are all the buffers for creating the graphics for the tilesets.
     Public TilesBackbuffer As Bitmap

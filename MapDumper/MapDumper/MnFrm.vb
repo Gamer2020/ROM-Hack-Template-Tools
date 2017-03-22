@@ -694,6 +694,8 @@ Public Class MnFrm
 
                 outputtext = "Fire Red and Leaf Green will be added at a later date."
 
+                Exit Sub
+
             ElseIf (mMain.header2 = "BPE") Or ((mMain.header2 = "AXP") Or (mMain.header2 = "AXV")) Then
 
                 EMLoadOutput2()
@@ -702,6 +704,10 @@ Public Class MnFrm
 
             File.WriteAllText(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & ".s", outputtext)
             WriteHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_Border.bin", 0, BorderData)
+            WriteHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_MapData.bin", 0, MapPermData)
+
+            WriteHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryPal.bin", 0, PrimaryPals)
+            WriteHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryPal.bin", 0, SecondaryPals)
 
             Me.Text = "Map Dumper"
             Me.UseWaitCursor = False
@@ -762,11 +768,11 @@ Public Class MnFrm
 
         BorderPointer = ("&H" & ReverseHEX(ReadHEX(LoadedROM, Map_Footer + 8, 4))) - &H8000000
 
-        outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, Map_Footer + 8, 4)) & "  @Border Data" & vbCrLf
+        outputtext = outputtext & "    .long    Bank" & MapBank & "_Map" & MapNumber & "_Border" & "  @Border Data" & vbCrLf
 
         MapDataPointer = ("&H" & ReverseHEX(ReadHEX(LoadedROM, Map_Footer + 12, 4))) - &H8000000
 
-        outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, Map_Footer + 12, 4)) & "  @Map data / Movement Permissons" & vbCrLf
+        outputtext = outputtext & "    .long    Bank" & MapBank & "_Map" & MapNumber & "_MapData" & "  @Map data / Movement Permissons" & vbCrLf
 
         PrimaryTilesetPointer = ("&H" & ReverseHEX(ReadHEX(LoadedROM, Map_Footer + 16, 4))) - &H8000000
 
@@ -780,6 +786,18 @@ Public Class MnFrm
         BorderWidth = 2
 
         BorderData = ReadHEX(LoadedROM, BorderPointer, (BorderHeight * BorderWidth) * 2)
+
+        MapPermData = ReadHEX(LoadedROM, MapDataPointer, (MapHeight * MapWidth) * 2)
+
+        outputtext = outputtext & vbCrLf
+
+        outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_Border:" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_Border.bin""" & vbCrLf
+
+        outputtext = outputtext & vbCrLf
+
+        outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_MapData:" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_MapData.bin""" & vbCrLf
 
         'Primary Tileset
 
@@ -800,7 +818,7 @@ Public Class MnFrm
 
         PrimaryPalPointer = ("&H" & ReverseHEX(ReadHEX(LoadedROM, PrimaryTilesetPointer + 8, 4))) - &H8000000
 
-        outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, PrimaryTilesetPointer + 8, 4)) & "  @Pallete Pointer" & vbCrLf
+        outputtext = outputtext & "    .long    Bank" & MapBank & "_Map" & MapNumber & "_PrimaryPal:" & "  @Pallete Pointer" & vbCrLf
 
         PrimaryBlockSetPointer = ("&H" & ReverseHEX(ReadHEX(LoadedROM, PrimaryTilesetPointer + 12, 4))) - &H8000000
 
@@ -810,6 +828,13 @@ Public Class MnFrm
 
         outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, PrimaryTilesetPointer + 16, 4)) & "  @behavioural_bg_bytes" & vbCrLf
         outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, PrimaryTilesetPointer + 20, 4)) & "  @Animation routine" & vbCrLf
+
+        PrimaryPals = ReadHEX(LoadedROM, PrimaryPalPointer, 6 * (16 * 2))
+
+        outputtext = outputtext & vbCrLf
+
+        outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_PrimaryPal:" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_PrimaryPal.bin""" & vbCrLf
 
         'Secondary Tileset
 
@@ -830,7 +855,7 @@ Public Class MnFrm
 
         SecondaryPalPointer = ("&H" & ReverseHEX(ReadHEX(LoadedROM, SecondaryTilesetPointer + 8, 4))) - &H8000000
 
-        outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, SecondaryTilesetPointer + 8, 4)) & "  @Pallete Pointer" & vbCrLf
+        outputtext = outputtext & "    .long    Bank" & MapBank & "_Map" & MapNumber & "_SecondaryPal:" & "  @Pallete Pointer" & vbCrLf
 
         SecondaryBlockSetPointer = ("&H" & ReverseHEX(ReadHEX(LoadedROM, SecondaryTilesetPointer + 12, 4))) - &H8000000
 
@@ -840,6 +865,13 @@ Public Class MnFrm
 
         outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, SecondaryTilesetPointer + 16, 4)) & "  @behavioural_bg_bytes" & vbCrLf
         outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, SecondaryTilesetPointer + 20, 4)) & "  @Animation routine" & vbCrLf
+
+        PrimaryPals = ReadHEX(LoadedROM, PrimaryPalPointer, 6 * (16 * 2))
+
+        outputtext = outputtext & vbCrLf
+
+        outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_SecondaryPal:" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_SecondaryPal.bin""" & vbCrLf
 
         'Events
 
