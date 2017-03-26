@@ -638,11 +638,21 @@ Public Class MnFrm
 
         outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_Connections_Header:" & vbCrLf
 
-        Connection_Num = ("&H" & ReverseHEX(ReadHEX(LoadedROM, Map_Connection_Header, 4)))
-        Connection_Pointer = ("&H" & ReverseHEX(ReadHEX(LoadedROM, Map_Connection_Header + 4, 4))) - &H8000000
+        If Map_Connection_Header = -134217728 Then
+            Connection_Num = 0
+            Connection_Pointer = 0
+            outputtext = outputtext & "    .long    0x0" & "  @Number of Connections" & vbCrLf
+            outputtext = outputtext & "    .long    " & "Bank" & MapBank & "_Map" & MapNumber & "_Connections" & "  @Pointer to Connections" & vbCrLf
 
-        outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, Map_Connection_Header, 4)) & "  @Number of Connections" & vbCrLf
-        outputtext = outputtext & "    .long    " & "Bank" & MapBank & "_Map" & MapNumber & "_Connections" & "  @Pointer to Connections" & vbCrLf
+        Else
+
+            Connection_Num = ("&H" & ReverseHEX(ReadHEX(LoadedROM, Map_Connection_Header, 4)))
+            Connection_Pointer = ("&H" & ReverseHEX(ReadHEX(LoadedROM, Map_Connection_Header + 4, 4))) - &H8000000
+
+            outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, Map_Connection_Header, 4)) & "  @Number of Connections" & vbCrLf
+            outputtext = outputtext & "    .long    " & "Bank" & MapBank & "_Map" & MapNumber & "_Connections" & "  @Pointer to Connections" & vbCrLf
+
+        End If
 
         loopvar = 0
 
@@ -685,9 +695,7 @@ Public Class MnFrm
 
             HeaderPointer = ((Val(("&H" & ReverseHEX(ReadHEX(LoadedROM, BankPointer + (MapNumber * 4), 4)))) - &H8000000))
 
-            outputtext = ".text" & vbCrLf &
-    ".thumb" & vbCrLf &
-    ".align 2" & vbCrLf & vbCrLf
+            outputtext = ".align 2" & vbCrLf & vbCrLf
 
             If ((mMain.header2 = "BPR") Or (mMain.header2 = "BPG")) Then
 
@@ -703,11 +711,21 @@ Public Class MnFrm
             End If
 
             File.WriteAllText(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & ".s", outputtext)
+
             WriteHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_Border.bin", 0, BorderData)
             WriteHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_MapData.bin", 0, MapPermData)
 
             WriteHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryPal.bin", 0, PrimaryPals)
             WriteHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryPal.bin", 0, SecondaryPals)
+
+            WriteHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryTiles.bin", 0, PrimaryTilesImg)
+            WriteHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryTiles.bin", 0, SecondaryTilesImg)
+
+            WriteHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBlocks.bin", 0, PrimaryBlocks)
+            WriteHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBlocks.bin", 0, SecondaryBlocks)
+
+            WriteHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviours.bin", 0, PrimaryBehaviours)
+            WriteHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviours.bin", 0, SecondaryBehaviours)
 
             Me.Text = "Map Dumper"
             Me.UseWaitCursor = False
@@ -756,6 +774,8 @@ Public Class MnFrm
 
         outputtext = outputtext & vbCrLf
 
+        outputtext = outputtext & ".align 2" & vbCrLf
+
         outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_Footer:" & vbCrLf
 
         MapWidth = ("&H" & ReverseHEX(ReadHEX(LoadedROM, Map_Footer, 4)))
@@ -789,19 +809,11 @@ Public Class MnFrm
 
         MapPermData = ReadHEX(LoadedROM, MapDataPointer, (MapHeight * MapWidth) * 2)
 
-        outputtext = outputtext & vbCrLf
-
-        outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_Border:" & vbCrLf
-        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_Border.bin""" & vbCrLf
-
-        outputtext = outputtext & vbCrLf
-
-        outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_MapData:" & vbCrLf
-        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_MapData.bin""" & vbCrLf
-
         'Primary Tileset
 
         outputtext = outputtext & vbCrLf
+
+        outputtext = outputtext & ".align 2" & vbCrLf
 
         outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_PrimaryTileset:" & vbCrLf
 
@@ -814,31 +826,43 @@ Public Class MnFrm
 
         PrimaryImagePointer = ("&H" & ReverseHEX(ReadHEX(LoadedROM, PrimaryTilesetPointer + 4, 4))) - &H8000000
 
-        outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, PrimaryTilesetPointer + 4, 4)) & "  @Image Pointer" & vbCrLf
+        outputtext = outputtext & "    .long    Bank" & MapBank & "_Map" & MapNumber & "_PrimaryTiles" & "  @Image Pointer" & vbCrLf
 
         PrimaryPalPointer = ("&H" & ReverseHEX(ReadHEX(LoadedROM, PrimaryTilesetPointer + 8, 4))) - &H8000000
 
-        outputtext = outputtext & "    .long    Bank" & MapBank & "_Map" & MapNumber & "_PrimaryPal:" & "  @Pallete Pointer" & vbCrLf
+        outputtext = outputtext & "    .long    Bank" & MapBank & "_Map" & MapNumber & "_PrimaryPal" & "  @Pallete Pointer" & vbCrLf
 
         PrimaryBlockSetPointer = ("&H" & ReverseHEX(ReadHEX(LoadedROM, PrimaryTilesetPointer + 12, 4))) - &H8000000
 
-        outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, PrimaryTilesetPointer + 12, 4)) & "  @blockset_data" & vbCrLf
+        outputtext = outputtext & "    .long    Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBlocks" & "  @blockset_data" & vbCrLf
 
         PrimaryBehaviourPointer = ("&H" & ReverseHEX(ReadHEX(LoadedROM, PrimaryTilesetPointer + 16, 4))) - &H8000000
 
-        outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, PrimaryTilesetPointer + 16, 4)) & "  @behavioural_bg_bytes" & vbCrLf
+        outputtext = outputtext & "    .long    Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviours" & "  @behavioural_bg_bytes" & vbCrLf
         outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, PrimaryTilesetPointer + 20, 4)) & "  @Animation routine" & vbCrLf
 
         PrimaryPals = ReadHEX(LoadedROM, PrimaryPalPointer, 6 * (16 * 2))
 
-        outputtext = outputtext & vbCrLf
+        If PrimaryTilesetCompression = 1 Then
 
-        outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_PrimaryPal:" & vbCrLf
-        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_PrimaryPal.bin""" & vbCrLf
+            PrimaryTilesImg = MapTilesCompressedtoHexString(PrimaryImagePointer, PrimaryPalPointer)
+
+
+        ElseIf PrimaryTilesetCompression = 0 Then
+
+            PrimaryTilesImg = ReadHEX(LoadedROM, PrimaryImagePointer, 16384)
+
+        End If
+
+        PrimaryBlocks = ReadHEX(LoadedROM, PrimaryBlockSetPointer, 16 * 512)
+
+        PrimaryBehaviours = ReadHEX(LoadedROM, PrimaryBehaviourPointer, 2 * 512)
 
         'Secondary Tileset
 
         outputtext = outputtext & vbCrLf
+
+        outputtext = outputtext & ".align 2" & vbCrLf
 
         outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_SecondaryTileset:" & vbCrLf
 
@@ -851,31 +875,43 @@ Public Class MnFrm
 
         SecondaryImagePointer = ("&H" & ReverseHEX(ReadHEX(LoadedROM, SecondaryTilesetPointer + 4, 4))) - &H8000000
 
-        outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, SecondaryTilesetPointer + 4, 4)) & "  @Image Pointer" & vbCrLf
+        outputtext = outputtext & "    .long    Bank" & MapBank & "_Map" & MapNumber & "_SecondaryTiles" & "  @Image Pointer" & vbCrLf
 
         SecondaryPalPointer = ("&H" & ReverseHEX(ReadHEX(LoadedROM, SecondaryTilesetPointer + 8, 4))) - &H8000000
 
-        outputtext = outputtext & "    .long    Bank" & MapBank & "_Map" & MapNumber & "_SecondaryPal:" & "  @Pallete Pointer" & vbCrLf
+        outputtext = outputtext & "    .long    Bank" & MapBank & "_Map" & MapNumber & "_SecondaryPal" & "  @Pallete Pointer" & vbCrLf
 
         SecondaryBlockSetPointer = ("&H" & ReverseHEX(ReadHEX(LoadedROM, SecondaryTilesetPointer + 12, 4))) - &H8000000
 
-        outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, SecondaryTilesetPointer + 12, 4)) & "  @blockset_data" & vbCrLf
+        outputtext = outputtext & "    .long    Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBlocks" & "  @blockset_data" & vbCrLf
 
         SecondaryBehaviourPointer = ("&H" & ReverseHEX(ReadHEX(LoadedROM, SecondaryTilesetPointer + 16, 4))) - &H8000000
 
-        outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, SecondaryTilesetPointer + 16, 4)) & "  @behavioural_bg_bytes" & vbCrLf
+        outputtext = outputtext & "    .long    Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviours" & "  @behavioural_bg_bytes" & vbCrLf
         outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, SecondaryTilesetPointer + 20, 4)) & "  @Animation routine" & vbCrLf
 
-        PrimaryPals = ReadHEX(LoadedROM, PrimaryPalPointer, 6 * (16 * 2))
+        SecondaryPals = ReadHEX(LoadedROM, SecondaryPalPointer, 6 * (16 * 2))
 
-        outputtext = outputtext & vbCrLf
+        If SecondaryTilesetCompression = 1 Then
 
-        outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_SecondaryPal:" & vbCrLf
-        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_SecondaryPal.bin""" & vbCrLf
+            SecondaryTilesImg = MapTilesCompressedtoHexString(SecondaryImagePointer, SecondaryPalPointer)
+
+
+        ElseIf secondaryTilesetCompression = 0 Then
+
+            SecondaryTilesImg = ReadHEX(LoadedROM, SecondaryImagePointer, 16384)
+
+        End If
+
+        SecondaryBlocks = ReadHEX(LoadedROM, SecondaryBlockSetPointer, Int32.Parse((GetString(AppPath & "ini\roms.ini", header, "NumberOfTilesInTilset" & Hex(SecondaryTilesetPointer), "")), System.Globalization.NumberStyles.HexNumber) * 16)
+
+        SecondaryBehaviours = ReadHEX(LoadedROM, SecondaryBehaviourPointer, Int32.Parse((GetString(AppPath & "ini\roms.ini", header, "NumberOfTilesInTilset" & Hex(SecondaryTilesetPointer), "")), System.Globalization.NumberStyles.HexNumber) * 2)
 
         'Events
 
         outputtext = outputtext & vbCrLf
+
+        outputtext = outputtext & ".align 2" & vbCrLf
 
         outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_Events:" & vbCrLf
 
@@ -915,6 +951,8 @@ Public Class MnFrm
 
         outputtext = outputtext & vbCrLf
 
+        outputtext = outputtext & ".align 2" & vbCrLf
+
         outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_NPCs:" & vbCrLf
 
         While loopvar < NPC_Num
@@ -943,6 +981,8 @@ Public Class MnFrm
 
         outputtext = outputtext & vbCrLf
 
+        outputtext = outputtext & ".align 2" & vbCrLf
+
         outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_Warps:" & vbCrLf
 
         While loopvar < Warp_Num
@@ -962,6 +1002,8 @@ Public Class MnFrm
         loopvar = 0
 
         outputtext = outputtext & vbCrLf
+
+        outputtext = outputtext & ".align 2" & vbCrLf
 
         outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_Script_Events:" & vbCrLf
 
@@ -985,6 +1027,8 @@ Public Class MnFrm
 
         outputtext = outputtext & vbCrLf
 
+        outputtext = outputtext & ".align 2" & vbCrLf
+
         outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_Sign_Posts:" & vbCrLf
 
         While loopvar < SignPost_Num
@@ -1005,6 +1049,8 @@ Public Class MnFrm
         'Level Scripts
 
         outputtext = outputtext & vbCrLf
+
+        outputtext = outputtext & ".align 2" & vbCrLf
 
         outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_Level_Scripts:" & vbCrLf
 
@@ -1028,6 +1074,8 @@ Public Class MnFrm
                 loopvar2 = 0
 
                 outputlevel2 = outputlevel2 & vbCrLf
+
+                outputlevel2 = outputlevel2 & ".align 2" & vbCrLf
 
                 outputlevel2 = outputlevel2 & "Bank" & MapBank & "_Map" & MapNumber & "_Level_Scripts_2:" & vbCrLf
 
@@ -1054,6 +1102,8 @@ Public Class MnFrm
                 loopvar2 = 0
 
                 outputlevel4 = outputlevel4 & vbCrLf
+
+                outputlevel4 = outputlevel4 & ".align 2" & vbCrLf
 
                 outputlevel4 = outputlevel4 & "Bank" & MapBank & "_Map" & MapNumber & "_Level_Scripts_4:" & vbCrLf
 
@@ -1087,17 +1137,31 @@ Public Class MnFrm
 
         outputtext = outputtext & vbCrLf
 
+        outputtext = outputtext & ".align 2" & vbCrLf
+
         outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_Connections_Header:" & vbCrLf
 
-        Connection_Num = ("&H" & ReverseHEX(ReadHEX(LoadedROM, Map_Connection_Header, 4)))
-        Connection_Pointer = ("&H" & ReverseHEX(ReadHEX(LoadedROM, Map_Connection_Header + 4, 4))) - &H8000000
+        If Map_Connection_Header = -134217728 Then
+            Connection_Num = 0
+            Connection_Pointer = 0
+            outputtext = outputtext & "    .long    0x0" & "  @Number of Connections" & vbCrLf
+            outputtext = outputtext & "    .long    " & "Bank" & MapBank & "_Map" & MapNumber & "_Connections" & "  @Pointer to Connections" & vbCrLf
 
-        outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, Map_Connection_Header, 4)) & "  @Number of Connections" & vbCrLf
-        outputtext = outputtext & "    .long    " & "Bank" & MapBank & "_Map" & MapNumber & "_Connections" & "  @Pointer to Connections" & vbCrLf
+        Else
+
+            Connection_Num = ("&H" & ReverseHEX(ReadHEX(LoadedROM, Map_Connection_Header, 4)))
+            Connection_Pointer = ("&H" & ReverseHEX(ReadHEX(LoadedROM, Map_Connection_Header + 4, 4))) - &H8000000
+
+            outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, Map_Connection_Header, 4)) & "  @Number of Connections" & vbCrLf
+            outputtext = outputtext & "    .long    " & "Bank" & MapBank & "_Map" & MapNumber & "_Connections" & "  @Pointer to Connections" & vbCrLf
+
+        End If
 
         loopvar = 0
 
         outputtext = outputtext & vbCrLf
+
+        outputtext = outputtext & ".align 2" & vbCrLf
 
         outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_Connections:" & vbCrLf
 
@@ -1111,6 +1175,76 @@ Public Class MnFrm
 
             loopvar = loopvar + 1
         End While
+
+        outputtext = outputtext & vbCrLf
+
+        outputtext = outputtext & ".align 2" & vbCrLf
+
+        outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_Border:" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_Border.bin""" & vbCrLf
+
+        outputtext = outputtext & vbCrLf
+
+        outputtext = outputtext & ".align 2" & vbCrLf
+
+        outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_MapData:" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_MapData.bin""" & vbCrLf
+
+        outputtext = outputtext & vbCrLf
+
+        outputtext = outputtext & ".align 2" & vbCrLf
+
+        outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_PrimaryPal:" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_PrimaryPal.bin""" & vbCrLf
+
+        outputtext = outputtext & vbCrLf
+
+        outputtext = outputtext & ".align 2" & vbCrLf
+
+        outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_PrimaryTiles:" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_PrimaryTiles.bin""" & vbCrLf
+
+        outputtext = outputtext & vbCrLf
+
+        outputtext = outputtext & ".align 2" & vbCrLf
+
+        outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBlocks:" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBlocks.bin""" & vbCrLf
+
+        outputtext = outputtext & vbCrLf
+
+        outputtext = outputtext & ".align 2" & vbCrLf
+
+        outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviours:" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviours.bin""" & vbCrLf
+
+        outputtext = outputtext & vbCrLf
+
+        outputtext = outputtext & ".align 2" & vbCrLf
+
+        outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_SecondaryPal:" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_SecondaryPal.bin""" & vbCrLf
+
+        outputtext = outputtext & vbCrLf
+
+        outputtext = outputtext & ".align 2" & vbCrLf
+
+        outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_SecondaryTiles:" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_SecondaryTiles.bin""" & vbCrLf
+
+        outputtext = outputtext & vbCrLf
+
+        outputtext = outputtext & ".align 2" & vbCrLf
+
+        outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBlocks:" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBlocks.bin""" & vbCrLf
+
+        outputtext = outputtext & vbCrLf
+
+        outputtext = outputtext & ".align 2" & vbCrLf
+
+        outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviours:" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviours.bin""" & vbCrLf
 
     End Sub
 End Class

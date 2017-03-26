@@ -76,6 +76,15 @@ Module mMain
     Public PrimaryPals As String
     Public SecondaryPals As String
 
+    Public PrimaryTilesImg As String
+    Public SecondaryTilesImg As String
+
+    Public PrimaryBlocks As String
+    Public SecondaryBlocks As String
+
+    Public PrimaryBehaviours As String
+    Public SecondaryBehaviours As String
+
     Public BorderData As String
     Public MapPermData As String
 

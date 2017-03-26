@@ -31,7 +31,9 @@ Partial Class MnFrm
         Me.OutputTextBox = New System.Windows.Forms.TextBox()
         Me.ExportBttn = New System.Windows.Forms.Button()
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.GroupBox4.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Button4
@@ -104,12 +106,22 @@ Partial Class MnFrm
         Me.ExportBttn.Text = "Export"
         Me.ExportBttn.UseVisualStyleBackColor = True
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.Location = New System.Drawing.Point(918, 12)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(252, 466)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 17
+        Me.PictureBox1.TabStop = False
+        '
         'MnFrm
         '
         Me.AllowDrop = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(906, 497)
+        Me.ClientSize = New System.Drawing.Size(1182, 544)
+        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.ExportBttn)
         Me.Controls.Add(Me.OutputTextBox)
         Me.Controls.Add(Me.MapNameList)
@@ -122,6 +134,7 @@ Partial Class MnFrm
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Map Dumper"
         Me.GroupBox4.ResumeLayout(False)
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -136,4 +149,5 @@ Partial Class MnFrm
     Friend WithEvents OutputTextBox As TextBox
     Friend WithEvents ExportBttn As Button
     Friend WithEvents FolderBrowserDialog1 As FolderBrowserDialog
+    Friend WithEvents PictureBox1 As PictureBox
 End Class
