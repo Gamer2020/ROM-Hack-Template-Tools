@@ -1201,7 +1201,7 @@ ErrorHandle:
         Dim sOffset As Integer = ImageOffset
         Dim pOffset As Integer = PalOffset
         Dim Temp(&HFFFF) As Byte
-        Dim Image(&H4000 - 1) As Byte
+        Dim Image(&H4000) As Byte
         Dim Palette15(&HFFF) As Byte
         Dim Palette32() As Color
         Dim bSprite As Bitmap
@@ -1223,8 +1223,7 @@ ErrorHandle:
 
         bSprite = LoadSprite(Image, Palette32, 128, 256, True)
 
-        MnFrm.PictureBox1.Image = bSprite
-        MnFrm.PictureBox1.Refresh()
+
 
         MapTilesCompressedtoHexString = ByteArrayToHexString(CompressBytes(Image))
 
@@ -1237,7 +1236,7 @@ ErrorHandle:
         Dim sOffset As Integer = ImageOffset
         Dim pOffset As Integer = PalOffset
         Dim Temp(&HFFFF) As Byte
-        Dim Image(&H5000 - 1) As Byte
+        Dim Image(&H5000) As Byte
         Dim Palette15(&HFFF) As Byte
         Dim Palette32() As Color
         Dim bSprite As Bitmap
@@ -1259,8 +1258,6 @@ ErrorHandle:
 
         bSprite = LoadSprite(Image, Palette32, 128, 320, True)
 
-        MnFrm.PictureBox1.Image = bSprite
-        MnFrm.PictureBox1.Refresh()
 
         MapTilesCompressedtoHexStringFRPrim = ByteArrayToHexString(CompressBytes(Image))
 
@@ -1273,7 +1270,7 @@ ErrorHandle:
         Dim sOffset As Integer = ImageOffset
         Dim pOffset As Integer = PalOffset
         Dim Temp(&HFFFF) As Byte
-        Dim Image(&H3000 - 1) As Byte
+        Dim Image(&H3000) As Byte
         Dim Palette15(&HFFF) As Byte
         Dim Palette32() As Color
         Dim bSprite As Bitmap
@@ -1295,11 +1292,91 @@ ErrorHandle:
 
         bSprite = LoadSprite(Image, Palette32, 128, 192, True)
 
-        MnFrm.PictureBox1.Image = bSprite
-        MnFrm.PictureBox1.Refresh()
 
         MapTilesCompressedtoHexStringFRSec = ByteArrayToHexString(CompressBytes(Image))
 
     End Function
+
+    Public Function MapTilesCompressedtoHexStringFRPrim2(ByVal ImageOffset As Integer, ByVal PalOffset As Integer, ByVal tilefile As String, ByVal palfile As String) As String
+
+
+
+        Dim sOffset As Integer = ImageOffset
+        Dim pOffset As Integer = PalOffset
+        Dim Temp(&HFFFF) As Byte
+        Dim Image(&H5000 - 1) As Byte
+        Dim Palette15(&HFFF) As Byte
+        Dim Palette32() As Color
+        Dim bSprite As Bitmap
+        Using fs As New FileStream(tilefile, FileMode.Open, FileAccess.Read)
+            Using r As New BinaryReader(fs)
+                fs.Position = sOffset
+                r.Read(Temp, 0, &HFFFF)
+                LZ77UnComp(Temp, Image)
+
+            End Using
+        End Using
+
+        Using fs As New FileStream(palfile, FileMode.Open, FileAccess.Read)
+            Using r As New BinaryReader(fs)
+
+                ReDim Temp(&HFFFF)
+                fs.Position = pOffset
+                r.Read(Temp, 0, &HFFFF)
+                'LZ77UnComp(Temp, Palette15)
+
+                Palette32 = LoadPalette(Temp)
+            End Using
+        End Using
+
+
+        bSprite = LoadSprite(Image, Palette32, 128, 320, True)
+
+
+
+        MapTilesCompressedtoHexStringFRPrim2 = ByteArrayToHexString(Image)
+
+    End Function
+
+    Public Function MapTilesCompressedtoHexStringFRSec2(ByVal ImageOffset As Integer, ByVal PalOffset As Integer, ByVal tilefile As String, ByVal palfile As String) As String
+
+
+        Dim sOffset As Integer = ImageOffset
+        Dim pOffset As Integer = PalOffset
+        Dim Temp(&HFFFF) As Byte
+        Dim Image(&H3000 - 1) As Byte
+        Dim Palette15(&HFFF) As Byte
+        Dim Palette32() As Color
+        Dim bSprite As Bitmap
+        Using fs As New FileStream(tilefile, FileMode.Open, FileAccess.Read)
+            Using r As New BinaryReader(fs)
+                fs.Position = sOffset
+                r.Read(Temp, 0, &HFFFF)
+                LZ77UnComp(Temp, Image)
+
+            End Using
+        End Using
+
+        Using fs As New FileStream(palfile, FileMode.Open, FileAccess.Read)
+            Using r As New BinaryReader(fs)
+
+
+                ReDim Temp(&HFFFF)
+                fs.Position = pOffset
+                r.Read(Temp, 0, &HFFFF)
+                'LZ77UnComp(Temp, Palette15)
+
+                Palette32 = LoadPalette(Temp)
+            End Using
+        End Using
+
+
+        bSprite = LoadSprite(Image, Palette32, 128, 192, True)
+
+
+        MapTilesCompressedtoHexStringFRSec2 = ByteArrayToHexString(Image)
+
+    End Function
+
 
 End Module
