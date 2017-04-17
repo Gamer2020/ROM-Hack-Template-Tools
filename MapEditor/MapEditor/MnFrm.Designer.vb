@@ -25,6 +25,8 @@ Partial Class MnFrm
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Button11 = New System.Windows.Forms.Button()
+        Me.Button10 = New System.Windows.Forms.Button()
         Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.Button8 = New System.Windows.Forms.Button()
@@ -44,22 +46,30 @@ Partial Class MnFrm
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.fileOpenDialog = New System.Windows.Forms.OpenFileDialog()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Button5 = New System.Windows.Forms.Button()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.BlockSetsPictureBox = New System.Windows.Forms.PictureBox()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.TilesPictureBox = New System.Windows.Forms.PictureBox()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.TilesPictureBox = New System.Windows.Forms.PictureBox()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Button5 = New System.Windows.Forms.Button()
+        Me.fileOpenDialog = New System.Windows.Forms.OpenFileDialog()
+        Me.SaveFileDialog = New System.Windows.Forms.SaveFileDialog()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
         Me.Panel2.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
+        Me.Panel4.SuspendLayout()
+        CType(Me.BlockSetsPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.TilesPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel3.SuspendLayout()
+        CType(Me.TilesPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -70,7 +80,7 @@ Partial Class MnFrm
         Me.TabControl1.Location = New System.Drawing.Point(0, 0)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(1010, 621)
+        Me.TabControl1.Size = New System.Drawing.Size(1214, 621)
         Me.TabControl1.TabIndex = 0
         '
         'TabPage1
@@ -79,7 +89,7 @@ Partial Class MnFrm
         Me.TabPage1.Location = New System.Drawing.Point(4, 25)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(1002, 592)
+        Me.TabPage1.Size = New System.Drawing.Size(1206, 592)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Files"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -87,6 +97,8 @@ Partial Class MnFrm
         'Panel1
         '
         Me.Panel1.AutoScroll = True
+        Me.Panel1.Controls.Add(Me.Button11)
+        Me.Panel1.Controls.Add(Me.Button10)
         Me.Panel1.Controls.Add(Me.CheckBox2)
         Me.Panel1.Controls.Add(Me.CheckBox1)
         Me.Panel1.Controls.Add(Me.Button8)
@@ -108,8 +120,26 @@ Partial Class MnFrm
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(3, 3)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(996, 586)
+        Me.Panel1.Size = New System.Drawing.Size(1200, 586)
         Me.Panel1.TabIndex = 73
+        '
+        'Button11
+        '
+        Me.Button11.Location = New System.Drawing.Point(704, 14)
+        Me.Button11.Name = "Button11"
+        Me.Button11.Size = New System.Drawing.Size(120, 79)
+        Me.Button11.TabIndex = 92
+        Me.Button11.Text = "Save Project File"
+        Me.Button11.UseVisualStyleBackColor = True
+        '
+        'Button10
+        '
+        Me.Button10.Location = New System.Drawing.Point(568, 14)
+        Me.Button10.Name = "Button10"
+        Me.Button10.Size = New System.Drawing.Size(120, 79)
+        Me.Button10.TabIndex = 91
+        Me.Button10.Text = "Load Project File"
+        Me.Button10.UseVisualStyleBackColor = True
         '
         'CheckBox2
         '
@@ -269,47 +299,104 @@ Partial Class MnFrm
         Me.TabPage2.Location = New System.Drawing.Point(4, 25)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(1002, 592)
+        Me.TabPage2.Size = New System.Drawing.Size(1206, 592)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Block Editor"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
-        'fileOpenDialog
-        '
-        Me.fileOpenDialog.FileName = "OpenFileDialog1"
-        '
         'Panel2
         '
         Me.Panel2.AutoScroll = True
+        Me.Panel2.Controls.Add(Me.GroupBox3)
+        Me.Panel2.Controls.Add(Me.GroupBox2)
         Me.Panel2.Controls.Add(Me.GroupBox1)
         Me.Panel2.Controls.Add(Me.Button5)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(3, 3)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(996, 586)
+        Me.Panel2.Size = New System.Drawing.Size(1200, 586)
         Me.Panel2.TabIndex = 0
         '
-        'Button5
+        'GroupBox3
         '
-        Me.Button5.Location = New System.Drawing.Point(15, 12)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(199, 82)
-        Me.Button5.TabIndex = 1
-        Me.Button5.Text = "Load Blocks"
-        Me.Button5.UseVisualStyleBackColor = True
+        Me.GroupBox3.Controls.Add(Me.Panel4)
+        Me.GroupBox3.Dock = System.Windows.Forms.DockStyle.Right
+        Me.GroupBox3.Location = New System.Drawing.Point(180, 0)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(416, 586)
+        Me.GroupBox3.TabIndex = 4
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "Blocks"
+        '
+        'Panel4
+        '
+        Me.Panel4.AutoScroll = True
+        Me.Panel4.Controls.Add(Me.BlockSetsPictureBox)
+        Me.Panel4.Location = New System.Drawing.Point(19, 41)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(381, 387)
+        Me.Panel4.TabIndex = 0
+        '
+        'BlockSetsPictureBox
+        '
+        Me.BlockSetsPictureBox.Location = New System.Drawing.Point(3, 3)
+        Me.BlockSetsPictureBox.Name = "BlockSetsPictureBox"
+        Me.BlockSetsPictureBox.Size = New System.Drawing.Size(137, 212)
+        Me.BlockSetsPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.BlockSetsPictureBox.TabIndex = 0
+        Me.BlockSetsPictureBox.TabStop = False
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Dock = System.Windows.Forms.DockStyle.Right
+        Me.GroupBox2.Location = New System.Drawing.Point(596, 0)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(188, 586)
+        Me.GroupBox2.TabIndex = 3
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Block Edit"
         '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.Panel3)
         Me.GroupBox1.Controls.Add(Me.ComboBox1)
         Me.GroupBox1.Controls.Add(Me.Label1)
+        Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Right
         Me.GroupBox1.Enabled = False
-        Me.GroupBox1.Location = New System.Drawing.Point(640, 12)
+        Me.GroupBox1.Location = New System.Drawing.Point(784, 0)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(336, 451)
+        Me.GroupBox1.Size = New System.Drawing.Size(416, 586)
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Tiles"
+        '
+        'Panel3
+        '
+        Me.Panel3.AutoScroll = True
+        Me.Panel3.Controls.Add(Me.TilesPictureBox)
+        Me.Panel3.Location = New System.Drawing.Point(24, 89)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(376, 339)
+        Me.Panel3.TabIndex = 3
+        '
+        'TilesPictureBox
+        '
+        Me.TilesPictureBox.Location = New System.Drawing.Point(3, 3)
+        Me.TilesPictureBox.Name = "TilesPictureBox"
+        Me.TilesPictureBox.Size = New System.Drawing.Size(128, 256)
+        Me.TilesPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.TilesPictureBox.TabIndex = 2
+        Me.TilesPictureBox.TabStop = False
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Items.AddRange(New Object() {"Pal 0", "Pal1", "Pal 2", "Pal 3", "Pal 4", "Pal 5", "Pal 6", "Pal 7", "Pal 8", "Pal 9", "Pal 10", "Pal 11", "Pal 12"})
+        Me.ComboBox1.Location = New System.Drawing.Point(73, 38)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(121, 24)
+        Me.ComboBox1.TabIndex = 1
         '
         'Label1
         '
@@ -320,39 +407,24 @@ Partial Class MnFrm
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Pal:"
         '
-        'ComboBox1
+        'Button5
         '
-        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"Pal 0", "Pal1", "Pal 2", "Pal 3", "Pal 4", "Pal 5", "Pal 6", "Pal 7", "Pal 8", "Pal 9", "Pal 10", "Pal 11"})
-        Me.ComboBox1.Location = New System.Drawing.Point(73, 38)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(121, 24)
-        Me.ComboBox1.TabIndex = 1
+        Me.Button5.Location = New System.Drawing.Point(5, 8)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(147, 82)
+        Me.Button5.TabIndex = 1
+        Me.Button5.Text = "Load Blocks"
+        Me.Button5.UseVisualStyleBackColor = True
         '
-        'TilesPictureBox
+        'fileOpenDialog
         '
-        Me.TilesPictureBox.Location = New System.Drawing.Point(3, 3)
-        Me.TilesPictureBox.Name = "TilesPictureBox"
-        Me.TilesPictureBox.Size = New System.Drawing.Size(128, 256)
-        Me.TilesPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
-        Me.TilesPictureBox.TabIndex = 2
-        Me.TilesPictureBox.TabStop = False
-        '
-        'Panel3
-        '
-        Me.Panel3.AutoScroll = True
-        Me.Panel3.Controls.Add(Me.TilesPictureBox)
-        Me.Panel3.Location = New System.Drawing.Point(6, 89)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(285, 339)
-        Me.Panel3.TabIndex = 3
+        Me.fileOpenDialog.FileName = "OpenFileDialog1"
         '
         'MnFrm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1010, 621)
+        Me.ClientSize = New System.Drawing.Size(1214, 621)
         Me.Controls.Add(Me.TabControl1)
         Me.Name = "MnFrm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -363,11 +435,13 @@ Partial Class MnFrm
         Me.Panel1.PerformLayout()
         Me.TabPage2.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
+        Me.GroupBox3.ResumeLayout(False)
+        Me.Panel4.ResumeLayout(False)
+        CType(Me.BlockSetsPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        CType(Me.TilesPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel3.ResumeLayout(False)
-        Me.Panel3.PerformLayout()
+        CType(Me.TilesPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -402,4 +476,11 @@ Partial Class MnFrm
     Friend WithEvents Label1 As Label
     Friend WithEvents TilesPictureBox As PictureBox
     Friend WithEvents Panel3 As Panel
+    Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents Panel4 As Panel
+    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents BlockSetsPictureBox As PictureBox
+    Friend WithEvents Button11 As Button
+    Friend WithEvents Button10 As Button
+    Friend WithEvents SaveFileDialog As SaveFileDialog
 End Class

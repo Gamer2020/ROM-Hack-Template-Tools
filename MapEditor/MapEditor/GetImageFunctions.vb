@@ -1,7 +1,10 @@
 ﻿Imports System
 Imports System.IO
+Imports VB = Microsoft.VisualBasic
 
 Module GetImageFunctions
+
+    Public TilePals(11)() As Color
 
     Public Function DrawBlockToTile(ByVal Destination As Bitmap, ByVal Source As Bitmap, ByVal BlockNum As Integer, ByVal yflip As Integer, ByVal xflip As Integer, ByVal Tile As Integer, ByVal section As Integer) As Bitmap
         Dim Output As Bitmap = Destination
@@ -1378,7 +1381,7 @@ ErrorHandle:
 
     End Function
 
-    Public Function LoadTilesTopBitmap(ImgFile As String, Palette32() As Color, IsCompressed As Boolean) As Bitmap
+    Public Function LoadTilesToBitmap(ImgFile As String, Palette32() As Color, IsCompressed As Boolean, ShowBackColor As Boolean) As Bitmap
 
         Dim sOffset As Integer = 0
         Dim pOffset As Integer = 0
@@ -1402,9 +1405,191 @@ ErrorHandle:
         End Using
 
 
-        bSprite = LoadSprite(Image, Palette32, 128, 256, True)
+        bSprite = LoadSprite(Image, Palette32, 128, 256, ShowBackColor)
 
-        LoadTilesTopBitmap = bSprite
+        LoadTilesToBitmap = bSprite
+
+    End Function
+
+    Public Function LoadSingleTileToBitmap(ImgFile As String, TileNum As Integer, Palette32() As Color, IsCompressed As Boolean, ShowBackColor As Boolean, FlipXY As RotateFlipType) As Bitmap
+
+        Dim sOffset As Integer = 0
+        Dim pOffset As Integer = 0
+        Dim Temp(&HFFFF) As Byte
+        Dim Image(&HFFFF) As Byte
+        Dim Palette15(&HFFF) As Byte
+        Dim bSprite As Bitmap
+
+        Dim TileImg(31) As Byte
+
+        Using fs As New FileStream(ImgFile, FileMode.Open, FileAccess.Read)
+            Using r As New BinaryReader(fs)
+                fs.Position = sOffset
+                r.Read(Temp, 0, &HFFFF)
+
+                If IsCompressed = True Then
+                    LZ77UnComp(Temp, Image)
+                Else
+                    Image = Temp
+                End If
+
+                Array.Copy(Image, TileNum * 32, TileImg, 0, 32)
+
+            End Using
+        End Using
+
+
+        bSprite = LoadSprite(TileImg, Palette32, 8, 8, ShowBackColor)
+
+        bSprite.RotateFlip(FlipXY)
+
+        LoadSingleTileToBitmap = bSprite
+
+    End Function
+
+    Public Function BlockToBitmap(BlockSet As String, Image1 As String, Image2 As String, BlockNum As Integer) As Bitmap
+
+        Dim output As New Bitmap(16, 16)
+
+        Dim loopvar As Integer = 0
+
+        Dim tileimage As String = ""
+
+        Dim tilenum As Integer = 0
+        Dim palnum As Integer = 0
+        Dim Yflip As Integer
+        Dim Xflip As Integer
+        Dim Curbytesbin As String = ""
+        Dim Flips As RotateFlipType
+
+
+        While loopvar < 8
+
+            If BlockNum < 512 Then
+
+                Curbytesbin = VB.Right("0000000000000000" & Convert.ToString(Int32.Parse(ReverseHEX(ReadHEX(BlockSet, BlockNum * 16 + (loopvar * 2), 2)), System.Globalization.NumberStyles.HexNumber), 2), 16)
+
+            Else
+
+                Curbytesbin = VB.Right("0000000000000000" & Convert.ToString(Int32.Parse(ReverseHEX(ReadHEX(BlockSet, (BlockNum - 512) * 16 + (loopvar * 2), 2)), System.Globalization.NumberStyles.HexNumber), 2), 16)
+
+            End If
+
+            tilenum = Convert.ToInt32(Curbytesbin.Remove(0, 6), 2)
+            palnum = Convert.ToInt32(Curbytesbin.Substring(0, 4), 2)
+            Yflip = Convert.ToInt32(Curbytesbin.Substring(4, 1), 2)
+            Xflip = Convert.ToInt32(Curbytesbin.Substring(5, 1), 2)
+
+            If palnum > 11 Then
+                palnum = 2
+            End If
+
+            If Yflip = 0 And Xflip = 0 Then
+
+                Flips = RotateFlipType.RotateNoneFlipNone
+
+            ElseIf Yflip = 0 And Xflip = 1 Then
+
+                Flips = RotateFlipType.RotateNoneFlipX
+
+            ElseIf Yflip = 1 And Xflip = 0 Then
+
+                Flips = RotateFlipType.RotateNoneFlipY
+
+            ElseIf Yflip = 1 And Xflip = 1 Then
+
+                Flips = RotateFlipType.RotateNoneFlipXY
+
+            End If
+
+
+            If tilenum < 512 Then
+
+                tileimage = Image1
+
+
+                If loopvar = 0 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap(tileimage, tilenum, TilePals(palnum), True, True, Flips), output, 0, 0, 0, 0, 8, 8)
+
+                ElseIf loopvar = 1 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap(tileimage, tilenum, TilePals(palnum), True, True, Flips), output, 8, 0, 0, 0, 8, 8)
+
+                ElseIf loopvar = 2 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap(tileimage, tilenum, TilePals(palnum), True, True, Flips), output, 0, 8, 0, 0, 8, 8)
+
+                ElseIf loopvar = 3 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap(tileimage, tilenum, TilePals(palnum), True, True, Flips), output, 8, 8, 0, 0, 8, 8)
+
+                ElseIf loopvar = 4 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap(tileimage, tilenum, TilePals(palnum), True, False, Flips), output, 0, 0, 0, 0, 8, 8)
+
+                ElseIf loopvar = 5 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap(tileimage, tilenum, TilePals(palnum), True, False, Flips), output, 8, 0, 0, 0, 8, 8)
+
+                ElseIf loopvar = 6 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap(tileimage, tilenum, TilePals(palnum), True, False, Flips), output, 0, 8, 0, 0, 8, 8)
+
+                ElseIf loopvar = 7 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap(tileimage, tilenum, TilePals(palnum), True, False, Flips), output, 8, 8, 0, 0, 8, 8)
+
+                End If
+
+
+            Else
+
+                tileimage = Image2
+
+
+                If loopvar = 0 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap(tileimage, tilenum - 512, TilePals(palnum), True, True, Flips), output, 0, 0, 0, 0, 8, 8)
+
+                ElseIf loopvar = 1 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap(tileimage, tilenum - 512, TilePals(palnum), True, True, Flips), output, 8, 0, 0, 0, 8, 8)
+
+                ElseIf loopvar = 2 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap(tileimage, tilenum - 512, TilePals(palnum), True, True, Flips), output, 0, 8, 0, 0, 8, 8)
+
+                ElseIf loopvar = 3 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap(tileimage, tilenum - 512, TilePals(palnum), True, True, Flips), output, 8, 8, 0, 0, 8, 8)
+
+                ElseIf loopvar = 4 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap(tileimage, tilenum - 512, TilePals(palnum), True, False, Flips), output, 0, 0, 0, 0, 8, 8)
+
+                ElseIf loopvar = 5 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap(tileimage, tilenum - 512, TilePals(palnum), True, False, Flips), output, 8, 0, 0, 0, 8, 8)
+
+                ElseIf loopvar = 6 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap(tileimage, tilenum - 512, TilePals(palnum), True, False, Flips), output, 0, 8, 0, 0, 8, 8)
+
+                ElseIf loopvar = 7 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap(tileimage, tilenum - 512, TilePals(palnum), True, False, Flips), output, 8, 8, 0, 0, 8, 8)
+
+                End If
+
+            End If
+
+
+
+            loopvar = loopvar + 1
+        End While
+
+        BlockToBitmap = output
 
     End Function
 
