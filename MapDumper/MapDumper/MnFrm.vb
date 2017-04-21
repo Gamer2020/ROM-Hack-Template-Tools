@@ -889,7 +889,7 @@ Public Class MnFrm
         outputtext = outputtext & "    .long    Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviours" & "  @behavioural_bg_bytes" & vbCrLf
         outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, SecondaryTilesetPointer + 20, 4)) & "  @Animation routine" & vbCrLf
 
-        SecondaryPals = ReadHEX(LoadedROM, SecondaryPalPointer, 6 * (16 * 2))
+        SecondaryPals = ReadHEX(LoadedROM, SecondaryPalPointer, 13 * (16 * 2))
 
         If SecondaryTilesetCompression = 1 Then
 
@@ -1358,7 +1358,7 @@ Public Class MnFrm
         outputtext = outputtext & "    .long    Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviours" & "  @behavioural_bg_bytes" & vbCrLf
 
 
-        PrimaryPals = ReadHEX(LoadedROM, PrimaryPalPointer, 6 * (16 * 2))
+        PrimaryPals = ReadHEX(LoadedROM, PrimaryPalPointer, 7 * (16 * 2))
 
         If PrimaryTilesetCompression = 1 Then
 
@@ -1409,7 +1409,7 @@ Public Class MnFrm
         outputtext = outputtext & "    .long    Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviours" & "  @behavioural_bg_bytes" & vbCrLf
 
 
-        SecondaryPals = ReadHEX(LoadedROM, SecondaryPalPointer, 6 * (16 * 2))
+        SecondaryPals = ReadHEX(LoadedROM, SecondaryPalPointer, 13 * (16 * 2))
 
         If SecondaryTilesetCompression = 1 Then
 

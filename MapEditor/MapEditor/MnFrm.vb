@@ -451,7 +451,7 @@ Public Class MnFrm
         Dim Temp(&HFFFF) As Byte
         Dim loopvar As Integer = 0
 
-        While loopvar < 12
+        While loopvar < 13
 
             If loopvar < 6 Then
 
@@ -459,7 +459,7 @@ Public Class MnFrm
 
             Else
 
-                PalBuff = ReadHEX(TextBox3.Text, ((loopvar - 6) * 32), 32)
+                PalBuff = ReadHEX(TextBox3.Text, ((loopvar) * 32), 32)
 
             End If
 
@@ -526,8 +526,6 @@ Public Class MnFrm
 
         Dim across As Integer = 0
         Dim down As Integer = 0
-
-        MsgBox(((PrimaryBlocksInfo.Length / 16) + (SecondaryBlocksInfo.Length / 16)))
 
         While loopvar < ((PrimaryBlocksInfo.Length / 16) + (SecondaryBlocksInfo.Length / 16))
 

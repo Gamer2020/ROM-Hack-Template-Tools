@@ -4,7 +4,7 @@ Imports VB = Microsoft.VisualBasic
 
 Module GetImageFunctions
 
-    Public TilePals(11)() As Color
+    Public TilePals(12)() As Color
 
     Public Function DrawBlockToTile(ByVal Destination As Bitmap, ByVal Source As Bitmap, ByVal BlockNum As Integer, ByVal yflip As Integer, ByVal xflip As Integer, ByVal Tile As Integer, ByVal section As Integer) As Bitmap
         Dim Output As Bitmap = Destination
