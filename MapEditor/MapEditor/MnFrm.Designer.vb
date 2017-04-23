@@ -59,6 +59,12 @@ Partial Class MnFrm
         Me.Button5 = New System.Windows.Forms.Button()
         Me.fileOpenDialog = New System.Windows.Forms.OpenFileDialog()
         Me.SaveFileDialog = New System.Windows.Forms.SaveFileDialog()
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.LoadTImeLabel = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.Button12 = New System.Windows.Forms.Button()
+        Me.TextBox9 = New System.Windows.Forms.TextBox()
+        Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.MEBlocks = New System.Windows.Forms.GroupBox()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -70,12 +76,15 @@ Partial Class MnFrm
         Me.GroupBox1.SuspendLayout()
         Me.Panel3.SuspendLayout()
         CType(Me.TilesPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.StatusStrip1.SuspendLayout()
+        Me.TabPage3.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl1
         '
         Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Controls.Add(Me.TabPage2)
+        Me.TabControl1.Controls.Add(Me.TabPage3)
         Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TabControl1.Location = New System.Drawing.Point(0, 0)
         Me.TabControl1.Name = "TabControl1"
@@ -97,6 +106,8 @@ Partial Class MnFrm
         'Panel1
         '
         Me.Panel1.AutoScroll = True
+        Me.Panel1.Controls.Add(Me.Button12)
+        Me.Panel1.Controls.Add(Me.TextBox9)
         Me.Panel1.Controls.Add(Me.Button11)
         Me.Panel1.Controls.Add(Me.Button10)
         Me.Panel1.Controls.Add(Me.CheckBox2)
@@ -420,11 +431,64 @@ Partial Class MnFrm
         '
         Me.fileOpenDialog.FileName = "OpenFileDialog1"
         '
+        'StatusStrip1
+        '
+        Me.StatusStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoadTImeLabel})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 596)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.Size = New System.Drawing.Size(1214, 25)
+        Me.StatusStrip1.TabIndex = 1
+        Me.StatusStrip1.Text = "StatusStrip1"
+        '
+        'LoadTImeLabel
+        '
+        Me.LoadTImeLabel.Name = "LoadTImeLabel"
+        Me.LoadTImeLabel.Size = New System.Drawing.Size(196, 20)
+        Me.LoadTImeLabel.Text = "Welcome to the map editor!"
+        '
+        'Button12
+        '
+        Me.Button12.Location = New System.Drawing.Point(328, 293)
+        Me.Button12.Name = "Button12"
+        Me.Button12.Size = New System.Drawing.Size(199, 23)
+        Me.Button12.TabIndex = 94
+        Me.Button12.Text = "Load Map Data"
+        Me.Button12.UseVisualStyleBackColor = True
+        '
+        'TextBox9
+        '
+        Me.TextBox9.Location = New System.Drawing.Point(14, 294)
+        Me.TextBox9.Name = "TextBox9"
+        Me.TextBox9.Size = New System.Drawing.Size(308, 22)
+        Me.TextBox9.TabIndex = 93
+        '
+        'TabPage3
+        '
+        Me.TabPage3.Controls.Add(Me.MEBlocks)
+        Me.TabPage3.Location = New System.Drawing.Point(4, 25)
+        Me.TabPage3.Name = "TabPage3"
+        Me.TabPage3.Size = New System.Drawing.Size(1206, 592)
+        Me.TabPage3.TabIndex = 2
+        Me.TabPage3.Text = "Map Editor"
+        Me.TabPage3.UseVisualStyleBackColor = True
+        '
+        'MEBlocks
+        '
+        Me.MEBlocks.Dock = System.Windows.Forms.DockStyle.Right
+        Me.MEBlocks.Location = New System.Drawing.Point(981, 0)
+        Me.MEBlocks.Name = "MEBlocks"
+        Me.MEBlocks.Size = New System.Drawing.Size(225, 592)
+        Me.MEBlocks.TabIndex = 0
+        Me.MEBlocks.TabStop = False
+        Me.MEBlocks.Text = "Blocks"
+        '
         'MnFrm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1214, 621)
+        Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.TabControl1)
         Me.Name = "MnFrm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -442,7 +506,11 @@ Partial Class MnFrm
         Me.GroupBox1.PerformLayout()
         Me.Panel3.ResumeLayout(False)
         CType(Me.TilesPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.StatusStrip1.ResumeLayout(False)
+        Me.StatusStrip1.PerformLayout()
+        Me.TabPage3.ResumeLayout(False)
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -483,4 +551,10 @@ Partial Class MnFrm
     Friend WithEvents Button11 As Button
     Friend WithEvents Button10 As Button
     Friend WithEvents SaveFileDialog As SaveFileDialog
+    Friend WithEvents StatusStrip1 As StatusStrip
+    Friend WithEvents LoadTImeLabel As ToolStripStatusLabel
+    Friend WithEvents Button12 As Button
+    Friend WithEvents TextBox9 As TextBox
+    Friend WithEvents TabPage3 As TabPage
+    Friend WithEvents MEBlocks As GroupBox
 End Class

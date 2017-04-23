@@ -447,6 +447,12 @@ Public Class MnFrm
 
         End If
 
+        Static start_time As DateTime
+        Static stop_time As DateTime
+        Dim elapsed_time As TimeSpan
+
+        start_time = Now
+
         Dim PalBuff As String
         Dim Temp(&HFFFF) As Byte
         Dim loopvar As Integer = 0
@@ -470,10 +476,18 @@ Public Class MnFrm
             loopvar = loopvar + 1
         End While
 
+        BufferTileImages(TextBox1.Text, TextBox4.Text, CheckBox1.Checked, CheckBox2.Checked)
+
         GroupBox1.Enabled = True
+
+        ComboBox1.SelectedIndex = -1
         ComboBox1.SelectedIndex = 0
 
         LoadBlockset()
+
+        stop_time = Now
+        elapsed_time = stop_time.Subtract(start_time)
+        LoadTImeLabel.Text = "BlocK Load Time: " & elapsed_time.TotalSeconds.ToString("0.00")
 
     End Sub
 
@@ -483,17 +497,23 @@ Public Class MnFrm
         Dim Tiles2 As Bitmap
         Dim Tiles3 As New Bitmap(128, 512)
 
-        Tiles1 = LoadTilesToBitmap(TextBox1.Text, TilePals(ComboBox1.SelectedIndex), CheckBox1.Checked, True)
-        Tiles2 = LoadTilesToBitmap(TextBox4.Text, TilePals(ComboBox1.SelectedIndex), CheckBox2.Checked, True)
+        If ComboBox1.SelectedIndex = -1 Then
 
-        BitmapBLT(Tiles1, Tiles3, 0, 0, 0, 0, 128, 256)
-        BitmapBLT(Tiles2, Tiles3, 0, 256, 0, 0, 128, 256)
+        Else
 
-        TilesPictureBox.Height = Tiles3.Height * 2
-        TilesPictureBox.Width = Tiles3.Width * 2
+            Tiles1 = LoadTilesToBitmap(TextBox1.Text, TilePals(ComboBox1.SelectedIndex), CheckBox1.Checked, True)
+            Tiles2 = LoadTilesToBitmap(TextBox4.Text, TilePals(ComboBox1.SelectedIndex), CheckBox2.Checked, True)
+
+            BitmapBLT(Tiles1, Tiles3, 0, 0, 0, 0, 128, 256)
+            BitmapBLT(Tiles2, Tiles3, 0, 256, 0, 0, 128, 256)
+
+            TilesPictureBox.Height = Tiles3.Height * 2
+            TilesPictureBox.Width = Tiles3.Width * 2
 
 
-        TilesPictureBox.Image = Tiles3
+            TilesPictureBox.Image = Tiles3
+
+        End If
 
     End Sub
 
@@ -506,23 +526,11 @@ Public Class MnFrm
         Dim PrimaryBlocksInfo As New FileInfo(TextBox6.Text)
         Dim SecondaryBlocksInfo As New FileInfo(TextBox5.Text)
 
-        'Dim Tiles1 As Bitmap
-        'Dim Tiles2 As Bitmap
-        'Dim Tiles3 As New Bitmap(128, 512)
-
-        'Tiles1 = LoadTilesTopBitmap(TextBox1.Text, TilePals(ComboBox1.SelectedIndex), CheckBox1.Checked, True)
-        'Tiles2 = LoadTilesTopBitmap(TextBox4.Text, TilePals(ComboBox1.SelectedIndex), CheckBox2.Checked, True)
-
-        'BitmapBLT(Tiles1, Tiles3, 0, 0, 0, 0, 128, 256)
-
         Dim loopvar As Integer = 0
 
         Dim BlockHeight As Integer = (((PrimaryBlocksInfo.Length + SecondaryBlocksInfo.Length) / 2) / 8) / 8
 
         Dim Blockset As New Bitmap(128, BlockHeight * 16)
-
-        Dim PrimaryBlockSet As Bitmap
-
 
         Dim across As Integer = 0
         Dim down As Integer = 0
@@ -550,8 +558,8 @@ Public Class MnFrm
         BlockSetsPictureBox.Height = Blockset.Height * 2
         BlockSetsPictureBox.Width = Blockset.Width * 2
 
-        ' BlockSetsPictureBox.Image = LoadSingleTileToBitmap(TextBox1.Text, 0, TilePals(1), True, True)
-        'BlockSetsPictureBox.Image = BlockToBitmap(TextBox6.Text, TextBox1.Text, TextBox4.Text, 31)
+        BlocksImage = Blockset
+
         BlockSetsPictureBox.Image = Blockset
         BlockSetsPictureBox.Refresh()
 
@@ -622,6 +630,7 @@ Public Class MnFrm
                 w.WriteLine(TextBox5.Text)
                 w.WriteLine(TextBox8.Text)
                 w.WriteLine(TextBox7.Text)
+                w.WriteLine(TextBox9.Text)
             End Using
 
         End If
@@ -690,6 +699,7 @@ Public Class MnFrm
             TextBox5.Text = ReadLine(6, allLines)
             TextBox8.Text = ReadLine(7, allLines)
             TextBox7.Text = ReadLine(8, allLines)
+            TextBox9.Text = ReadLine(9, allLines)
 
         End If
 

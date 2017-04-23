@@ -15,6 +15,9 @@ Public Class MnFrm
     Public behaviours2 As String
     Public behaviourscomb As String
 
+    Public pals1 As String
+    Public pals2 As String
+
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
         fileOpenDialog.FileName = ""
@@ -269,8 +272,8 @@ Public Class MnFrm
 
             blockscomb = blocks1 & blocks2
 
-            blocks1 = blockscomb.Substring(0, 512 * 2)
-            blocks2 = blockscomb.Substring(512 * 2, (blockscomb.Length - (512 * 2)))
+            blocks1 = blockscomb.Substring(0, (512 * 2) * 16)
+            blocks2 = blockscomb.Substring(((512 * 2) * 16), (blockscomb.Length - ((512 * 2) * 16)))
 
             Dim info3 As New FileInfo(TextBox8.Text)
             Dim info4 As New FileInfo(TextBox7.Text)
@@ -303,6 +306,9 @@ Public Class MnFrm
 
             End While
 
+            pals1 = ReadHEX(TextBox2.Text, 0, ((16 * 2) * 6))
+            pals2 = ReadHEX(TextBox2.Text, 0, ((16 * 2) * 7)) & ReadHEX(TextBox3.Text, ((16 * 2) * 7), ((16 * 2) * 6))
+
 
             WriteHEX(FolderBrowserDialog1.SelectedPath & "\_PrimaryTiles.bin", 0, tiles1)
             WriteHEX(FolderBrowserDialog1.SelectedPath & "\_SecondaryTiles.bin", 0, tiles2)
@@ -313,8 +319,11 @@ Public Class MnFrm
             WriteHEX(FolderBrowserDialog1.SelectedPath & "\_PrimaryBehaviours.bin", 0, behaviours1)
             WriteHEX(FolderBrowserDialog1.SelectedPath & "\_SecondaryBehaviours.bin", 0, behaviours2)
 
-            IO.File.Copy(TextBox2.Text, FolderBrowserDialog1.SelectedPath & "\_PrimaryPal.bin")
-            IO.File.Copy(TextBox3.Text, FolderBrowserDialog1.SelectedPath & "\_SecondaryPal.bin")
+            'IO.File.Copy(TextBox2.Text, FolderBrowserDialog1.SelectedPath & "\_PrimaryPal.bin")
+            'IO.File.Copy(TextBox3.Text, FolderBrowserDialog1.SelectedPath & "\_SecondaryPal.bin")
+
+            WriteHEX(FolderBrowserDialog1.SelectedPath & "\_PrimaryPal.bin", 0, pals1)
+            WriteHEX(FolderBrowserDialog1.SelectedPath & "\_SecondaryPal.bin", 0, pals2)
 
             '  Me.Text = "Map Dumper"
             Me.UseWaitCursor = False
