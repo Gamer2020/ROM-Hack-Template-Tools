@@ -25,6 +25,8 @@ Partial Class MnFrm
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Button12 = New System.Windows.Forms.Button()
+        Me.TextBox9 = New System.Windows.Forms.TextBox()
         Me.Button11 = New System.Windows.Forms.Button()
         Me.Button10 = New System.Windows.Forms.Button()
         Me.CheckBox2 = New System.Windows.Forms.CheckBox()
@@ -57,14 +59,22 @@ Partial Class MnFrm
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Button5 = New System.Windows.Forms.Button()
+        Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.MapWidthTextBox = New System.Windows.Forms.TextBox()
+        Me.MapHeightTextBox = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.MapPictureBox = New System.Windows.Forms.PictureBox()
+        Me.Button13 = New System.Windows.Forms.Button()
+        Me.MEBlocksGroup = New System.Windows.Forms.GroupBox()
+        Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.MEBlocksPictureBox = New System.Windows.Forms.PictureBox()
         Me.fileOpenDialog = New System.Windows.Forms.OpenFileDialog()
         Me.SaveFileDialog = New System.Windows.Forms.SaveFileDialog()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.LoadTImeLabel = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.Button12 = New System.Windows.Forms.Button()
-        Me.TextBox9 = New System.Windows.Forms.TextBox()
-        Me.TabPage3 = New System.Windows.Forms.TabPage()
-        Me.MEBlocks = New System.Windows.Forms.GroupBox()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -76,8 +86,14 @@ Partial Class MnFrm
         Me.GroupBox1.SuspendLayout()
         Me.Panel3.SuspendLayout()
         CType(Me.TilesPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.StatusStrip1.SuspendLayout()
         Me.TabPage3.SuspendLayout()
+        Me.GroupBox4.SuspendLayout()
+        Me.Panel6.SuspendLayout()
+        CType(Me.MapPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.MEBlocksGroup.SuspendLayout()
+        Me.Panel5.SuspendLayout()
+        CType(Me.MEBlocksPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -133,6 +149,22 @@ Partial Class MnFrm
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1200, 586)
         Me.Panel1.TabIndex = 73
+        '
+        'Button12
+        '
+        Me.Button12.Location = New System.Drawing.Point(328, 293)
+        Me.Button12.Name = "Button12"
+        Me.Button12.Size = New System.Drawing.Size(199, 23)
+        Me.Button12.TabIndex = 94
+        Me.Button12.Text = "Load Map Data"
+        Me.Button12.UseVisualStyleBackColor = True
+        '
+        'TextBox9
+        '
+        Me.TextBox9.Location = New System.Drawing.Point(14, 294)
+        Me.TextBox9.Name = "TextBox9"
+        Me.TextBox9.Size = New System.Drawing.Size(308, 22)
+        Me.TextBox9.TabIndex = 93
         '
         'Button11
         '
@@ -427,6 +459,124 @@ Partial Class MnFrm
         Me.Button5.Text = "Load Blocks"
         Me.Button5.UseVisualStyleBackColor = True
         '
+        'TabPage3
+        '
+        Me.TabPage3.Controls.Add(Me.MapWidthTextBox)
+        Me.TabPage3.Controls.Add(Me.MapHeightTextBox)
+        Me.TabPage3.Controls.Add(Me.Label3)
+        Me.TabPage3.Controls.Add(Me.Label2)
+        Me.TabPage3.Controls.Add(Me.GroupBox4)
+        Me.TabPage3.Controls.Add(Me.Button13)
+        Me.TabPage3.Controls.Add(Me.MEBlocksGroup)
+        Me.TabPage3.Location = New System.Drawing.Point(4, 25)
+        Me.TabPage3.Name = "TabPage3"
+        Me.TabPage3.Size = New System.Drawing.Size(1206, 592)
+        Me.TabPage3.TabIndex = 2
+        Me.TabPage3.Text = "Map Editor"
+        Me.TabPage3.UseVisualStyleBackColor = True
+        '
+        'MapWidthTextBox
+        '
+        Me.MapWidthTextBox.Location = New System.Drawing.Point(98, 126)
+        Me.MapWidthTextBox.Name = "MapWidthTextBox"
+        Me.MapWidthTextBox.Size = New System.Drawing.Size(54, 22)
+        Me.MapWidthTextBox.TabIndex = 7
+        Me.MapWidthTextBox.Text = "20"
+        '
+        'MapHeightTextBox
+        '
+        Me.MapHeightTextBox.Location = New System.Drawing.Point(98, 101)
+        Me.MapHeightTextBox.Name = "MapHeightTextBox"
+        Me.MapHeightTextBox.Size = New System.Drawing.Size(54, 22)
+        Me.MapHeightTextBox.TabIndex = 6
+        Me.MapHeightTextBox.Text = "20"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(8, 131)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(79, 17)
+        Me.Label3.TabIndex = 5
+        Me.Label3.Text = "Map Width:"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(8, 104)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(84, 17)
+        Me.Label2.TabIndex = 4
+        Me.Label2.Text = "Map Height:"
+        '
+        'GroupBox4
+        '
+        Me.GroupBox4.Controls.Add(Me.Panel6)
+        Me.GroupBox4.Dock = System.Windows.Forms.DockStyle.Right
+        Me.GroupBox4.Location = New System.Drawing.Point(239, 0)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(550, 592)
+        Me.GroupBox4.TabIndex = 3
+        Me.GroupBox4.TabStop = False
+        Me.GroupBox4.Text = "Map"
+        '
+        'Panel6
+        '
+        Me.Panel6.AutoScroll = True
+        Me.Panel6.Controls.Add(Me.MapPictureBox)
+        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel6.Location = New System.Drawing.Point(3, 18)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(544, 571)
+        Me.Panel6.TabIndex = 0
+        '
+        'MapPictureBox
+        '
+        Me.MapPictureBox.Location = New System.Drawing.Point(0, 0)
+        Me.MapPictureBox.Name = "MapPictureBox"
+        Me.MapPictureBox.Size = New System.Drawing.Size(412, 293)
+        Me.MapPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.MapPictureBox.TabIndex = 0
+        Me.MapPictureBox.TabStop = False
+        '
+        'Button13
+        '
+        Me.Button13.Location = New System.Drawing.Point(5, 8)
+        Me.Button13.Name = "Button13"
+        Me.Button13.Size = New System.Drawing.Size(147, 82)
+        Me.Button13.TabIndex = 2
+        Me.Button13.Text = "Load Map"
+        Me.Button13.UseVisualStyleBackColor = True
+        '
+        'MEBlocksGroup
+        '
+        Me.MEBlocksGroup.Controls.Add(Me.Panel5)
+        Me.MEBlocksGroup.Dock = System.Windows.Forms.DockStyle.Right
+        Me.MEBlocksGroup.Location = New System.Drawing.Point(789, 0)
+        Me.MEBlocksGroup.Name = "MEBlocksGroup"
+        Me.MEBlocksGroup.Size = New System.Drawing.Size(417, 592)
+        Me.MEBlocksGroup.TabIndex = 0
+        Me.MEBlocksGroup.TabStop = False
+        Me.MEBlocksGroup.Text = "Blocks"
+        '
+        'Panel5
+        '
+        Me.Panel5.AutoScroll = True
+        Me.Panel5.Controls.Add(Me.MEBlocksPictureBox)
+        Me.Panel5.Location = New System.Drawing.Point(16, 34)
+        Me.Panel5.Name = "Panel5"
+        Me.Panel5.Size = New System.Drawing.Size(377, 248)
+        Me.Panel5.TabIndex = 0
+        '
+        'MEBlocksPictureBox
+        '
+        Me.MEBlocksPictureBox.Location = New System.Drawing.Point(3, 3)
+        Me.MEBlocksPictureBox.Name = "MEBlocksPictureBox"
+        Me.MEBlocksPictureBox.Size = New System.Drawing.Size(83, 111)
+        Me.MEBlocksPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.MEBlocksPictureBox.TabIndex = 0
+        Me.MEBlocksPictureBox.TabStop = False
+        '
         'fileOpenDialog
         '
         Me.fileOpenDialog.FileName = "OpenFileDialog1"
@@ -446,42 +596,6 @@ Partial Class MnFrm
         Me.LoadTImeLabel.Name = "LoadTImeLabel"
         Me.LoadTImeLabel.Size = New System.Drawing.Size(196, 20)
         Me.LoadTImeLabel.Text = "Welcome to the map editor!"
-        '
-        'Button12
-        '
-        Me.Button12.Location = New System.Drawing.Point(328, 293)
-        Me.Button12.Name = "Button12"
-        Me.Button12.Size = New System.Drawing.Size(199, 23)
-        Me.Button12.TabIndex = 94
-        Me.Button12.Text = "Load Map Data"
-        Me.Button12.UseVisualStyleBackColor = True
-        '
-        'TextBox9
-        '
-        Me.TextBox9.Location = New System.Drawing.Point(14, 294)
-        Me.TextBox9.Name = "TextBox9"
-        Me.TextBox9.Size = New System.Drawing.Size(308, 22)
-        Me.TextBox9.TabIndex = 93
-        '
-        'TabPage3
-        '
-        Me.TabPage3.Controls.Add(Me.MEBlocks)
-        Me.TabPage3.Location = New System.Drawing.Point(4, 25)
-        Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Size = New System.Drawing.Size(1206, 592)
-        Me.TabPage3.TabIndex = 2
-        Me.TabPage3.Text = "Map Editor"
-        Me.TabPage3.UseVisualStyleBackColor = True
-        '
-        'MEBlocks
-        '
-        Me.MEBlocks.Dock = System.Windows.Forms.DockStyle.Right
-        Me.MEBlocks.Location = New System.Drawing.Point(981, 0)
-        Me.MEBlocks.Name = "MEBlocks"
-        Me.MEBlocks.Size = New System.Drawing.Size(225, 592)
-        Me.MEBlocks.TabIndex = 0
-        Me.MEBlocks.TabStop = False
-        Me.MEBlocks.Text = "Blocks"
         '
         'MnFrm
         '
@@ -506,9 +620,16 @@ Partial Class MnFrm
         Me.GroupBox1.PerformLayout()
         Me.Panel3.ResumeLayout(False)
         CType(Me.TilesPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabPage3.ResumeLayout(False)
+        Me.TabPage3.PerformLayout()
+        Me.GroupBox4.ResumeLayout(False)
+        Me.Panel6.ResumeLayout(False)
+        CType(Me.MapPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.MEBlocksGroup.ResumeLayout(False)
+        Me.Panel5.ResumeLayout(False)
+        CType(Me.MEBlocksPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
-        Me.TabPage3.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -556,5 +677,15 @@ Partial Class MnFrm
     Friend WithEvents Button12 As Button
     Friend WithEvents TextBox9 As TextBox
     Friend WithEvents TabPage3 As TabPage
-    Friend WithEvents MEBlocks As GroupBox
+    Friend WithEvents MEBlocksGroup As GroupBox
+    Friend WithEvents Button13 As Button
+    Friend WithEvents Panel5 As Panel
+    Friend WithEvents MEBlocksPictureBox As PictureBox
+    Friend WithEvents GroupBox4 As GroupBox
+    Friend WithEvents Panel6 As Panel
+    Friend WithEvents MapPictureBox As PictureBox
+    Friend WithEvents MapWidthTextBox As TextBox
+    Friend WithEvents MapHeightTextBox As TextBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label2 As Label
 End Class

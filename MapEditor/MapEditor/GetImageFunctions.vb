@@ -1653,5 +1653,75 @@ ErrorHandle:
 
     End Function
 
+    Public Function MapDatatoBitmap(BlockImage As Bitmap, MapDataFile As String, MapHeight As Integer, MapWidth As Integer) As Bitmap
+
+        Dim OutputImg As New Bitmap(MapWidth * 16, MapHeight * 16)
+        Dim numOfTiles As Integer = MapWidth * MapHeight
+        Dim loopvar As Integer = 0
+
+        Dim across As Integer = 0
+        Dim down As Integer = 0
+
+        Dim curbytesbin As String = ""
+        Dim curtile As Integer = 0
+        Dim maptiles As String = ""
+
+        While loopvar < numOfTiles
+
+            curbytesbin = VB.Right("0000000000000000" & Convert.ToString(Int32.Parse(ReverseHEX(ReadHEX(MapDataFile, loopvar * 2, 2)), System.Globalization.NumberStyles.HexNumber), 2), 16)
+
+            curtile = Convert.ToInt32(curbytesbin.Substring(6, 10), 2)
+
+            maptiles = maptiles & curtile & ","
+
+            'curtile = 468
+
+            'MsgBox(TileNumToX(curtile))
+            'MsgBox(TileNumToY(curtile))
+
+            BitmapBLT(BlockImage, OutputImg, across * 16, down * 16, TileNumToX(curtile) * 16, TileNumToY(curtile) * 16, 16, 16)
+
+            across = across + 1
+
+            If across = MapWidth Then
+                across = 0
+                down = down + 1
+            End If
+
+            loopvar = loopvar + 1
+        End While
+
+
+        Return OutputImg
+
+    End Function
+
+    Public Function TileNumToX(tilenumber As Integer) As Integer
+
+        While tilenumber > 7
+
+            tilenumber = tilenumber - 8
+
+        End While
+
+        Return tilenumber
+
+    End Function
+
+    Public Function TileNumToY(tilenumber As Integer) As Integer
+
+        Dim counter As Integer = 0
+
+        While tilenumber > 7
+
+            tilenumber = tilenumber - 8
+
+            counter = counter + 1
+
+        End While
+
+        Return counter
+
+    End Function
 
 End Module

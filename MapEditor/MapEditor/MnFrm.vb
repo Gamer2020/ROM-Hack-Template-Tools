@@ -440,15 +440,15 @@ Public Class MnFrm
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
 
-        If TextBox1.Text = "" Or TextBox2.Text = "" Or TextBox4.Text = "" Or TextBox3.Text = "" Or TextBox6.Text = "" Or TextBox5.Text = "" Or TextBox8.Text = "" Or TextBox7.Text = "" Then
+        If TextBox1.Text = "" Or TextBox2.Text = "" Or TextBox4.Text = "" Or TextBox3.Text = "" Or TextBox6.Text = "" Or TextBox5.Text = "" Or TextBox8.Text = "" Or TextBox7.Text = "" Or TextBox9.Text = "" Then
 
             MsgBox("Please check that you have loaded all the files!")
             Exit Sub
 
         End If
 
-        Static start_time As DateTime
-        Static stop_time As DateTime
+        Dim start_time As DateTime
+        Dim stop_time As DateTime
         Dim elapsed_time As TimeSpan
 
         start_time = Now
@@ -558,6 +558,8 @@ Public Class MnFrm
         BlockSetsPictureBox.Height = Blockset.Height * 2
         BlockSetsPictureBox.Width = Blockset.Width * 2
 
+        BlocksImage = New Bitmap(128, BlockHeight * 16)
+
         BlocksImage = Blockset
 
         BlockSetsPictureBox.Image = Blockset
@@ -566,7 +568,7 @@ Public Class MnFrm
     End Sub
 
     Private Sub GroupBox3_Resize(sender As Object, e As EventArgs) Handles GroupBox3.Resize
-        Panel4.Height = GroupBox3.Height - 41
+        Panel4.Height = GroupBox3.Height - 46
     End Sub
 
     Private Sub Button11_Click(sender As Object, e As EventArgs) Handles Button11.Click
@@ -709,5 +711,41 @@ Public Class MnFrm
         Return lines(lineNumber - 1)
     End Function
 
+    Private Sub Button13_Click(sender As Object, e As EventArgs) Handles Button13.Click
+        If TextBox1.Text = "" Or TextBox2.Text = "" Or TextBox4.Text = "" Or TextBox3.Text = "" Or TextBox6.Text = "" Or TextBox5.Text = "" Or TextBox8.Text = "" Or TextBox7.Text = "" Or TextBox9.Text = "" Then
 
+            MsgBox("Please check that you have loaded all the files!")
+            Exit Sub
+
+        End If
+
+        Dim start_time As DateTime
+        Dim stop_time As DateTime
+        Dim elapsed_time As TimeSpan
+
+        start_time = Now
+
+        Button5_Click(sender, e)
+
+        MEBlocksPictureBox.Height = BlocksImage.Height * 2
+        MEBlocksPictureBox.Width = BlocksImage.Width * 2
+
+        MEBlocksPictureBox.Image = BlocksImage
+        MEBlocksPictureBox.Refresh()
+
+        MapPictureBox.Image = MapDatatoBitmap(BlocksImage, TextBox9.Text, MapHeightTextBox.Text, MapWidthTextBox.Text)
+
+        MapPictureBox.Height = MapHeightTextBox.Text * 2 * 16
+        MapPictureBox.Width = MapWidthTextBox.Text * 2 * 16
+        GroupBox4.Width = MapWidthTextBox.Text * 2 * 16 + 32
+
+        stop_time = Now
+        elapsed_time = stop_time.Subtract(start_time)
+        LoadTImeLabel.Text = "Map Load Time: " & elapsed_time.TotalSeconds.ToString("0.00")
+
+    End Sub
+
+    Private Sub MEBlocksGroup_Resize(sender As Object, e As EventArgs) Handles MEBlocksGroup.Resize
+        Panel5.Height = MEBlocksGroup.Height - 46
+    End Sub
 End Class
