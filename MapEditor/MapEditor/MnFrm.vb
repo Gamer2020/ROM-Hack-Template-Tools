@@ -633,6 +633,8 @@ Public Class MnFrm
                 w.WriteLine(TextBox8.Text)
                 w.WriteLine(TextBox7.Text)
                 w.WriteLine(TextBox9.Text)
+                w.WriteLine(TextBox13.Text)
+                w.WriteLine(TextBox12.Text)
             End Using
 
         End If
@@ -702,6 +704,8 @@ Public Class MnFrm
             TextBox8.Text = ReadLine(7, allLines)
             TextBox7.Text = ReadLine(8, allLines)
             TextBox9.Text = ReadLine(9, allLines)
+            TextBox13.Text = ReadLine(10, allLines)
+            TextBox12.Text = ReadLine(11, allLines)
 
         End If
 
@@ -737,15 +741,143 @@ Public Class MnFrm
 
         MapPictureBox.Height = MapHeightTextBox.Text * 2 * 16
         MapPictureBox.Width = MapWidthTextBox.Text * 2 * 16
-        GroupBox4.Width = MapWidthTextBox.Text * 2 * 16 + 32
+
+        MapPanel.Width = GroupBox4.Width - 20
+        MapPanel.Height = GroupBox4.Height - 50
 
         stop_time = Now
         elapsed_time = stop_time.Subtract(start_time)
         LoadTImeLabel.Text = "Map Load Time: " & elapsed_time.TotalSeconds.ToString("0.00")
 
+        Button14.Enabled = True
+
     End Sub
 
     Private Sub MEBlocksGroup_Resize(sender As Object, e As EventArgs) Handles MEBlocksGroup.Resize
         Panel5.Height = MEBlocksGroup.Height - 46
+    End Sub
+
+    Private Sub GroupBox4_Resize(sender As Object, e As EventArgs) Handles GroupBox4.Resize
+
+    End Sub
+
+    Private Sub TabPage3_Resize(sender As Object, e As EventArgs) Handles TabPage3.Resize
+        GroupBox4.Width = TabPage3.Width - GroupBox5.Width - MEBlocksGroup.Width
+
+        MapPanel.Width = GroupBox4.Width - 20
+        MapPanel.Height = GroupBox4.Height - 50
+
+    End Sub
+
+    Private Sub Button14_Click(sender As Object, e As EventArgs) Handles Button14.Click
+        SaveFileDialog.FileName = ""
+        'SaveFileDialog.CheckFileExists = True
+
+        ' Check to ensure that the selected path exists.  Dialog box displays 
+        ' a warning otherwise.
+        SaveFileDialog.CheckPathExists = True
+
+        ' Get or set default extension. Doesn't include the leading ".".
+        SaveFileDialog.DefaultExt = "png"
+
+        ' Return the file referenced by a link? If False, simply returns the selected link
+        ' file. If True, returns the file linked to the LNK file.
+        SaveFileDialog.DereferenceLinks = True
+
+        ' Just as in VB6, use a set of pairs of filters, separated with "|". Each 
+        ' pair consists of a description|file spec. Use a "|" between pairs. No need to put a
+        ' trailing "|". You can set the FilterIndex property as well, to select the default
+        ' filter. The first filter is numbered 1 (not 0). The default is 1. 
+        SaveFileDialog.Filter =
+            "(*.png)|*.png*"
+
+        'SaveFileDialog.Multiselect = False
+
+        ' Restore the original directory when done selecting
+        ' a file? If False, the current directory changes
+        ' to the directory in which you selected the file.
+        ' Set this to True to put the current folder back
+        ' where it was when you started.
+        ' The default is False.
+        '.RestoreDirectory = False
+
+        ' Show the Help button and Read-Only checkbox?
+        SaveFileDialog.ShowHelp = False
+        'SaveFileDialog.ShowReadOnly = False
+
+        ' Start out with the read-only check box checked?
+        ' This only make sense if ShowReadOnly is True.
+        'SaveFileDialog.ReadOnlyChecked = False
+
+        SaveFileDialog.Title = "Save as"
+
+        ' Only accept valid Win32 file names?
+        SaveFileDialog.ValidateNames = True
+
+
+        If SaveFileDialog.ShowDialog = DialogResult.OK Then
+
+            MapPictureBox.Image.Save(SaveFileDialog.FileName, System.Drawing.Imaging.ImageFormat.Png)
+
+        End If
+
+    End Sub
+
+    Private Sub Button16_Click(sender As Object, e As EventArgs) Handles Button16.Click
+        If TextBox1.Text = "" Or TextBox2.Text = "" Or TextBox4.Text = "" Or TextBox3.Text = "" Or TextBox6.Text = "" Or TextBox5.Text = "" Or TextBox8.Text = "" Or TextBox7.Text = "" Or TextBox9.Text = "" Then
+
+            MsgBox("Please check that you have loaded all the files!")
+            Exit Sub
+
+        End If
+
+        Dim start_time As DateTime
+        Dim stop_time As DateTime
+        Dim elapsed_time As TimeSpan
+
+        start_time = Now
+
+        Button13_Click(sender, e)
+
+        PictureBox1.Image = MapWithPermissions
+
+        PictureBox1.Height = TextBox11.Text * 2 * 16
+        PictureBox1.Width = TextBox10.Text * 2 * 16
+
+        Panel8.Width = GroupBox7.Width - 20
+        Panel8.Height = GroupBox7.Height - 50
+
+        PictureBox2.Load(AppPath & "img\moveperms.png")
+        PictureBox2.Height = 898 * 2
+        PictureBox2.Width = 16 * 2
+
+        stop_time = Now
+        elapsed_time = stop_time.Subtract(start_time)
+        LoadTImeLabel.Text = "Movement Permission Load Time: " & elapsed_time.TotalSeconds.ToString("0.00")
+
+        Button14.Enabled = True
+
+    End Sub
+
+    Private Sub TabControl1_Resize(sender As Object, e As EventArgs) Handles TabControl1.Resize
+
+
+    End Sub
+
+    Private Sub TabPage4_Resize(sender As Object, e As EventArgs) Handles TabPage4.Resize
+        GroupBox7.Width = TabPage4.Width - GroupBox8.Width - GroupBox6.Width
+
+        Panel8.Width = GroupBox7.Width - 20
+        Panel8.Height = GroupBox7.Height - 50
+    End Sub
+
+    Private Sub TextBox13_TextChanged(sender As Object, e As EventArgs) Handles TextBox13.TextChanged
+        MapHeightTextBox.Text = TextBox13.Text
+        TextBox11.Text = TextBox13.Text
+    End Sub
+
+    Private Sub TextBox12_TextChanged(sender As Object, e As EventArgs) Handles TextBox12.TextChanged
+        MapWidthTextBox.Text = TextBox12.Text
+        TextBox10.Text = TextBox12.Text
     End Sub
 End Class

@@ -1,0 +1,10 @@
+C:\Users\Gamer2020\Desktop\imagegen\imagegen\bin\Debug\PermImgGen.exe.config
+C:\Users\Gamer2020\Desktop\imagegen\imagegen\bin\Debug\PermImgGen.exe
+C:\Users\Gamer2020\Desktop\imagegen\imagegen\bin\Debug\PermImgGen.pdb
+C:\Users\Gamer2020\Desktop\imagegen\imagegen\bin\Debug\PermImgGen.xml
+C:\Users\Gamer2020\Desktop\imagegen\imagegen\obj\Debug\PermImgGen.Form1.resources
+C:\Users\Gamer2020\Desktop\imagegen\imagegen\obj\Debug\PermImgGen.Resources.resources
+C:\Users\Gamer2020\Desktop\imagegen\imagegen\obj\Debug\PermImgGen.vbproj.GenerateResource.Cache
+C:\Users\Gamer2020\Desktop\imagegen\imagegen\obj\Debug\PermImgGen.exe
+C:\Users\Gamer2020\Desktop\imagegen\imagegen\obj\Debug\PermImgGen.xml
+C:\Users\Gamer2020\Desktop\imagegen\imagegen\obj\Debug\PermImgGen.pdb

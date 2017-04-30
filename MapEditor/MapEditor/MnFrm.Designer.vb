@@ -75,6 +75,27 @@ Partial Class MnFrm
         Me.SaveFileDialog = New System.Windows.Forms.SaveFileDialog()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.LoadTImeLabel = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.MapPanel = New System.Windows.Forms.Panel()
+        Me.Button14 = New System.Windows.Forms.Button()
+        Me.TabPage4 = New System.Windows.Forms.TabPage()
+        Me.GroupBox7 = New System.Windows.Forms.GroupBox()
+        Me.Panel7 = New System.Windows.Forms.Panel()
+        Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.GroupBox8 = New System.Windows.Forms.GroupBox()
+        Me.Panel9 = New System.Windows.Forms.Panel()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.TextBox11 = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.TextBox10 = New System.Windows.Forms.TextBox()
+        Me.Button16 = New System.Windows.Forms.Button()
+        Me.GroupBox6 = New System.Windows.Forms.GroupBox()
+        Me.TextBox12 = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.TextBox13 = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -94,6 +115,17 @@ Partial Class MnFrm
         Me.Panel5.SuspendLayout()
         CType(Me.MEBlocksPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StatusStrip1.SuspendLayout()
+        Me.GroupBox5.SuspendLayout()
+        Me.MapPanel.SuspendLayout()
+        Me.TabPage4.SuspendLayout()
+        Me.GroupBox7.SuspendLayout()
+        Me.Panel7.SuspendLayout()
+        Me.Panel8.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox8.SuspendLayout()
+        Me.Panel9.SuspendLayout()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox6.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -101,6 +133,7 @@ Partial Class MnFrm
         Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Controls.Add(Me.TabPage2)
         Me.TabControl1.Controls.Add(Me.TabPage3)
+        Me.TabControl1.Controls.Add(Me.TabPage4)
         Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TabControl1.Location = New System.Drawing.Point(0, 0)
         Me.TabControl1.Name = "TabControl1"
@@ -122,6 +155,10 @@ Partial Class MnFrm
         'Panel1
         '
         Me.Panel1.AutoScroll = True
+        Me.Panel1.Controls.Add(Me.TextBox12)
+        Me.Panel1.Controls.Add(Me.Label6)
+        Me.Panel1.Controls.Add(Me.TextBox13)
+        Me.Panel1.Controls.Add(Me.Label7)
         Me.Panel1.Controls.Add(Me.Button12)
         Me.Panel1.Controls.Add(Me.TextBox9)
         Me.Panel1.Controls.Add(Me.Button11)
@@ -461,12 +498,8 @@ Partial Class MnFrm
         '
         'TabPage3
         '
-        Me.TabPage3.Controls.Add(Me.MapWidthTextBox)
-        Me.TabPage3.Controls.Add(Me.MapHeightTextBox)
-        Me.TabPage3.Controls.Add(Me.Label3)
-        Me.TabPage3.Controls.Add(Me.Label2)
+        Me.TabPage3.Controls.Add(Me.GroupBox5)
         Me.TabPage3.Controls.Add(Me.GroupBox4)
-        Me.TabPage3.Controls.Add(Me.Button13)
         Me.TabPage3.Controls.Add(Me.MEBlocksGroup)
         Me.TabPage3.Location = New System.Drawing.Point(4, 25)
         Me.TabPage3.Name = "TabPage3"
@@ -477,24 +510,24 @@ Partial Class MnFrm
         '
         'MapWidthTextBox
         '
-        Me.MapWidthTextBox.Location = New System.Drawing.Point(98, 126)
+        Me.MapWidthTextBox.Location = New System.Drawing.Point(115, 139)
         Me.MapWidthTextBox.Name = "MapWidthTextBox"
         Me.MapWidthTextBox.Size = New System.Drawing.Size(54, 22)
         Me.MapWidthTextBox.TabIndex = 7
-        Me.MapWidthTextBox.Text = "20"
+        Me.MapWidthTextBox.Text = "60"
         '
         'MapHeightTextBox
         '
-        Me.MapHeightTextBox.Location = New System.Drawing.Point(98, 101)
+        Me.MapHeightTextBox.Location = New System.Drawing.Point(115, 114)
         Me.MapHeightTextBox.Name = "MapHeightTextBox"
         Me.MapHeightTextBox.Size = New System.Drawing.Size(54, 22)
         Me.MapHeightTextBox.TabIndex = 6
-        Me.MapHeightTextBox.Text = "20"
+        Me.MapHeightTextBox.Text = "60"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(8, 131)
+        Me.Label3.Location = New System.Drawing.Point(25, 144)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(79, 17)
         Me.Label3.TabIndex = 5
@@ -503,7 +536,7 @@ Partial Class MnFrm
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(8, 104)
+        Me.Label2.Location = New System.Drawing.Point(25, 117)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(84, 17)
         Me.Label2.TabIndex = 4
@@ -513,9 +546,9 @@ Partial Class MnFrm
         '
         Me.GroupBox4.Controls.Add(Me.Panel6)
         Me.GroupBox4.Dock = System.Windows.Forms.DockStyle.Right
-        Me.GroupBox4.Location = New System.Drawing.Point(239, 0)
+        Me.GroupBox4.Location = New System.Drawing.Point(362, 0)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(550, 592)
+        Me.GroupBox4.Size = New System.Drawing.Size(427, 592)
         Me.GroupBox4.TabIndex = 3
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Map"
@@ -523,25 +556,25 @@ Partial Class MnFrm
         'Panel6
         '
         Me.Panel6.AutoScroll = True
-        Me.Panel6.Controls.Add(Me.MapPictureBox)
+        Me.Panel6.Controls.Add(Me.MapPanel)
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel6.Location = New System.Drawing.Point(3, 18)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(544, 571)
+        Me.Panel6.Size = New System.Drawing.Size(421, 571)
         Me.Panel6.TabIndex = 0
         '
         'MapPictureBox
         '
         Me.MapPictureBox.Location = New System.Drawing.Point(0, 0)
         Me.MapPictureBox.Name = "MapPictureBox"
-        Me.MapPictureBox.Size = New System.Drawing.Size(412, 293)
+        Me.MapPictureBox.Size = New System.Drawing.Size(181, 124)
         Me.MapPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.MapPictureBox.TabIndex = 0
         Me.MapPictureBox.TabStop = False
         '
         'Button13
         '
-        Me.Button13.Location = New System.Drawing.Point(5, 8)
+        Me.Button13.Location = New System.Drawing.Point(22, 21)
         Me.Button13.Name = "Button13"
         Me.Button13.Size = New System.Drawing.Size(147, 82)
         Me.Button13.TabIndex = 2
@@ -597,6 +630,212 @@ Partial Class MnFrm
         Me.LoadTImeLabel.Size = New System.Drawing.Size(196, 20)
         Me.LoadTImeLabel.Text = "Welcome to the map editor!"
         '
+        'GroupBox5
+        '
+        Me.GroupBox5.Controls.Add(Me.Button14)
+        Me.GroupBox5.Controls.Add(Me.Button13)
+        Me.GroupBox5.Controls.Add(Me.MapWidthTextBox)
+        Me.GroupBox5.Controls.Add(Me.Label2)
+        Me.GroupBox5.Controls.Add(Me.MapHeightTextBox)
+        Me.GroupBox5.Controls.Add(Me.Label3)
+        Me.GroupBox5.Dock = System.Windows.Forms.DockStyle.Left
+        Me.GroupBox5.Location = New System.Drawing.Point(0, 0)
+        Me.GroupBox5.Name = "GroupBox5"
+        Me.GroupBox5.Size = New System.Drawing.Size(200, 592)
+        Me.GroupBox5.TabIndex = 8
+        Me.GroupBox5.TabStop = False
+        '
+        'MapPanel
+        '
+        Me.MapPanel.AutoScroll = True
+        Me.MapPanel.Controls.Add(Me.MapPictureBox)
+        Me.MapPanel.Location = New System.Drawing.Point(15, 16)
+        Me.MapPanel.Name = "MapPanel"
+        Me.MapPanel.Size = New System.Drawing.Size(370, 186)
+        Me.MapPanel.TabIndex = 1
+        '
+        'Button14
+        '
+        Me.Button14.Enabled = False
+        Me.Button14.Location = New System.Drawing.Point(22, 167)
+        Me.Button14.Name = "Button14"
+        Me.Button14.Size = New System.Drawing.Size(147, 82)
+        Me.Button14.TabIndex = 8
+        Me.Button14.Text = "Export Image"
+        Me.Button14.UseVisualStyleBackColor = True
+        '
+        'TabPage4
+        '
+        Me.TabPage4.Controls.Add(Me.GroupBox7)
+        Me.TabPage4.Controls.Add(Me.GroupBox8)
+        Me.TabPage4.Controls.Add(Me.GroupBox6)
+        Me.TabPage4.Location = New System.Drawing.Point(4, 25)
+        Me.TabPage4.Name = "TabPage4"
+        Me.TabPage4.Size = New System.Drawing.Size(1206, 592)
+        Me.TabPage4.TabIndex = 3
+        Me.TabPage4.Text = "Movement Permissions"
+        Me.TabPage4.UseVisualStyleBackColor = True
+        '
+        'GroupBox7
+        '
+        Me.GroupBox7.Controls.Add(Me.Panel7)
+        Me.GroupBox7.Dock = System.Windows.Forms.DockStyle.Right
+        Me.GroupBox7.Location = New System.Drawing.Point(653, 0)
+        Me.GroupBox7.Name = "GroupBox7"
+        Me.GroupBox7.Size = New System.Drawing.Size(427, 592)
+        Me.GroupBox7.TabIndex = 11
+        Me.GroupBox7.TabStop = False
+        Me.GroupBox7.Text = "Map"
+        '
+        'Panel7
+        '
+        Me.Panel7.AutoScroll = True
+        Me.Panel7.Controls.Add(Me.Panel8)
+        Me.Panel7.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel7.Location = New System.Drawing.Point(3, 18)
+        Me.Panel7.Name = "Panel7"
+        Me.Panel7.Size = New System.Drawing.Size(421, 571)
+        Me.Panel7.TabIndex = 0
+        '
+        'Panel8
+        '
+        Me.Panel8.AutoScroll = True
+        Me.Panel8.Controls.Add(Me.PictureBox1)
+        Me.Panel8.Location = New System.Drawing.Point(15, 16)
+        Me.Panel8.Name = "Panel8"
+        Me.Panel8.Size = New System.Drawing.Size(370, 186)
+        Me.Panel8.TabIndex = 1
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(181, 124)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 0
+        Me.PictureBox1.TabStop = False
+        '
+        'GroupBox8
+        '
+        Me.GroupBox8.Controls.Add(Me.Panel9)
+        Me.GroupBox8.Dock = System.Windows.Forms.DockStyle.Right
+        Me.GroupBox8.Location = New System.Drawing.Point(1080, 0)
+        Me.GroupBox8.Name = "GroupBox8"
+        Me.GroupBox8.Size = New System.Drawing.Size(126, 592)
+        Me.GroupBox8.TabIndex = 10
+        Me.GroupBox8.TabStop = False
+        Me.GroupBox8.Text = "Permissions"
+        '
+        'Panel9
+        '
+        Me.Panel9.AutoScroll = True
+        Me.Panel9.Controls.Add(Me.PictureBox2)
+        Me.Panel9.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel9.Location = New System.Drawing.Point(3, 18)
+        Me.Panel9.Name = "Panel9"
+        Me.Panel9.Size = New System.Drawing.Size(120, 571)
+        Me.Panel9.TabIndex = 0
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.Location = New System.Drawing.Point(3, 3)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(16, 898)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox2.TabIndex = 0
+        Me.PictureBox2.TabStop = False
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(25, 144)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(79, 17)
+        Me.Label5.TabIndex = 5
+        Me.Label5.Text = "Map Width:"
+        '
+        'TextBox11
+        '
+        Me.TextBox11.Location = New System.Drawing.Point(115, 114)
+        Me.TextBox11.Name = "TextBox11"
+        Me.TextBox11.Size = New System.Drawing.Size(54, 22)
+        Me.TextBox11.TabIndex = 6
+        Me.TextBox11.Text = "60"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(25, 117)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(84, 17)
+        Me.Label4.TabIndex = 4
+        Me.Label4.Text = "Map Height:"
+        '
+        'TextBox10
+        '
+        Me.TextBox10.Location = New System.Drawing.Point(115, 139)
+        Me.TextBox10.Name = "TextBox10"
+        Me.TextBox10.Size = New System.Drawing.Size(54, 22)
+        Me.TextBox10.TabIndex = 7
+        Me.TextBox10.Text = "60"
+        '
+        'Button16
+        '
+        Me.Button16.Location = New System.Drawing.Point(22, 21)
+        Me.Button16.Name = "Button16"
+        Me.Button16.Size = New System.Drawing.Size(147, 82)
+        Me.Button16.TabIndex = 2
+        Me.Button16.Text = "Load Map"
+        Me.Button16.UseVisualStyleBackColor = True
+        '
+        'GroupBox6
+        '
+        Me.GroupBox6.Controls.Add(Me.Button16)
+        Me.GroupBox6.Controls.Add(Me.TextBox10)
+        Me.GroupBox6.Controls.Add(Me.Label4)
+        Me.GroupBox6.Controls.Add(Me.TextBox11)
+        Me.GroupBox6.Controls.Add(Me.Label5)
+        Me.GroupBox6.Dock = System.Windows.Forms.DockStyle.Left
+        Me.GroupBox6.Location = New System.Drawing.Point(0, 0)
+        Me.GroupBox6.Name = "GroupBox6"
+        Me.GroupBox6.Size = New System.Drawing.Size(200, 592)
+        Me.GroupBox6.TabIndex = 9
+        Me.GroupBox6.TabStop = False
+        '
+        'TextBox12
+        '
+        Me.TextBox12.Location = New System.Drawing.Point(101, 363)
+        Me.TextBox12.Name = "TextBox12"
+        Me.TextBox12.Size = New System.Drawing.Size(54, 22)
+        Me.TextBox12.TabIndex = 98
+        Me.TextBox12.Text = "60"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(11, 341)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(84, 17)
+        Me.Label6.TabIndex = 95
+        Me.Label6.Text = "Map Height:"
+        '
+        'TextBox13
+        '
+        Me.TextBox13.Location = New System.Drawing.Point(101, 338)
+        Me.TextBox13.Name = "TextBox13"
+        Me.TextBox13.Size = New System.Drawing.Size(54, 22)
+        Me.TextBox13.TabIndex = 97
+        Me.TextBox13.Text = "60"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(11, 368)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(79, 17)
+        Me.Label7.TabIndex = 96
+        Me.Label7.Text = "Map Width:"
+        '
         'MnFrm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -621,7 +860,6 @@ Partial Class MnFrm
         Me.Panel3.ResumeLayout(False)
         CType(Me.TilesPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage3.ResumeLayout(False)
-        Me.TabPage3.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
         Me.Panel6.ResumeLayout(False)
         CType(Me.MapPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
@@ -630,6 +868,19 @@ Partial Class MnFrm
         CType(Me.MEBlocksPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
+        Me.GroupBox5.ResumeLayout(False)
+        Me.GroupBox5.PerformLayout()
+        Me.MapPanel.ResumeLayout(False)
+        Me.TabPage4.ResumeLayout(False)
+        Me.GroupBox7.ResumeLayout(False)
+        Me.Panel7.ResumeLayout(False)
+        Me.Panel8.ResumeLayout(False)
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox8.ResumeLayout(False)
+        Me.Panel9.ResumeLayout(False)
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox6.ResumeLayout(False)
+        Me.GroupBox6.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -688,4 +939,25 @@ Partial Class MnFrm
     Friend WithEvents MapHeightTextBox As TextBox
     Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label
+    Friend WithEvents GroupBox5 As GroupBox
+    Friend WithEvents MapPanel As Panel
+    Friend WithEvents Button14 As Button
+    Friend WithEvents TabPage4 As TabPage
+    Friend WithEvents GroupBox7 As GroupBox
+    Friend WithEvents Panel7 As Panel
+    Friend WithEvents Panel8 As Panel
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents GroupBox8 As GroupBox
+    Friend WithEvents Panel9 As Panel
+    Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents GroupBox6 As GroupBox
+    Friend WithEvents Button16 As Button
+    Friend WithEvents TextBox10 As TextBox
+    Friend WithEvents Label4 As Label
+    Friend WithEvents TextBox11 As TextBox
+    Friend WithEvents Label5 As Label
+    Friend WithEvents TextBox12 As TextBox
+    Friend WithEvents Label6 As Label
+    Friend WithEvents TextBox13 As TextBox
+    Friend WithEvents Label7 As Label
 End Class

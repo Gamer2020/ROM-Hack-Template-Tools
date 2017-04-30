@@ -1,6 +1,7 @@
 ﻿Imports System
 Imports System.IO
 Imports VB = Microsoft.VisualBasic
+Imports System.Drawing
 
 Module GetImageFunctions
 
@@ -8,6 +9,10 @@ Module GetImageFunctions
     Public TileSet1Image(&HFFFF) As Byte
     Public TileSet2Image(&HFFFF) As Byte
     Public BlocksImage As Bitmap
+    Public MapTilesArray() As String
+    Public MapPermsArray() As String
+    Public MapWithPermissions As Bitmap
+
 
 
     Public Function DrawBlockToTile(ByVal Destination As Bitmap, ByVal Source As Bitmap, ByVal BlockNum As Integer, ByVal yflip As Integer, ByVal xflip As Integer, ByVal Tile As Integer, ByVal section As Integer) As Bitmap
@@ -1656,6 +1661,8 @@ ErrorHandle:
     Public Function MapDatatoBitmap(BlockImage As Bitmap, MapDataFile As String, MapHeight As Integer, MapWidth As Integer) As Bitmap
 
         Dim OutputImg As New Bitmap(MapWidth * 16, MapHeight * 16)
+        Dim OutputImg2 As New Bitmap(MapWidth * 16, MapHeight * 16)
+        Dim OutputImg3 As New Bitmap(MapWidth * 16, MapHeight * 16)
         Dim numOfTiles As Integer = MapWidth * MapHeight
         Dim loopvar As Integer = 0
 
@@ -1664,15 +1671,21 @@ ErrorHandle:
 
         Dim curbytesbin As String = ""
         Dim curtile As Integer = 0
+        Dim curperm As Integer = 0
         Dim maptiles As String = ""
+        Dim MovementPerm As String = ""
+
+        Dim PermissionsBitMap As New Bitmap(AppPath & "img\moveperms.png", True)
 
         While loopvar < numOfTiles
 
             curbytesbin = VB.Right("0000000000000000" & Convert.ToString(Int32.Parse(ReverseHEX(ReadHEX(MapDataFile, loopvar * 2, 2)), System.Globalization.NumberStyles.HexNumber), 2), 16)
 
             curtile = Convert.ToInt32(curbytesbin.Substring(6, 10), 2)
+            curperm = Convert.ToInt32(curbytesbin.Substring(0, 6), 2)
 
-            maptiles = maptiles & curtile & ","
+            maptiles = maptiles & curperm & ","
+            MovementPerm = MovementPerm & curperm & ","
 
             'curtile = 468
 
@@ -1680,6 +1693,10 @@ ErrorHandle:
             'MsgBox(TileNumToY(curtile))
 
             BitmapBLT(BlockImage, OutputImg, across * 16, down * 16, TileNumToX(curtile) * 16, TileNumToY(curtile) * 16, 16, 16)
+            BitmapBLT(BlockImage, OutputImg3, across * 16, down * 16, TileNumToX(curtile) * 16, TileNumToY(curtile) * 16, 16, 16)
+
+            'BitmapBLT(BlockImage, OutputImg2, across * 16, down * 16, TileNumToX(curtile) * 16, TileNumToY(curtile) * 16, 16, 16)
+            BitmapBLT(PermissionsBitMap, OutputImg2, across * 16, down * 16, 0, curperm * 16, 16, 16)
 
             across = across + 1
 
@@ -1691,8 +1708,17 @@ ErrorHandle:
             loopvar = loopvar + 1
         End While
 
+        MapTilesArray = maptiles.Split(",")
+        MapPermsArray = MovementPerm.Split(",")
 
-        Return OutputImg
+        MapWithPermissions = New Bitmap(MapWidth * 16, MapHeight * 16)
+
+        Dim g As Graphics = Graphics.FromImage(OutputImg)
+        g.DrawImage(OutputImg2, 0, 0)
+
+        MapWithPermissions = OutputImg
+
+        Return OutputImg3
 
     End Function
 
