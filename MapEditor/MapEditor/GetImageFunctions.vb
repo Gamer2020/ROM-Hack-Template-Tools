@@ -13,6 +13,9 @@ Module GetImageFunctions
     Public MapPermsArray() As String
     Public MapWithPermissions As Bitmap
 
+    Public SelectedTileImgInBlockEditor As Integer
+    Public SelectedBlockInBlockEditor As Integer
+
 
 
     Public Function DrawBlockToTile(ByVal Destination As Bitmap, ByVal Source As Bitmap, ByVal BlockNum As Integer, ByVal yflip As Integer, ByVal xflip As Integer, ByVal Tile As Integer, ByVal section As Integer) As Bitmap

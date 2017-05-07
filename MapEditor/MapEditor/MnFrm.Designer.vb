@@ -25,6 +25,10 @@ Partial Class MnFrm
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.TextBox12 = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.TextBox13 = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.Button12 = New System.Windows.Forms.Button()
         Me.TextBox9 = New System.Windows.Forms.TextBox()
         Me.Button11 = New System.Windows.Forms.Button()
@@ -60,24 +64,20 @@ Partial Class MnFrm
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.Button14 = New System.Windows.Forms.Button()
+        Me.Button13 = New System.Windows.Forms.Button()
         Me.MapWidthTextBox = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.MapHeightTextBox = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.MapPanel = New System.Windows.Forms.Panel()
         Me.MapPictureBox = New System.Windows.Forms.PictureBox()
-        Me.Button13 = New System.Windows.Forms.Button()
         Me.MEBlocksGroup = New System.Windows.Forms.GroupBox()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.MEBlocksPictureBox = New System.Windows.Forms.PictureBox()
-        Me.fileOpenDialog = New System.Windows.Forms.OpenFileDialog()
-        Me.SaveFileDialog = New System.Windows.Forms.SaveFileDialog()
-        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
-        Me.LoadTImeLabel = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
-        Me.MapPanel = New System.Windows.Forms.Panel()
-        Me.Button14 = New System.Windows.Forms.Button()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
         Me.GroupBox7 = New System.Windows.Forms.GroupBox()
         Me.Panel7 = New System.Windows.Forms.Panel()
@@ -86,16 +86,17 @@ Partial Class MnFrm
         Me.GroupBox8 = New System.Windows.Forms.GroupBox()
         Me.Panel9 = New System.Windows.Forms.Panel()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.TextBox11 = New System.Windows.Forms.TextBox()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.TextBox10 = New System.Windows.Forms.TextBox()
-        Me.Button16 = New System.Windows.Forms.Button()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
-        Me.TextBox12 = New System.Windows.Forms.TextBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.TextBox13 = New System.Windows.Forms.TextBox()
-        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Button16 = New System.Windows.Forms.Button()
+        Me.TextBox10 = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.TextBox11 = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.fileOpenDialog = New System.Windows.Forms.OpenFileDialog()
+        Me.SaveFileDialog = New System.Windows.Forms.SaveFileDialog()
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.LoadTImeLabel = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -108,15 +109,14 @@ Partial Class MnFrm
         Me.Panel3.SuspendLayout()
         CType(Me.TilesPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage3.SuspendLayout()
+        Me.GroupBox5.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.Panel6.SuspendLayout()
+        Me.MapPanel.SuspendLayout()
         CType(Me.MapPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MEBlocksGroup.SuspendLayout()
         Me.Panel5.SuspendLayout()
         CType(Me.MEBlocksPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.StatusStrip1.SuspendLayout()
-        Me.GroupBox5.SuspendLayout()
-        Me.MapPanel.SuspendLayout()
         Me.TabPage4.SuspendLayout()
         Me.GroupBox7.SuspendLayout()
         Me.Panel7.SuspendLayout()
@@ -126,6 +126,8 @@ Partial Class MnFrm
         Me.Panel9.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox6.SuspendLayout()
+        Me.StatusStrip1.SuspendLayout()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -186,6 +188,40 @@ Partial Class MnFrm
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1200, 586)
         Me.Panel1.TabIndex = 73
+        '
+        'TextBox12
+        '
+        Me.TextBox12.Location = New System.Drawing.Point(101, 363)
+        Me.TextBox12.Name = "TextBox12"
+        Me.TextBox12.Size = New System.Drawing.Size(54, 22)
+        Me.TextBox12.TabIndex = 98
+        Me.TextBox12.Text = "60"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(11, 341)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(84, 17)
+        Me.Label6.TabIndex = 95
+        Me.Label6.Text = "Map Height:"
+        '
+        'TextBox13
+        '
+        Me.TextBox13.Location = New System.Drawing.Point(101, 338)
+        Me.TextBox13.Name = "TextBox13"
+        Me.TextBox13.Size = New System.Drawing.Size(54, 22)
+        Me.TextBox13.TabIndex = 97
+        Me.TextBox13.Text = "60"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(11, 368)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(79, 17)
+        Me.Label7.TabIndex = 96
+        Me.Label7.Text = "Map Width:"
         '
         'Button12
         '
@@ -438,6 +474,7 @@ Partial Class MnFrm
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.PictureBox3)
         Me.GroupBox1.Controls.Add(Me.Panel3)
         Me.GroupBox1.Controls.Add(Me.ComboBox1)
         Me.GroupBox1.Controls.Add(Me.Label1)
@@ -508,6 +545,40 @@ Partial Class MnFrm
         Me.TabPage3.Text = "Map Editor"
         Me.TabPage3.UseVisualStyleBackColor = True
         '
+        'GroupBox5
+        '
+        Me.GroupBox5.Controls.Add(Me.Button14)
+        Me.GroupBox5.Controls.Add(Me.Button13)
+        Me.GroupBox5.Controls.Add(Me.MapWidthTextBox)
+        Me.GroupBox5.Controls.Add(Me.Label2)
+        Me.GroupBox5.Controls.Add(Me.MapHeightTextBox)
+        Me.GroupBox5.Controls.Add(Me.Label3)
+        Me.GroupBox5.Dock = System.Windows.Forms.DockStyle.Left
+        Me.GroupBox5.Location = New System.Drawing.Point(0, 0)
+        Me.GroupBox5.Name = "GroupBox5"
+        Me.GroupBox5.Size = New System.Drawing.Size(200, 592)
+        Me.GroupBox5.TabIndex = 8
+        Me.GroupBox5.TabStop = False
+        '
+        'Button14
+        '
+        Me.Button14.Enabled = False
+        Me.Button14.Location = New System.Drawing.Point(22, 167)
+        Me.Button14.Name = "Button14"
+        Me.Button14.Size = New System.Drawing.Size(147, 82)
+        Me.Button14.TabIndex = 8
+        Me.Button14.Text = "Export Image"
+        Me.Button14.UseVisualStyleBackColor = True
+        '
+        'Button13
+        '
+        Me.Button13.Location = New System.Drawing.Point(22, 21)
+        Me.Button13.Name = "Button13"
+        Me.Button13.Size = New System.Drawing.Size(147, 82)
+        Me.Button13.TabIndex = 2
+        Me.Button13.Text = "Load Map"
+        Me.Button13.UseVisualStyleBackColor = True
+        '
         'MapWidthTextBox
         '
         Me.MapWidthTextBox.Location = New System.Drawing.Point(115, 139)
@@ -515,6 +586,15 @@ Partial Class MnFrm
         Me.MapWidthTextBox.Size = New System.Drawing.Size(54, 22)
         Me.MapWidthTextBox.TabIndex = 7
         Me.MapWidthTextBox.Text = "60"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(25, 117)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(84, 17)
+        Me.Label2.TabIndex = 4
+        Me.Label2.Text = "Map Height:"
         '
         'MapHeightTextBox
         '
@@ -532,15 +612,6 @@ Partial Class MnFrm
         Me.Label3.Size = New System.Drawing.Size(79, 17)
         Me.Label3.TabIndex = 5
         Me.Label3.Text = "Map Width:"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(25, 117)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(84, 17)
-        Me.Label2.TabIndex = 4
-        Me.Label2.Text = "Map Height:"
         '
         'GroupBox4
         '
@@ -563,6 +634,15 @@ Partial Class MnFrm
         Me.Panel6.Size = New System.Drawing.Size(421, 571)
         Me.Panel6.TabIndex = 0
         '
+        'MapPanel
+        '
+        Me.MapPanel.AutoScroll = True
+        Me.MapPanel.Controls.Add(Me.MapPictureBox)
+        Me.MapPanel.Location = New System.Drawing.Point(15, 16)
+        Me.MapPanel.Name = "MapPanel"
+        Me.MapPanel.Size = New System.Drawing.Size(370, 186)
+        Me.MapPanel.TabIndex = 1
+        '
         'MapPictureBox
         '
         Me.MapPictureBox.Location = New System.Drawing.Point(0, 0)
@@ -571,15 +651,6 @@ Partial Class MnFrm
         Me.MapPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.MapPictureBox.TabIndex = 0
         Me.MapPictureBox.TabStop = False
-        '
-        'Button13
-        '
-        Me.Button13.Location = New System.Drawing.Point(22, 21)
-        Me.Button13.Name = "Button13"
-        Me.Button13.Size = New System.Drawing.Size(147, 82)
-        Me.Button13.TabIndex = 2
-        Me.Button13.Text = "Load Map"
-        Me.Button13.UseVisualStyleBackColor = True
         '
         'MEBlocksGroup
         '
@@ -609,60 +680,6 @@ Partial Class MnFrm
         Me.MEBlocksPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.MEBlocksPictureBox.TabIndex = 0
         Me.MEBlocksPictureBox.TabStop = False
-        '
-        'fileOpenDialog
-        '
-        Me.fileOpenDialog.FileName = "OpenFileDialog1"
-        '
-        'StatusStrip1
-        '
-        Me.StatusStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoadTImeLabel})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 596)
-        Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(1214, 25)
-        Me.StatusStrip1.TabIndex = 1
-        Me.StatusStrip1.Text = "StatusStrip1"
-        '
-        'LoadTImeLabel
-        '
-        Me.LoadTImeLabel.Name = "LoadTImeLabel"
-        Me.LoadTImeLabel.Size = New System.Drawing.Size(196, 20)
-        Me.LoadTImeLabel.Text = "Welcome to the map editor!"
-        '
-        'GroupBox5
-        '
-        Me.GroupBox5.Controls.Add(Me.Button14)
-        Me.GroupBox5.Controls.Add(Me.Button13)
-        Me.GroupBox5.Controls.Add(Me.MapWidthTextBox)
-        Me.GroupBox5.Controls.Add(Me.Label2)
-        Me.GroupBox5.Controls.Add(Me.MapHeightTextBox)
-        Me.GroupBox5.Controls.Add(Me.Label3)
-        Me.GroupBox5.Dock = System.Windows.Forms.DockStyle.Left
-        Me.GroupBox5.Location = New System.Drawing.Point(0, 0)
-        Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(200, 592)
-        Me.GroupBox5.TabIndex = 8
-        Me.GroupBox5.TabStop = False
-        '
-        'MapPanel
-        '
-        Me.MapPanel.AutoScroll = True
-        Me.MapPanel.Controls.Add(Me.MapPictureBox)
-        Me.MapPanel.Location = New System.Drawing.Point(15, 16)
-        Me.MapPanel.Name = "MapPanel"
-        Me.MapPanel.Size = New System.Drawing.Size(370, 186)
-        Me.MapPanel.TabIndex = 1
-        '
-        'Button14
-        '
-        Me.Button14.Enabled = False
-        Me.Button14.Location = New System.Drawing.Point(22, 167)
-        Me.Button14.Name = "Button14"
-        Me.Button14.Size = New System.Drawing.Size(147, 82)
-        Me.Button14.TabIndex = 8
-        Me.Button14.Text = "Export Image"
-        Me.Button14.UseVisualStyleBackColor = True
         '
         'TabPage4
         '
@@ -745,49 +762,6 @@ Partial Class MnFrm
         Me.PictureBox2.TabIndex = 0
         Me.PictureBox2.TabStop = False
         '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(25, 144)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(79, 17)
-        Me.Label5.TabIndex = 5
-        Me.Label5.Text = "Map Width:"
-        '
-        'TextBox11
-        '
-        Me.TextBox11.Location = New System.Drawing.Point(115, 114)
-        Me.TextBox11.Name = "TextBox11"
-        Me.TextBox11.Size = New System.Drawing.Size(54, 22)
-        Me.TextBox11.TabIndex = 6
-        Me.TextBox11.Text = "60"
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(25, 117)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(84, 17)
-        Me.Label4.TabIndex = 4
-        Me.Label4.Text = "Map Height:"
-        '
-        'TextBox10
-        '
-        Me.TextBox10.Location = New System.Drawing.Point(115, 139)
-        Me.TextBox10.Name = "TextBox10"
-        Me.TextBox10.Size = New System.Drawing.Size(54, 22)
-        Me.TextBox10.TabIndex = 7
-        Me.TextBox10.Text = "60"
-        '
-        'Button16
-        '
-        Me.Button16.Location = New System.Drawing.Point(22, 21)
-        Me.Button16.Name = "Button16"
-        Me.Button16.Size = New System.Drawing.Size(147, 82)
-        Me.Button16.TabIndex = 2
-        Me.Button16.Text = "Load Map"
-        Me.Button16.UseVisualStyleBackColor = True
-        '
         'GroupBox6
         '
         Me.GroupBox6.Controls.Add(Me.Button16)
@@ -802,39 +776,76 @@ Partial Class MnFrm
         Me.GroupBox6.TabIndex = 9
         Me.GroupBox6.TabStop = False
         '
-        'TextBox12
+        'Button16
         '
-        Me.TextBox12.Location = New System.Drawing.Point(101, 363)
-        Me.TextBox12.Name = "TextBox12"
-        Me.TextBox12.Size = New System.Drawing.Size(54, 22)
-        Me.TextBox12.TabIndex = 98
-        Me.TextBox12.Text = "60"
+        Me.Button16.Location = New System.Drawing.Point(22, 21)
+        Me.Button16.Name = "Button16"
+        Me.Button16.Size = New System.Drawing.Size(147, 82)
+        Me.Button16.TabIndex = 2
+        Me.Button16.Text = "Load Map"
+        Me.Button16.UseVisualStyleBackColor = True
         '
-        'Label6
+        'TextBox10
         '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(11, 341)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(84, 17)
-        Me.Label6.TabIndex = 95
-        Me.Label6.Text = "Map Height:"
+        Me.TextBox10.Location = New System.Drawing.Point(115, 139)
+        Me.TextBox10.Name = "TextBox10"
+        Me.TextBox10.Size = New System.Drawing.Size(54, 22)
+        Me.TextBox10.TabIndex = 7
+        Me.TextBox10.Text = "60"
         '
-        'TextBox13
+        'Label4
         '
-        Me.TextBox13.Location = New System.Drawing.Point(101, 338)
-        Me.TextBox13.Name = "TextBox13"
-        Me.TextBox13.Size = New System.Drawing.Size(54, 22)
-        Me.TextBox13.TabIndex = 97
-        Me.TextBox13.Text = "60"
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(25, 117)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(84, 17)
+        Me.Label4.TabIndex = 4
+        Me.Label4.Text = "Map Height:"
         '
-        'Label7
+        'TextBox11
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(11, 368)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(79, 17)
-        Me.Label7.TabIndex = 96
-        Me.Label7.Text = "Map Width:"
+        Me.TextBox11.Location = New System.Drawing.Point(115, 114)
+        Me.TextBox11.Name = "TextBox11"
+        Me.TextBox11.Size = New System.Drawing.Size(54, 22)
+        Me.TextBox11.TabIndex = 6
+        Me.TextBox11.Text = "60"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(25, 144)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(79, 17)
+        Me.Label5.TabIndex = 5
+        Me.Label5.Text = "Map Width:"
+        '
+        'fileOpenDialog
+        '
+        Me.fileOpenDialog.FileName = "OpenFileDialog1"
+        '
+        'StatusStrip1
+        '
+        Me.StatusStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoadTImeLabel})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 596)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.Size = New System.Drawing.Size(1214, 25)
+        Me.StatusStrip1.TabIndex = 1
+        Me.StatusStrip1.Text = "StatusStrip1"
+        '
+        'LoadTImeLabel
+        '
+        Me.LoadTImeLabel.Name = "LoadTImeLabel"
+        Me.LoadTImeLabel.Size = New System.Drawing.Size(196, 20)
+        Me.LoadTImeLabel.Text = "Welcome to the map editor!"
+        '
+        'PictureBox3
+        '
+        Me.PictureBox3.Location = New System.Drawing.Point(218, 38)
+        Me.PictureBox3.Name = "PictureBox3"
+        Me.PictureBox3.Size = New System.Drawing.Size(32, 32)
+        Me.PictureBox3.TabIndex = 4
+        Me.PictureBox3.TabStop = False
         '
         'MnFrm
         '
@@ -860,17 +871,15 @@ Partial Class MnFrm
         Me.Panel3.ResumeLayout(False)
         CType(Me.TilesPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage3.ResumeLayout(False)
+        Me.GroupBox5.ResumeLayout(False)
+        Me.GroupBox5.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
         Me.Panel6.ResumeLayout(False)
+        Me.MapPanel.ResumeLayout(False)
         CType(Me.MapPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MEBlocksGroup.ResumeLayout(False)
         Me.Panel5.ResumeLayout(False)
         CType(Me.MEBlocksPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.StatusStrip1.ResumeLayout(False)
-        Me.StatusStrip1.PerformLayout()
-        Me.GroupBox5.ResumeLayout(False)
-        Me.GroupBox5.PerformLayout()
-        Me.MapPanel.ResumeLayout(False)
         Me.TabPage4.ResumeLayout(False)
         Me.GroupBox7.ResumeLayout(False)
         Me.Panel7.ResumeLayout(False)
@@ -881,6 +890,9 @@ Partial Class MnFrm
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox6.PerformLayout()
+        Me.StatusStrip1.ResumeLayout(False)
+        Me.StatusStrip1.PerformLayout()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -960,4 +972,5 @@ Partial Class MnFrm
     Friend WithEvents Label6 As Label
     Friend WithEvents TextBox13 As TextBox
     Friend WithEvents Label7 As Label
+    Friend WithEvents PictureBox3 As PictureBox
 End Class
