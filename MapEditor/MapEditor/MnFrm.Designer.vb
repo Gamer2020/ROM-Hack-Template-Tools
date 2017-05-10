@@ -58,6 +58,7 @@ Partial Class MnFrm
         Me.BlockSetsPictureBox = New System.Windows.Forms.PictureBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.SelectedTilePictureBox = New System.Windows.Forms.PictureBox()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.TilesPictureBox = New System.Windows.Forms.PictureBox()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
@@ -96,7 +97,11 @@ Partial Class MnFrm
         Me.SaveFileDialog = New System.Windows.Forms.SaveFileDialog()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.LoadTImeLabel = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
+        Me.SelectionStatus = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.SelectedBlockPictureBox = New System.Windows.Forms.PictureBox()
+        Me.BlockBottomPictureBox = New System.Windows.Forms.PictureBox()
+        Me.BlockTopPictureBox = New System.Windows.Forms.PictureBox()
+        Me.MapSelectedBlockPictureBox = New System.Windows.Forms.PictureBox()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -105,7 +110,9 @@ Partial Class MnFrm
         Me.GroupBox3.SuspendLayout()
         Me.Panel4.SuspendLayout()
         CType(Me.BlockSetsPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.SelectedTilePictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel3.SuspendLayout()
         CType(Me.TilesPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage3.SuspendLayout()
@@ -127,7 +134,10 @@ Partial Class MnFrm
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox6.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SelectedBlockPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BlockBottomPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BlockTopPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MapSelectedBlockPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -138,18 +148,20 @@ Partial Class MnFrm
         Me.TabControl1.Controls.Add(Me.TabPage4)
         Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TabControl1.Location = New System.Drawing.Point(0, 0)
+        Me.TabControl1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(1214, 621)
+        Me.TabControl1.Size = New System.Drawing.Size(1821, 970)
         Me.TabControl1.TabIndex = 0
         '
         'TabPage1
         '
         Me.TabPage1.Controls.Add(Me.Panel1)
-        Me.TabPage1.Location = New System.Drawing.Point(4, 25)
+        Me.TabPage1.Location = New System.Drawing.Point(8, 39)
+        Me.TabPage1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(1206, 592)
+        Me.TabPage1.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.TabPage1.Size = New System.Drawing.Size(1805, 923)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Files"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -184,75 +196,84 @@ Partial Class MnFrm
         Me.Panel1.Controls.Add(Me.TextBox2)
         Me.Panel1.Controls.Add(Me.TextBox1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel1.Location = New System.Drawing.Point(3, 3)
+        Me.Panel1.Location = New System.Drawing.Point(4, 5)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1200, 586)
+        Me.Panel1.Size = New System.Drawing.Size(1797, 913)
         Me.Panel1.TabIndex = 73
         '
         'TextBox12
         '
-        Me.TextBox12.Location = New System.Drawing.Point(101, 363)
+        Me.TextBox12.Location = New System.Drawing.Point(152, 567)
+        Me.TextBox12.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox12.Name = "TextBox12"
-        Me.TextBox12.Size = New System.Drawing.Size(54, 22)
+        Me.TextBox12.Size = New System.Drawing.Size(79, 31)
         Me.TextBox12.TabIndex = 98
         Me.TextBox12.Text = "60"
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(11, 341)
+        Me.Label6.Location = New System.Drawing.Point(16, 533)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(84, 17)
+        Me.Label6.Size = New System.Drawing.Size(128, 25)
         Me.Label6.TabIndex = 95
         Me.Label6.Text = "Map Height:"
         '
         'TextBox13
         '
-        Me.TextBox13.Location = New System.Drawing.Point(101, 338)
+        Me.TextBox13.Location = New System.Drawing.Point(152, 528)
+        Me.TextBox13.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox13.Name = "TextBox13"
-        Me.TextBox13.Size = New System.Drawing.Size(54, 22)
+        Me.TextBox13.Size = New System.Drawing.Size(79, 31)
         Me.TextBox13.TabIndex = 97
         Me.TextBox13.Text = "60"
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(11, 368)
+        Me.Label7.Location = New System.Drawing.Point(16, 575)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(79, 17)
+        Me.Label7.Size = New System.Drawing.Size(121, 25)
         Me.Label7.TabIndex = 96
         Me.Label7.Text = "Map Width:"
         '
         'Button12
         '
-        Me.Button12.Location = New System.Drawing.Point(328, 293)
+        Me.Button12.Location = New System.Drawing.Point(492, 458)
+        Me.Button12.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button12.Name = "Button12"
-        Me.Button12.Size = New System.Drawing.Size(199, 23)
+        Me.Button12.Size = New System.Drawing.Size(298, 36)
         Me.Button12.TabIndex = 94
         Me.Button12.Text = "Load Map Data"
         Me.Button12.UseVisualStyleBackColor = True
         '
         'TextBox9
         '
-        Me.TextBox9.Location = New System.Drawing.Point(14, 294)
+        Me.TextBox9.Location = New System.Drawing.Point(21, 459)
+        Me.TextBox9.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox9.Name = "TextBox9"
-        Me.TextBox9.Size = New System.Drawing.Size(308, 22)
+        Me.TextBox9.Size = New System.Drawing.Size(460, 31)
         Me.TextBox9.TabIndex = 93
         '
         'Button11
         '
-        Me.Button11.Location = New System.Drawing.Point(704, 14)
+        Me.Button11.Location = New System.Drawing.Point(1056, 22)
+        Me.Button11.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button11.Name = "Button11"
-        Me.Button11.Size = New System.Drawing.Size(120, 79)
+        Me.Button11.Size = New System.Drawing.Size(180, 123)
         Me.Button11.TabIndex = 92
         Me.Button11.Text = "Save Project File"
         Me.Button11.UseVisualStyleBackColor = True
         '
         'Button10
         '
-        Me.Button10.Location = New System.Drawing.Point(568, 14)
+        Me.Button10.Location = New System.Drawing.Point(852, 22)
+        Me.Button10.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button10.Name = "Button10"
-        Me.Button10.Size = New System.Drawing.Size(120, 79)
+        Me.Button10.Size = New System.Drawing.Size(180, 123)
         Me.Button10.TabIndex = 91
         Me.Button10.Text = "Load Project File"
         Me.Button10.UseVisualStyleBackColor = True
@@ -262,9 +283,10 @@ Partial Class MnFrm
         Me.CheckBox2.AutoSize = True
         Me.CheckBox2.Checked = True
         Me.CheckBox2.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CheckBox2.Location = New System.Drawing.Point(14, 127)
+        Me.CheckBox2.Location = New System.Drawing.Point(21, 198)
+        Me.CheckBox2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(123, 21)
+        Me.CheckBox2.Size = New System.Drawing.Size(187, 29)
         Me.CheckBox2.TabIndex = 90
         Me.CheckBox2.Text = "Is Compressed"
         Me.CheckBox2.UseVisualStyleBackColor = True
@@ -274,148 +296,166 @@ Partial Class MnFrm
         Me.CheckBox1.AutoSize = True
         Me.CheckBox1.Checked = True
         Me.CheckBox1.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CheckBox1.Location = New System.Drawing.Point(14, 42)
+        Me.CheckBox1.Location = New System.Drawing.Point(21, 66)
+        Me.CheckBox1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(123, 21)
+        Me.CheckBox1.Size = New System.Drawing.Size(187, 29)
         Me.CheckBox1.TabIndex = 89
         Me.CheckBox1.Text = "Is Compressed"
         Me.CheckBox1.UseVisualStyleBackColor = True
         '
         'Button8
         '
-        Me.Button8.Location = New System.Drawing.Point(328, 265)
+        Me.Button8.Location = New System.Drawing.Point(492, 414)
+        Me.Button8.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(199, 23)
+        Me.Button8.Size = New System.Drawing.Size(298, 36)
         Me.Button8.TabIndex = 88
         Me.Button8.Text = "Load Secondary Behaviours"
         Me.Button8.UseVisualStyleBackColor = True
         '
         'Button9
         '
-        Me.Button9.Location = New System.Drawing.Point(328, 238)
+        Me.Button9.Location = New System.Drawing.Point(492, 372)
+        Me.Button9.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button9.Name = "Button9"
-        Me.Button9.Size = New System.Drawing.Size(199, 23)
+        Me.Button9.Size = New System.Drawing.Size(298, 36)
         Me.Button9.TabIndex = 87
         Me.Button9.Text = "Load Primary Behaviours"
         Me.Button9.UseVisualStyleBackColor = True
         '
         'TextBox7
         '
-        Me.TextBox7.Location = New System.Drawing.Point(14, 266)
+        Me.TextBox7.Location = New System.Drawing.Point(21, 416)
+        Me.TextBox7.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.Size = New System.Drawing.Size(308, 22)
+        Me.TextBox7.Size = New System.Drawing.Size(460, 31)
         Me.TextBox7.TabIndex = 86
         '
         'TextBox8
         '
-        Me.TextBox8.Location = New System.Drawing.Point(14, 238)
+        Me.TextBox8.Location = New System.Drawing.Point(21, 372)
+        Me.TextBox8.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox8.Name = "TextBox8"
-        Me.TextBox8.Size = New System.Drawing.Size(308, 22)
+        Me.TextBox8.Size = New System.Drawing.Size(460, 31)
         Me.TextBox8.TabIndex = 85
         '
         'Button6
         '
-        Me.Button6.Location = New System.Drawing.Point(328, 209)
+        Me.Button6.Location = New System.Drawing.Point(492, 327)
+        Me.Button6.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(199, 23)
+        Me.Button6.Size = New System.Drawing.Size(298, 36)
         Me.Button6.TabIndex = 84
         Me.Button6.Text = "Load Secondary Blocks"
         Me.Button6.UseVisualStyleBackColor = True
         '
         'Button7
         '
-        Me.Button7.Location = New System.Drawing.Point(328, 182)
+        Me.Button7.Location = New System.Drawing.Point(492, 284)
+        Me.Button7.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(199, 23)
+        Me.Button7.Size = New System.Drawing.Size(298, 36)
         Me.Button7.TabIndex = 83
         Me.Button7.Text = "Load Primary Blocks"
         Me.Button7.UseVisualStyleBackColor = True
         '
         'TextBox5
         '
-        Me.TextBox5.Location = New System.Drawing.Point(14, 210)
+        Me.TextBox5.Location = New System.Drawing.Point(21, 328)
+        Me.TextBox5.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(308, 22)
+        Me.TextBox5.Size = New System.Drawing.Size(460, 31)
         Me.TextBox5.TabIndex = 82
         '
         'TextBox6
         '
-        Me.TextBox6.Location = New System.Drawing.Point(14, 182)
+        Me.TextBox6.Location = New System.Drawing.Point(21, 284)
+        Me.TextBox6.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(308, 22)
+        Me.TextBox6.Size = New System.Drawing.Size(460, 31)
         Me.TextBox6.TabIndex = 81
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(328, 153)
+        Me.Button3.Location = New System.Drawing.Point(492, 239)
+        Me.Button3.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(199, 23)
+        Me.Button3.Size = New System.Drawing.Size(298, 36)
         Me.Button3.TabIndex = 80
         Me.Button3.Text = "Load Secondary Pal"
         Me.Button3.UseVisualStyleBackColor = True
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(328, 99)
+        Me.Button4.Location = New System.Drawing.Point(492, 155)
+        Me.Button4.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(199, 23)
+        Me.Button4.Size = New System.Drawing.Size(298, 36)
         Me.Button4.TabIndex = 79
         Me.Button4.Text = "Load Secondary Tiles"
         Me.Button4.UseVisualStyleBackColor = True
         '
         'TextBox3
         '
-        Me.TextBox3.Location = New System.Drawing.Point(14, 154)
+        Me.TextBox3.Location = New System.Drawing.Point(21, 241)
+        Me.TextBox3.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(308, 22)
+        Me.TextBox3.Size = New System.Drawing.Size(460, 31)
         Me.TextBox3.TabIndex = 78
         '
         'TextBox4
         '
-        Me.TextBox4.Location = New System.Drawing.Point(14, 99)
+        Me.TextBox4.Location = New System.Drawing.Point(21, 155)
+        Me.TextBox4.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(308, 22)
+        Me.TextBox4.Size = New System.Drawing.Size(460, 31)
         Me.TextBox4.TabIndex = 77
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(328, 70)
+        Me.Button2.Location = New System.Drawing.Point(492, 109)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(199, 23)
+        Me.Button2.Size = New System.Drawing.Size(298, 36)
         Me.Button2.TabIndex = 76
         Me.Button2.Text = "Load Primary Pal"
         Me.Button2.UseVisualStyleBackColor = True
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(328, 14)
+        Me.Button1.Location = New System.Drawing.Point(492, 22)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(199, 23)
+        Me.Button1.Size = New System.Drawing.Size(298, 36)
         Me.Button1.TabIndex = 75
         Me.Button1.Text = "Load Primary Tiles"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'TextBox2
         '
-        Me.TextBox2.Location = New System.Drawing.Point(14, 71)
+        Me.TextBox2.Location = New System.Drawing.Point(21, 111)
+        Me.TextBox2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(308, 22)
+        Me.TextBox2.Size = New System.Drawing.Size(460, 31)
         Me.TextBox2.TabIndex = 74
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(14, 14)
+        Me.TextBox1.Location = New System.Drawing.Point(21, 22)
+        Me.TextBox1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(308, 22)
+        Me.TextBox1.Size = New System.Drawing.Size(460, 31)
         Me.TextBox1.TabIndex = 73
         '
         'TabPage2
         '
         Me.TabPage2.Controls.Add(Me.Panel2)
-        Me.TabPage2.Location = New System.Drawing.Point(4, 25)
+        Me.TabPage2.Location = New System.Drawing.Point(8, 39)
+        Me.TabPage2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(1206, 592)
+        Me.TabPage2.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.TabPage2.Size = New System.Drawing.Size(1805, 923)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Block Editor"
         Me.TabPage2.UseVisualStyleBackColor = True
@@ -428,18 +468,21 @@ Partial Class MnFrm
         Me.Panel2.Controls.Add(Me.GroupBox1)
         Me.Panel2.Controls.Add(Me.Button5)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel2.Location = New System.Drawing.Point(3, 3)
+        Me.Panel2.Location = New System.Drawing.Point(4, 5)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1200, 586)
+        Me.Panel2.Size = New System.Drawing.Size(1797, 913)
         Me.Panel2.TabIndex = 0
         '
         'GroupBox3
         '
         Me.GroupBox3.Controls.Add(Me.Panel4)
         Me.GroupBox3.Dock = System.Windows.Forms.DockStyle.Right
-        Me.GroupBox3.Location = New System.Drawing.Point(180, 0)
+        Me.GroupBox3.Location = New System.Drawing.Point(228, 0)
+        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(416, 586)
+        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBox3.Size = New System.Drawing.Size(624, 879)
         Me.GroupBox3.TabIndex = 4
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Blocks"
@@ -448,59 +491,80 @@ Partial Class MnFrm
         '
         Me.Panel4.AutoScroll = True
         Me.Panel4.Controls.Add(Me.BlockSetsPictureBox)
-        Me.Panel4.Location = New System.Drawing.Point(19, 41)
+        Me.Panel4.Location = New System.Drawing.Point(28, 64)
+        Me.Panel4.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(381, 387)
+        Me.Panel4.Size = New System.Drawing.Size(572, 605)
         Me.Panel4.TabIndex = 0
         '
         'BlockSetsPictureBox
         '
-        Me.BlockSetsPictureBox.Location = New System.Drawing.Point(3, 3)
+        Me.BlockSetsPictureBox.Location = New System.Drawing.Point(4, 5)
+        Me.BlockSetsPictureBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.BlockSetsPictureBox.Name = "BlockSetsPictureBox"
-        Me.BlockSetsPictureBox.Size = New System.Drawing.Size(137, 212)
+        Me.BlockSetsPictureBox.Size = New System.Drawing.Size(206, 331)
         Me.BlockSetsPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.BlockSetsPictureBox.TabIndex = 0
         Me.BlockSetsPictureBox.TabStop = False
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.BlockTopPictureBox)
+        Me.GroupBox2.Controls.Add(Me.BlockBottomPictureBox)
+        Me.GroupBox2.Controls.Add(Me.SelectedBlockPictureBox)
         Me.GroupBox2.Dock = System.Windows.Forms.DockStyle.Right
-        Me.GroupBox2.Location = New System.Drawing.Point(596, 0)
+        Me.GroupBox2.Location = New System.Drawing.Point(852, 0)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(188, 586)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBox2.Size = New System.Drawing.Size(325, 879)
         Me.GroupBox2.TabIndex = 3
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Block Edit"
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.PictureBox3)
+        Me.GroupBox1.Controls.Add(Me.SelectedTilePictureBox)
         Me.GroupBox1.Controls.Add(Me.Panel3)
         Me.GroupBox1.Controls.Add(Me.ComboBox1)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Right
         Me.GroupBox1.Enabled = False
-        Me.GroupBox1.Location = New System.Drawing.Point(784, 0)
+        Me.GroupBox1.Location = New System.Drawing.Point(1177, 0)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(416, 586)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBox1.Size = New System.Drawing.Size(624, 879)
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Tiles"
+        '
+        'SelectedTilePictureBox
+        '
+        Me.SelectedTilePictureBox.Location = New System.Drawing.Point(327, 59)
+        Me.SelectedTilePictureBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.SelectedTilePictureBox.Name = "SelectedTilePictureBox"
+        Me.SelectedTilePictureBox.Size = New System.Drawing.Size(32, 32)
+        Me.SelectedTilePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.SelectedTilePictureBox.TabIndex = 4
+        Me.SelectedTilePictureBox.TabStop = False
         '
         'Panel3
         '
         Me.Panel3.AutoScroll = True
         Me.Panel3.Controls.Add(Me.TilesPictureBox)
-        Me.Panel3.Location = New System.Drawing.Point(24, 89)
+        Me.Panel3.Location = New System.Drawing.Point(36, 139)
+        Me.Panel3.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(376, 339)
+        Me.Panel3.Size = New System.Drawing.Size(564, 530)
         Me.Panel3.TabIndex = 3
         '
         'TilesPictureBox
         '
-        Me.TilesPictureBox.Location = New System.Drawing.Point(3, 3)
+        Me.TilesPictureBox.Location = New System.Drawing.Point(4, 5)
+        Me.TilesPictureBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TilesPictureBox.Name = "TilesPictureBox"
-        Me.TilesPictureBox.Size = New System.Drawing.Size(128, 256)
+        Me.TilesPictureBox.Size = New System.Drawing.Size(192, 400)
         Me.TilesPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.TilesPictureBox.TabIndex = 2
         Me.TilesPictureBox.TabStop = False
@@ -510,25 +574,28 @@ Partial Class MnFrm
         Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Items.AddRange(New Object() {"Pal 0", "Pal1", "Pal 2", "Pal 3", "Pal 4", "Pal 5", "Pal 6", "Pal 7", "Pal 8", "Pal 9", "Pal 10", "Pal 11", "Pal 12"})
-        Me.ComboBox1.Location = New System.Drawing.Point(73, 38)
+        Me.ComboBox1.Location = New System.Drawing.Point(110, 59)
+        Me.ComboBox1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(121, 24)
+        Me.ComboBox1.Size = New System.Drawing.Size(180, 33)
         Me.ComboBox1.TabIndex = 1
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(21, 41)
+        Me.Label1.Location = New System.Drawing.Point(32, 64)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(32, 17)
+        Me.Label1.Size = New System.Drawing.Size(49, 25)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Pal:"
         '
         'Button5
         '
-        Me.Button5.Location = New System.Drawing.Point(5, 8)
+        Me.Button5.Location = New System.Drawing.Point(8, 12)
+        Me.Button5.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(147, 82)
+        Me.Button5.Size = New System.Drawing.Size(220, 128)
         Me.Button5.TabIndex = 1
         Me.Button5.Text = "Load Blocks"
         Me.Button5.UseVisualStyleBackColor = True
@@ -538,9 +605,10 @@ Partial Class MnFrm
         Me.TabPage3.Controls.Add(Me.GroupBox5)
         Me.TabPage3.Controls.Add(Me.GroupBox4)
         Me.TabPage3.Controls.Add(Me.MEBlocksGroup)
-        Me.TabPage3.Location = New System.Drawing.Point(4, 25)
+        Me.TabPage3.Location = New System.Drawing.Point(8, 39)
+        Me.TabPage3.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Size = New System.Drawing.Size(1206, 592)
+        Me.TabPage3.Size = New System.Drawing.Size(1805, 923)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Map Editor"
         Me.TabPage3.UseVisualStyleBackColor = True
@@ -555,61 +623,69 @@ Partial Class MnFrm
         Me.GroupBox5.Controls.Add(Me.Label3)
         Me.GroupBox5.Dock = System.Windows.Forms.DockStyle.Left
         Me.GroupBox5.Location = New System.Drawing.Point(0, 0)
+        Me.GroupBox5.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(200, 592)
+        Me.GroupBox5.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBox5.Size = New System.Drawing.Size(300, 923)
         Me.GroupBox5.TabIndex = 8
         Me.GroupBox5.TabStop = False
         '
         'Button14
         '
         Me.Button14.Enabled = False
-        Me.Button14.Location = New System.Drawing.Point(22, 167)
+        Me.Button14.Location = New System.Drawing.Point(33, 261)
+        Me.Button14.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button14.Name = "Button14"
-        Me.Button14.Size = New System.Drawing.Size(147, 82)
+        Me.Button14.Size = New System.Drawing.Size(220, 128)
         Me.Button14.TabIndex = 8
         Me.Button14.Text = "Export Image"
         Me.Button14.UseVisualStyleBackColor = True
         '
         'Button13
         '
-        Me.Button13.Location = New System.Drawing.Point(22, 21)
+        Me.Button13.Location = New System.Drawing.Point(33, 33)
+        Me.Button13.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button13.Name = "Button13"
-        Me.Button13.Size = New System.Drawing.Size(147, 82)
+        Me.Button13.Size = New System.Drawing.Size(220, 128)
         Me.Button13.TabIndex = 2
         Me.Button13.Text = "Load Map"
         Me.Button13.UseVisualStyleBackColor = True
         '
         'MapWidthTextBox
         '
-        Me.MapWidthTextBox.Location = New System.Drawing.Point(115, 139)
+        Me.MapWidthTextBox.Location = New System.Drawing.Point(172, 217)
+        Me.MapWidthTextBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.MapWidthTextBox.Name = "MapWidthTextBox"
-        Me.MapWidthTextBox.Size = New System.Drawing.Size(54, 22)
+        Me.MapWidthTextBox.Size = New System.Drawing.Size(79, 31)
         Me.MapWidthTextBox.TabIndex = 7
         Me.MapWidthTextBox.Text = "60"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(25, 117)
+        Me.Label2.Location = New System.Drawing.Point(38, 183)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(84, 17)
+        Me.Label2.Size = New System.Drawing.Size(128, 25)
         Me.Label2.TabIndex = 4
         Me.Label2.Text = "Map Height:"
         '
         'MapHeightTextBox
         '
-        Me.MapHeightTextBox.Location = New System.Drawing.Point(115, 114)
+        Me.MapHeightTextBox.Location = New System.Drawing.Point(172, 178)
+        Me.MapHeightTextBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.MapHeightTextBox.Name = "MapHeightTextBox"
-        Me.MapHeightTextBox.Size = New System.Drawing.Size(54, 22)
+        Me.MapHeightTextBox.Size = New System.Drawing.Size(79, 31)
         Me.MapHeightTextBox.TabIndex = 6
         Me.MapHeightTextBox.Text = "60"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(25, 144)
+        Me.Label3.Location = New System.Drawing.Point(38, 225)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(79, 17)
+        Me.Label3.Size = New System.Drawing.Size(121, 25)
         Me.Label3.TabIndex = 5
         Me.Label3.Text = "Map Width:"
         '
@@ -617,9 +693,11 @@ Partial Class MnFrm
         '
         Me.GroupBox4.Controls.Add(Me.Panel6)
         Me.GroupBox4.Dock = System.Windows.Forms.DockStyle.Right
-        Me.GroupBox4.Location = New System.Drawing.Point(362, 0)
+        Me.GroupBox4.Location = New System.Drawing.Point(539, 0)
+        Me.GroupBox4.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(427, 592)
+        Me.GroupBox4.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBox4.Size = New System.Drawing.Size(640, 923)
         Me.GroupBox4.TabIndex = 3
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Map"
@@ -629,36 +707,42 @@ Partial Class MnFrm
         Me.Panel6.AutoScroll = True
         Me.Panel6.Controls.Add(Me.MapPanel)
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel6.Location = New System.Drawing.Point(3, 18)
+        Me.Panel6.Location = New System.Drawing.Point(4, 29)
+        Me.Panel6.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(421, 571)
+        Me.Panel6.Size = New System.Drawing.Size(632, 889)
         Me.Panel6.TabIndex = 0
         '
         'MapPanel
         '
         Me.MapPanel.AutoScroll = True
         Me.MapPanel.Controls.Add(Me.MapPictureBox)
-        Me.MapPanel.Location = New System.Drawing.Point(15, 16)
+        Me.MapPanel.Location = New System.Drawing.Point(22, 25)
+        Me.MapPanel.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.MapPanel.Name = "MapPanel"
-        Me.MapPanel.Size = New System.Drawing.Size(370, 186)
+        Me.MapPanel.Size = New System.Drawing.Size(555, 291)
         Me.MapPanel.TabIndex = 1
         '
         'MapPictureBox
         '
         Me.MapPictureBox.Location = New System.Drawing.Point(0, 0)
+        Me.MapPictureBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.MapPictureBox.Name = "MapPictureBox"
-        Me.MapPictureBox.Size = New System.Drawing.Size(181, 124)
+        Me.MapPictureBox.Size = New System.Drawing.Size(272, 194)
         Me.MapPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.MapPictureBox.TabIndex = 0
         Me.MapPictureBox.TabStop = False
         '
         'MEBlocksGroup
         '
+        Me.MEBlocksGroup.Controls.Add(Me.MapSelectedBlockPictureBox)
         Me.MEBlocksGroup.Controls.Add(Me.Panel5)
         Me.MEBlocksGroup.Dock = System.Windows.Forms.DockStyle.Right
-        Me.MEBlocksGroup.Location = New System.Drawing.Point(789, 0)
+        Me.MEBlocksGroup.Location = New System.Drawing.Point(1179, 0)
+        Me.MEBlocksGroup.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.MEBlocksGroup.Name = "MEBlocksGroup"
-        Me.MEBlocksGroup.Size = New System.Drawing.Size(417, 592)
+        Me.MEBlocksGroup.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.MEBlocksGroup.Size = New System.Drawing.Size(626, 923)
         Me.MEBlocksGroup.TabIndex = 0
         Me.MEBlocksGroup.TabStop = False
         Me.MEBlocksGroup.Text = "Blocks"
@@ -667,16 +751,18 @@ Partial Class MnFrm
         '
         Me.Panel5.AutoScroll = True
         Me.Panel5.Controls.Add(Me.MEBlocksPictureBox)
-        Me.Panel5.Location = New System.Drawing.Point(16, 34)
+        Me.Panel5.Location = New System.Drawing.Point(27, 150)
+        Me.Panel5.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(377, 248)
+        Me.Panel5.Size = New System.Drawing.Size(566, 388)
         Me.Panel5.TabIndex = 0
         '
         'MEBlocksPictureBox
         '
-        Me.MEBlocksPictureBox.Location = New System.Drawing.Point(3, 3)
+        Me.MEBlocksPictureBox.Location = New System.Drawing.Point(4, 5)
+        Me.MEBlocksPictureBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.MEBlocksPictureBox.Name = "MEBlocksPictureBox"
-        Me.MEBlocksPictureBox.Size = New System.Drawing.Size(83, 111)
+        Me.MEBlocksPictureBox.Size = New System.Drawing.Size(124, 173)
         Me.MEBlocksPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.MEBlocksPictureBox.TabIndex = 0
         Me.MEBlocksPictureBox.TabStop = False
@@ -686,9 +772,10 @@ Partial Class MnFrm
         Me.TabPage4.Controls.Add(Me.GroupBox7)
         Me.TabPage4.Controls.Add(Me.GroupBox8)
         Me.TabPage4.Controls.Add(Me.GroupBox6)
-        Me.TabPage4.Location = New System.Drawing.Point(4, 25)
+        Me.TabPage4.Location = New System.Drawing.Point(8, 39)
+        Me.TabPage4.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TabPage4.Name = "TabPage4"
-        Me.TabPage4.Size = New System.Drawing.Size(1206, 592)
+        Me.TabPage4.Size = New System.Drawing.Size(1805, 923)
         Me.TabPage4.TabIndex = 3
         Me.TabPage4.Text = "Movement Permissions"
         Me.TabPage4.UseVisualStyleBackColor = True
@@ -697,9 +784,11 @@ Partial Class MnFrm
         '
         Me.GroupBox7.Controls.Add(Me.Panel7)
         Me.GroupBox7.Dock = System.Windows.Forms.DockStyle.Right
-        Me.GroupBox7.Location = New System.Drawing.Point(653, 0)
+        Me.GroupBox7.Location = New System.Drawing.Point(976, 0)
+        Me.GroupBox7.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox7.Name = "GroupBox7"
-        Me.GroupBox7.Size = New System.Drawing.Size(427, 592)
+        Me.GroupBox7.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBox7.Size = New System.Drawing.Size(640, 923)
         Me.GroupBox7.TabIndex = 11
         Me.GroupBox7.TabStop = False
         Me.GroupBox7.Text = "Map"
@@ -709,25 +798,28 @@ Partial Class MnFrm
         Me.Panel7.AutoScroll = True
         Me.Panel7.Controls.Add(Me.Panel8)
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel7.Location = New System.Drawing.Point(3, 18)
+        Me.Panel7.Location = New System.Drawing.Point(4, 29)
+        Me.Panel7.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(421, 571)
+        Me.Panel7.Size = New System.Drawing.Size(632, 889)
         Me.Panel7.TabIndex = 0
         '
         'Panel8
         '
         Me.Panel8.AutoScroll = True
         Me.Panel8.Controls.Add(Me.PictureBox1)
-        Me.Panel8.Location = New System.Drawing.Point(15, 16)
+        Me.Panel8.Location = New System.Drawing.Point(22, 25)
+        Me.Panel8.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Panel8.Name = "Panel8"
-        Me.Panel8.Size = New System.Drawing.Size(370, 186)
+        Me.Panel8.Size = New System.Drawing.Size(555, 291)
         Me.Panel8.TabIndex = 1
         '
         'PictureBox1
         '
         Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(181, 124)
+        Me.PictureBox1.Size = New System.Drawing.Size(272, 194)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
@@ -736,9 +828,11 @@ Partial Class MnFrm
         '
         Me.GroupBox8.Controls.Add(Me.Panel9)
         Me.GroupBox8.Dock = System.Windows.Forms.DockStyle.Right
-        Me.GroupBox8.Location = New System.Drawing.Point(1080, 0)
+        Me.GroupBox8.Location = New System.Drawing.Point(1616, 0)
+        Me.GroupBox8.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox8.Name = "GroupBox8"
-        Me.GroupBox8.Size = New System.Drawing.Size(126, 592)
+        Me.GroupBox8.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBox8.Size = New System.Drawing.Size(189, 923)
         Me.GroupBox8.TabIndex = 10
         Me.GroupBox8.TabStop = False
         Me.GroupBox8.Text = "Permissions"
@@ -748,16 +842,18 @@ Partial Class MnFrm
         Me.Panel9.AutoScroll = True
         Me.Panel9.Controls.Add(Me.PictureBox2)
         Me.Panel9.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel9.Location = New System.Drawing.Point(3, 18)
+        Me.Panel9.Location = New System.Drawing.Point(4, 29)
+        Me.Panel9.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Panel9.Name = "Panel9"
-        Me.Panel9.Size = New System.Drawing.Size(120, 571)
+        Me.Panel9.Size = New System.Drawing.Size(181, 889)
         Me.Panel9.TabIndex = 0
         '
         'PictureBox2
         '
-        Me.PictureBox2.Location = New System.Drawing.Point(3, 3)
+        Me.PictureBox2.Location = New System.Drawing.Point(4, 5)
+        Me.PictureBox2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(16, 898)
+        Me.PictureBox2.Size = New System.Drawing.Size(24, 1403)
         Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox2.TabIndex = 0
         Me.PictureBox2.TabStop = False
@@ -771,51 +867,58 @@ Partial Class MnFrm
         Me.GroupBox6.Controls.Add(Me.Label5)
         Me.GroupBox6.Dock = System.Windows.Forms.DockStyle.Left
         Me.GroupBox6.Location = New System.Drawing.Point(0, 0)
+        Me.GroupBox6.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.Size = New System.Drawing.Size(200, 592)
+        Me.GroupBox6.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBox6.Size = New System.Drawing.Size(300, 923)
         Me.GroupBox6.TabIndex = 9
         Me.GroupBox6.TabStop = False
         '
         'Button16
         '
-        Me.Button16.Location = New System.Drawing.Point(22, 21)
+        Me.Button16.Location = New System.Drawing.Point(33, 33)
+        Me.Button16.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button16.Name = "Button16"
-        Me.Button16.Size = New System.Drawing.Size(147, 82)
+        Me.Button16.Size = New System.Drawing.Size(220, 128)
         Me.Button16.TabIndex = 2
         Me.Button16.Text = "Load Map"
         Me.Button16.UseVisualStyleBackColor = True
         '
         'TextBox10
         '
-        Me.TextBox10.Location = New System.Drawing.Point(115, 139)
+        Me.TextBox10.Location = New System.Drawing.Point(172, 217)
+        Me.TextBox10.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox10.Name = "TextBox10"
-        Me.TextBox10.Size = New System.Drawing.Size(54, 22)
+        Me.TextBox10.Size = New System.Drawing.Size(79, 31)
         Me.TextBox10.TabIndex = 7
         Me.TextBox10.Text = "60"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(25, 117)
+        Me.Label4.Location = New System.Drawing.Point(38, 183)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(84, 17)
+        Me.Label4.Size = New System.Drawing.Size(128, 25)
         Me.Label4.TabIndex = 4
         Me.Label4.Text = "Map Height:"
         '
         'TextBox11
         '
-        Me.TextBox11.Location = New System.Drawing.Point(115, 114)
+        Me.TextBox11.Location = New System.Drawing.Point(172, 178)
+        Me.TextBox11.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox11.Name = "TextBox11"
-        Me.TextBox11.Size = New System.Drawing.Size(54, 22)
+        Me.TextBox11.Size = New System.Drawing.Size(79, 31)
         Me.TextBox11.TabIndex = 6
         Me.TextBox11.Text = "60"
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(25, 144)
+        Me.Label5.Location = New System.Drawing.Point(38, 225)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(79, 17)
+        Me.Label5.Size = New System.Drawing.Size(121, 25)
         Me.Label5.TabIndex = 5
         Me.Label5.Text = "Map Width:"
         '
@@ -826,34 +929,70 @@ Partial Class MnFrm
         'StatusStrip1
         '
         Me.StatusStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoadTImeLabel})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 596)
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoadTImeLabel, Me.SelectionStatus})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 933)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(1214, 25)
+        Me.StatusStrip1.Padding = New System.Windows.Forms.Padding(2, 0, 21, 0)
+        Me.StatusStrip1.Size = New System.Drawing.Size(1821, 37)
         Me.StatusStrip1.TabIndex = 1
         Me.StatusStrip1.Text = "StatusStrip1"
         '
         'LoadTImeLabel
         '
         Me.LoadTImeLabel.Name = "LoadTImeLabel"
-        Me.LoadTImeLabel.Size = New System.Drawing.Size(196, 20)
+        Me.LoadTImeLabel.Size = New System.Drawing.Size(316, 32)
         Me.LoadTImeLabel.Text = "Welcome to the map editor!"
         '
-        'PictureBox3
+        'SelectionStatus
         '
-        Me.PictureBox3.Location = New System.Drawing.Point(218, 38)
-        Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(32, 32)
-        Me.PictureBox3.TabIndex = 4
-        Me.PictureBox3.TabStop = False
+        Me.SelectionStatus.Name = "SelectionStatus"
+        Me.SelectionStatus.Size = New System.Drawing.Size(50, 32)
+        Me.SelectionStatus.Text = "     "
+        '
+        'SelectedBlockPictureBox
+        '
+        Me.SelectedBlockPictureBox.Location = New System.Drawing.Point(96, 64)
+        Me.SelectedBlockPictureBox.Name = "SelectedBlockPictureBox"
+        Me.SelectedBlockPictureBox.Size = New System.Drawing.Size(128, 128)
+        Me.SelectedBlockPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.SelectedBlockPictureBox.TabIndex = 0
+        Me.SelectedBlockPictureBox.TabStop = False
+        '
+        'BlockBottomPictureBox
+        '
+        Me.BlockBottomPictureBox.Location = New System.Drawing.Point(27, 207)
+        Me.BlockBottomPictureBox.Name = "BlockBottomPictureBox"
+        Me.BlockBottomPictureBox.Size = New System.Drawing.Size(128, 128)
+        Me.BlockBottomPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.BlockBottomPictureBox.TabIndex = 1
+        Me.BlockBottomPictureBox.TabStop = False
+        '
+        'BlockTopPictureBox
+        '
+        Me.BlockTopPictureBox.Location = New System.Drawing.Point(182, 207)
+        Me.BlockTopPictureBox.Name = "BlockTopPictureBox"
+        Me.BlockTopPictureBox.Size = New System.Drawing.Size(128, 128)
+        Me.BlockTopPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.BlockTopPictureBox.TabIndex = 2
+        Me.BlockTopPictureBox.TabStop = False
+        '
+        'MapSelectedBlockPictureBox
+        '
+        Me.MapSelectedBlockPictureBox.Location = New System.Drawing.Point(31, 54)
+        Me.MapSelectedBlockPictureBox.Name = "MapSelectedBlockPictureBox"
+        Me.MapSelectedBlockPictureBox.Size = New System.Drawing.Size(64, 64)
+        Me.MapSelectedBlockPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.MapSelectedBlockPictureBox.TabIndex = 1
+        Me.MapSelectedBlockPictureBox.TabStop = False
         '
         'MnFrm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1214, 621)
+        Me.ClientSize = New System.Drawing.Size(1821, 970)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.TabControl1)
+        Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "MnFrm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Map Editor"
@@ -866,8 +1005,10 @@ Partial Class MnFrm
         Me.GroupBox3.ResumeLayout(False)
         Me.Panel4.ResumeLayout(False)
         CType(Me.BlockSetsPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.SelectedTilePictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel3.ResumeLayout(False)
         CType(Me.TilesPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage3.ResumeLayout(False)
@@ -892,7 +1033,10 @@ Partial Class MnFrm
         Me.GroupBox6.PerformLayout()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SelectedBlockPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BlockBottomPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BlockTopPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MapSelectedBlockPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -972,5 +1116,10 @@ Partial Class MnFrm
     Friend WithEvents Label6 As Label
     Friend WithEvents TextBox13 As TextBox
     Friend WithEvents Label7 As Label
-    Friend WithEvents PictureBox3 As PictureBox
+    Friend WithEvents SelectedTilePictureBox As PictureBox
+    Friend WithEvents SelectionStatus As ToolStripStatusLabel
+    Friend WithEvents SelectedBlockPictureBox As PictureBox
+    Friend WithEvents BlockTopPictureBox As PictureBox
+    Friend WithEvents BlockBottomPictureBox As PictureBox
+    Friend WithEvents MapSelectedBlockPictureBox As PictureBox
 End Class

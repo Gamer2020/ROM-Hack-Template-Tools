@@ -14,7 +14,10 @@ Module GetImageFunctions
     Public MapWithPermissions As Bitmap
 
     Public SelectedTileImgInBlockEditor As Integer
+    Public SelectedTileImgInBlockEditorPal As Integer
     Public SelectedBlockInBlockEditor As Integer
+
+    Public SelectedBlockInMapEditor As Integer
 
 
 
@@ -1658,6 +1661,292 @@ ErrorHandle:
         End While
 
         BlockToBitmap = output
+
+    End Function
+
+    Public Function BlockBottomToBitmap(BlockSet As String, Image1 As String, Image2 As String, BlockNum As Integer) As Bitmap
+
+        Dim output As New Bitmap(16, 16)
+
+        Dim loopvar As Integer = 0
+
+        Dim tileimage As String = ""
+
+        Dim tilenum As Integer = 0
+        Dim palnum As Integer = 0
+        Dim Yflip As Integer
+        Dim Xflip As Integer
+        Dim Curbytesbin As String = ""
+        Dim Flips As RotateFlipType
+
+
+        While loopvar < 4
+
+            If BlockNum < 512 Then
+
+                Curbytesbin = VB.Right("0000000000000000" & Convert.ToString(Int32.Parse(ReverseHEX(ReadHEX(BlockSet, BlockNum * 16 + (loopvar * 2), 2)), System.Globalization.NumberStyles.HexNumber), 2), 16)
+
+            Else
+
+                Curbytesbin = VB.Right("0000000000000000" & Convert.ToString(Int32.Parse(ReverseHEX(ReadHEX(BlockSet, (BlockNum - 512) * 16 + (loopvar * 2), 2)), System.Globalization.NumberStyles.HexNumber), 2), 16)
+
+            End If
+
+            tilenum = Convert.ToInt32(Curbytesbin.Remove(0, 6), 2)
+            palnum = Convert.ToInt32(Curbytesbin.Substring(0, 4), 2)
+            Yflip = Convert.ToInt32(Curbytesbin.Substring(4, 1), 2)
+            Xflip = Convert.ToInt32(Curbytesbin.Substring(5, 1), 2)
+
+            If palnum > 12 Then
+                palnum = 12
+            End If
+
+            If Yflip = 0 And Xflip = 0 Then
+
+                Flips = RotateFlipType.RotateNoneFlipNone
+
+            ElseIf Yflip = 0 And Xflip = 1 Then
+
+                Flips = RotateFlipType.RotateNoneFlipX
+
+            ElseIf Yflip = 1 And Xflip = 0 Then
+
+                Flips = RotateFlipType.RotateNoneFlipY
+
+            ElseIf Yflip = 1 And Xflip = 1 Then
+
+                Flips = RotateFlipType.RotateNoneFlipXY
+
+            End If
+
+
+            If tilenum < 512 Then
+
+                If loopvar = 0 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap2(TileSet1Image, tilenum, TilePals(palnum), True, Flips), output, 0, 0, 0, 0, 8, 8)
+
+                ElseIf loopvar = 1 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap2(TileSet1Image, tilenum, TilePals(palnum), True, Flips), output, 8, 0, 0, 0, 8, 8)
+
+                ElseIf loopvar = 2 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap2(TileSet1Image, tilenum, TilePals(palnum), True, Flips), output, 0, 8, 0, 0, 8, 8)
+
+                ElseIf loopvar = 3 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap2(TileSet1Image, tilenum, TilePals(palnum), True, Flips), output, 8, 8, 0, 0, 8, 8)
+
+                ElseIf loopvar = 4 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap2(TileSet1Image, tilenum, TilePals(palnum), False, Flips), output, 0, 0, 0, 0, 8, 8)
+
+                ElseIf loopvar = 5 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap2(TileSet1Image, tilenum, TilePals(palnum), False, Flips), output, 8, 0, 0, 0, 8, 8)
+
+                ElseIf loopvar = 6 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap2(TileSet1Image, tilenum, TilePals(palnum), False, Flips), output, 0, 8, 0, 0, 8, 8)
+
+                ElseIf loopvar = 7 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap2(TileSet1Image, tilenum, TilePals(palnum), False, Flips), output, 8, 8, 0, 0, 8, 8)
+
+                End If
+
+
+            Else
+
+                tileimage = Image2
+
+
+                If loopvar = 0 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap2(TileSet2Image, tilenum - 512, TilePals(palnum), True, Flips), output, 0, 0, 0, 0, 8, 8)
+
+                ElseIf loopvar = 1 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap2(TileSet2Image, tilenum - 512, TilePals(palnum), True, Flips), output, 8, 0, 0, 0, 8, 8)
+
+                ElseIf loopvar = 2 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap2(TileSet2Image, tilenum - 512, TilePals(palnum), True, Flips), output, 0, 8, 0, 0, 8, 8)
+
+                ElseIf loopvar = 3 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap2(TileSet2Image, tilenum - 512, TilePals(palnum), True, Flips), output, 8, 8, 0, 0, 8, 8)
+
+                ElseIf loopvar = 4 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap2(TileSet2Image, tilenum - 512, TilePals(palnum), False, Flips), output, 0, 0, 0, 0, 8, 8)
+
+                ElseIf loopvar = 5 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap2(TileSet2Image, tilenum - 512, TilePals(palnum), False, Flips), output, 8, 0, 0, 0, 8, 8)
+
+                ElseIf loopvar = 6 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap2(TileSet2Image, tilenum - 512, TilePals(palnum), False, Flips), output, 0, 8, 0, 0, 8, 8)
+
+                ElseIf loopvar = 7 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap2(TileSet2Image, tilenum - 512, TilePals(palnum), False, Flips), output, 8, 8, 0, 0, 8, 8)
+
+                End If
+
+            End If
+
+
+
+            loopvar = loopvar + 1
+        End While
+
+        BlockBottomToBitmap = output
+
+    End Function
+
+    Public Function BlockTopToBitmap(BlockSet As String, Image1 As String, Image2 As String, BlockNum As Integer) As Bitmap
+
+        Dim output As New Bitmap(16, 16)
+
+        Dim loopvar As Integer = 4
+
+        Dim tileimage As String = ""
+
+        Dim tilenum As Integer = 0
+        Dim palnum As Integer = 0
+        Dim Yflip As Integer
+        Dim Xflip As Integer
+        Dim Curbytesbin As String = ""
+        Dim Flips As RotateFlipType
+
+
+        While loopvar < 8
+
+            If BlockNum < 512 Then
+
+                Curbytesbin = VB.Right("0000000000000000" & Convert.ToString(Int32.Parse(ReverseHEX(ReadHEX(BlockSet, BlockNum * 16 + (loopvar * 2), 2)), System.Globalization.NumberStyles.HexNumber), 2), 16)
+
+            Else
+
+                Curbytesbin = VB.Right("0000000000000000" & Convert.ToString(Int32.Parse(ReverseHEX(ReadHEX(BlockSet, (BlockNum - 512) * 16 + (loopvar * 2), 2)), System.Globalization.NumberStyles.HexNumber), 2), 16)
+
+            End If
+
+            tilenum = Convert.ToInt32(Curbytesbin.Remove(0, 6), 2)
+            palnum = Convert.ToInt32(Curbytesbin.Substring(0, 4), 2)
+            Yflip = Convert.ToInt32(Curbytesbin.Substring(4, 1), 2)
+            Xflip = Convert.ToInt32(Curbytesbin.Substring(5, 1), 2)
+
+            If palnum > 12 Then
+                palnum = 12
+            End If
+
+            If Yflip = 0 And Xflip = 0 Then
+
+                Flips = RotateFlipType.RotateNoneFlipNone
+
+            ElseIf Yflip = 0 And Xflip = 1 Then
+
+                Flips = RotateFlipType.RotateNoneFlipX
+
+            ElseIf Yflip = 1 And Xflip = 0 Then
+
+                Flips = RotateFlipType.RotateNoneFlipY
+
+            ElseIf Yflip = 1 And Xflip = 1 Then
+
+                Flips = RotateFlipType.RotateNoneFlipXY
+
+            End If
+
+
+            If tilenum < 512 Then
+
+                If loopvar = 0 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap2(TileSet1Image, tilenum, TilePals(palnum), True, Flips), output, 0, 0, 0, 0, 8, 8)
+
+                ElseIf loopvar = 1 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap2(TileSet1Image, tilenum, TilePals(palnum), True, Flips), output, 8, 0, 0, 0, 8, 8)
+
+                ElseIf loopvar = 2 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap2(TileSet1Image, tilenum, TilePals(palnum), True, Flips), output, 0, 8, 0, 0, 8, 8)
+
+                ElseIf loopvar = 3 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap2(TileSet1Image, tilenum, TilePals(palnum), True, Flips), output, 8, 8, 0, 0, 8, 8)
+
+                ElseIf loopvar = 4 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap2(TileSet1Image, tilenum, TilePals(palnum), True, Flips), output, 0, 0, 0, 0, 8, 8)
+
+                ElseIf loopvar = 5 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap2(TileSet1Image, tilenum, TilePals(palnum), True, Flips), output, 8, 0, 0, 0, 8, 8)
+
+                ElseIf loopvar = 6 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap2(TileSet1Image, tilenum, TilePals(palnum), True, Flips), output, 0, 8, 0, 0, 8, 8)
+
+                ElseIf loopvar = 7 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap2(TileSet1Image, tilenum, TilePals(palnum), True, Flips), output, 8, 8, 0, 0, 8, 8)
+
+                End If
+
+
+            Else
+
+                tileimage = Image2
+
+
+                If loopvar = 0 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap2(TileSet2Image, tilenum - 512, TilePals(palnum), True, Flips), output, 0, 0, 0, 0, 8, 8)
+
+                ElseIf loopvar = 1 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap2(TileSet2Image, tilenum - 512, TilePals(palnum), True, Flips), output, 8, 0, 0, 0, 8, 8)
+
+                ElseIf loopvar = 2 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap2(TileSet2Image, tilenum - 512, TilePals(palnum), True, Flips), output, 0, 8, 0, 0, 8, 8)
+
+                ElseIf loopvar = 3 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap2(TileSet2Image, tilenum - 512, TilePals(palnum), True, Flips), output, 8, 8, 0, 0, 8, 8)
+
+                ElseIf loopvar = 4 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap2(TileSet2Image, tilenum - 512, TilePals(palnum), True, Flips), output, 0, 0, 0, 0, 8, 8)
+
+                ElseIf loopvar = 5 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap2(TileSet2Image, tilenum - 512, TilePals(palnum), True, Flips), output, 8, 0, 0, 0, 8, 8)
+
+                ElseIf loopvar = 6 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap2(TileSet2Image, tilenum - 512, TilePals(palnum), True, Flips), output, 0, 8, 0, 0, 8, 8)
+
+                ElseIf loopvar = 7 Then
+
+                    BitmapBLT(LoadSingleTileToBitmap2(TileSet2Image, tilenum - 512, TilePals(palnum), True, Flips), output, 8, 8, 0, 0, 8, 8)
+
+                End If
+
+            End If
+
+
+
+            loopvar = loopvar + 1
+        End While
+
+        BlockTopToBitmap = output
 
     End Function
 

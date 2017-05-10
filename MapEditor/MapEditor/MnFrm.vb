@@ -480,6 +480,22 @@ Public Class MnFrm
 
         GroupBox1.Enabled = True
 
+        SelectedTileImgInBlockEditor = 0
+        SelectedTileImgInBlockEditorPal = 0
+
+        If SelectedTileImgInBlockEditor < 512 Then
+
+            SelectedTilePictureBox.Image = LoadSingleTileToBitmap2(TileSet1Image, SelectedTileImgInBlockEditor, TilePals(SelectedTileImgInBlockEditorPal), True, RotateFlipType.RotateNoneFlipNone)
+
+        Else
+
+            SelectedTilePictureBox.Image = LoadSingleTileToBitmap2(TileSet2Image, SelectedTileImgInBlockEditor - 512, TilePals(SelectedTileImgInBlockEditorPal), True, RotateFlipType.RotateNoneFlipNone)
+
+        End If
+
+
+        SelectionStatus.Text = "Selected Tile: " & SelectedTileImgInBlockEditor
+
         ComboBox1.SelectedIndex = -1
         ComboBox1.SelectedIndex = 0
 
@@ -500,6 +516,8 @@ Public Class MnFrm
         If ComboBox1.SelectedIndex = -1 Then
 
         Else
+
+            SelectedTileImgInBlockEditorPal = ComboBox1.SelectedIndex
 
             Tiles1 = LoadTilesToBitmap(TextBox1.Text, TilePals(ComboBox1.SelectedIndex), CheckBox1.Checked, True)
             Tiles2 = LoadTilesToBitmap(TextBox4.Text, TilePals(ComboBox1.SelectedIndex), CheckBox2.Checked, True)
@@ -879,5 +897,137 @@ Public Class MnFrm
     Private Sub TextBox12_TextChanged(sender As Object, e As EventArgs) Handles TextBox12.TextChanged
         MapWidthTextBox.Text = TextBox12.Text
         TextBox10.Text = TextBox12.Text
+    End Sub
+
+    Private Sub Button12_Click(sender As Object, e As EventArgs) Handles Button12.Click
+        fileOpenDialog.FileName = ""
+        fileOpenDialog.CheckFileExists = True
+
+        ' Check to ensure that the selected path exists.  Dialog box displays 
+        ' a warning otherwise.
+        fileOpenDialog.CheckPathExists = True
+
+        ' Get or set default extension. Doesn't include the leading ".".
+        fileOpenDialog.DefaultExt = "bin"
+
+        ' Return the file referenced by a link? If False, simply returns the selected link
+        ' file. If True, returns the file linked to the LNK file.
+        fileOpenDialog.DereferenceLinks = True
+
+        ' Just as in VB6, use a set of pairs of filters, separated with "|". Each 
+        ' pair consists of a description|file spec. Use a "|" between pairs. No need to put a
+        ' trailing "|". You can set the FilterIndex property as well, to select the default
+        ' filter. The first filter is numbered 1 (not 0). The default is 1. 
+        fileOpenDialog.Filter =
+            "(*.bin)|*.bin*"
+
+        fileOpenDialog.Multiselect = False
+
+        ' Restore the original directory when done selecting
+        ' a file? If False, the current directory changes
+        ' to the directory in which you selected the file.
+        ' Set this to True to put the current folder back
+        ' where it was when you started.
+        ' The default is False.
+        '.RestoreDirectory = False
+
+        ' Show the Help button and Read-Only checkbox?
+        fileOpenDialog.ShowHelp = False
+        fileOpenDialog.ShowReadOnly = False
+
+        ' Start out with the read-only check box checked?
+        ' This only make sense if ShowReadOnly is True.
+        fileOpenDialog.ReadOnlyChecked = False
+
+        fileOpenDialog.Title = "Select bin to open:"
+
+        ' Only accept valid Win32 file names?
+        fileOpenDialog.ValidateNames = True
+
+
+        If fileOpenDialog.ShowDialog = DialogResult.OK Then
+
+            TextBox9.Text = fileOpenDialog.FileName
+
+
+        End If
+    End Sub
+
+    Private Sub TilesPictureBox_Click(sender As Object, e As EventArgs) Handles TilesPictureBox.Click
+        Dim [me] As MouseEventArgs = DirectCast(e, MouseEventArgs)
+        Dim coordinates As Point = [me].Location
+
+        If [me].Button = MouseButtons.Right Then
+
+        ElseIf [me].Button = MouseButtons.left Then
+            SelectedTileImgInBlockEditor = (Math.Floor(coordinates.X / (8 * 2)) + (Math.Floor(coordinates.Y / (8 * 2)) * 16))
+
+            If SelectedTileImgInBlockEditor < 512 Then
+
+                SelectedTilePictureBox.Image = LoadSingleTileToBitmap2(TileSet1Image, SelectedTileImgInBlockEditor, TilePals(SelectedTileImgInBlockEditorPal), True, RotateFlipType.RotateNoneFlipNone)
+
+
+            Else
+
+                SelectedTilePictureBox.Image = LoadSingleTileToBitmap2(TileSet2Image, SelectedTileImgInBlockEditor - 512, TilePals(SelectedTileImgInBlockEditorPal), True, RotateFlipType.RotateNoneFlipNone)
+
+            End If
+
+            SelectionStatus.Text = "Selected Tile: " & SelectedTileImgInBlockEditor
+
+        End If
+
+    End Sub
+
+    Private Sub MnFrm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.WindowState = FormWindowState.Maximized
+    End Sub
+
+    Private Sub BlockSetsPictureBox_Click(sender As Object, e As EventArgs) Handles BlockSetsPictureBox.Click
+        Dim [me] As MouseEventArgs = DirectCast(e, MouseEventArgs)
+        Dim coordinates As Point = [me].Location
+
+        If [me].Button = MouseButtons.Right Then
+
+        ElseIf [me].Button = MouseButtons.Left Then
+            SelectedBlockInBlockEditor = (Math.Floor(coordinates.X / (16 * 2)) + (Math.Floor(coordinates.Y / (16 * 2)) * 8))
+
+            If SelectedBlockInBlockEditor < 512 Then
+
+                SelectedBlockPictureBox.Image = BlockToBitmap(TextBox6.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInBlockEditor)
+                BlockBottomPictureBox.Image = BlockBottomToBitmap(TextBox6.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInBlockEditor)
+                BlockTopPictureBox.Image = BlockTopToBitmap(TextBox6.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInBlockEditor)
+            Else
+
+                SelectedBlockPictureBox.Image = BlockToBitmap(TextBox5.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInBlockEditor)
+                BlockBottomPictureBox.Image = BlockBottomToBitmap(TextBox6.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInBlockEditor)
+                BlockTopPictureBox.Image = BlockTopToBitmap(TextBox6.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInBlockEditor)
+            End If
+
+            SelectionStatus.Text = "Selected Block: " & SelectedBlockInBlockEditor
+
+        End If
+    End Sub
+
+    Private Sub MEBlocksPictureBox_Click(sender As Object, e As EventArgs) Handles MEBlocksPictureBox.Click
+        Dim [me] As MouseEventArgs = DirectCast(e, MouseEventArgs)
+        Dim coordinates As Point = [me].Location
+
+        If [me].Button = MouseButtons.Right Then
+
+        ElseIf [me].Button = MouseButtons.Left Then
+            SelectedBlockInMapEditor = (Math.Floor(coordinates.X / (16 * 2)) + (Math.Floor(coordinates.Y / (16 * 2)) * 8))
+
+            If SelectedBlockInMapEditor < 512 Then
+
+                MapSelectedBlockPictureBox.Image = BlockToBitmap(TextBox6.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInMapEditor)
+            Else
+
+                MapSelectedBlockPictureBox.Image = BlockToBitmap(TextBox5.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInMapEditor)
+            End If
+
+            SelectionStatus.Text = "Selected Block: " & SelectedBlockInMapEditor
+
+        End If
     End Sub
 End Class
