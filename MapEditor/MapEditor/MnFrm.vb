@@ -755,19 +755,33 @@ Public Class MnFrm
         MEBlocksPictureBox.Image = BlocksImage
         MEBlocksPictureBox.Refresh()
 
-        MapPictureBox.Image = MapDatatoBitmap(BlocksImage, TextBox9.Text, MapHeightTextBox.Text, MapWidthTextBox.Text)
+        MapPictureBox.Image = MapDatatoBitmap(BlocksImage, TextBox9.Text, TextBox13.Text, TextBox12.Text)
 
-        MapPictureBox.Height = MapHeightTextBox.Text * 2 * 16
-        MapPictureBox.Width = MapWidthTextBox.Text * 2 * 16
+        MapPictureBox.Height = TextBox13.Text * 2 * 16
+        MapPictureBox.Width = TextBox12.Text * 2 * 16
 
         MapPanel.Width = GroupBox4.Width - 20
         MapPanel.Height = GroupBox4.Height - 50
+
+        SelectedBlockInMapEditor = 0
+
+
+        If SelectedBlockInMapEditor < 512 Then
+
+            MapSelectedBlockPictureBox.Image = BlockToBitmap(TextBox6.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInMapEditor)
+        Else
+
+            MapSelectedBlockPictureBox.Image = BlockToBitmap(TextBox5.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInMapEditor)
+        End If
+
+        SelectionStatus.Text = "Selected Block: " & SelectedBlockInMapEditor
 
         stop_time = Now
         elapsed_time = stop_time.Subtract(start_time)
         LoadTImeLabel.Text = "Map Load Time: " & elapsed_time.TotalSeconds.ToString("0.00")
 
         Button14.Enabled = True
+        Button15.Enabled = True
 
     End Sub
 
@@ -859,15 +873,27 @@ Public Class MnFrm
 
         PictureBox1.Image = MapWithPermissions
 
-        PictureBox1.Height = TextBox11.Text * 2 * 16
-        PictureBox1.Width = TextBox10.Text * 2 * 16
+        PictureBox1.Height = TextBox13.Text * 2 * 16
+        PictureBox1.Width = TextBox12.Text * 2 * 16
 
         Panel8.Width = GroupBox7.Width - 20
         Panel8.Height = GroupBox7.Height - 50
 
         PictureBox2.Load(AppPath & "img\moveperms.png")
-        PictureBox2.Height = 898 * 2
+        PictureBox2.Height = 1024 * 2
         PictureBox2.Width = 16 * 2
+
+        ' Panel9.Height = GroupBox8.Height - 100
+
+        SelectedPermInPermEditor = 0
+
+        Dim PermissionsBitMap As New Bitmap(AppPath & "img\moveperms.png", True)
+        Dim SinglePerm As New Bitmap(16, 16)
+        BitmapBLT(PermissionsBitMap, SinglePerm, 0, 0, 0, SelectedPermInPermEditor * 16, 16, 16)
+
+        SelectionStatus.Text = "Selected Permission: " & SelectedPermInPermEditor
+
+        SelectedPermPictureBox.Image = SinglePerm
 
         stop_time = Now
         elapsed_time = stop_time.Subtract(start_time)
@@ -877,26 +903,23 @@ Public Class MnFrm
 
     End Sub
 
-    Private Sub TabControl1_Resize(sender As Object, e As EventArgs) Handles TabControl1.Resize
-
-
-    End Sub
-
     Private Sub TabPage4_Resize(sender As Object, e As EventArgs) Handles TabPage4.Resize
         GroupBox7.Width = TabPage4.Width - GroupBox8.Width - GroupBox6.Width
 
         Panel8.Width = GroupBox7.Width - 20
         Panel8.Height = GroupBox7.Height - 50
+
+        GroupBox8.Height = TabPage4.Height - 50
+        Panel9.Height = TabPage4.Height - 50
+
     End Sub
 
     Private Sub TextBox13_TextChanged(sender As Object, e As EventArgs) Handles TextBox13.TextChanged
-        MapHeightTextBox.Text = TextBox13.Text
-        TextBox11.Text = TextBox13.Text
+
     End Sub
 
     Private Sub TextBox12_TextChanged(sender As Object, e As EventArgs) Handles TextBox12.TextChanged
-        MapWidthTextBox.Text = TextBox12.Text
-        TextBox10.Text = TextBox12.Text
+
     End Sub
 
     Private Sub Button12_Click(sender As Object, e As EventArgs) Handles Button12.Click
@@ -1029,5 +1052,163 @@ Public Class MnFrm
             SelectionStatus.Text = "Selected Block: " & SelectedBlockInMapEditor
 
         End If
+    End Sub
+
+    Private Sub Button15_Click(sender As Object, e As EventArgs) Handles Button15.Click
+
+        Dim size As Integer = TextBox13.Text * TextBox12.Text
+
+        Dim loopvar As Integer = 0
+
+        Dim tilebin As String
+        Dim permbin As String
+
+        While loopvar < size
+
+            tilebin = VB.Right("0000000000" & Convert.ToString(Convert.ToInt32(MapTilesArray(loopvar)), 2), 10)
+            permbin = VB.Right("000000" & Convert.ToString(Convert.ToInt32(MapPermsArray(loopvar)), 2), 6)
+
+            WriteHEX(TextBox9.Text, loopvar * 2, ReverseHEX(VB.Right("0000" & Hex(Convert.ToInt32(permbin & tilebin, 2)), 4)))
+
+            loopvar = loopvar + 1
+
+        End While
+
+        MsgBox("Map saved!")
+
+        'MsgBox(MapTilesArray(0))
+
+        'MapTilesArray
+        'MapPermsArray
+    End Sub
+
+    Private Sub MapPictureBox_MouseHover(sender As Object, e As EventArgs) Handles MapPictureBox.MouseHover
+
+    End Sub
+
+    Private Sub MapPictureBox_MouseMove(sender As Object, e As MouseEventArgs) Handles MapPictureBox.MouseMove
+        Dim [me] As MouseEventArgs = DirectCast(e, MouseEventArgs)
+        Dim coordinates As Point = [me].Location
+
+        XYCoord.Text = "X: " & Math.Floor(coordinates.X / (16 * 2)) & " Y: " & (Math.Floor(coordinates.Y / (16 * 2)))
+
+    End Sub
+
+    Private Sub MapPictureBox_MouseClick(sender As Object, e As MouseEventArgs) Handles MapPictureBox.MouseClick
+
+    End Sub
+
+    Private Sub MapPictureBox_Click(sender As Object, e As EventArgs) Handles MapPictureBox.Click
+        Dim [me] As MouseEventArgs = DirectCast(e, MouseEventArgs)
+        Dim coordinates As Point = [me].Location
+
+        If [me].Button = MouseButtons.Right Then
+
+            SelectedBlockInMapEditor = MapTilesArray((Math.Floor(coordinates.X / (16 * 2)) + (Math.Floor(coordinates.Y / (16 * 2)) * TextBox12.Text)))
+
+            If SelectedBlockInMapEditor < 512 Then
+
+                MapSelectedBlockPictureBox.Image = BlockToBitmap(TextBox6.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInMapEditor)
+            Else
+
+                MapSelectedBlockPictureBox.Image = BlockToBitmap(TextBox5.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInMapEditor)
+            End If
+
+            SelectionStatus.Text = "Selected Block: " & SelectedBlockInMapEditor
+
+        ElseIf [me].Button = MouseButtons.Left Then
+
+            MapTilesArray((Math.Floor(coordinates.X / (16 * 2)) + (Math.Floor(coordinates.Y / (16 * 2)) * TextBox12.Text))) = SelectedBlockInMapEditor
+
+            Dim MapBitmap As New Bitmap(MapPictureBox.Image)
+            Dim TileBitmap As New Bitmap(MapSelectedBlockPictureBox.Image)
+
+            BitmapBLT(TileBitmap, MapBitmap, Math.Floor(coordinates.X / (16 * 2)) * 16, (Math.Floor(coordinates.Y / (16 * 2))) * 16, 0, 0, 16, 16)
+
+            MapPictureBox.Image = MapBitmap
+
+        End If
+    End Sub
+
+    Private Sub Button17_Click(sender As Object, e As EventArgs) Handles Button17.Click
+
+        Dim size As Integer = TextBox13.Text * TextBox12.Text
+
+        Dim loopvar As Integer = 0
+
+        Dim tilebin As String
+        Dim permbin As String
+
+        While loopvar < size
+
+            tilebin = VB.Right("0000000000" & Convert.ToString(Convert.ToInt32(MapTilesArray(loopvar)), 2), 10)
+            permbin = VB.Right("000000" & Convert.ToString(Convert.ToInt32(MapPermsArray(loopvar)), 2), 6)
+
+            WriteHEX(TextBox9.Text, loopvar * 2, ReverseHEX(VB.Right("0000" & Hex(Convert.ToInt32(permbin & tilebin, 2)), 4)))
+
+            loopvar = loopvar + 1
+
+        End While
+
+        MsgBox("Map saved!")
+
+    End Sub
+
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+        Dim [me] As MouseEventArgs = DirectCast(e, MouseEventArgs)
+        Dim coordinates As Point = [me].Location
+
+        If [me].Button = MouseButtons.Right Then
+
+            SelectedPermInPermEditor = MapPermsArray((Math.Floor(coordinates.X / (16 * 2)) + (Math.Floor(coordinates.Y / (16 * 2)) * TextBox12.Text)))
+
+            SelectionStatus.Text = "Selected Permission: " & SelectedPermInPermEditor
+
+            Dim PermissionsBitMap As New Bitmap(AppPath & "img\moveperms.png", True)
+            Dim SinglePerm As New Bitmap(16, 16)
+            BitmapBLT(PermissionsBitMap, SinglePerm, 0, 0, 0, SelectedPermInPermEditor * 16, 16, 16)
+
+            SelectedPermPictureBox.Image = SinglePerm
+
+        ElseIf [me].Button = MouseButtons.Left Then
+
+            MapPermsArray((Math.Floor(coordinates.X / (16 * 2)) + (Math.Floor(coordinates.Y / (16 * 2)) * TextBox12.Text))) = SelectedPermInPermEditor
+
+            Dim MapBitmap As New Bitmap(PictureBox1.Image)
+            Dim TileBitmap As New Bitmap(BlockToBitmap(TextBox6.Text, TextBox1.Text, TextBox4.Text, MapTilesArray((Math.Floor(coordinates.X / (16 * 2)) + (Math.Floor(coordinates.Y / (16 * 2)) * TextBox12.Text)))))
+            Dim PermBitmap As New Bitmap(SelectedPermPictureBox.Image)
+
+            Dim g As Graphics = Graphics.FromImage(TileBitmap)
+            g.DrawImage(PermBitmap, 0, 0)
+
+
+            BitmapBLT(TileBitmap, MapBitmap, Math.Floor(coordinates.X / (16 * 2)) * 16, (Math.Floor(coordinates.Y / (16 * 2))) * 16, 0, 0, 16, 16)
+
+            PictureBox1.Image = MapBitmap
+
+        End If
+    End Sub
+
+    Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
+        Dim [me] As MouseEventArgs = DirectCast(e, MouseEventArgs)
+        Dim coordinates As Point = [me].Location
+
+        If [me].Button = MouseButtons.Right Then
+
+        ElseIf [me].Button = MouseButtons.Left Then
+            SelectedPermInPermEditor = (Math.Floor(coordinates.Y / (32)))
+
+            SelectionStatus.Text = "Selected Permission: " & SelectedPermInPermEditor
+
+            Dim PermissionsBitMap As New Bitmap(AppPath & "img\moveperms.png", True)
+            Dim SinglePerm As New Bitmap(16, 16)
+            BitmapBLT(PermissionsBitMap, SinglePerm, 0, 0, 0, SelectedPermInPermEditor * 16, 16, 16)
+
+            SelectedPermPictureBox.Image = SinglePerm
+
+            'MsgBox(PictureBox2.Height)
+
+        End If
+
     End Sub
 End Class

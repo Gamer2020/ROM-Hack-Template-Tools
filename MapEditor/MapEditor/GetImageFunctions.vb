@@ -19,6 +19,8 @@ Module GetImageFunctions
 
     Public SelectedBlockInMapEditor As Integer
 
+    Public SelectedPermInPermEditor As Integer
+
 
 
     Public Function DrawBlockToTile(ByVal Destination As Bitmap, ByVal Source As Bitmap, ByVal BlockNum As Integer, ByVal yflip As Integer, ByVal xflip As Integer, ByVal Tile As Integer, ByVal section As Integer) As Bitmap
@@ -1976,18 +1978,12 @@ ErrorHandle:
             curtile = Convert.ToInt32(curbytesbin.Substring(6, 10), 2)
             curperm = Convert.ToInt32(curbytesbin.Substring(0, 6), 2)
 
-            maptiles = maptiles & curperm & ","
+            maptiles = maptiles & curtile & ","
             MovementPerm = MovementPerm & curperm & ","
-
-            'curtile = 468
-
-            'MsgBox(TileNumToX(curtile))
-            'MsgBox(TileNumToY(curtile))
 
             BitmapBLT(BlockImage, OutputImg, across * 16, down * 16, TileNumToX(curtile) * 16, TileNumToY(curtile) * 16, 16, 16)
             BitmapBLT(BlockImage, OutputImg3, across * 16, down * 16, TileNumToX(curtile) * 16, TileNumToY(curtile) * 16, 16, 16)
 
-            'BitmapBLT(BlockImage, OutputImg2, across * 16, down * 16, TileNumToX(curtile) * 16, TileNumToY(curtile) * 16, 16, 16)
             BitmapBLT(PermissionsBitMap, OutputImg2, across * 16, down * 16, 0, curperm * 16, 16, 16)
 
             across = across + 1

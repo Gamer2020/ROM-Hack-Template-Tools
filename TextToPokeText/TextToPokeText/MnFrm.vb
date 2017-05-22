@@ -17,6 +17,6 @@
             outputtext = outputtext & " 0x" & MakeProperByte(forloopbyte) & ","
         Next
 
-        TextBoxAfter.Text = outputtext & " 0x20, 0x20"
+        TextBoxAfter.Text = outputtext & " 0x20, 0x20" & vbCrLf & "@" & TextBoxBefore.Text
     End Sub
 End Class
