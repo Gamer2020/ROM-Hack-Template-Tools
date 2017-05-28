@@ -1,0 +1,12 @@
+C:\Users\Gamer2020\Desktop\ProjectManager\ProjectManager\bin\Debug\ProjectManager.exe.config
+C:\Users\Gamer2020\Google Drive\RomBusters\rom-hack-template-tools\ProjectManager\ProjectManager\bin\Debug\ProjectManager.exe.config
+C:\Users\Gamer2020\Google Drive\RomBusters\rom-hack-template-tools\ProjectManager\ProjectManager\bin\Debug\ProjectManager.exe
+C:\Users\Gamer2020\Google Drive\RomBusters\rom-hack-template-tools\ProjectManager\ProjectManager\bin\Debug\ProjectManager.pdb
+C:\Users\Gamer2020\Google Drive\RomBusters\rom-hack-template-tools\ProjectManager\ProjectManager\bin\Debug\ProjectManager.xml
+C:\Users\Gamer2020\Google Drive\RomBusters\rom-hack-template-tools\ProjectManager\ProjectManager\obj\Debug\ProjectManager.vbprojResolveAssemblyReference.cache
+C:\Users\Gamer2020\Google Drive\RomBusters\rom-hack-template-tools\ProjectManager\ProjectManager\obj\Debug\ProjectManager.MnFrm.resources
+C:\Users\Gamer2020\Google Drive\RomBusters\rom-hack-template-tools\ProjectManager\ProjectManager\obj\Debug\ProjectManager.Resources.resources
+C:\Users\Gamer2020\Google Drive\RomBusters\rom-hack-template-tools\ProjectManager\ProjectManager\obj\Debug\ProjectManager.vbproj.GenerateResource.Cache
+C:\Users\Gamer2020\Google Drive\RomBusters\rom-hack-template-tools\ProjectManager\ProjectManager\obj\Debug\ProjectManager.exe
+C:\Users\Gamer2020\Google Drive\RomBusters\rom-hack-template-tools\ProjectManager\ProjectManager\obj\Debug\ProjectManager.xml
+C:\Users\Gamer2020\Google Drive\RomBusters\rom-hack-template-tools\ProjectManager\ProjectManager\obj\Debug\ProjectManager.pdb

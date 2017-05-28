@@ -1,0 +1,18 @@
+C:\Users\Gamer2020\Desktop\ProjectCompiler\ProjectCompiler\bin\Debug\ProjectCompiler.exe.config
+C:\Users\Gamer2020\Desktop\ProjectCompiler\ProjectCompiler\bin\Debug\ProjectCompiler.exe
+C:\Users\Gamer2020\Desktop\ProjectCompiler\ProjectCompiler\bin\Debug\ProjectCompiler.pdb
+C:\Users\Gamer2020\Desktop\ProjectCompiler\ProjectCompiler\bin\Debug\ProjectCompiler.xml
+C:\Users\Gamer2020\Desktop\ProjectCompiler\ProjectCompiler\obj\Debug\ProjectCompiler.Resources.resources
+C:\Users\Gamer2020\Desktop\ProjectCompiler\ProjectCompiler\obj\Debug\ProjectCompiler.vbproj.GenerateResource.Cache
+C:\Users\Gamer2020\Desktop\ProjectCompiler\ProjectCompiler\obj\Debug\ProjectCompiler.exe
+C:\Users\Gamer2020\Desktop\ProjectCompiler\ProjectCompiler\obj\Debug\ProjectCompiler.xml
+C:\Users\Gamer2020\Desktop\ProjectCompiler\ProjectCompiler\obj\Debug\ProjectCompiler.pdb
+C:\Users\Gamer2020\Google Drive\RomBusters\rom-hack-template-tools\ProjectCompiler\ProjectCompiler\bin\Debug\ProjectCompiler.exe.config
+C:\Users\Gamer2020\Google Drive\RomBusters\rom-hack-template-tools\ProjectCompiler\ProjectCompiler\obj\Debug\ProjectCompiler.exe
+C:\Users\Gamer2020\Google Drive\RomBusters\rom-hack-template-tools\ProjectCompiler\ProjectCompiler\obj\Debug\ProjectCompiler.xml
+C:\Users\Gamer2020\Google Drive\RomBusters\rom-hack-template-tools\ProjectCompiler\ProjectCompiler\obj\Debug\ProjectCompiler.pdb
+C:\Users\Gamer2020\Google Drive\RomBusters\rom-hack-template-tools\ProjectCompiler\ProjectCompiler\obj\Debug\ProjectCompiler.Resources.resources
+C:\Users\Gamer2020\Google Drive\RomBusters\rom-hack-template-tools\ProjectCompiler\ProjectCompiler\obj\Debug\ProjectCompiler.vbproj.GenerateResource.Cache
+C:\Users\Gamer2020\Google Drive\RomBusters\rom-hack-template-tools\ProjectCompiler\ProjectCompiler\bin\Debug\ProjectCompiler.exe
+C:\Users\Gamer2020\Google Drive\RomBusters\rom-hack-template-tools\ProjectCompiler\ProjectCompiler\bin\Debug\ProjectCompiler.pdb
+C:\Users\Gamer2020\Google Drive\RomBusters\rom-hack-template-tools\ProjectCompiler\ProjectCompiler\bin\Debug\ProjectCompiler.xml
