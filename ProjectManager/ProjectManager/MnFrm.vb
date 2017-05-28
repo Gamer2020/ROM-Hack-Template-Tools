@@ -130,6 +130,16 @@ Public Class MnFrm
             FeatureListBox.SetItemChecked(3, True)
         End If
 
+        If GetString(AppPath & "ProjectSettings.ini", "Settings", "ExpandROM", "0") = "1" Then
+            CheckBox1.Checked = True
+        End If
+
+        If GetString(AppPath & "ProjectSettings.ini", "Settings", "CreatePatch", "0") = "1" Then
+            CheckBox2.Checked = True
+        End If
+
+        TextBox1.Text = GetString(AppPath & "ProjectSettings.ini", "Settings", "ROMName", "Template")
+
         CalcSaveRamOffsetForItems()
 
 
@@ -234,5 +244,32 @@ Public Class MnFrm
 
     Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles TextBox2.TextChanged
         CalcSaveRamOffsetForItems()
+    End Sub
+
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
+        If CheckBox1.Checked = True Then
+
+            WriteString(AppPath & "ProjectSettings.ini", "Settings", "ExpandROM", 1)
+
+        Else
+            WriteString(AppPath & "ProjectSettings.ini", "Settings", "ExpandROM", 0)
+        End If
+
+    End Sub
+
+    Private Sub CheckBox2_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox2.CheckedChanged
+
+        If CheckBox2.Checked = True Then
+
+            WriteString(AppPath & "ProjectSettings.ini", "Settings", "CreatePatch", 1)
+
+        Else
+            WriteString(AppPath & "ProjectSettings.ini", "Settings", "CreatePatch", 0)
+        End If
+
+    End Sub
+
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
+        WriteString(AppPath & "ProjectSettings.ini", "Settings", "ROMName", TextBox1.Text)
     End Sub
 End Class
