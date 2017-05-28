@@ -726,6 +726,27 @@ Public Class MnFrm
             WriteHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviours.bin", 0, PrimaryBehaviours)
             WriteHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviours.bin", 0, SecondaryBehaviours)
 
+            If File.Exists(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & ".txt") Then
+                File.Delete(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & ".txt")
+            End If
+
+            Using w As StreamWriter = File.AppendText(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & ".txt")
+
+                'MsgBox(System.IO.Path.GetFileName(TextBox1.Text))
+
+                w.WriteLine(("@\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryTiles.bin"))
+                w.WriteLine(("@\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryPal.bin"))
+                w.WriteLine(("@\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryTiles.bin"))
+                w.WriteLine(("@\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryPal.bin"))
+                w.WriteLine(("@\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBlocks.bin"))
+                w.WriteLine(("@\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBlocks.bin"))
+                w.WriteLine(("@\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviours.bin"))
+                w.WriteLine(("@\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviours.bin"))
+                w.WriteLine(("@\Bank" & MapBank & "_Map" & MapNumber & "_MapData.bin"))
+                w.WriteLine(MapHeight)
+                w.WriteLine(MapWidth)
+            End Using
+
             Me.Text = "Map Dumper"
             Me.UseWaitCursor = False
             Me.Enabled = True

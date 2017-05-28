@@ -642,15 +642,18 @@ Public Class MnFrm
             End If
 
             Using w As StreamWriter = File.AppendText(SaveFileDialog.FileName)
-                w.WriteLine(TextBox1.Text)
-                w.WriteLine(TextBox2.Text)
-                w.WriteLine(TextBox4.Text)
-                w.WriteLine(TextBox3.Text)
-                w.WriteLine(TextBox6.Text)
-                w.WriteLine(TextBox5.Text)
-                w.WriteLine(TextBox8.Text)
-                w.WriteLine(TextBox7.Text)
-                w.WriteLine(TextBox9.Text)
+
+                'MsgBox(System.IO.Path.GetFileName(TextBox1.Text))
+
+                w.WriteLine("@\" & System.IO.Path.GetFileName(TextBox1.Text))
+                w.WriteLine("@\" & System.IO.Path.GetFileName(TextBox2.Text))
+                w.WriteLine("@\" & System.IO.Path.GetFileName(TextBox4.Text))
+                w.WriteLine("@\" & System.IO.Path.GetFileName(TextBox3.Text))
+                w.WriteLine("@\" & System.IO.Path.GetFileName(TextBox6.Text))
+                w.WriteLine("@\" & System.IO.Path.GetFileName(TextBox5.Text))
+                w.WriteLine("@\" & System.IO.Path.GetFileName(TextBox8.Text))
+                w.WriteLine("@\" & System.IO.Path.GetFileName(TextBox7.Text))
+                w.WriteLine("@\" & System.IO.Path.GetFileName(TextBox9.Text))
                 w.WriteLine(TextBox13.Text)
                 w.WriteLine(TextBox12.Text)
             End Using
@@ -713,15 +716,17 @@ Public Class MnFrm
                 allLines.Add(reader.ReadLine())
             Loop
 
-            TextBox1.Text = ReadLine(1, allLines)
-            TextBox2.Text = ReadLine(2, allLines)
-            TextBox4.Text = ReadLine(3, allLines)
-            TextBox3.Text = ReadLine(4, allLines)
-            TextBox6.Text = ReadLine(5, allLines)
-            TextBox5.Text = ReadLine(6, allLines)
-            TextBox8.Text = ReadLine(7, allLines)
-            TextBox7.Text = ReadLine(8, allLines)
-            TextBox9.Text = ReadLine(9, allLines)
+            'MsgBox(System.IO.Path.GetDirectoryName(fileOpenDialog.FileName))
+
+            TextBox1.Text = Replace(ReadLine(1, allLines), "@", System.IO.Path.GetDirectoryName(fileOpenDialog.FileName), 1, 1)
+            TextBox2.Text = Replace(ReadLine(2, allLines), "@", System.IO.Path.GetDirectoryName(fileOpenDialog.FileName), 1, 1)
+            TextBox4.Text = Replace(ReadLine(3, allLines), "@", System.IO.Path.GetDirectoryName(fileOpenDialog.FileName), 1, 1)
+            TextBox3.Text = Replace(ReadLine(4, allLines), "@", System.IO.Path.GetDirectoryName(fileOpenDialog.FileName), 1, 1)
+            TextBox6.Text = Replace(ReadLine(5, allLines), "@", System.IO.Path.GetDirectoryName(fileOpenDialog.FileName), 1, 1)
+            TextBox5.Text = Replace(ReadLine(6, allLines), "@", System.IO.Path.GetDirectoryName(fileOpenDialog.FileName), 1, 1)
+            TextBox8.Text = Replace(ReadLine(7, allLines), "@", System.IO.Path.GetDirectoryName(fileOpenDialog.FileName), 1, 1)
+            TextBox7.Text = Replace(ReadLine(8, allLines), "@", System.IO.Path.GetDirectoryName(fileOpenDialog.FileName), 1, 1)
+            TextBox9.Text = Replace(ReadLine(9, allLines), "@", System.IO.Path.GetDirectoryName(fileOpenDialog.FileName), 1, 1)
             TextBox13.Text = ReadLine(10, allLines)
             TextBox12.Text = ReadLine(11, allLines)
 
