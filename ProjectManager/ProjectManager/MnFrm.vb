@@ -138,7 +138,7 @@ Public Class MnFrm
             CheckBox2.Checked = True
         End If
 
-        TextBox1.Text = GetString(AppPath & "ProjectSettings.ini", "Settings", "ROMName", "Template")
+        TextBox1.Text = GetString(AppPath & "ProjectSettings.ini", "Settings", "ROMName", "OutPut")
 
         CalcSaveRamOffsetForItems()
 
