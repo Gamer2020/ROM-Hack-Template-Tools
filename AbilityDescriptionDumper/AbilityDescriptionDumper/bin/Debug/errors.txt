@@ -1,0 +1,3 @@
+Error! NumberOfAbilities is missing for ROM xxxx!
+Error! NumberOfAbilities is missing for ROM xxxx!
+Error! NumberOfAbilities is missing for ROM xxxx!
