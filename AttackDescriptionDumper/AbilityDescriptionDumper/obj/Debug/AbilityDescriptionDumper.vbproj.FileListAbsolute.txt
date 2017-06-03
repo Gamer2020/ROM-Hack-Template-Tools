@@ -1,0 +1,15 @@
+C:\Users\Gamer2020\Desktop\AbilityDescriptionDumper\AbilityDescriptionDumper\bin\Debug\AbilityDescriptionDumper.exe.config
+C:\Users\Gamer2020\Desktop\AbilityDescriptionDumper\AbilityDescriptionDumper\bin\Debug\AbilityDescriptionDumper.exe
+C:\Users\Gamer2020\Desktop\AbilityDescriptionDumper\AbilityDescriptionDumper\bin\Debug\AbilityDescriptionDumper.pdb
+C:\Users\Gamer2020\Desktop\AbilityDescriptionDumper\AbilityDescriptionDumper\bin\Debug\AbilityDescriptionDumper.xml
+C:\Users\Gamer2020\Desktop\AbilityDescriptionDumper\AbilityDescriptionDumper\obj\Debug\AbilityDescriptionDumper.vbprojResolveAssemblyReference.cache
+C:\Users\Gamer2020\Desktop\AbilityDescriptionDumper\AbilityDescriptionDumper\obj\Debug\AbilityDescriptionDumper.MnFrm.resources
+C:\Users\Gamer2020\Desktop\AbilityDescriptionDumper\AbilityDescriptionDumper\obj\Debug\AbilityDescriptionDumper.Resources.resources
+C:\Users\Gamer2020\Desktop\AbilityDescriptionDumper\AbilityDescriptionDumper\obj\Debug\AbilityDescriptionDumper.vbproj.GenerateResource.Cache
+C:\Users\Gamer2020\Desktop\AbilityDescriptionDumper\AbilityDescriptionDumper\obj\Debug\AbilityDescriptionDumper.exe
+C:\Users\Gamer2020\Desktop\AbilityDescriptionDumper\AbilityDescriptionDumper\obj\Debug\AbilityDescriptionDumper.xml
+C:\Users\Gamer2020\Desktop\AbilityDescriptionDumper\AbilityDescriptionDumper\obj\Debug\AbilityDescriptionDumper.pdb
+C:\Users\Gamer2020\Desktop\AttackDescriptionDumper\AbilityDescriptionDumper\bin\Debug\AbilityDescriptionDumper.exe.config
+C:\Users\Gamer2020\Desktop\AttackDescriptionDumper\AbilityDescriptionDumper\obj\Debug\AbilityDescriptionDumper.exe
+C:\Users\Gamer2020\Desktop\AttackDescriptionDumper\AbilityDescriptionDumper\obj\Debug\AbilityDescriptionDumper.xml
+C:\Users\Gamer2020\Desktop\AttackDescriptionDumper\AbilityDescriptionDumper\obj\Debug\AbilityDescriptionDumper.pdb
