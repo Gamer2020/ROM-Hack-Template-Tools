@@ -25,6 +25,8 @@ Partial Class MnFrm
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Button18 = New System.Windows.Forms.Button()
+        Me.TextBox10 = New System.Windows.Forms.TextBox()
         Me.TextBox12 = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.TextBox13 = New System.Windows.Forms.TextBox()
@@ -93,6 +95,14 @@ Partial Class MnFrm
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Button17 = New System.Windows.Forms.Button()
         Me.Button16 = New System.Windows.Forms.Button()
+        Me.TabPage5 = New System.Windows.Forms.TabPage()
+        Me.BorderPictureBox = New System.Windows.Forms.PictureBox()
+        Me.GroupBox9 = New System.Windows.Forms.GroupBox()
+        Me.BorderSelectedBlockPictureBox = New System.Windows.Forms.PictureBox()
+        Me.Panel10 = New System.Windows.Forms.Panel()
+        Me.MEBlocksPictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.Button20 = New System.Windows.Forms.Button()
+        Me.Button19 = New System.Windows.Forms.Button()
         Me.fileOpenDialog = New System.Windows.Forms.OpenFileDialog()
         Me.SaveFileDialog = New System.Windows.Forms.SaveFileDialog()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
@@ -135,6 +145,12 @@ Partial Class MnFrm
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox6.SuspendLayout()
         CType(Me.SelectedPermPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabPage5.SuspendLayout()
+        CType(Me.BorderPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox9.SuspendLayout()
+        CType(Me.BorderSelectedBlockPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel10.SuspendLayout()
+        CType(Me.MEBlocksPictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -144,6 +160,7 @@ Partial Class MnFrm
         Me.TabControl1.Controls.Add(Me.TabPage2)
         Me.TabControl1.Controls.Add(Me.TabPage3)
         Me.TabControl1.Controls.Add(Me.TabPage4)
+        Me.TabControl1.Controls.Add(Me.TabPage5)
         Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TabControl1.Location = New System.Drawing.Point(0, 0)
         Me.TabControl1.Name = "TabControl1"
@@ -165,6 +182,8 @@ Partial Class MnFrm
         'Panel1
         '
         Me.Panel1.AutoScroll = True
+        Me.Panel1.Controls.Add(Me.Button18)
+        Me.Panel1.Controls.Add(Me.TextBox10)
         Me.Panel1.Controls.Add(Me.TextBox12)
         Me.Panel1.Controls.Add(Me.Label6)
         Me.Panel1.Controls.Add(Me.TextBox13)
@@ -197,9 +216,25 @@ Partial Class MnFrm
         Me.Panel1.Size = New System.Drawing.Size(1200, 586)
         Me.Panel1.TabIndex = 73
         '
+        'Button18
+        '
+        Me.Button18.Location = New System.Drawing.Point(328, 321)
+        Me.Button18.Name = "Button18"
+        Me.Button18.Size = New System.Drawing.Size(199, 23)
+        Me.Button18.TabIndex = 100
+        Me.Button18.Text = "Load Border Data"
+        Me.Button18.UseVisualStyleBackColor = True
+        '
+        'TextBox10
+        '
+        Me.TextBox10.Location = New System.Drawing.Point(14, 322)
+        Me.TextBox10.Name = "TextBox10"
+        Me.TextBox10.Size = New System.Drawing.Size(308, 22)
+        Me.TextBox10.TabIndex = 99
+        '
         'TextBox12
         '
-        Me.TextBox12.Location = New System.Drawing.Point(101, 363)
+        Me.TextBox12.Location = New System.Drawing.Point(101, 402)
         Me.TextBox12.Name = "TextBox12"
         Me.TextBox12.Size = New System.Drawing.Size(54, 22)
         Me.TextBox12.TabIndex = 98
@@ -208,7 +243,7 @@ Partial Class MnFrm
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(11, 341)
+        Me.Label6.Location = New System.Drawing.Point(11, 380)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(84, 17)
         Me.Label6.TabIndex = 95
@@ -216,7 +251,7 @@ Partial Class MnFrm
         '
         'TextBox13
         '
-        Me.TextBox13.Location = New System.Drawing.Point(101, 338)
+        Me.TextBox13.Location = New System.Drawing.Point(101, 377)
         Me.TextBox13.Name = "TextBox13"
         Me.TextBox13.Size = New System.Drawing.Size(54, 22)
         Me.TextBox13.TabIndex = 97
@@ -225,7 +260,7 @@ Partial Class MnFrm
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(11, 368)
+        Me.Label7.Location = New System.Drawing.Point(11, 407)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(79, 17)
         Me.Label7.TabIndex = 96
@@ -845,6 +880,87 @@ Partial Class MnFrm
         Me.Button16.Text = "Load Map"
         Me.Button16.UseVisualStyleBackColor = True
         '
+        'TabPage5
+        '
+        Me.TabPage5.Controls.Add(Me.BorderPictureBox)
+        Me.TabPage5.Controls.Add(Me.GroupBox9)
+        Me.TabPage5.Controls.Add(Me.Button20)
+        Me.TabPage5.Controls.Add(Me.Button19)
+        Me.TabPage5.Location = New System.Drawing.Point(4, 25)
+        Me.TabPage5.Name = "TabPage5"
+        Me.TabPage5.Size = New System.Drawing.Size(1206, 592)
+        Me.TabPage5.TabIndex = 4
+        Me.TabPage5.Text = "Border"
+        Me.TabPage5.UseVisualStyleBackColor = True
+        '
+        'BorderPictureBox
+        '
+        Me.BorderPictureBox.Cursor = System.Windows.Forms.Cursors.Default
+        Me.BorderPictureBox.Location = New System.Drawing.Point(201, 14)
+        Me.BorderPictureBox.Name = "BorderPictureBox"
+        Me.BorderPictureBox.Size = New System.Drawing.Size(100, 50)
+        Me.BorderPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.BorderPictureBox.TabIndex = 6
+        Me.BorderPictureBox.TabStop = False
+        '
+        'GroupBox9
+        '
+        Me.GroupBox9.Controls.Add(Me.BorderSelectedBlockPictureBox)
+        Me.GroupBox9.Controls.Add(Me.Panel10)
+        Me.GroupBox9.Dock = System.Windows.Forms.DockStyle.Right
+        Me.GroupBox9.Location = New System.Drawing.Point(789, 0)
+        Me.GroupBox9.Name = "GroupBox9"
+        Me.GroupBox9.Size = New System.Drawing.Size(417, 592)
+        Me.GroupBox9.TabIndex = 5
+        Me.GroupBox9.TabStop = False
+        Me.GroupBox9.Text = "Blocks"
+        '
+        'BorderSelectedBlockPictureBox
+        '
+        Me.BorderSelectedBlockPictureBox.Location = New System.Drawing.Point(21, 21)
+        Me.BorderSelectedBlockPictureBox.Margin = New System.Windows.Forms.Padding(2)
+        Me.BorderSelectedBlockPictureBox.Name = "BorderSelectedBlockPictureBox"
+        Me.BorderSelectedBlockPictureBox.Size = New System.Drawing.Size(43, 41)
+        Me.BorderSelectedBlockPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.BorderSelectedBlockPictureBox.TabIndex = 1
+        Me.BorderSelectedBlockPictureBox.TabStop = False
+        '
+        'Panel10
+        '
+        Me.Panel10.AutoScroll = True
+        Me.Panel10.Controls.Add(Me.MEBlocksPictureBox2)
+        Me.Panel10.Location = New System.Drawing.Point(21, 76)
+        Me.Panel10.Name = "Panel10"
+        Me.Panel10.Size = New System.Drawing.Size(377, 248)
+        Me.Panel10.TabIndex = 0
+        '
+        'MEBlocksPictureBox2
+        '
+        Me.MEBlocksPictureBox2.Location = New System.Drawing.Point(3, 3)
+        Me.MEBlocksPictureBox2.Name = "MEBlocksPictureBox2"
+        Me.MEBlocksPictureBox2.Size = New System.Drawing.Size(83, 111)
+        Me.MEBlocksPictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.MEBlocksPictureBox2.TabIndex = 0
+        Me.MEBlocksPictureBox2.TabStop = False
+        '
+        'Button20
+        '
+        Me.Button20.Location = New System.Drawing.Point(8, 119)
+        Me.Button20.Name = "Button20"
+        Me.Button20.Size = New System.Drawing.Size(147, 82)
+        Me.Button20.TabIndex = 4
+        Me.Button20.Text = "Save Border"
+        Me.Button20.UseVisualStyleBackColor = True
+        '
+        'Button19
+        '
+        Me.Button19.Location = New System.Drawing.Point(8, 14)
+        Me.Button19.Name = "Button19"
+        Me.Button19.Size = New System.Drawing.Size(147, 82)
+        Me.Button19.TabIndex = 3
+        Me.Button19.Text = "Load Border"
+        Me.Button19.UseVisualStyleBackColor = True
+        '
         'fileOpenDialog
         '
         Me.fileOpenDialog.FileName = "OpenFileDialog1"
@@ -926,6 +1042,12 @@ Partial Class MnFrm
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox6.PerformLayout()
         CType(Me.SelectedPermPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabPage5.ResumeLayout(False)
+        CType(Me.BorderPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox9.ResumeLayout(False)
+        CType(Me.BorderSelectedBlockPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel10.ResumeLayout(False)
+        CType(Me.MEBlocksPictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         Me.ResumeLayout(False)
@@ -1010,4 +1132,14 @@ Partial Class MnFrm
     Friend WithEvents Button17 As Button
     Friend WithEvents Label2 As Label
     Friend WithEvents SelectedPermPictureBox As PictureBox
+    Friend WithEvents Button18 As Button
+    Friend WithEvents TextBox10 As TextBox
+    Friend WithEvents TabPage5 As TabPage
+    Friend WithEvents Button20 As Button
+    Friend WithEvents Button19 As Button
+    Friend WithEvents GroupBox9 As GroupBox
+    Friend WithEvents BorderSelectedBlockPictureBox As PictureBox
+    Friend WithEvents Panel10 As Panel
+    Friend WithEvents MEBlocksPictureBox2 As PictureBox
+    Friend WithEvents BorderPictureBox As PictureBox
 End Class

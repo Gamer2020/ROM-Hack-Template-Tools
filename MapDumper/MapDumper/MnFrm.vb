@@ -745,6 +745,7 @@ Public Class MnFrm
                 w.WriteLine(("@\Bank" & MapBank & "_Map" & MapNumber & "_MapData.bin"))
                 w.WriteLine(MapHeight)
                 w.WriteLine(MapWidth)
+                w.WriteLine(("@\Bank" & MapBank & "_Map" & MapNumber & "_Border.bin"))
             End Using
 
             Me.Text = "Map Dumper"
@@ -1201,70 +1202,70 @@ Public Class MnFrm
         outputtext = outputtext & ".align 2" & vbCrLf
 
         outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_Border:" & vbCrLf
-        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_Border.bin""" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "/Bank" & MapBank & "_Map" & MapNumber & "_Border.bin""" & vbCrLf
 
         outputtext = outputtext & vbCrLf
 
         outputtext = outputtext & ".align 2" & vbCrLf
 
         outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_MapData:" & vbCrLf
-        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_MapData.bin""" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "/Bank" & MapBank & "_Map" & MapNumber & "_MapData.bin""" & vbCrLf
 
         outputtext = outputtext & vbCrLf
 
         outputtext = outputtext & ".align 2" & vbCrLf
 
         outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_PrimaryPal:" & vbCrLf
-        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_PrimaryPal.bin""" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "/Bank" & MapBank & "_Map" & MapNumber & "_PrimaryPal.bin""" & vbCrLf
 
         outputtext = outputtext & vbCrLf
 
         outputtext = outputtext & ".align 2" & vbCrLf
 
         outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_PrimaryTiles:" & vbCrLf
-        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_PrimaryTiles.bin""" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "/Bank" & MapBank & "_Map" & MapNumber & "_PrimaryTiles.bin""" & vbCrLf
 
         outputtext = outputtext & vbCrLf
 
         outputtext = outputtext & ".align 2" & vbCrLf
 
         outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBlocks:" & vbCrLf
-        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBlocks.bin""" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "/Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBlocks.bin""" & vbCrLf
 
         outputtext = outputtext & vbCrLf
 
         outputtext = outputtext & ".align 2" & vbCrLf
 
         outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviours:" & vbCrLf
-        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviours.bin""" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "/Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviours.bin""" & vbCrLf
 
         outputtext = outputtext & vbCrLf
 
         outputtext = outputtext & ".align 2" & vbCrLf
 
         outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_SecondaryPal:" & vbCrLf
-        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_SecondaryPal.bin""" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "/Bank" & MapBank & "_Map" & MapNumber & "_SecondaryPal.bin""" & vbCrLf
 
         outputtext = outputtext & vbCrLf
 
         outputtext = outputtext & ".align 2" & vbCrLf
 
         outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_SecondaryTiles:" & vbCrLf
-        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_SecondaryTiles.bin""" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "/Bank" & MapBank & "_Map" & MapNumber & "_SecondaryTiles.bin""" & vbCrLf
 
         outputtext = outputtext & vbCrLf
 
         outputtext = outputtext & ".align 2" & vbCrLf
 
         outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBlocks:" & vbCrLf
-        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBlocks.bin""" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "/Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBlocks.bin""" & vbCrLf
 
         outputtext = outputtext & vbCrLf
 
         outputtext = outputtext & ".align 2" & vbCrLf
 
         outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviours:" & vbCrLf
-        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviours.bin""" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "/Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviours.bin""" & vbCrLf
 
     End Sub
 
@@ -1721,70 +1722,70 @@ Public Class MnFrm
         outputtext = outputtext & ".align 2" & vbCrLf
 
         outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_Border:" & vbCrLf
-        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_Border.bin""" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "/Bank" & MapBank & "_Map" & MapNumber & "_Border.bin""" & vbCrLf
 
         outputtext = outputtext & vbCrLf
 
         outputtext = outputtext & ".align 2" & vbCrLf
 
         outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_MapData:" & vbCrLf
-        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_MapData.bin""" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "/Bank" & MapBank & "_Map" & MapNumber & "_MapData.bin""" & vbCrLf
 
         outputtext = outputtext & vbCrLf
 
         outputtext = outputtext & ".align 2" & vbCrLf
 
         outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_PrimaryPal:" & vbCrLf
-        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_PrimaryPal.bin""" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "/Bank" & MapBank & "_Map" & MapNumber & "_PrimaryPal.bin""" & vbCrLf
 
         outputtext = outputtext & vbCrLf
 
         outputtext = outputtext & ".align 2" & vbCrLf
 
         outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_PrimaryTiles:" & vbCrLf
-        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_PrimaryTiles.bin""" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "/Bank" & MapBank & "_Map" & MapNumber & "_PrimaryTiles.bin""" & vbCrLf
 
         outputtext = outputtext & vbCrLf
 
         outputtext = outputtext & ".align 2" & vbCrLf
 
         outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBlocks:" & vbCrLf
-        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBlocks.bin""" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "/Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBlocks.bin""" & vbCrLf
 
         outputtext = outputtext & vbCrLf
 
         outputtext = outputtext & ".align 2" & vbCrLf
 
         outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviours:" & vbCrLf
-        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviours.bin""" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "/Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviours.bin""" & vbCrLf
 
         outputtext = outputtext & vbCrLf
 
         outputtext = outputtext & ".align 2" & vbCrLf
 
         outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_SecondaryPal:" & vbCrLf
-        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_SecondaryPal.bin""" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "/Bank" & MapBank & "_Map" & MapNumber & "_SecondaryPal.bin""" & vbCrLf
 
         outputtext = outputtext & vbCrLf
 
         outputtext = outputtext & ".align 2" & vbCrLf
 
         outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_SecondaryTiles:" & vbCrLf
-        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_SecondaryTiles.bin""" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "/Bank" & MapBank & "_Map" & MapNumber & "_SecondaryTiles.bin""" & vbCrLf
 
         outputtext = outputtext & vbCrLf
 
         outputtext = outputtext & ".align 2" & vbCrLf
 
         outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBlocks:" & vbCrLf
-        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBlocks.bin""" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "/Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBlocks.bin""" & vbCrLf
 
         outputtext = outputtext & vbCrLf
 
         outputtext = outputtext & ".align 2" & vbCrLf
 
         outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviours:" & vbCrLf
-        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviours.bin""" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "/Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviours.bin""" & vbCrLf
 
     End Sub
 

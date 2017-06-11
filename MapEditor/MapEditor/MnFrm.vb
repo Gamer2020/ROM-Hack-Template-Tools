@@ -656,6 +656,7 @@ Public Class MnFrm
                 w.WriteLine("@\" & System.IO.Path.GetFileName(TextBox9.Text))
                 w.WriteLine(TextBox13.Text)
                 w.WriteLine(TextBox12.Text)
+                w.WriteLine("@\" & System.IO.Path.GetFileName(TextBox10.Text))
             End Using
 
         End If
@@ -729,6 +730,7 @@ Public Class MnFrm
             TextBox9.Text = Replace(ReadLine(9, allLines), "@", System.IO.Path.GetDirectoryName(fileOpenDialog.FileName), 1, 1)
             TextBox13.Text = ReadLine(10, allLines)
             TextBox12.Text = ReadLine(11, allLines)
+            TextBox10.Text = Replace(ReadLine(12, allLines), "@", System.IO.Path.GetDirectoryName(fileOpenDialog.FileName), 1, 1)
 
         End If
 
@@ -791,7 +793,7 @@ Public Class MnFrm
     End Sub
 
     Private Sub MEBlocksGroup_Resize(sender As Object, e As EventArgs) Handles MEBlocksGroup.Resize
-        Panel5.Height = MEBlocksGroup.Height - 46
+        Panel5.Height = MEBlocksGroup.Height - 100
     End Sub
 
     Private Sub GroupBox4_Resize(sender As Object, e As EventArgs) Handles GroupBox4.Resize
@@ -1215,5 +1217,186 @@ Public Class MnFrm
 
         End If
 
+    End Sub
+
+    Private Sub Button18_Click(sender As Object, e As EventArgs) Handles Button18.Click
+        fileOpenDialog.FileName = ""
+        fileOpenDialog.CheckFileExists = True
+
+        ' Check to ensure that the selected path exists.  Dialog box displays 
+        ' a warning otherwise.
+        fileOpenDialog.CheckPathExists = True
+
+        ' Get or set default extension. Doesn't include the leading ".".
+        fileOpenDialog.DefaultExt = "bin"
+
+        ' Return the file referenced by a link? If False, simply returns the selected link
+        ' file. If True, returns the file linked to the LNK file.
+        fileOpenDialog.DereferenceLinks = True
+
+        ' Just as in VB6, use a set of pairs of filters, separated with "|". Each 
+        ' pair consists of a description|file spec. Use a "|" between pairs. No need to put a
+        ' trailing "|". You can set the FilterIndex property as well, to select the default
+        ' filter. The first filter is numbered 1 (not 0). The default is 1. 
+        fileOpenDialog.Filter =
+            "(*.bin)|*.bin*"
+
+        fileOpenDialog.Multiselect = False
+
+        ' Restore the original directory when done selecting
+        ' a file? If False, the current directory changes
+        ' to the directory in which you selected the file.
+        ' Set this to True to put the current folder back
+        ' where it was when you started.
+        ' The default is False.
+        '.RestoreDirectory = False
+
+        ' Show the Help button and Read-Only checkbox?
+        fileOpenDialog.ShowHelp = False
+        fileOpenDialog.ShowReadOnly = False
+
+        ' Start out with the read-only check box checked?
+        ' This only make sense if ShowReadOnly is True.
+        fileOpenDialog.ReadOnlyChecked = False
+
+        fileOpenDialog.Title = "Select bin to open:"
+
+        ' Only accept valid Win32 file names?
+        fileOpenDialog.ValidateNames = True
+
+
+        If fileOpenDialog.ShowDialog = DialogResult.OK Then
+
+            TextBox10.Text = fileOpenDialog.FileName
+
+
+        End If
+    End Sub
+
+    Private Sub Button19_Click(sender As Object, e As EventArgs) Handles Button19.Click
+        If TextBox10.Text = "" Or TextBox1.Text = "" Or TextBox2.Text = "" Or TextBox4.Text = "" Or TextBox3.Text = "" Or TextBox6.Text = "" Or TextBox5.Text = "" Or TextBox8.Text = "" Or TextBox7.Text = "" Or TextBox9.Text = "" Then
+
+            MsgBox("Please check that you have loaded all the files!")
+            Exit Sub
+
+        End If
+
+        Dim start_time As DateTime
+        Dim stop_time As DateTime
+        Dim elapsed_time As TimeSpan
+
+        start_time = Now
+
+        Button5_Click(sender, e)
+
+        MEBlocksPictureBox2.Height = BlocksImage.Height * 2
+        MEBlocksPictureBox2.Width = BlocksImage.Width * 2
+
+        MEBlocksPictureBox2.Image = BlocksImage
+        MEBlocksPictureBox2.Refresh()
+
+        BorderPictureBox.Image = BorderDatatoBitmap(BlocksImage, TextBox10.Text, 2, 2)
+
+        BorderPictureBox.Height = 2 * 2 * 16
+        BorderPictureBox.Width = 2 * 2 * 16
+
+        SelectedBlockInBorderEditor = 0
+
+
+        If SelectedBlockInBorderEditor < 512 Then
+
+            BorderSelectedBlockPictureBox.Image = BlockToBitmap(TextBox6.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInBorderEditor)
+        Else
+
+            BorderSelectedBlockPictureBox.Image = BlockToBitmap(TextBox5.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInBorderEditor)
+        End If
+
+        SelectionStatus.Text = "Selected Block: " & SelectedBlockInBorderEditor
+
+        stop_time = Now
+        elapsed_time = stop_time.Subtract(start_time)
+        LoadTImeLabel.Text = "Border Load Time: " & elapsed_time.TotalSeconds.ToString("0.00")
+
+        Button19.Enabled = True
+        Button20.Enabled = True
+    End Sub
+
+    Private Sub GroupBox9_Resize(sender As Object, e As EventArgs) Handles GroupBox9.Resize
+        Panel10.Height = GroupBox9.Height - 100
+    End Sub
+
+    Private Sub MEBlocksPictureBox2_Click(sender As Object, e As EventArgs) Handles MEBlocksPictureBox2.Click
+        Dim [me] As MouseEventArgs = DirectCast(e, MouseEventArgs)
+        Dim coordinates As Point = [me].Location
+
+        If [me].Button = MouseButtons.Right Then
+
+        ElseIf [me].Button = MouseButtons.Left Then
+            SelectedBlockInBorderEditor = (Math.Floor(coordinates.X / (16 * 2)) + (Math.Floor(coordinates.Y / (16 * 2)) * 8))
+
+            If SelectedBlockInBlockEditor < 512 Then
+
+                BorderSelectedBlockPictureBox.Image = BlockToBitmap(TextBox6.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInBorderEditor)
+            Else
+
+                BorderSelectedBlockPictureBox.Image = BlockToBitmap(TextBox5.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInBorderEditor)
+            End If
+
+            SelectionStatus.Text = "Selected Block: " & SelectedBlockInBorderEditor
+        End If
+    End Sub
+
+    Private Sub BorderPictureBox_Click(sender As Object, e As EventArgs) Handles BorderPictureBox.Click
+        Dim [me] As MouseEventArgs = DirectCast(e, MouseEventArgs)
+        Dim coordinates As Point = [me].Location
+
+        If [me].Button = MouseButtons.Right Then
+
+            SelectedBlockInBorderEditor = BorderTilesArray((Math.Floor(coordinates.X / (16 * 2)) + (Math.Floor(coordinates.Y / (16 * 2)) * 2)))
+
+            If SelectedBlockInBorderEditor < 512 Then
+
+                BorderSelectedBlockPictureBox.Image = BlockToBitmap(TextBox6.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInBorderEditor)
+            Else
+
+                BorderSelectedBlockPictureBox.Image = BlockToBitmap(TextBox5.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInBorderEditor)
+            End If
+
+            SelectionStatus.Text = "Selected Block: " & SelectedBlockInBorderEditor
+
+        ElseIf [me].Button = MouseButtons.Left Then
+
+            BorderTilesArray((Math.Floor(coordinates.X / (16 * 2)) + (Math.Floor(coordinates.Y / (16 * 2)) * 2))) = SelectedBlockInBorderEditor
+
+            Dim MapBitmap As New Bitmap(BorderPictureBox.Image)
+            Dim TileBitmap As New Bitmap(BorderSelectedBlockPictureBox.Image)
+
+            BitmapBLT(TileBitmap, MapBitmap, Math.Floor(coordinates.X / (16 * 2)) * 16, (Math.Floor(coordinates.Y / (16 * 2))) * 16, 0, 0, 16, 16)
+
+            BorderPictureBox.Image = MapBitmap
+
+        End If
+    End Sub
+
+    Private Sub Button20_Click(sender As Object, e As EventArgs) Handles Button20.Click
+        Dim size As Integer = 2 * 2
+
+        Dim loopvar As Integer = 0
+
+        Dim tilebin As String
+        Dim permbin As String
+
+        While loopvar < size
+
+            tilebin = VB.Right("0000000000" & Convert.ToString(Convert.ToInt32(BorderTilesArray(loopvar)), 2), 10)
+            permbin = VB.Right("000000" & Convert.ToString(Convert.ToInt32(BorderPermsArray(loopvar)), 2), 6)
+
+            WriteHEX(TextBox10.Text, loopvar * 2, ReverseHEX(VB.Right("0000" & Hex(Convert.ToInt32(permbin & tilebin, 2)), 4)))
+
+            loopvar = loopvar + 1
+
+        End While
+
+        MsgBox("Border saved!")
     End Sub
 End Class
