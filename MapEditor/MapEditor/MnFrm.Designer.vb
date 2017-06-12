@@ -109,6 +109,13 @@ Partial Class MnFrm
         Me.LoadTImeLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.SelectionStatus = New System.Windows.Forms.ToolStripStatusLabel()
         Me.XYCoord = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.Button21 = New System.Windows.Forms.Button()
+        Me.BehaviorComboBox = New System.Windows.Forms.ComboBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.BackgroundComboBox = New System.Windows.Forms.ComboBox()
+        Me.CheckBox3 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox4 = New System.Windows.Forms.CheckBox()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -507,56 +514,63 @@ Partial Class MnFrm
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.Label4)
+        Me.GroupBox2.Controls.Add(Me.BackgroundComboBox)
+        Me.GroupBox2.Controls.Add(Me.Label3)
+        Me.GroupBox2.Controls.Add(Me.BehaviorComboBox)
+        Me.GroupBox2.Controls.Add(Me.Button21)
         Me.GroupBox2.Controls.Add(Me.BlockTopPictureBox)
         Me.GroupBox2.Controls.Add(Me.BlockBottomPictureBox)
         Me.GroupBox2.Controls.Add(Me.SelectedBlockPictureBox)
         Me.GroupBox2.Dock = System.Windows.Forms.DockStyle.Right
         Me.GroupBox2.Location = New System.Drawing.Point(568, 0)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(217, 565)
+        Me.GroupBox2.Size = New System.Drawing.Size(302, 565)
         Me.GroupBox2.TabIndex = 3
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Block Edit"
         '
         'BlockTopPictureBox
         '
-        Me.BlockTopPictureBox.Location = New System.Drawing.Point(121, 132)
+        Me.BlockTopPictureBox.Location = New System.Drawing.Point(155, 132)
         Me.BlockTopPictureBox.Margin = New System.Windows.Forms.Padding(2)
         Me.BlockTopPictureBox.Name = "BlockTopPictureBox"
-        Me.BlockTopPictureBox.Size = New System.Drawing.Size(85, 82)
+        Me.BlockTopPictureBox.Size = New System.Drawing.Size(64, 64)
         Me.BlockTopPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.BlockTopPictureBox.TabIndex = 2
         Me.BlockTopPictureBox.TabStop = False
         '
         'BlockBottomPictureBox
         '
-        Me.BlockBottomPictureBox.Location = New System.Drawing.Point(18, 132)
+        Me.BlockBottomPictureBox.Location = New System.Drawing.Point(52, 132)
         Me.BlockBottomPictureBox.Margin = New System.Windows.Forms.Padding(2)
         Me.BlockBottomPictureBox.Name = "BlockBottomPictureBox"
-        Me.BlockBottomPictureBox.Size = New System.Drawing.Size(85, 82)
+        Me.BlockBottomPictureBox.Size = New System.Drawing.Size(64, 64)
         Me.BlockBottomPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.BlockBottomPictureBox.TabIndex = 1
         Me.BlockBottomPictureBox.TabStop = False
         '
         'SelectedBlockPictureBox
         '
-        Me.SelectedBlockPictureBox.Location = New System.Drawing.Point(64, 41)
+        Me.SelectedBlockPictureBox.Location = New System.Drawing.Point(98, 41)
         Me.SelectedBlockPictureBox.Margin = New System.Windows.Forms.Padding(2)
         Me.SelectedBlockPictureBox.Name = "SelectedBlockPictureBox"
-        Me.SelectedBlockPictureBox.Size = New System.Drawing.Size(85, 82)
+        Me.SelectedBlockPictureBox.Size = New System.Drawing.Size(64, 64)
         Me.SelectedBlockPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.SelectedBlockPictureBox.TabIndex = 0
         Me.SelectedBlockPictureBox.TabStop = False
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.CheckBox4)
+        Me.GroupBox1.Controls.Add(Me.CheckBox3)
         Me.GroupBox1.Controls.Add(Me.SelectedTilePictureBox)
         Me.GroupBox1.Controls.Add(Me.Panel3)
         Me.GroupBox1.Controls.Add(Me.ComboBox1)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Right
         Me.GroupBox1.Enabled = False
-        Me.GroupBox1.Location = New System.Drawing.Point(785, 0)
+        Me.GroupBox1.Location = New System.Drawing.Point(870, 0)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(416, 565)
         Me.GroupBox1.TabIndex = 2
@@ -565,7 +579,7 @@ Partial Class MnFrm
         '
         'SelectedTilePictureBox
         '
-        Me.SelectedTilePictureBox.Location = New System.Drawing.Point(218, 38)
+        Me.SelectedTilePictureBox.Location = New System.Drawing.Point(218, 26)
         Me.SelectedTilePictureBox.Name = "SelectedTilePictureBox"
         Me.SelectedTilePictureBox.Size = New System.Drawing.Size(21, 20)
         Me.SelectedTilePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -594,8 +608,8 @@ Partial Class MnFrm
         '
         Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"Pal 0", "Pal1", "Pal 2", "Pal 3", "Pal 4", "Pal 5", "Pal 6", "Pal 7", "Pal 8", "Pal 9", "Pal 10", "Pal 11", "Pal 12"})
-        Me.ComboBox1.Location = New System.Drawing.Point(73, 38)
+        Me.ComboBox1.Items.AddRange(New Object() {"Pal 0", "Pal 1", "Pal 2", "Pal 3", "Pal 4", "Pal 5", "Pal 6", "Pal 7", "Pal 8", "Pal 9", "Pal 10", "Pal 11", "Pal 12"})
+        Me.ComboBox1.Location = New System.Drawing.Point(73, 26)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(121, 24)
         Me.ComboBox1.TabIndex = 1
@@ -603,7 +617,7 @@ Partial Class MnFrm
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(21, 41)
+        Me.Label1.Location = New System.Drawing.Point(21, 29)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(32, 17)
         Me.Label1.TabIndex = 0
@@ -993,6 +1007,71 @@ Partial Class MnFrm
         Me.XYCoord.Size = New System.Drawing.Size(29, 20)
         Me.XYCoord.Text = "     "
         '
+        'Button21
+        '
+        Me.Button21.Location = New System.Drawing.Point(52, 385)
+        Me.Button21.Name = "Button21"
+        Me.Button21.Size = New System.Drawing.Size(188, 55)
+        Me.Button21.TabIndex = 3
+        Me.Button21.Text = "Save Block"
+        Me.Button21.UseVisualStyleBackColor = True
+        '
+        'BehaviorComboBox
+        '
+        Me.BehaviorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.BehaviorComboBox.FormattingEnabled = True
+        Me.BehaviorComboBox.Location = New System.Drawing.Point(18, 269)
+        Me.BehaviorComboBox.Name = "BehaviorComboBox"
+        Me.BehaviorComboBox.Size = New System.Drawing.Size(236, 24)
+        Me.BehaviorComboBox.TabIndex = 4
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(15, 239)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(100, 17)
+        Me.Label3.TabIndex = 5
+        Me.Label3.Text = "Behavior Byte:"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(15, 306)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(120, 17)
+        Me.Label4.TabIndex = 7
+        Me.Label4.Text = "Background Byte:"
+        '
+        'BackgroundComboBox
+        '
+        Me.BackgroundComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.BackgroundComboBox.FormattingEnabled = True
+        Me.BackgroundComboBox.Location = New System.Drawing.Point(18, 340)
+        Me.BackgroundComboBox.Name = "BackgroundComboBox"
+        Me.BackgroundComboBox.Size = New System.Drawing.Size(236, 24)
+        Me.BackgroundComboBox.TabIndex = 6
+        '
+        'CheckBox3
+        '
+        Me.CheckBox3.AutoSize = True
+        Me.CheckBox3.Location = New System.Drawing.Point(24, 56)
+        Me.CheckBox3.Name = "CheckBox3"
+        Me.CheckBox3.Size = New System.Drawing.Size(65, 21)
+        Me.CheckBox3.TabIndex = 5
+        Me.CheckBox3.Text = "X Flip"
+        Me.CheckBox3.UseVisualStyleBackColor = True
+        '
+        'CheckBox4
+        '
+        Me.CheckBox4.AutoSize = True
+        Me.CheckBox4.Location = New System.Drawing.Point(94, 56)
+        Me.CheckBox4.Name = "CheckBox4"
+        Me.CheckBox4.Size = New System.Drawing.Size(65, 21)
+        Me.CheckBox4.TabIndex = 6
+        Me.CheckBox4.Text = "Y Flip"
+        Me.CheckBox4.UseVisualStyleBackColor = True
+        '
         'MnFrm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -1013,6 +1092,7 @@ Partial Class MnFrm
         Me.Panel4.ResumeLayout(False)
         CType(Me.BlockSetsPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
         CType(Me.BlockTopPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BlockBottomPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SelectedBlockPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1142,4 +1222,11 @@ Partial Class MnFrm
     Friend WithEvents Panel10 As Panel
     Friend WithEvents MEBlocksPictureBox2 As PictureBox
     Friend WithEvents BorderPictureBox As PictureBox
+    Friend WithEvents BehaviorComboBox As ComboBox
+    Friend WithEvents Button21 As Button
+    Friend WithEvents Label4 As Label
+    Friend WithEvents BackgroundComboBox As ComboBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents CheckBox4 As CheckBox
+    Friend WithEvents CheckBox3 As CheckBox
 End Class

@@ -1,0 +1,256 @@
+0
+1
+Grass animation (Pokemon) 
+High grass animation
+4
+5
+Sand foot prints (with sandheaps)
+Animation micro grass
+8
+9
+10
+11
+12
+Warp into pyramid. Floor 51
+14
+15
+Reflection on water with waves trailing
+17
+Waterfall/with falling down
+19
+20
+Jump with mach bike, splashing water
+Reflection on water, splashing water, waves
+Lasting water on feet
+24
+25
+Reflection (Background byte=20)
+Water on feet
+Water on feet + arrow down
+29
+30
+31
+Slide like on ice
+Foot prints
+Diving animation bubbles
+35
+36
+Sand foot prints
+38
+39
+Hero halfway underwater
+41
+Diving animation bubbles
+43
+44
+45
+46
+47
+Person blocked on right
+Person blocked on left
+Person blocked upwards
+Person blocked downwards
+Person blocked up/down/right
+Person blocked up/down/left
+Person blocked down/right
+Person blocked down/left
+Person jumps right over block
+Person jumps left over block
+Person jumps up over block
+Person jumps down over block
+60
+61
+62
+63
+Hero walks right
+Hero walks left
+Hero walls up
+Hero walks down
+Hero slides right
+Hero slides left
+Hero slides up
+Hero slides down
+Hero slides up/down/left/right
+73
+74
+75
+76
+77
+78
+79
+Hero runs right
+Hero runs left
+Hero runs up
+Hero runs down
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+Steps, cave/ use warp
+Use warp
+Arrow right => warp left of block
+Arrow left => warp right of block
+Arrow up => warp above block
+Arrow down => warp under block
+Warp into last-visited building
+103
+104
+Use door/warp
+PokeCenter escalator up/use warp
+PokeCenter escalator down/use warp
+Warp to emerge from water => Hero is surfing
+Arrow down => warp under block
+Warp/person exits upwards
+111
+Teleport warp
+113
+114
+115
+Water on feet
+Water on feet
+Water on feet
+Water on feet
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+Only walking possible
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+Animation???
+Hero jumps twice
+Hero turns around and goes back into direction he came from
+189
+Person blocked left/right
+191
+Person blocked up/down
+Person blocked left/right
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+Slippery clay animation
+Only accessible with acro bike
+210
+Solid block
+Solid block
+Solid block
+Solid block
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255

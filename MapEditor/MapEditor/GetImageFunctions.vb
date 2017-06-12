@@ -19,7 +19,14 @@ Module GetImageFunctions
 
     Public SelectedTileImgInBlockEditor As Integer
     Public SelectedTileImgInBlockEditorPal As Integer
+    Public SelectedTileImgInBlockEditorX As Integer
+    Public SelectedTileImgInBlockEditorY As Integer
     Public SelectedBlockInBlockEditor As Integer
+
+    Public SelectedBlockPals(7) As Integer
+    Public SelectedBlockY(7) As Integer
+    Public SelectedBlockX(7) As Integer
+    Public SelectedBlockTile(7) As Integer
 
     Public SelectedBlockInMapEditor As Integer
     Public SelectedBlockInBorderEditor As Integer

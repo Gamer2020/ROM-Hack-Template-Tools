@@ -501,9 +501,116 @@ Public Class MnFrm
 
         LoadBlockset()
 
+        SelectedBlockInBlockEditor = 0
+
+        If SelectedBlockInBlockEditor < 512 Then
+
+            loopvar = 0
+
+            Dim tilenum As Integer = 0
+            Dim palnum As Integer = 0
+            Dim Yflip As Integer
+            Dim Xflip As Integer
+            Dim Curbytesbin As String = ""
+            Dim Flips As RotateFlipType
+
+
+
+            While loopvar < 8
+
+                If SelectedBlockInBlockEditor < 512 Then
+
+                    Curbytesbin = VB.Right("0000000000000000" & Convert.ToString(Int32.Parse(ReverseHEX(ReadHEX(TextBox6.Text, SelectedBlockInBlockEditor * 16 + (loopvar * 2), 2)), System.Globalization.NumberStyles.HexNumber), 2), 16)
+
+                Else
+
+                    Curbytesbin = VB.Right("0000000000000000" & Convert.ToString(Int32.Parse(ReverseHEX(ReadHEX(TextBox5.Text, (SelectedBlockInBlockEditor - 512) * 16 + (loopvar * 2), 2)), System.Globalization.NumberStyles.HexNumber), 2), 16)
+
+                End If
+
+                tilenum = Convert.ToInt32(Curbytesbin.Remove(0, 6), 2)
+                palnum = Convert.ToInt32(Curbytesbin.Substring(0, 4), 2)
+                Yflip = Convert.ToInt32(Curbytesbin.Substring(4, 1), 2)
+                Xflip = Convert.ToInt32(Curbytesbin.Substring(5, 1), 2)
+
+                If palnum > 12 Then
+                    palnum = 12
+                End If
+
+                SelectedBlockPals(loopvar) = palnum
+                SelectedBlockY(loopvar) = Yflip
+                SelectedBlockX(loopvar) = Xflip
+                SelectedBlockTile(loopvar) = tilenum
+
+
+                loopvar = loopvar + 1
+
+            End While
+
+            SelectedBlockPictureBox.Image = BlockToBitmap(TextBox6.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInBlockEditor)
+            BlockBottomPictureBox.Image = BlockBottomToBitmap(TextBox6.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInBlockEditor)
+            BlockTopPictureBox.Image = BlockTopToBitmap(TextBox6.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInBlockEditor)
+
+            BehaviorComboBox.SelectedIndex = "&H" & ReadHEX(TextBox8.Text, SelectedBlockInBlockEditor * 2, 1)
+            BackgroundComboBox.SelectedIndex = "&H" & ReadHEX(TextBox8.Text, 1 + (SelectedBlockInBlockEditor * 2), 1)
+        Else
+
+            loopvar = 0
+
+            Dim tilenum As Integer = 0
+            Dim palnum As Integer = 0
+            Dim Yflip As Integer
+            Dim Xflip As Integer
+            Dim Curbytesbin As String = ""
+            Dim Flips As RotateFlipType
+
+
+
+            While loopvar < 8
+
+                If SelectedBlockInBlockEditor < 512 Then
+
+                    Curbytesbin = VB.Right("0000000000000000" & Convert.ToString(Int32.Parse(ReverseHEX(ReadHEX(TextBox6.Text, SelectedBlockInBlockEditor * 16 + (loopvar * 2), 2)), System.Globalization.NumberStyles.HexNumber), 2), 16)
+
+                Else
+
+                    Curbytesbin = VB.Right("0000000000000000" & Convert.ToString(Int32.Parse(ReverseHEX(ReadHEX(TextBox5.Text, (SelectedBlockInBlockEditor - 512) * 16 + (loopvar * 2), 2)), System.Globalization.NumberStyles.HexNumber), 2), 16)
+
+                End If
+
+                tilenum = Convert.ToInt32(Curbytesbin.Remove(0, 6), 2)
+                palnum = Convert.ToInt32(Curbytesbin.Substring(0, 4), 2)
+                Yflip = Convert.ToInt32(Curbytesbin.Substring(4, 1), 2)
+                Xflip = Convert.ToInt32(Curbytesbin.Substring(5, 1), 2)
+
+                If palnum > 12 Then
+                    palnum = 12
+                End If
+
+                SelectedBlockPals(loopvar) = palnum
+                SelectedBlockY(loopvar) = Yflip
+                SelectedBlockX(loopvar) = Xflip
+                SelectedBlockTile(loopvar) = tilenum
+
+
+                loopvar = loopvar + 1
+
+            End While
+
+            SelectedBlockPictureBox.Image = BlockToBitmap(TextBox5.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInBlockEditor)
+            BlockBottomPictureBox.Image = BlockBottomToBitmap(TextBox6.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInBlockEditor)
+            BlockTopPictureBox.Image = BlockTopToBitmap(TextBox6.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInBlockEditor)
+
+            BehaviorComboBox.SelectedIndex = "&H" & ReadHEX(TextBox7.Text, SelectedBlockInBlockEditor * 2, 1)
+            BackgroundComboBox.SelectedIndex = "&H" & ReadHEX(TextBox7.Text, 1 + (SelectedBlockInBlockEditor * 2), 1)
+        End If
+
+        SelectionStatus.Text = "Selected Block: " & SelectedBlockInBlockEditor
+
+
         stop_time = Now
         elapsed_time = stop_time.Subtract(start_time)
-        LoadTImeLabel.Text = "BlocK Load Time: " & elapsed_time.TotalSeconds.ToString("0.00")
+        LoadTImeLabel.Text = "Block Load Time: " & elapsed_time.TotalSeconds.ToString("0.00")
 
     End Sub
 
@@ -531,12 +638,43 @@ Public Class MnFrm
 
             TilesPictureBox.Image = Tiles3
 
+            Dim Flips As RotateFlipType
+
+            If SelectedTileImgInBlockEditorY = 0 And SelectedTileImgInBlockEditorX = 0 Then
+
+                Flips = RotateFlipType.RotateNoneFlipNone
+
+            ElseIf SelectedTileImgInBlockEditorY = 0 And SelectedTileImgInBlockEditorX = 1 Then
+
+                Flips = RotateFlipType.RotateNoneFlipX
+
+            ElseIf SelectedTileImgInBlockEditorY = 1 And SelectedTileImgInBlockEditorX = 0 Then
+
+                Flips = RotateFlipType.RotateNoneFlipY
+
+            ElseIf SelectedTileImgInBlockEditorY = 1 And SelectedTileImgInBlockEditorX = 1 Then
+
+                Flips = RotateFlipType.RotateNoneFlipXY
+
+            End If
+
+            If SelectedTileImgInBlockEditor < 512 Then
+
+                SelectedTilePictureBox.Image = LoadSingleTileToBitmap2(TileSet1Image, SelectedTileImgInBlockEditor, TilePals(SelectedTileImgInBlockEditorPal), True, Flips)
+
+
+            Else
+
+                SelectedTilePictureBox.Image = LoadSingleTileToBitmap2(TileSet2Image, SelectedTileImgInBlockEditor - 512, TilePals(SelectedTileImgInBlockEditorPal), True, Flips)
+
+            End If
+
         End If
 
     End Sub
 
     Private Sub GroupBox1_Resize(sender As Object, e As EventArgs) Handles GroupBox1.Resize
-        Panel3.Height = GroupBox1.Height - 89
+        Panel3.Height = GroupBox1.Height - 100
     End Sub
 
     Private Sub LoadBlockset()
@@ -990,7 +1128,15 @@ Public Class MnFrm
         If [me].Button = MouseButtons.Right Then
 
         ElseIf [me].Button = MouseButtons.left Then
+
+
             SelectedTileImgInBlockEditor = (Math.Floor(coordinates.X / (8 * 2)) + (Math.Floor(coordinates.Y / (8 * 2)) * 16))
+
+            SelectedTileImgInBlockEditorX = 0
+            SelectedTileImgInBlockEditorY = 0
+
+            CheckBox3.Checked = False
+            CheckBox4.Checked = False
 
             If SelectedTileImgInBlockEditor < 512 Then
 
@@ -1010,6 +1156,15 @@ Public Class MnFrm
     End Sub
 
     Private Sub MnFrm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        BehaviorComboBox.Items.Clear()
+
+        BehaviorComboBox.Items.AddRange(IO.File.ReadAllLines(AppPath & "txt\BehaviorBytes.txt"))
+
+        BackgroundComboBox.Items.Clear()
+
+        BackgroundComboBox.Items.AddRange(IO.File.ReadAllLines(AppPath & "txt\BackgroundBytes.txt"))
+
         Me.WindowState = FormWindowState.Maximized
     End Sub
 
@@ -1019,19 +1174,113 @@ Public Class MnFrm
 
         If [me].Button = MouseButtons.Right Then
 
+            SelectedBlockInBlockEditor = (Math.Floor(coordinates.X / (16 * 2)) + (Math.Floor(coordinates.Y / (16 * 2)) * 8))
+
+
+
         ElseIf [me].Button = MouseButtons.Left Then
             SelectedBlockInBlockEditor = (Math.Floor(coordinates.X / (16 * 2)) + (Math.Floor(coordinates.Y / (16 * 2)) * 8))
 
             If SelectedBlockInBlockEditor < 512 Then
 
+                Dim loopvar As Integer = 0
+
+                Dim tilenum As Integer = 0
+                Dim palnum As Integer = 0
+                Dim Yflip As Integer
+                Dim Xflip As Integer
+                Dim Curbytesbin As String = ""
+                Dim Flips As RotateFlipType
+
+
+
+                While loopvar < 8
+
+                    If SelectedBlockInBlockEditor < 512 Then
+
+                        Curbytesbin = VB.Right("0000000000000000" & Convert.ToString(Int32.Parse(ReverseHEX(ReadHEX(TextBox6.Text, SelectedBlockInBlockEditor * 16 + (loopvar * 2), 2)), System.Globalization.NumberStyles.HexNumber), 2), 16)
+
+                    Else
+
+                        Curbytesbin = VB.Right("0000000000000000" & Convert.ToString(Int32.Parse(ReverseHEX(ReadHEX(TextBox5.Text, (SelectedBlockInBlockEditor - 512) * 16 + (loopvar * 2), 2)), System.Globalization.NumberStyles.HexNumber), 2), 16)
+
+                    End If
+
+                    tilenum = Convert.ToInt32(Curbytesbin.Remove(0, 6), 2)
+                    palnum = Convert.ToInt32(Curbytesbin.Substring(0, 4), 2)
+                    Yflip = Convert.ToInt32(Curbytesbin.Substring(4, 1), 2)
+                    Xflip = Convert.ToInt32(Curbytesbin.Substring(5, 1), 2)
+
+                    If palnum > 12 Then
+                        palnum = 12
+                    End If
+
+                    SelectedBlockPals(loopvar) = palnum
+                    SelectedBlockY(loopvar) = Yflip
+                    SelectedBlockX(loopvar) = Xflip
+                    SelectedBlockTile(loopvar) = tilenum
+
+
+                    loopvar = loopvar + 1
+
+                End While
+
                 SelectedBlockPictureBox.Image = BlockToBitmap(TextBox6.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInBlockEditor)
-                BlockBottomPictureBox.Image = BlockBottomToBitmap(TextBox6.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInBlockEditor)
+                    BlockBottomPictureBox.Image = BlockBottomToBitmap(TextBox6.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInBlockEditor)
                 BlockTopPictureBox.Image = BlockTopToBitmap(TextBox6.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInBlockEditor)
+
+                BehaviorComboBox.SelectedIndex = "&H" & ReadHEX(TextBox8.Text, SelectedBlockInBlockEditor * 2, 1)
+                BackgroundComboBox.SelectedIndex = "&H" & ReadHEX(TextBox8.Text, 1 + (SelectedBlockInBlockEditor * 2), 1)
             Else
+
+                Dim loopvar As Integer = 0
+
+                Dim tilenum As Integer = 0
+                Dim palnum As Integer = 0
+                Dim Yflip As Integer
+                Dim Xflip As Integer
+                Dim Curbytesbin As String = ""
+                Dim Flips As RotateFlipType
+
+
+
+                While loopvar < 8
+
+                    If SelectedBlockInBlockEditor < 512 Then
+
+                        Curbytesbin = VB.Right("0000000000000000" & Convert.ToString(Int32.Parse(ReverseHEX(ReadHEX(TextBox6.Text, SelectedBlockInBlockEditor * 16 + (loopvar * 2), 2)), System.Globalization.NumberStyles.HexNumber), 2), 16)
+
+                    Else
+
+                        Curbytesbin = VB.Right("0000000000000000" & Convert.ToString(Int32.Parse(ReverseHEX(ReadHEX(TextBox5.Text, (SelectedBlockInBlockEditor - 512) * 16 + (loopvar * 2), 2)), System.Globalization.NumberStyles.HexNumber), 2), 16)
+
+                    End If
+
+                    tilenum = Convert.ToInt32(Curbytesbin.Remove(0, 6), 2)
+                    palnum = Convert.ToInt32(Curbytesbin.Substring(0, 4), 2)
+                    Yflip = Convert.ToInt32(Curbytesbin.Substring(4, 1), 2)
+                    Xflip = Convert.ToInt32(Curbytesbin.Substring(5, 1), 2)
+
+                    If palnum > 12 Then
+                        palnum = 12
+                    End If
+
+                    SelectedBlockPals(loopvar) = palnum
+                    SelectedBlockY(loopvar) = Yflip
+                    SelectedBlockX(loopvar) = Xflip
+                    SelectedBlockTile(loopvar) = tilenum
+
+
+                    loopvar = loopvar + 1
+
+                End While
 
                 SelectedBlockPictureBox.Image = BlockToBitmap(TextBox5.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInBlockEditor)
                 BlockBottomPictureBox.Image = BlockBottomToBitmap(TextBox6.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInBlockEditor)
                 BlockTopPictureBox.Image = BlockTopToBitmap(TextBox6.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInBlockEditor)
+
+                BehaviorComboBox.SelectedIndex = "&H" & ReadHEX(TextBox7.Text, SelectedBlockInBlockEditor * 2, 1)
+                BackgroundComboBox.SelectedIndex = "&H" & ReadHEX(TextBox7.Text, 1 + (SelectedBlockInBlockEditor * 2), 1)
             End If
 
             SelectionStatus.Text = "Selected Block: " & SelectedBlockInBlockEditor
@@ -1398,5 +1647,139 @@ Public Class MnFrm
         End While
 
         MsgBox("Border saved!")
+    End Sub
+
+    Private Sub Button21_Click(sender As Object, e As EventArgs) Handles Button21.Click
+
+        If SelectedBlockInBlockEditor < 512 Then
+
+            WriteHEX(TextBox8.Text, SelectedBlockInBlockEditor * 2, Hex(BehaviorComboBox.SelectedIndex))
+            WriteHEX(TextBox8.Text, 1 + (SelectedBlockInBlockEditor * 2), Hex(BackgroundComboBox.SelectedIndex))
+
+        Else
+
+            WriteHEX(TextBox7.Text, SelectedBlockInBlockEditor * 2, Hex(BehaviorComboBox.SelectedIndex))
+            WriteHEX(TextBox7.Text, 1 + (SelectedBlockInBlockEditor * 2), Hex(BackgroundComboBox.SelectedIndex))
+
+        End If
+
+    End Sub
+
+    Private Sub BlockBottomPictureBox_Click(sender As Object, e As EventArgs) Handles BlockBottomPictureBox.Click
+
+        Dim [me] As MouseEventArgs = DirectCast(e, MouseEventArgs)
+        Dim coordinates As Point = [me].Location
+
+        If [me].Button = MouseButtons.Left Then
+
+            Dim curselection As Integer = (Math.Floor(coordinates.X / (32)) + (Math.Floor(coordinates.Y / (32)) * 2))
+
+            Dim MapBitmap As New Bitmap(BlockBottomPictureBox.Image)
+            Dim TileBitmap As New Bitmap(SelectedTilePictureBox.Image)
+
+            BitmapBLT(TileBitmap, MapBitmap, Math.Floor(coordinates.X / (32)) * 8, 0, 0, 0, 8, 8)
+
+            BlockBottomPictureBox.Image = MapBitmap
+
+
+        ElseIf [me].Button = MouseButtons.Right Then
+
+            Dim curselection As Integer = (Math.Floor(coordinates.X / (16 * 2)) + (Math.Floor(coordinates.Y / (16 * 2)) * 8))
+
+            Dim output As New Bitmap(16, 16)
+
+            Dim tileimage As String = ""
+
+            Dim tilenum As Integer = 0
+            Dim palnum As Integer = 0
+            Dim Yflip As Integer
+            Dim Xflip As Integer
+            Dim Curbytesbin As String = ""
+            Dim Flips As RotateFlipType
+
+
+        End If
+    End Sub
+
+    Private Sub CheckBox3_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox3.CheckedChanged
+        If CheckBox3.Checked = True Then
+            SelectedTileImgInBlockEditorX = 1
+
+        Else
+            SelectedTileImgInBlockEditorX = 0
+        End If
+
+        Dim Flips As RotateFlipType
+
+        If SelectedTileImgInBlockEditorY = 0 And SelectedTileImgInBlockEditorX = 0 Then
+
+            Flips = RotateFlipType.RotateNoneFlipNone
+
+        ElseIf SelectedTileImgInBlockEditorY = 0 And SelectedTileImgInBlockEditorX = 1 Then
+
+            Flips = RotateFlipType.RotateNoneFlipX
+
+        ElseIf SelectedTileImgInBlockEditorY = 1 And SelectedTileImgInBlockEditorX = 0 Then
+
+            Flips = RotateFlipType.RotateNoneFlipY
+
+        ElseIf SelectedTileImgInBlockEditorY = 1 And SelectedTileImgInBlockEditorX = 1 Then
+
+            Flips = RotateFlipType.RotateNoneFlipXY
+
+        End If
+
+        If SelectedTileImgInBlockEditor < 512 Then
+
+            SelectedTilePictureBox.Image = LoadSingleTileToBitmap2(TileSet1Image, SelectedTileImgInBlockEditor, TilePals(SelectedTileImgInBlockEditorPal), True, Flips)
+
+
+        Else
+
+            SelectedTilePictureBox.Image = LoadSingleTileToBitmap2(TileSet2Image, SelectedTileImgInBlockEditor - 512, TilePals(SelectedTileImgInBlockEditorPal), True, Flips)
+
+        End If
+
+    End Sub
+
+    Private Sub CheckBox4_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox4.CheckedChanged
+        If CheckBox4.Checked = True Then
+            SelectedTileImgInBlockEditorY = 1
+
+        Else
+            SelectedTileImgInBlockEditorY = 0
+        End If
+
+        Dim Flips As RotateFlipType
+
+        If SelectedTileImgInBlockEditorY = 0 And SelectedTileImgInBlockEditorX = 0 Then
+
+            Flips = RotateFlipType.RotateNoneFlipNone
+
+        ElseIf SelectedTileImgInBlockEditorY = 0 And SelectedTileImgInBlockEditorX = 1 Then
+
+            Flips = RotateFlipType.RotateNoneFlipX
+
+        ElseIf SelectedTileImgInBlockEditorY = 1 And SelectedTileImgInBlockEditorX = 0 Then
+
+            Flips = RotateFlipType.RotateNoneFlipY
+
+        ElseIf SelectedTileImgInBlockEditorY = 1 And SelectedTileImgInBlockEditorX = 1 Then
+
+            Flips = RotateFlipType.RotateNoneFlipXY
+
+        End If
+
+        If SelectedTileImgInBlockEditor < 512 Then
+
+            SelectedTilePictureBox.Image = LoadSingleTileToBitmap2(TileSet1Image, SelectedTileImgInBlockEditor, TilePals(SelectedTileImgInBlockEditorPal), True, Flips)
+
+
+        Else
+
+            SelectedTilePictureBox.Image = LoadSingleTileToBitmap2(TileSet2Image, SelectedTileImgInBlockEditor - 512, TilePals(SelectedTileImgInBlockEditorPal), True, Flips)
+
+        End If
+
     End Sub
 End Class
