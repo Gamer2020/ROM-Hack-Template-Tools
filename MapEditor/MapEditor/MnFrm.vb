@@ -1677,7 +1677,7 @@ Public Class MnFrm
             Dim MapBitmap As New Bitmap(BlockBottomPictureBox.Image)
             Dim TileBitmap As New Bitmap(SelectedTilePictureBox.Image)
 
-            BitmapBLT(TileBitmap, MapBitmap, Math.Floor(coordinates.X / (32)) * 8, 0, 0, 0, 8, 8)
+            BitmapBLT(TileBitmap, MapBitmap, Math.Floor(coordinates.X / (32)) * 8, Math.Floor(coordinates.Y / (32)) * 8, 0, 0, 8, 8)
 
             BlockBottomPictureBox.Image = MapBitmap
 
@@ -1697,6 +1697,45 @@ Public Class MnFrm
             Dim Curbytesbin As String = ""
             Dim Flips As RotateFlipType
 
+            SelectedTileImgInBlockEditor = SelectedBlockTile(Math.Floor(coordinates.X / (32)) + (Math.Floor(coordinates.Y / (32)) * 2))
+
+            ComboBox1.SelectedIndex = SelectedBlockPals(Math.Floor(coordinates.X / (32)) + (Math.Floor(coordinates.Y / (32)) * 2))
+
+            SelectedTileImgInBlockEditorX = SelectedBlockX(Math.Floor(coordinates.X / (32)) + (Math.Floor(coordinates.Y / (32)) * 2))
+            SelectedTileImgInBlockEditorY = SelectedBlockY(Math.Floor(coordinates.X / (32)) + (Math.Floor(coordinates.Y / (32)) * 2))
+
+            If SelectedTileImgInBlockEditorX = 1 Then
+
+                CheckBox3.Checked = True
+
+            Else
+
+                CheckBox3.Checked = False
+
+            End If
+
+            If SelectedTileImgInBlockEditorY = 1 Then
+
+                CheckBox4.Checked = True
+
+            Else
+
+                CheckBox4.Checked = False
+
+            End If
+
+            If SelectedTileImgInBlockEditor < 512 Then
+
+                SelectedTilePictureBox.Image = LoadSingleTileToBitmap2(TileSet1Image, SelectedTileImgInBlockEditor, TilePals(SelectedTileImgInBlockEditorPal), True, RotateFlipType.RotateNoneFlipNone)
+
+
+            Else
+
+                SelectedTilePictureBox.Image = LoadSingleTileToBitmap2(TileSet2Image, SelectedTileImgInBlockEditor - 512, TilePals(SelectedTileImgInBlockEditorPal), True, RotateFlipType.RotateNoneFlipNone)
+
+            End If
+
+            SelectionStatus.Text = "Selected Tile: " & SelectedTileImgInBlockEditor
 
         End If
     End Sub
