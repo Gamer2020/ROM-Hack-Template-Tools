@@ -1275,15 +1275,30 @@ Public Class MnFrm
 
                 End While
 
-                SelectedBlockPictureBox.Image = BlockToBitmap(TextBox5.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInBlockEditor)
-                BlockBottomPictureBox.Image = BlockBottomToBitmap(TextBox6.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInBlockEditor)
-                BlockTopPictureBox.Image = BlockTopToBitmap(TextBox6.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInBlockEditor)
+                If SelectedBlockInBlockEditor < 512 Then
 
-                BehaviorComboBox.SelectedIndex = "&H" & ReadHEX(TextBox7.Text, SelectedBlockInBlockEditor * 2, 1)
-                BackgroundComboBox.SelectedIndex = "&H" & ReadHEX(TextBox7.Text, 1 + (SelectedBlockInBlockEditor * 2), 1)
+                    SelectedBlockPictureBox.Image = BlockToBitmap(TextBox6.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInBlockEditor)
+                    BlockBottomPictureBox.Image = BlockBottomToBitmap(TextBox6.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInBlockEditor)
+                    BlockTopPictureBox.Image = BlockTopToBitmap(TextBox6.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInBlockEditor)
+
+                    BehaviorComboBox.SelectedIndex = "&H" & ReadHEX(TextBox8.Text, SelectedBlockInBlockEditor * 2, 1)
+                    BackgroundComboBox.SelectedIndex = "&H" & ReadHEX(TextBox8.Text, 1 + (SelectedBlockInBlockEditor * 2), 1)
+
+                Else
+
+                    SelectedBlockPictureBox.Image = BlockToBitmap(TextBox5.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInBlockEditor)
+                    BlockBottomPictureBox.Image = BlockBottomToBitmap(TextBox5.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInBlockEditor)
+                    BlockTopPictureBox.Image = BlockTopToBitmap(TextBox5.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInBlockEditor)
+
+                    BehaviorComboBox.SelectedIndex = "&H" & ReadHEX(TextBox7.Text, (SelectedBlockInBlockEditor * 2) - (512 * 2), 1)
+                    BackgroundComboBox.SelectedIndex = "&H" & ReadHEX(TextBox7.Text, 1 + (SelectedBlockInBlockEditor * 2) - (512 * 2), 1)
+
+                End If
+
+
             End If
 
-            SelectionStatus.Text = "Selected Block: " & SelectedBlockInBlockEditor
+                SelectionStatus.Text = "Selected Block: " & SelectedBlockInBlockEditor
 
         End If
     End Sub
@@ -1658,8 +1673,8 @@ Public Class MnFrm
 
         Else
 
-            WriteHEX(TextBox7.Text, SelectedBlockInBlockEditor * 2, Hex(BehaviorComboBox.SelectedIndex))
-            WriteHEX(TextBox7.Text, 1 + (SelectedBlockInBlockEditor * 2), Hex(BackgroundComboBox.SelectedIndex))
+            WriteHEX(TextBox7.Text, (SelectedBlockInBlockEditor - 512) * 2, Hex(BehaviorComboBox.SelectedIndex))
+            WriteHEX(TextBox7.Text, 1 + ((SelectedBlockInBlockEditor - 512) * 2), Hex(BackgroundComboBox.SelectedIndex))
 
         End If
 

@@ -926,7 +926,7 @@ Public Class MnFrm
 
         SecondaryBlocks = ReadHEX(LoadedROM, SecondaryBlockSetPointer, (Int32.Parse((GetString(AppPath & "ini\roms.ini", header, "NumberOfTilesInTilset" & Hex(SecondaryTilesetPointer), "")), System.Globalization.NumberStyles.HexNumber) + 1) * 16)
 
-        SecondaryBehaviours = ReadHEX(LoadedROM, SecondaryBehaviourPointer, Int32.Parse((GetString(AppPath & "ini\roms.ini", header, "NumberOfTilesInTilset" & Hex(SecondaryTilesetPointer), "")), System.Globalization.NumberStyles.HexNumber) * 2)
+        SecondaryBehaviours = ReadHEX(LoadedROM, SecondaryBehaviourPointer, (Int32.Parse((GetString(AppPath & "ini\roms.ini", header, "NumberOfTilesInTilset" & Hex(SecondaryTilesetPointer), "")), System.Globalization.NumberStyles.HexNumber) + 1) * 2)
 
         'Events
 
@@ -1446,7 +1446,7 @@ Public Class MnFrm
 
         SecondaryBlocks = ReadHEX(LoadedROM, SecondaryBlockSetPointer, (Int32.Parse((GetString(AppPath & "ini\roms.ini", header, "NumberOfTilesInTilset" & Hex(SecondaryTilesetPointer), "")), System.Globalization.NumberStyles.HexNumber) + 1) * 16)
 
-        SecondaryBehaviours = ReadHEX(LoadedROM, SecondaryBehaviourPointer, Int32.Parse((GetString(AppPath & "ini\roms.ini", header, "NumberOfTilesInTilset" & Hex(SecondaryTilesetPointer), "")), System.Globalization.NumberStyles.HexNumber) * 4)
+        SecondaryBehaviours = ReadHEX(LoadedROM, SecondaryBehaviourPointer, (Int32.Parse((GetString(AppPath & "ini\roms.ini", header, "NumberOfTilesInTilset" & Hex(SecondaryTilesetPointer), "")), System.Globalization.NumberStyles.HexNumber) + 1) * 4)
 
         'Events
 
