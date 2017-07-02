@@ -110,12 +110,51 @@ Partial Class MnFrm
         Me.MEBlocksPictureBox2 = New System.Windows.Forms.PictureBox()
         Me.Button20 = New System.Windows.Forms.Button()
         Me.Button19 = New System.Windows.Forms.Button()
+        Me.TabPage6 = New System.Windows.Forms.TabPage()
+        Me.GroupBox10 = New System.Windows.Forms.GroupBox()
+        Me.TextBox25 = New System.Windows.Forms.TextBox()
+        Me.PictureBox15 = New System.Windows.Forms.PictureBox()
+        Me.TextBox26 = New System.Windows.Forms.TextBox()
+        Me.PictureBox16 = New System.Windows.Forms.PictureBox()
+        Me.TextBox27 = New System.Windows.Forms.TextBox()
+        Me.PictureBox17 = New System.Windows.Forms.PictureBox()
+        Me.TextBox28 = New System.Windows.Forms.TextBox()
+        Me.PictureBox18 = New System.Windows.Forms.PictureBox()
+        Me.TextBox19 = New System.Windows.Forms.TextBox()
+        Me.PictureBox9 = New System.Windows.Forms.PictureBox()
+        Me.TextBox20 = New System.Windows.Forms.TextBox()
+        Me.PictureBox10 = New System.Windows.Forms.PictureBox()
+        Me.TextBox21 = New System.Windows.Forms.TextBox()
+        Me.PictureBox11 = New System.Windows.Forms.PictureBox()
+        Me.TextBox22 = New System.Windows.Forms.TextBox()
+        Me.PictureBox12 = New System.Windows.Forms.PictureBox()
+        Me.TextBox23 = New System.Windows.Forms.TextBox()
+        Me.PictureBox13 = New System.Windows.Forms.PictureBox()
+        Me.TextBox24 = New System.Windows.Forms.TextBox()
+        Me.PictureBox14 = New System.Windows.Forms.PictureBox()
+        Me.TextBox16 = New System.Windows.Forms.TextBox()
+        Me.PictureBox6 = New System.Windows.Forms.PictureBox()
+        Me.TextBox17 = New System.Windows.Forms.TextBox()
+        Me.PictureBox7 = New System.Windows.Forms.PictureBox()
+        Me.TextBox18 = New System.Windows.Forms.TextBox()
+        Me.PictureBox8 = New System.Windows.Forms.PictureBox()
+        Me.TextBox15 = New System.Windows.Forms.TextBox()
+        Me.PictureBox5 = New System.Windows.Forms.PictureBox()
+        Me.TextBox14 = New System.Windows.Forms.TextBox()
+        Me.PictureBox4 = New System.Windows.Forms.PictureBox()
+        Me.TextBox11 = New System.Windows.Forms.TextBox()
+        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
+        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Button22 = New System.Windows.Forms.Button()
+        Me.Button23 = New System.Windows.Forms.Button()
         Me.fileOpenDialog = New System.Windows.Forms.OpenFileDialog()
         Me.SaveFileDialog = New System.Windows.Forms.SaveFileDialog()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.LoadTImeLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.SelectionStatus = New System.Windows.Forms.ToolStripStatusLabel()
         Me.XYCoord = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ColorDialogPalEdit = New System.Windows.Forms.ColorDialog()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -158,6 +197,24 @@ Partial Class MnFrm
         CType(Me.BorderSelectedBlockPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel10.SuspendLayout()
         CType(Me.MEBlocksPictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabPage6.SuspendLayout()
+        Me.GroupBox10.SuspendLayout()
+        CType(Me.PictureBox15, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox16, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox17, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox18, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox10, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox11, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox12, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox13, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox14, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -168,6 +225,7 @@ Partial Class MnFrm
         Me.TabControl1.Controls.Add(Me.TabPage3)
         Me.TabControl1.Controls.Add(Me.TabPage4)
         Me.TabControl1.Controls.Add(Me.TabPage5)
+        Me.TabControl1.Controls.Add(Me.TabPage6)
         Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TabControl1.Location = New System.Drawing.Point(0, 0)
         Me.TabControl1.Name = "TabControl1"
@@ -1040,6 +1098,338 @@ Partial Class MnFrm
         Me.Button19.Text = "Load Border"
         Me.Button19.UseVisualStyleBackColor = True
         '
+        'TabPage6
+        '
+        Me.TabPage6.Controls.Add(Me.GroupBox10)
+        Me.TabPage6.Controls.Add(Me.Button22)
+        Me.TabPage6.Controls.Add(Me.Button23)
+        Me.TabPage6.Location = New System.Drawing.Point(4, 25)
+        Me.TabPage6.Name = "TabPage6"
+        Me.TabPage6.Size = New System.Drawing.Size(1206, 592)
+        Me.TabPage6.TabIndex = 5
+        Me.TabPage6.Text = "Pals"
+        Me.TabPage6.UseVisualStyleBackColor = True
+        '
+        'GroupBox10
+        '
+        Me.GroupBox10.Controls.Add(Me.TextBox25)
+        Me.GroupBox10.Controls.Add(Me.PictureBox15)
+        Me.GroupBox10.Controls.Add(Me.TextBox26)
+        Me.GroupBox10.Controls.Add(Me.PictureBox16)
+        Me.GroupBox10.Controls.Add(Me.TextBox27)
+        Me.GroupBox10.Controls.Add(Me.PictureBox17)
+        Me.GroupBox10.Controls.Add(Me.TextBox28)
+        Me.GroupBox10.Controls.Add(Me.PictureBox18)
+        Me.GroupBox10.Controls.Add(Me.TextBox19)
+        Me.GroupBox10.Controls.Add(Me.PictureBox9)
+        Me.GroupBox10.Controls.Add(Me.TextBox20)
+        Me.GroupBox10.Controls.Add(Me.PictureBox10)
+        Me.GroupBox10.Controls.Add(Me.TextBox21)
+        Me.GroupBox10.Controls.Add(Me.PictureBox11)
+        Me.GroupBox10.Controls.Add(Me.TextBox22)
+        Me.GroupBox10.Controls.Add(Me.PictureBox12)
+        Me.GroupBox10.Controls.Add(Me.TextBox23)
+        Me.GroupBox10.Controls.Add(Me.PictureBox13)
+        Me.GroupBox10.Controls.Add(Me.TextBox24)
+        Me.GroupBox10.Controls.Add(Me.PictureBox14)
+        Me.GroupBox10.Controls.Add(Me.TextBox16)
+        Me.GroupBox10.Controls.Add(Me.PictureBox6)
+        Me.GroupBox10.Controls.Add(Me.TextBox17)
+        Me.GroupBox10.Controls.Add(Me.PictureBox7)
+        Me.GroupBox10.Controls.Add(Me.TextBox18)
+        Me.GroupBox10.Controls.Add(Me.PictureBox8)
+        Me.GroupBox10.Controls.Add(Me.TextBox15)
+        Me.GroupBox10.Controls.Add(Me.PictureBox5)
+        Me.GroupBox10.Controls.Add(Me.TextBox14)
+        Me.GroupBox10.Controls.Add(Me.PictureBox4)
+        Me.GroupBox10.Controls.Add(Me.TextBox11)
+        Me.GroupBox10.Controls.Add(Me.PictureBox3)
+        Me.GroupBox10.Controls.Add(Me.ComboBox2)
+        Me.GroupBox10.Controls.Add(Me.Label5)
+        Me.GroupBox10.Location = New System.Drawing.Point(177, 13)
+        Me.GroupBox10.Name = "GroupBox10"
+        Me.GroupBox10.Size = New System.Drawing.Size(586, 288)
+        Me.GroupBox10.TabIndex = 7
+        Me.GroupBox10.TabStop = False
+        Me.GroupBox10.Text = "GroupBox10"
+        '
+        'TextBox25
+        '
+        Me.TextBox25.Location = New System.Drawing.Point(450, 223)
+        Me.TextBox25.Name = "TextBox25"
+        Me.TextBox25.Size = New System.Drawing.Size(50, 22)
+        Me.TextBox25.TabIndex = 35
+        '
+        'PictureBox15
+        '
+        Me.PictureBox15.Location = New System.Drawing.Point(450, 163)
+        Me.PictureBox15.Name = "PictureBox15"
+        Me.PictureBox15.Size = New System.Drawing.Size(50, 50)
+        Me.PictureBox15.TabIndex = 34
+        Me.PictureBox15.TabStop = False
+        '
+        'TextBox26
+        '
+        Me.TextBox26.Location = New System.Drawing.Point(394, 223)
+        Me.TextBox26.Name = "TextBox26"
+        Me.TextBox26.Size = New System.Drawing.Size(50, 22)
+        Me.TextBox26.TabIndex = 33
+        '
+        'PictureBox16
+        '
+        Me.PictureBox16.Location = New System.Drawing.Point(394, 163)
+        Me.PictureBox16.Name = "PictureBox16"
+        Me.PictureBox16.Size = New System.Drawing.Size(50, 50)
+        Me.PictureBox16.TabIndex = 32
+        Me.PictureBox16.TabStop = False
+        '
+        'TextBox27
+        '
+        Me.TextBox27.Location = New System.Drawing.Point(338, 223)
+        Me.TextBox27.Name = "TextBox27"
+        Me.TextBox27.Size = New System.Drawing.Size(50, 22)
+        Me.TextBox27.TabIndex = 31
+        '
+        'PictureBox17
+        '
+        Me.PictureBox17.Location = New System.Drawing.Point(338, 163)
+        Me.PictureBox17.Name = "PictureBox17"
+        Me.PictureBox17.Size = New System.Drawing.Size(50, 50)
+        Me.PictureBox17.TabIndex = 30
+        Me.PictureBox17.TabStop = False
+        '
+        'TextBox28
+        '
+        Me.TextBox28.Location = New System.Drawing.Point(282, 223)
+        Me.TextBox28.Name = "TextBox28"
+        Me.TextBox28.Size = New System.Drawing.Size(50, 22)
+        Me.TextBox28.TabIndex = 29
+        '
+        'PictureBox18
+        '
+        Me.PictureBox18.Location = New System.Drawing.Point(282, 163)
+        Me.PictureBox18.Name = "PictureBox18"
+        Me.PictureBox18.Size = New System.Drawing.Size(50, 50)
+        Me.PictureBox18.TabIndex = 28
+        Me.PictureBox18.TabStop = False
+        '
+        'TextBox19
+        '
+        Me.TextBox19.Location = New System.Drawing.Point(226, 223)
+        Me.TextBox19.Name = "TextBox19"
+        Me.TextBox19.Size = New System.Drawing.Size(50, 22)
+        Me.TextBox19.TabIndex = 27
+        '
+        'PictureBox9
+        '
+        Me.PictureBox9.Location = New System.Drawing.Point(226, 163)
+        Me.PictureBox9.Name = "PictureBox9"
+        Me.PictureBox9.Size = New System.Drawing.Size(50, 50)
+        Me.PictureBox9.TabIndex = 26
+        Me.PictureBox9.TabStop = False
+        '
+        'TextBox20
+        '
+        Me.TextBox20.Location = New System.Drawing.Point(170, 223)
+        Me.TextBox20.Name = "TextBox20"
+        Me.TextBox20.Size = New System.Drawing.Size(50, 22)
+        Me.TextBox20.TabIndex = 25
+        '
+        'PictureBox10
+        '
+        Me.PictureBox10.Location = New System.Drawing.Point(170, 163)
+        Me.PictureBox10.Name = "PictureBox10"
+        Me.PictureBox10.Size = New System.Drawing.Size(50, 50)
+        Me.PictureBox10.TabIndex = 24
+        Me.PictureBox10.TabStop = False
+        '
+        'TextBox21
+        '
+        Me.TextBox21.Location = New System.Drawing.Point(114, 223)
+        Me.TextBox21.Name = "TextBox21"
+        Me.TextBox21.Size = New System.Drawing.Size(50, 22)
+        Me.TextBox21.TabIndex = 23
+        '
+        'PictureBox11
+        '
+        Me.PictureBox11.Location = New System.Drawing.Point(114, 163)
+        Me.PictureBox11.Name = "PictureBox11"
+        Me.PictureBox11.Size = New System.Drawing.Size(50, 50)
+        Me.PictureBox11.TabIndex = 22
+        Me.PictureBox11.TabStop = False
+        '
+        'TextBox22
+        '
+        Me.TextBox22.Location = New System.Drawing.Point(58, 223)
+        Me.TextBox22.Name = "TextBox22"
+        Me.TextBox22.Size = New System.Drawing.Size(50, 22)
+        Me.TextBox22.TabIndex = 21
+        '
+        'PictureBox12
+        '
+        Me.PictureBox12.Location = New System.Drawing.Point(58, 163)
+        Me.PictureBox12.Name = "PictureBox12"
+        Me.PictureBox12.Size = New System.Drawing.Size(50, 50)
+        Me.PictureBox12.TabIndex = 20
+        Me.PictureBox12.TabStop = False
+        '
+        'TextBox23
+        '
+        Me.TextBox23.Location = New System.Drawing.Point(450, 135)
+        Me.TextBox23.Name = "TextBox23"
+        Me.TextBox23.Size = New System.Drawing.Size(50, 22)
+        Me.TextBox23.TabIndex = 19
+        '
+        'PictureBox13
+        '
+        Me.PictureBox13.Location = New System.Drawing.Point(450, 75)
+        Me.PictureBox13.Name = "PictureBox13"
+        Me.PictureBox13.Size = New System.Drawing.Size(50, 50)
+        Me.PictureBox13.TabIndex = 18
+        Me.PictureBox13.TabStop = False
+        '
+        'TextBox24
+        '
+        Me.TextBox24.Location = New System.Drawing.Point(394, 135)
+        Me.TextBox24.Name = "TextBox24"
+        Me.TextBox24.Size = New System.Drawing.Size(50, 22)
+        Me.TextBox24.TabIndex = 17
+        '
+        'PictureBox14
+        '
+        Me.PictureBox14.Location = New System.Drawing.Point(394, 75)
+        Me.PictureBox14.Name = "PictureBox14"
+        Me.PictureBox14.Size = New System.Drawing.Size(50, 50)
+        Me.PictureBox14.TabIndex = 16
+        Me.PictureBox14.TabStop = False
+        '
+        'TextBox16
+        '
+        Me.TextBox16.Location = New System.Drawing.Point(338, 135)
+        Me.TextBox16.Name = "TextBox16"
+        Me.TextBox16.Size = New System.Drawing.Size(50, 22)
+        Me.TextBox16.TabIndex = 15
+        '
+        'PictureBox6
+        '
+        Me.PictureBox6.Location = New System.Drawing.Point(338, 75)
+        Me.PictureBox6.Name = "PictureBox6"
+        Me.PictureBox6.Size = New System.Drawing.Size(50, 50)
+        Me.PictureBox6.TabIndex = 14
+        Me.PictureBox6.TabStop = False
+        '
+        'TextBox17
+        '
+        Me.TextBox17.Location = New System.Drawing.Point(282, 135)
+        Me.TextBox17.Name = "TextBox17"
+        Me.TextBox17.Size = New System.Drawing.Size(50, 22)
+        Me.TextBox17.TabIndex = 13
+        '
+        'PictureBox7
+        '
+        Me.PictureBox7.Location = New System.Drawing.Point(282, 75)
+        Me.PictureBox7.Name = "PictureBox7"
+        Me.PictureBox7.Size = New System.Drawing.Size(50, 50)
+        Me.PictureBox7.TabIndex = 12
+        Me.PictureBox7.TabStop = False
+        '
+        'TextBox18
+        '
+        Me.TextBox18.Location = New System.Drawing.Point(226, 135)
+        Me.TextBox18.Name = "TextBox18"
+        Me.TextBox18.Size = New System.Drawing.Size(50, 22)
+        Me.TextBox18.TabIndex = 11
+        '
+        'PictureBox8
+        '
+        Me.PictureBox8.Location = New System.Drawing.Point(226, 75)
+        Me.PictureBox8.Name = "PictureBox8"
+        Me.PictureBox8.Size = New System.Drawing.Size(50, 50)
+        Me.PictureBox8.TabIndex = 10
+        Me.PictureBox8.TabStop = False
+        '
+        'TextBox15
+        '
+        Me.TextBox15.Location = New System.Drawing.Point(170, 135)
+        Me.TextBox15.Name = "TextBox15"
+        Me.TextBox15.Size = New System.Drawing.Size(50, 22)
+        Me.TextBox15.TabIndex = 9
+        '
+        'PictureBox5
+        '
+        Me.PictureBox5.Location = New System.Drawing.Point(170, 75)
+        Me.PictureBox5.Name = "PictureBox5"
+        Me.PictureBox5.Size = New System.Drawing.Size(50, 50)
+        Me.PictureBox5.TabIndex = 8
+        Me.PictureBox5.TabStop = False
+        '
+        'TextBox14
+        '
+        Me.TextBox14.Location = New System.Drawing.Point(114, 135)
+        Me.TextBox14.Name = "TextBox14"
+        Me.TextBox14.Size = New System.Drawing.Size(50, 22)
+        Me.TextBox14.TabIndex = 7
+        '
+        'PictureBox4
+        '
+        Me.PictureBox4.Location = New System.Drawing.Point(114, 75)
+        Me.PictureBox4.Name = "PictureBox4"
+        Me.PictureBox4.Size = New System.Drawing.Size(50, 50)
+        Me.PictureBox4.TabIndex = 6
+        Me.PictureBox4.TabStop = False
+        '
+        'TextBox11
+        '
+        Me.TextBox11.Location = New System.Drawing.Point(58, 135)
+        Me.TextBox11.Name = "TextBox11"
+        Me.TextBox11.Size = New System.Drawing.Size(50, 22)
+        Me.TextBox11.TabIndex = 5
+        '
+        'PictureBox3
+        '
+        Me.PictureBox3.Location = New System.Drawing.Point(58, 75)
+        Me.PictureBox3.Name = "PictureBox3"
+        Me.PictureBox3.Size = New System.Drawing.Size(50, 50)
+        Me.PictureBox3.TabIndex = 4
+        Me.PictureBox3.TabStop = False
+        '
+        'ComboBox2
+        '
+        Me.ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox2.FormattingEnabled = True
+        Me.ComboBox2.Items.AddRange(New Object() {"Pal 0", "Pal 1", "Pal 2", "Pal 3", "Pal 4", "Pal 5", "Pal 6", "Pal 7", "Pal 8", "Pal 9", "Pal 10", "Pal 11", "Pal 12"})
+        Me.ComboBox2.Location = New System.Drawing.Point(58, 30)
+        Me.ComboBox2.Name = "ComboBox2"
+        Me.ComboBox2.Size = New System.Drawing.Size(121, 24)
+        Me.ComboBox2.TabIndex = 3
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(6, 30)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(32, 17)
+        Me.Label5.TabIndex = 2
+        Me.Label5.Text = "Pal:"
+        '
+        'Button22
+        '
+        Me.Button22.Location = New System.Drawing.Point(8, 118)
+        Me.Button22.Name = "Button22"
+        Me.Button22.Size = New System.Drawing.Size(147, 82)
+        Me.Button22.TabIndex = 6
+        Me.Button22.Text = "Save Pals"
+        Me.Button22.UseVisualStyleBackColor = True
+        '
+        'Button23
+        '
+        Me.Button23.Location = New System.Drawing.Point(8, 13)
+        Me.Button23.Name = "Button23"
+        Me.Button23.Size = New System.Drawing.Size(147, 82)
+        Me.Button23.TabIndex = 5
+        Me.Button23.Text = "Load Pals"
+        Me.Button23.UseVisualStyleBackColor = True
+        '
         'fileOpenDialog
         '
         Me.fileOpenDialog.FileName = "OpenFileDialog1"
@@ -1128,6 +1518,25 @@ Partial Class MnFrm
         CType(Me.BorderSelectedBlockPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel10.ResumeLayout(False)
         CType(Me.MEBlocksPictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabPage6.ResumeLayout(False)
+        Me.GroupBox10.ResumeLayout(False)
+        Me.GroupBox10.PerformLayout()
+        CType(Me.PictureBox15, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox16, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox17, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox18, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox10, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox11, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox12, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox13, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox14, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         Me.ResumeLayout(False)
@@ -1229,4 +1638,43 @@ Partial Class MnFrm
     Friend WithEvents Label3 As Label
     Friend WithEvents CheckBox4 As CheckBox
     Friend WithEvents CheckBox3 As CheckBox
+    Friend WithEvents TabPage6 As TabPage
+    Friend WithEvents GroupBox10 As GroupBox
+    Friend WithEvents ComboBox2 As ComboBox
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Button22 As Button
+    Friend WithEvents Button23 As Button
+    Friend WithEvents PictureBox3 As PictureBox
+    Friend WithEvents ColorDialogPalEdit As ColorDialog
+    Friend WithEvents TextBox19 As TextBox
+    Friend WithEvents PictureBox9 As PictureBox
+    Friend WithEvents TextBox20 As TextBox
+    Friend WithEvents PictureBox10 As PictureBox
+    Friend WithEvents TextBox21 As TextBox
+    Friend WithEvents PictureBox11 As PictureBox
+    Friend WithEvents TextBox22 As TextBox
+    Friend WithEvents PictureBox12 As PictureBox
+    Friend WithEvents TextBox23 As TextBox
+    Friend WithEvents PictureBox13 As PictureBox
+    Friend WithEvents TextBox24 As TextBox
+    Friend WithEvents PictureBox14 As PictureBox
+    Friend WithEvents TextBox16 As TextBox
+    Friend WithEvents PictureBox6 As PictureBox
+    Friend WithEvents TextBox17 As TextBox
+    Friend WithEvents PictureBox7 As PictureBox
+    Friend WithEvents TextBox18 As TextBox
+    Friend WithEvents PictureBox8 As PictureBox
+    Friend WithEvents TextBox15 As TextBox
+    Friend WithEvents PictureBox5 As PictureBox
+    Friend WithEvents TextBox14 As TextBox
+    Friend WithEvents PictureBox4 As PictureBox
+    Friend WithEvents TextBox11 As TextBox
+    Friend WithEvents TextBox25 As TextBox
+    Friend WithEvents PictureBox15 As PictureBox
+    Friend WithEvents TextBox26 As TextBox
+    Friend WithEvents PictureBox16 As PictureBox
+    Friend WithEvents TextBox27 As TextBox
+    Friend WithEvents PictureBox17 As PictureBox
+    Friend WithEvents TextBox28 As TextBox
+    Friend WithEvents PictureBox18 As PictureBox
 End Class

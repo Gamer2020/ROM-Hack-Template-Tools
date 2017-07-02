@@ -2143,4 +2143,334 @@ Public Class MnFrm
 
         End If
     End Sub
+
+    Private Sub ComboBox2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox2.SelectedIndexChanged
+        If ComboBox2.SelectedIndex = -1 Then
+        Else
+
+            PictureBox3.BackColor = TilePals(ComboBox2.SelectedIndex)(0)
+            PictureBox4.BackColor = TilePals(ComboBox2.SelectedIndex)(1)
+            PictureBox5.BackColor = TilePals(ComboBox2.SelectedIndex)(2)
+            PictureBox8.BackColor = TilePals(ComboBox2.SelectedIndex)(3)
+            PictureBox7.BackColor = TilePals(ComboBox2.SelectedIndex)(4)
+            PictureBox6.BackColor = TilePals(ComboBox2.SelectedIndex)(5)
+            PictureBox14.BackColor = TilePals(ComboBox2.SelectedIndex)(6)
+            PictureBox13.BackColor = TilePals(ComboBox2.SelectedIndex)(7)
+            PictureBox12.BackColor = TilePals(ComboBox2.SelectedIndex)(8)
+            PictureBox11.BackColor = TilePals(ComboBox2.SelectedIndex)(9)
+            PictureBox10.BackColor = TilePals(ComboBox2.SelectedIndex)(10)
+            PictureBox9.BackColor = TilePals(ComboBox2.SelectedIndex)(11)
+            PictureBox18.BackColor = TilePals(ComboBox2.SelectedIndex)(12)
+            PictureBox17.BackColor = TilePals(ComboBox2.SelectedIndex)(13)
+            PictureBox16.BackColor = TilePals(ComboBox2.SelectedIndex)(14)
+            PictureBox15.BackColor = TilePals(ComboBox2.SelectedIndex)(15)
+
+            TextBox11.Text = VB.Right("0000" & Hex(ColorToRGB16(TilePals(ComboBox2.SelectedIndex)(0))), 4)
+            TextBox14.Text = VB.Right("0000" & Hex(ColorToRGB16(TilePals(ComboBox2.SelectedIndex)(1))), 4)
+            TextBox15.Text = VB.Right("0000" & Hex(ColorToRGB16(TilePals(ComboBox2.SelectedIndex)(2))), 4)
+            TextBox18.Text = VB.Right("0000" & Hex(ColorToRGB16(TilePals(ComboBox2.SelectedIndex)(3))), 4)
+            TextBox17.Text = VB.Right("0000" & Hex(ColorToRGB16(TilePals(ComboBox2.SelectedIndex)(4))), 4)
+            TextBox16.Text = VB.Right("0000" & Hex(ColorToRGB16(TilePals(ComboBox2.SelectedIndex)(5))), 4)
+            TextBox24.Text = VB.Right("0000" & Hex(ColorToRGB16(TilePals(ComboBox2.SelectedIndex)(6))), 4)
+            TextBox23.Text = VB.Right("0000" & Hex(ColorToRGB16(TilePals(ComboBox2.SelectedIndex)(7))), 4)
+            TextBox22.Text = VB.Right("0000" & Hex(ColorToRGB16(TilePals(ComboBox2.SelectedIndex)(8))), 4)
+            TextBox21.Text = VB.Right("0000" & Hex(ColorToRGB16(TilePals(ComboBox2.SelectedIndex)(9))), 4)
+            TextBox20.Text = VB.Right("0000" & Hex(ColorToRGB16(TilePals(ComboBox2.SelectedIndex)(10))), 4)
+            TextBox19.Text = VB.Right("0000" & Hex(ColorToRGB16(TilePals(ComboBox2.SelectedIndex)(11))), 4)
+            TextBox28.Text = VB.Right("0000" & Hex(ColorToRGB16(TilePals(ComboBox2.SelectedIndex)(12))), 4)
+            TextBox27.Text = VB.Right("0000" & Hex(ColorToRGB16(TilePals(ComboBox2.SelectedIndex)(13))), 4)
+            TextBox26.Text = VB.Right("0000" & Hex(ColorToRGB16(TilePals(ComboBox2.SelectedIndex)(14))), 4)
+            TextBox25.Text = VB.Right("0000" & Hex(ColorToRGB16(TilePals(ComboBox2.SelectedIndex)(15))), 4)
+
+        End If
+    End Sub
+
+    Private Sub Button23_Click(sender As Object, e As EventArgs) Handles Button23.Click
+        Dim PalBuff As String
+        Dim Temp(&HFFFF) As Byte
+        Dim loopvar As Integer = 0
+
+        While loopvar < 13
+
+            If loopvar < 6 Then
+
+                PalBuff = ReadHEX(TextBox2.Text, (loopvar * 32), 32)
+
+            Else
+
+                PalBuff = ReadHEX(TextBox3.Text, ((loopvar) * 32), 32)
+
+            End If
+
+            Temp = HexStringToByteArray(PalBuff)
+
+            TilePals(loopvar) = LoadPalette(Temp)
+
+            loopvar = loopvar + 1
+        End While
+
+        ComboBox2.SelectedIndex = -1
+        ComboBox2.SelectedIndex = 0
+
+    End Sub
+
+    Private Sub PictureBox3_Click(sender As Object, e As EventArgs) Handles PictureBox3.Click
+
+        ColorDialogPalEdit.ShowDialog()
+        TilePals(ComboBox2.SelectedIndex)(0) = ColorDialogPalEdit.Color
+        PictureBox3.BackColor = TilePals(ComboBox2.SelectedIndex)(0)
+        TextBox11.Text = VB.Right("0000" & Hex(ColorToRGB16(TilePals(ComboBox2.SelectedIndex)(0))), 4)
+
+    End Sub
+
+    Private Sub PictureBox4_Click(sender As Object, e As EventArgs) Handles PictureBox4.Click
+
+        ColorDialogPalEdit.ShowDialog()
+        TilePals(ComboBox2.SelectedIndex)(1) = ColorDialogPalEdit.Color
+        PictureBox4.BackColor = TilePals(ComboBox2.SelectedIndex)(1)
+        TextBox14.Text = VB.Right("0000" & Hex(ColorToRGB16(TilePals(ComboBox2.SelectedIndex)(1))), 4)
+    End Sub
+
+    Private Sub PictureBox5_Click(sender As Object, e As EventArgs) Handles PictureBox5.Click
+
+        ColorDialogPalEdit.ShowDialog()
+        TilePals(ComboBox2.SelectedIndex)(2) = ColorDialogPalEdit.Color
+        PictureBox5.BackColor = TilePals(ComboBox2.SelectedIndex)(2)
+        TextBox15.Text = VB.Right("0000" & Hex(ColorToRGB16(TilePals(ComboBox2.SelectedIndex)(2))), 4)
+    End Sub
+
+    Private Sub PictureBox8_Click(sender As Object, e As EventArgs) Handles PictureBox8.Click
+
+        ColorDialogPalEdit.ShowDialog()
+        TilePals(ComboBox2.SelectedIndex)(3) = ColorDialogPalEdit.Color
+        PictureBox8.BackColor = TilePals(ComboBox2.SelectedIndex)(3)
+        TextBox18.Text = VB.Right("0000" & Hex(ColorToRGB16(TilePals(ComboBox2.SelectedIndex)(3))), 4)
+    End Sub
+
+    Private Sub PictureBox7_Click(sender As Object, e As EventArgs) Handles PictureBox7.Click
+
+        ColorDialogPalEdit.ShowDialog()
+        TilePals(ComboBox2.SelectedIndex)(4) = ColorDialogPalEdit.Color
+        PictureBox7.BackColor = TilePals(ComboBox2.SelectedIndex)(4)
+        TextBox17.Text = VB.Right("0000" & Hex(ColorToRGB16(TilePals(ComboBox2.SelectedIndex)(4))), 4)
+    End Sub
+
+    Private Sub PictureBox6_Click(sender As Object, e As EventArgs) Handles PictureBox6.Click
+        ColorDialogPalEdit.ShowDialog()
+        TilePals(ComboBox2.SelectedIndex)(5) = ColorDialogPalEdit.Color
+        PictureBox6.BackColor = TilePals(ComboBox2.SelectedIndex)(5)
+        TextBox16.Text = VB.Right("0000" & Hex(ColorToRGB16(TilePals(ComboBox2.SelectedIndex)(5))), 4)
+    End Sub
+
+    Private Sub PictureBox14_Click(sender As Object, e As EventArgs) Handles PictureBox14.Click
+        ColorDialogPalEdit.ShowDialog()
+        TilePals(ComboBox2.SelectedIndex)(6) = ColorDialogPalEdit.Color
+        PictureBox14.BackColor = TilePals(ComboBox2.SelectedIndex)(6)
+        TextBox24.Text = VB.Right("0000" & Hex(ColorToRGB16(TilePals(ComboBox2.SelectedIndex)(6))), 4)
+    End Sub
+
+    Private Sub PictureBox13_Click(sender As Object, e As EventArgs) Handles PictureBox13.Click
+        ColorDialogPalEdit.ShowDialog()
+        TilePals(ComboBox2.SelectedIndex)(7) = ColorDialogPalEdit.Color
+        PictureBox13.BackColor = TilePals(ComboBox2.SelectedIndex)(7)
+        TextBox23.Text = VB.Right("0000" & Hex(ColorToRGB16(TilePals(ComboBox2.SelectedIndex)(7))), 4)
+    End Sub
+
+    Private Sub PictureBox12_Click(sender As Object, e As EventArgs) Handles PictureBox12.Click
+        ColorDialogPalEdit.ShowDialog()
+        TilePals(ComboBox2.SelectedIndex)(8) = ColorDialogPalEdit.Color
+        PictureBox12.BackColor = TilePals(ComboBox2.SelectedIndex)(8)
+        TextBox22.Text = VB.Right("0000" & Hex(ColorToRGB16(TilePals(ComboBox2.SelectedIndex)(8))), 4)
+    End Sub
+
+    Private Sub PictureBox11_Click(sender As Object, e As EventArgs) Handles PictureBox11.Click
+        ColorDialogPalEdit.ShowDialog()
+        TilePals(ComboBox2.SelectedIndex)(9) = ColorDialogPalEdit.Color
+        PictureBox11.BackColor = TilePals(ComboBox2.SelectedIndex)(9)
+        TextBox21.Text = VB.Right("0000" & Hex(ColorToRGB16(TilePals(ComboBox2.SelectedIndex)(9))), 4)
+    End Sub
+
+    Private Sub PictureBox10_Click(sender As Object, e As EventArgs) Handles PictureBox10.Click
+        ColorDialogPalEdit.ShowDialog()
+        TilePals(ComboBox2.SelectedIndex)(10) = ColorDialogPalEdit.Color
+        PictureBox10.BackColor = TilePals(ComboBox2.SelectedIndex)(10)
+        TextBox20.Text = VB.Right("0000" & Hex(ColorToRGB16(TilePals(ComboBox2.SelectedIndex)(10))), 4)
+    End Sub
+
+    Private Sub PictureBox9_Click(sender As Object, e As EventArgs) Handles PictureBox9.Click
+        ColorDialogPalEdit.ShowDialog()
+        TilePals(ComboBox2.SelectedIndex)(11) = ColorDialogPalEdit.Color
+        PictureBox9.BackColor = TilePals(ComboBox2.SelectedIndex)(11)
+        TextBox19.Text = VB.Right("0000" & Hex(ColorToRGB16(TilePals(ComboBox2.SelectedIndex)(11))), 4)
+    End Sub
+
+    Private Sub PictureBox18_Click(sender As Object, e As EventArgs) Handles PictureBox18.Click
+        ColorDialogPalEdit.ShowDialog()
+        TilePals(ComboBox2.SelectedIndex)(12) = ColorDialogPalEdit.Color
+        PictureBox18.BackColor = TilePals(ComboBox2.SelectedIndex)(12)
+        TextBox28.Text = VB.Right("0000" & Hex(ColorToRGB16(TilePals(ComboBox2.SelectedIndex)(12))), 4)
+    End Sub
+
+    Private Sub PictureBox17_Click(sender As Object, e As EventArgs) Handles PictureBox17.Click
+        ColorDialogPalEdit.ShowDialog()
+        TilePals(ComboBox2.SelectedIndex)(13) = ColorDialogPalEdit.Color
+        PictureBox17.BackColor = TilePals(ComboBox2.SelectedIndex)(13)
+        TextBox27.Text = VB.Right("0000" & Hex(ColorToRGB16(TilePals(ComboBox2.SelectedIndex)(13))), 4)
+    End Sub
+
+    Private Sub PictureBox16_Click(sender As Object, e As EventArgs) Handles PictureBox16.Click
+        ColorDialogPalEdit.ShowDialog()
+        TilePals(ComboBox2.SelectedIndex)(14) = ColorDialogPalEdit.Color
+        PictureBox16.BackColor = TilePals(ComboBox2.SelectedIndex)(14)
+        TextBox26.Text = VB.Right("0000" & Hex(ColorToRGB16(TilePals(ComboBox2.SelectedIndex)(14))), 4)
+    End Sub
+
+    Private Sub PictureBox15_Click(sender As Object, e As EventArgs) Handles PictureBox15.Click
+        ColorDialogPalEdit.ShowDialog()
+        TilePals(ComboBox2.SelectedIndex)(15) = ColorDialogPalEdit.Color
+        PictureBox15.BackColor = TilePals(ComboBox2.SelectedIndex)(15)
+        TextBox25.Text = VB.Right("0000" & Hex(ColorToRGB16(TilePals(ComboBox2.SelectedIndex)(15))), 4)
+    End Sub
+
+    Private Sub TextBox11_TextChanged(sender As Object, e As EventArgs) Handles TextBox11.TextChanged
+        If TextBox11.Text <> "" Then
+            TilePals(ComboBox2.SelectedIndex)(0) = RGB16ToColor(Int32.Parse(TextBox11.Text, System.Globalization.NumberStyles.HexNumber))
+            PictureBox3.BackColor = TilePals(ComboBox2.SelectedIndex)(0)
+        End If
+    End Sub
+
+    Private Sub TextBox14_TextChanged(sender As Object, e As EventArgs) Handles TextBox14.TextChanged
+        If TextBox14.Text <> "" Then
+            TilePals(ComboBox2.SelectedIndex)(1) = RGB16ToColor(Int32.Parse(TextBox14.Text, System.Globalization.NumberStyles.HexNumber))
+            PictureBox4.BackColor = TilePals(ComboBox2.SelectedIndex)(1)
+        End If
+    End Sub
+
+    Private Sub TextBox15_TextChanged(sender As Object, e As EventArgs) Handles TextBox15.TextChanged
+        If TextBox15.Text <> "" Then
+            TilePals(ComboBox2.SelectedIndex)(2) = RGB16ToColor(Int32.Parse(TextBox15.Text, System.Globalization.NumberStyles.HexNumber))
+            PictureBox5.BackColor = TilePals(ComboBox2.SelectedIndex)(2)
+        End If
+    End Sub
+
+    Private Sub TextBox18_TextChanged(sender As Object, e As EventArgs) Handles TextBox18.TextChanged
+        If TextBox18.Text <> "" Then
+            TilePals(ComboBox2.SelectedIndex)(3) = RGB16ToColor(Int32.Parse(TextBox18.Text, System.Globalization.NumberStyles.HexNumber))
+            PictureBox8.BackColor = TilePals(ComboBox2.SelectedIndex)(3)
+        End If
+    End Sub
+
+    Private Sub TextBox17_TextChanged(sender As Object, e As EventArgs) Handles TextBox17.TextChanged
+        If TextBox17.Text <> "" Then
+            TilePals(ComboBox2.SelectedIndex)(4) = RGB16ToColor(Int32.Parse(TextBox17.Text, System.Globalization.NumberStyles.HexNumber))
+            PictureBox7.BackColor = TilePals(ComboBox2.SelectedIndex)(4)
+        End If
+    End Sub
+
+    Private Sub TextBox16_TextChanged(sender As Object, e As EventArgs) Handles TextBox16.TextChanged
+        If TextBox16.Text <> "" Then
+            TilePals(ComboBox2.SelectedIndex)(5) = RGB16ToColor(Int32.Parse(TextBox16.Text, System.Globalization.NumberStyles.HexNumber))
+            PictureBox6.BackColor = TilePals(ComboBox2.SelectedIndex)(5)
+        End If
+    End Sub
+
+    Private Sub TextBox24_TextChanged(sender As Object, e As EventArgs) Handles TextBox24.TextChanged
+        If TextBox24.Text <> "" Then
+            TilePals(ComboBox2.SelectedIndex)(6) = RGB16ToColor(Int32.Parse(TextBox24.Text, System.Globalization.NumberStyles.HexNumber))
+            PictureBox14.BackColor = TilePals(ComboBox2.SelectedIndex)(6)
+        End If
+    End Sub
+
+    Private Sub TextBox23_TextChanged(sender As Object, e As EventArgs) Handles TextBox23.TextChanged
+        If TextBox23.Text <> "" Then
+            TilePals(ComboBox2.SelectedIndex)(7) = RGB16ToColor(Int32.Parse(TextBox23.Text, System.Globalization.NumberStyles.HexNumber))
+            PictureBox13.BackColor = TilePals(ComboBox2.SelectedIndex)(7)
+        End If
+    End Sub
+
+    Private Sub TextBox22_TextChanged(sender As Object, e As EventArgs) Handles TextBox22.TextChanged
+        If TextBox22.Text <> "" Then
+            TilePals(ComboBox2.SelectedIndex)(8) = RGB16ToColor(Int32.Parse(TextBox22.Text, System.Globalization.NumberStyles.HexNumber))
+            PictureBox12.BackColor = TilePals(ComboBox2.SelectedIndex)(8)
+        End If
+    End Sub
+
+    Private Sub TextBox21_TextChanged(sender As Object, e As EventArgs) Handles TextBox21.TextChanged
+        If TextBox21.Text <> "" Then
+            TilePals(ComboBox2.SelectedIndex)(9) = RGB16ToColor(Int32.Parse(TextBox21.Text, System.Globalization.NumberStyles.HexNumber))
+            PictureBox11.BackColor = TilePals(ComboBox2.SelectedIndex)(9)
+        End If
+    End Sub
+
+    Private Sub TextBox20_TextChanged(sender As Object, e As EventArgs) Handles TextBox20.TextChanged
+        If TextBox20.Text <> "" Then
+            TilePals(ComboBox2.SelectedIndex)(10) = RGB16ToColor(Int32.Parse(TextBox20.Text, System.Globalization.NumberStyles.HexNumber))
+            PictureBox10.BackColor = TilePals(ComboBox2.SelectedIndex)(10)
+        End If
+    End Sub
+
+    Private Sub TextBox19_TextChanged(sender As Object, e As EventArgs) Handles TextBox19.TextChanged
+        If TextBox19.Text <> "" Then
+            TilePals(ComboBox2.SelectedIndex)(11) = RGB16ToColor(Int32.Parse(TextBox19.Text, System.Globalization.NumberStyles.HexNumber))
+            PictureBox9.BackColor = TilePals(ComboBox2.SelectedIndex)(11)
+        End If
+    End Sub
+
+    Private Sub TextBox28_TextChanged(sender As Object, e As EventArgs) Handles TextBox28.TextChanged
+        If TextBox28.Text <> "" Then
+            TilePals(ComboBox2.SelectedIndex)(12) = RGB16ToColor(Int32.Parse(TextBox28.Text, System.Globalization.NumberStyles.HexNumber))
+            PictureBox18.BackColor = TilePals(ComboBox2.SelectedIndex)(12)
+        End If
+    End Sub
+
+    Private Sub TextBox27_TextChanged(sender As Object, e As EventArgs) Handles TextBox27.TextChanged
+        If TextBox27.Text <> "" Then
+            TilePals(ComboBox2.SelectedIndex)(13) = RGB16ToColor(Int32.Parse(TextBox27.Text, System.Globalization.NumberStyles.HexNumber))
+            PictureBox17.BackColor = TilePals(ComboBox2.SelectedIndex)(13)
+        End If
+    End Sub
+
+    Private Sub TextBox26_TextChanged(sender As Object, e As EventArgs) Handles TextBox26.TextChanged
+        If TextBox26.Text <> "" Then
+            TilePals(ComboBox2.SelectedIndex)(14) = RGB16ToColor(Int32.Parse(TextBox26.Text, System.Globalization.NumberStyles.HexNumber))
+            PictureBox16.BackColor = TilePals(ComboBox2.SelectedIndex)(14)
+        End If
+    End Sub
+
+    Private Sub TextBox25_TextChanged(sender As Object, e As EventArgs) Handles TextBox25.TextChanged
+        If TextBox25.Text <> "" Then
+            TilePals(ComboBox2.SelectedIndex)(15) = RGB16ToColor(Int32.Parse(TextBox25.Text, System.Globalization.NumberStyles.HexNumber))
+            PictureBox15.BackColor = TilePals(ComboBox2.SelectedIndex)(15)
+        End If
+    End Sub
+
+    Private Sub Button22_Click(sender As Object, e As EventArgs) Handles Button22.Click
+
+        Dim loopvar As Integer = 0
+        Dim curpal As String = ""
+
+        While loopvar < 13
+
+            If loopvar < 6 Then
+
+                curpal = ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(TilePals(loopvar)(0))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(TilePals(loopvar)(1))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(TilePals(loopvar)(2))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(TilePals(loopvar)(3))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(TilePals(loopvar)(4))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(TilePals(loopvar)(5))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(TilePals(loopvar)(6))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(TilePals(loopvar)(7))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(TilePals(loopvar)(8))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(TilePals(loopvar)(9))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(TilePals(loopvar)(10))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(TilePals(loopvar)(11))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(TilePals(loopvar)(12))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(TilePals(loopvar)(13))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(TilePals(loopvar)(14))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(TilePals(loopvar)(15))), 4))
+
+                WriteHEX(TextBox2.Text, (loopvar * 32), curpal)
+
+                ' PalBuff = ReadHEX(TextBox2.Text, (loopvar * 32), 32)
+
+            Else
+
+                curpal = ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(TilePals(loopvar)(0))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(TilePals(loopvar)(1))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(TilePals(loopvar)(2))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(TilePals(loopvar)(3))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(TilePals(loopvar)(4))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(TilePals(loopvar)(5))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(TilePals(loopvar)(6))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(TilePals(loopvar)(7))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(TilePals(loopvar)(8))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(TilePals(loopvar)(9))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(TilePals(loopvar)(10))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(TilePals(loopvar)(11))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(TilePals(loopvar)(12))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(TilePals(loopvar)(13))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(TilePals(loopvar)(14))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(TilePals(loopvar)(15))), 4))
+
+                WriteHEX(TextBox3.Text, (loopvar * 32), curpal)
+
+                '  PalBuff = ReadHEX(TextBox3.Text, ((loopvar) * 32), 32)
+
+            End If
+
+            loopvar = loopvar + 1
+        End While
+
+    End Sub
 End Class
