@@ -42,3 +42,14 @@ C:\Users\Gamer2020\Google Drive\RomBusters\rom-hack-template-tools\MapEditor\Map
 C:\Users\Gamer2020\Google Drive\RomBusters\rom-hack-template-tools\MapEditor\MapEditor\obj\Debug\MapEditor.Resources.resources
 C:\Users\Gamer2020\Google Drive\RomBusters\rom-hack-template-tools\MapEditor\MapEditor\obj\Debug\MapEditor.vbproj.GenerateResource.Cache
 C:\Users\Gamer2020\Google Drive\RomBusters\rom-hack-template-tools\MapEditor\MapEditor\obj\Debug\MapEditor.pdb
+C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\MapEditor\MapEditor\bin\Debug\MapEditor.exe.config
+C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\MapEditor\MapEditor\bin\Debug\MapEditor.exe
+C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\MapEditor\MapEditor\bin\Debug\MapEditor.pdb
+C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\MapEditor\MapEditor\bin\Debug\MapEditor.xml
+C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\MapEditor\MapEditor\obj\Debug\MapEditor.vbprojResolveAssemblyReference.cache
+C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\MapEditor\MapEditor\obj\Debug\MapEditor.MnFrm.resources
+C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\MapEditor\MapEditor\obj\Debug\MapEditor.Resources.resources
+C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\MapEditor\MapEditor\obj\Debug\MapEditor.vbproj.GenerateResource.Cache
+C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\MapEditor\MapEditor\obj\Debug\MapEditor.exe
+C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\MapEditor\MapEditor\obj\Debug\MapEditor.xml
+C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\MapEditor\MapEditor\obj\Debug\MapEditor.pdb
