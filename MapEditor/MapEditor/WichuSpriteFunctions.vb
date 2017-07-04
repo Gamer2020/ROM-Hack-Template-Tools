@@ -83,6 +83,35 @@ Module WichuSpriteFunctions
         Loop
     End Sub
 
+    Public Sub ConvertBitmapToPalette2(ByRef sprite As Bitmap, ByRef palette As Color(), ByVal AutoTransparency As Boolean)
+        Dim pixel As Color
+        Dim destinationArray As Color() = New Color(((palette.Length - 2) + 1) - 1) {}
+        If AutoTransparency Then
+            Array.Copy(palette, 1, destinationArray, 0, (palette.Length - 1))
+            pixel = sprite.GetPixel(0, 0)
+        End If
+        Dim num3 As Integer = (sprite.Width - 1)
+        Dim i As Integer = 0
+        Do While (i <= num3)
+            Dim num4 As Integer = (sprite.Height - 1)
+            Dim j As Integer = 0
+            Do While (j <= num4)
+                Dim col As Color = sprite.GetPixel(i, j)
+                If AutoTransparency Then
+                    If (col = pixel) Then
+                        sprite.SetPixel(i, j, palette(0))
+                    Else
+                        sprite.SetPixel(i, j, destinationArray(GetClosestColorFromPalette2(col, destinationArray)))
+                    End If
+                Else
+                    sprite.SetPixel(i, j, palette(GetClosestColorFromPalette2(col, palette)))
+                End If
+                j += 1
+            Loop
+            i += 1
+        Loop
+    End Sub
+
     Public Function ConvertPaletteToByteArray(ByRef palette As Color()) As Byte()
         Dim buffer2 As Byte() = New Byte(&H20 - 1) {}
         Dim index As Integer = 0
@@ -206,6 +235,21 @@ Module WichuSpriteFunctions
             Dim colorDifference As Integer = GetColorDifference(col, palette(i))
             If (colorDifference < num) Then
                 num = colorDifference
+                num2 = i
+            End If
+            i += 1
+        Loop
+        Return CByte(num2)
+    End Function
+
+    Public Function GetClosestColorFromPalette2(ByRef col As Color, ByRef palette As Color()) As Byte
+        Dim num2 As Integer
+        Dim num As Integer = &H2FD
+        'col = QuantizeColor(col)
+        Dim num6 As Integer = (palette.Length - 1)
+        Dim i As Integer = 0
+        Do While (i <= num6)
+            If (col = palette(i)) Then
                 num2 = i
             End If
             i += 1

@@ -2663,9 +2663,9 @@ Public Class MnFrm
             Dim importimg As New Bitmap(fileOpenDialog.FileName)
             Dim convertedimage As String
 
-            ConvertBitmapToPalette(importimg, TilePals(ComboBox3.SelectedIndex), False)
+            'ConvertBitmapToPalette2(importimg, TilePals(ComboBox3.SelectedIndex), True)
 
-            convertedimage = ByteArrayToHexString(ConvertStringToByteArray(CompressLz77String(ConvertByteArrayToString(SaveBitmapToArray(importimg, TilePals(ComboBox3.SelectedIndex))))))
+            convertedimage = ByteArrayToHexString(CompressBytes(SaveBitmapToArray(importimg, TilePals(ComboBox3.SelectedIndex))))
 
             If File.Exists(TextBox1.Text) Then
 
@@ -2674,6 +2674,8 @@ Public Class MnFrm
             End If
 
             WriteHEX(TextBox1.Text, 0, convertedimage)
+
+            Button24_Click(sender, e)
 
         End If
 
@@ -2727,6 +2729,23 @@ Public Class MnFrm
 
 
         If fileOpenDialog.ShowDialog = DialogResult.OK Then
+
+            Dim importimg As New Bitmap(fileOpenDialog.FileName)
+            Dim convertedimage As String
+
+            'ConvertBitmapToPalette2(importimg, TilePals(ComboBox3.SelectedIndex), True)
+
+            convertedimage = ByteArrayToHexString(CompressBytes(SaveBitmapToArray(importimg, TilePals(ComboBox3.SelectedIndex))))
+
+            If File.Exists(TextBox4.Text) Then
+
+                File.Delete(TextBox4.Text)
+
+            End If
+
+            WriteHEX(TextBox4.Text, 0, convertedimage)
+
+            Button24_Click(sender, e)
 
         End If
 
