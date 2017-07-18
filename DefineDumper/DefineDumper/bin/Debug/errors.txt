@@ -1,0 +1,2 @@
+Error! NumberOfPokemon is missing for ROM xxxx!
+Error! NumberOfPokemon is missing for ROM xxxx!

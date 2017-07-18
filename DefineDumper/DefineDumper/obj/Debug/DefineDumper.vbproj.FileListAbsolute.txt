@@ -1,0 +1,12 @@
+C:\Users\Gamer2020\Desktop\DefineDumper\DefineDumper\bin\Debug\DefineDumper.exe.config
+C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\DefineDumper\DefineDumper\bin\Debug\DefineDumper.exe.config
+C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\DefineDumper\DefineDumper\bin\Debug\DefineDumper.exe
+C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\DefineDumper\DefineDumper\bin\Debug\DefineDumper.pdb
+C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\DefineDumper\DefineDumper\bin\Debug\DefineDumper.xml
+C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\DefineDumper\DefineDumper\obj\Debug\DefineDumper.vbprojResolveAssemblyReference.cache
+C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\DefineDumper\DefineDumper\obj\Debug\DefineDumper.MnFrm.resources
+C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\DefineDumper\DefineDumper\obj\Debug\DefineDumper.Resources.resources
+C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\DefineDumper\DefineDumper\obj\Debug\DefineDumper.vbproj.GenerateResource.Cache
+C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\DefineDumper\DefineDumper\obj\Debug\DefineDumper.exe
+C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\DefineDumper\DefineDumper\obj\Debug\DefineDumper.xml
+C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\DefineDumper\DefineDumper\obj\Debug\DefineDumper.pdb
