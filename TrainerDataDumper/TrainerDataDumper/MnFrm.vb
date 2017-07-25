@@ -258,8 +258,64 @@ Public Class MnFrm
                 LoopVar = LoopVar + 1
             End While
 
+            If (Not System.IO.Directory.Exists(FolderBrowserDialog1.SelectedPath & "\TrainerPics")) Then
+                System.IO.Directory.CreateDirectory(FolderBrowserDialog1.SelectedPath & "\TrainerPics")
+            End If
+
+            Dim TrainerImages As String = ".text" & vbCrLf _
+& ".thumb" & vbCrLf _
+& ".align 2" & vbCrLf & vbCrLf
+
+            LoopVar = 0
+
+            While LoopVar < (GetString(GetINIFileLocation(), header, "NumberOfTrainerImages", "")) + 1
+
+                Dim bitout As Bitmap = GetAndDrawTrainerSpriteToBitmap(LoopVar, True)
+                TrainerImages = TrainerImages & ".align 2" & vbCrLf
+                TrainerImages = TrainerImages & ".global TrainerPic" & LoopVar & vbCrLf
+                TrainerImages = TrainerImages & "TrainerPic" & LoopVar & ":" & vbCrLf
+                TrainerImages = TrainerImages & ".incbin " & """imglz77/TrainerPics/TrainerPic" & LoopVar & ".bin""" & vbCrLf & vbCrLf
+                TrainerImages = TrainerImages & ".align 2" & vbCrLf
+                TrainerImages = TrainerImages & ".global TrainerPal" & LoopVar & vbCrLf
+                TrainerImages = TrainerImages & "TrainerPal" & LoopVar & ":" & vbCrLf
+                TrainerImages = TrainerImages & ".incbin " & """imglz77/TrainerPics/TrainerPic" & LoopVar & ".pal""" & vbCrLf & vbCrLf
+
+                bitout.Save(FolderBrowserDialog1.SelectedPath & "\TrainerPics\TrainerPic" & LoopVar & ".png")
+
+                LoopVar = LoopVar + 1
+            End While
+
+            Dim TrainerImagePointers As String = ".text" & vbCrLf _
+& ".thumb" & vbCrLf _
+& ".align 2" & vbCrLf & vbCrLf
+
+            Dim imagepointers As String = ".global Trainer_Image_Pointers" & vbCrLf _
+                & "Trainer_Image_Pointers:" & vbCrLf & vbCrLf
+            Dim palpointers As String = ".global Trainer_Pal_Pointers" & vbCrLf _
+                & "Trainer_Pal_Pointers:" & vbCrLf & vbCrLf
+
+            LoopVar = 0
+
+            While LoopVar < (GetString(GetINIFileLocation(), header, "NumberOfTrainerImages", "")) + 1
+
+
+                imagepointers = imagepointers & ".long    TrainerPic" & LoopVar & vbCrLf
+                imagepointers = imagepointers & ".hword    0x800" & vbCrLf
+                imagepointers = imagepointers & ".hword    " & LoopVar & vbCrLf & vbCrLf
+
+                palpointers = palpointers & ".long    TrainerPal" & LoopVar & "" & vbCrLf
+                palpointers = palpointers & ".hword    0x00" & vbCrLf
+                palpointers = palpointers & ".hword    " & LoopVar & vbCrLf & vbCrLf
+
+                LoopVar = LoopVar + 1
+            End While
+
+            TrainerImagePointers = TrainerImagePointers & imagepointers & palpointers
+
+            File.WriteAllText(FolderBrowserDialog1.SelectedPath & "\TrainerImages.s", TrainerImages)
             File.WriteAllText(FolderBrowserDialog1.SelectedPath & "\TrainerData.s", OutPutFile)
             File.WriteAllText(FolderBrowserDialog1.SelectedPath & "\TrainerPokemonData.s", OutPutFile2)
+            File.WriteAllText(FolderBrowserDialog1.SelectedPath & "\TrainerImageTable.s", TrainerImagePointers)
 
             Me.Text = "Trainer Data Dumper"
             Me.UseWaitCursor = False
