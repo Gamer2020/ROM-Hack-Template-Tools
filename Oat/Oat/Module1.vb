@@ -23,8 +23,8 @@ Module Module1
             Dim importimg As New Bitmap(ImgFile)
             Dim Loadedimg As Bitmap = New Bitmap(importimg.Width, importimg.Height)
 
-            Dim convertedimage As String
-            Dim convertedpal As String
+            Dim convertedimage As Byte()
+            Dim convertedpal As Byte()
 
             BitmapBLT(importimg, Loadedimg, 0, 0, 0, 0, &H40, &H40, Color.FromArgb(&HFF, 200, 200, &HA8))
 
@@ -32,9 +32,9 @@ Module Module1
 
             ConvertBitmapToPalette(Loadedimg, SpritePAl, True)
 
-            convertedimage = ByteArrayToHexString(CompressBytes(SaveBitmapToArray(importimg, SpritePAl)))
+            convertedimage = (CompressBytes(SaveBitmapToArray(importimg, SpritePAl)))
 
-            convertedpal = ByteArrayToHexString(CompressBytes(HexStringToByteArray(ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(SpritePAl(0))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(SpritePAl(1))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(SpritePAl(2))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(SpritePAl(3))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(SpritePAl(4))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(SpritePAl(5))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(SpritePAl(6))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(SpritePAl(7))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(SpritePAl(8))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(SpritePAl(9))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(SpritePAl(10))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(SpritePAl(11))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(SpritePAl(12))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(SpritePAl(13))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(SpritePAl(14))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(SpritePAl(15))), 4)))))
+            convertedpal = (CompressBytes(HexStringToByteArray(ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(SpritePAl(0))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(SpritePAl(1))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(SpritePAl(2))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(SpritePAl(3))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(SpritePAl(4))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(SpritePAl(5))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(SpritePAl(6))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(SpritePAl(7))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(SpritePAl(8))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(SpritePAl(9))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(SpritePAl(10))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(SpritePAl(11))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(SpritePAl(12))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(SpritePAl(13))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(SpritePAl(14))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(SpritePAl(15))), 4)))))
 
             If File.Exists(Path.ChangeExtension(ImgFile, "bin")) Then
 
@@ -42,8 +42,8 @@ Module Module1
 
             End If
 
-            WriteHEX(Path.ChangeExtension(ImgFile, "bin"), 0, convertedimage)
-            WriteHEX(Path.ChangeExtension(ImgFile, "pal"), 0, convertedpal)
+            File.WriteAllBytes(Path.ChangeExtension(ImgFile, "bin"), convertedimage)
+            File.WriteAllBytes(Path.ChangeExtension(ImgFile, "pal"), convertedpal)
 
         ElseIf strArg(1).ToLower = "-aseries" Then
 
