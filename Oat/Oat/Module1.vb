@@ -42,8 +42,62 @@ Module Module1
 
             End If
 
-            File.WriteAllBytes(Path.ChangeExtension(ImgFile, "bin"), convertedimage)
-            File.WriteAllBytes(Path.ChangeExtension(ImgFile, "pal"), convertedpal)
+            If strArg.Count > 2 Then
+
+                If strArg(2).ToLower = "-c" Then
+
+                    Dim loopvar As Integer = 0
+                    Dim outputstring As String = ""
+
+
+                    outputstring = outputstring & "#define " & Path.GetFileName(ImgFile).Replace(".png", "") & "IMGLen " & convertedimage.Count & vbCrLf
+
+                    outputstring = outputstring & "const u8 " & Path.GetFileName(ImgFile).Replace(".png", "") & "IMG[" & convertedimage.Count & "]=" & vbCrLf
+
+                    outputstring = outputstring & "{" & vbCrLf
+
+                    While loopvar < convertedimage.Count
+
+                        outputstring = outputstring & "0x" & convertedimage(loopvar) & ","
+
+                        loopvar = loopvar + 1
+                    End While
+
+                    outputstring = outputstring & vbCrLf & "};" & vbCrLf
+
+                    outputstring = outputstring & vbCrLf
+
+                    loopvar = 0
+
+                    outputstring = outputstring & "#define " & Path.GetFileName(ImgFile).Replace(".png", "") & "PALLen " & convertedpal.Count & vbCrLf
+
+                    outputstring = outputstring & "const u8 " & Path.GetFileName(ImgFile).Replace(".png", "") & "PAL[" & convertedpal.Count & "]=" & vbCrLf
+
+                    outputstring = outputstring & "{" & vbCrLf
+
+                    While loopvar < convertedpal.Count
+
+                        outputstring = outputstring & "0x" & convertedpal(loopvar) & ","
+
+                        loopvar = loopvar + 1
+                    End While
+
+                    outputstring = outputstring & vbCrLf & "};" & vbCrLf
+
+                    File.WriteAllText(Path.ChangeExtension(ImgFile, "c"), outputstring)
+
+                Else
+
+                    GoTo writefiles
+
+                End If
+
+            Else
+writefiles:
+                File.WriteAllBytes(Path.ChangeExtension(ImgFile, "bin"), convertedimage)
+                File.WriteAllBytes(Path.ChangeExtension(ImgFile, "pal"), convertedpal)
+
+            End If
 
         ElseIf strArg(1).ToLower = "-aseries" Then
 
