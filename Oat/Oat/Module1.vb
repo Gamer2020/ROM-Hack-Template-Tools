@@ -52,13 +52,13 @@ Module Module1
 
                     outputstring = outputstring & "#define " & Path.GetFileName(ImgFile).Replace(".png", "") & "IMGLen " & convertedimage.Count & vbCrLf
 
-                    outputstring = outputstring & "const u8 " & Path.GetFileName(ImgFile).Replace(".png", "") & "IMG[" & convertedimage.Count & "]=" & vbCrLf
+                    outputstring = outputstring & "const char " & Path.GetFileName(ImgFile).Replace(".png", "") & "IMG[" & convertedimage.Count & "]=" & vbCrLf
 
                     outputstring = outputstring & "{" & vbCrLf
 
                     While loopvar < convertedimage.Count
 
-                        outputstring = outputstring & "0x" & convertedimage(loopvar) & ","
+                        outputstring = outputstring & "0x" & Hex(convertedimage(loopvar)) & ","
 
                         loopvar = loopvar + 1
                     End While
@@ -71,13 +71,13 @@ Module Module1
 
                     outputstring = outputstring & "#define " & Path.GetFileName(ImgFile).Replace(".png", "") & "PALLen " & convertedpal.Count & vbCrLf
 
-                    outputstring = outputstring & "const u8 " & Path.GetFileName(ImgFile).Replace(".png", "") & "PAL[" & convertedpal.Count & "]=" & vbCrLf
+                    outputstring = outputstring & "const char " & Path.GetFileName(ImgFile).Replace(".png", "") & "PAL[" & convertedpal.Count & "]=" & vbCrLf
 
                     outputstring = outputstring & "{" & vbCrLf
 
                     While loopvar < convertedpal.Count
 
-                        outputstring = outputstring & "0x" & convertedpal(loopvar) & ","
+                        outputstring = outputstring & "0x" & Hex(convertedpal(loopvar)) & ","
 
                         loopvar = loopvar + 1
                     End While
