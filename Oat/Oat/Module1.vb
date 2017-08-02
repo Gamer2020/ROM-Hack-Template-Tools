@@ -71,15 +71,15 @@ Module Module1
 
                     outputstring = outputstring & "#define " & Path.GetFileName(ImgFile).Replace(".png", "") & "PALLen " & convertedpal.Count & vbCrLf
 
-                    outputstring = outputstring & "const char " & Path.GetFileName(ImgFile).Replace(".png", "") & "PAL[" & convertedpal.Count & "]=" & vbCrLf
+                    outputstring = outputstring & "const short " & Path.GetFileName(ImgFile).Replace(".png", "") & "PAL[" & convertedpal.Count & "]=" & vbCrLf
 
                     outputstring = outputstring & "{" & vbCrLf
 
                     While loopvar < convertedpal.Count
 
-                        outputstring = outputstring & "0x" & Hex(convertedpal(loopvar)) & ","
+                        outputstring = outputstring & "0x" & VB.Right("00" & Hex(convertedpal(loopvar + 1)), 2) & VB.Right("00" & Hex(convertedpal(loopvar)), 2) & ","
 
-                        loopvar = loopvar + 1
+                        loopvar = loopvar + 2
                     End While
 
                     outputstring = outputstring & vbCrLf & "};" & vbCrLf
