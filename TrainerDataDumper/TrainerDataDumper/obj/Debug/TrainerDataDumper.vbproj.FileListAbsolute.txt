@@ -19,3 +19,14 @@ C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\TrainerDataDumper\Tr
 C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\TrainerDataDumper\TrainerDataDumper\bin\Debug\TrainerDataDumper.exe
 C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\TrainerDataDumper\TrainerDataDumper\bin\Debug\TrainerDataDumper.pdb
 C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\TrainerDataDumper\TrainerDataDumper\bin\Debug\TrainerDataDumper.xml
+D:\Github\ROM-Hack-Template-Tools\TrainerDataDumper\TrainerDataDumper\bin\Debug\TrainerDataDumper.exe.config
+D:\Github\ROM-Hack-Template-Tools\TrainerDataDumper\TrainerDataDumper\obj\Debug\TrainerDataDumper.exe
+D:\Github\ROM-Hack-Template-Tools\TrainerDataDumper\TrainerDataDumper\obj\Debug\TrainerDataDumper.xml
+D:\Github\ROM-Hack-Template-Tools\TrainerDataDumper\TrainerDataDumper\bin\Debug\TrainerDataDumper.exe
+D:\Github\ROM-Hack-Template-Tools\TrainerDataDumper\TrainerDataDumper\bin\Debug\TrainerDataDumper.pdb
+D:\Github\ROM-Hack-Template-Tools\TrainerDataDumper\TrainerDataDumper\bin\Debug\TrainerDataDumper.xml
+D:\Github\ROM-Hack-Template-Tools\TrainerDataDumper\TrainerDataDumper\obj\Debug\TrainerDataDumper.vbprojResolveAssemblyReference.cache
+D:\Github\ROM-Hack-Template-Tools\TrainerDataDumper\TrainerDataDumper\obj\Debug\TrainerDataDumper.MnFrm.resources
+D:\Github\ROM-Hack-Template-Tools\TrainerDataDumper\TrainerDataDumper\obj\Debug\TrainerDataDumper.Resources.resources
+D:\Github\ROM-Hack-Template-Tools\TrainerDataDumper\TrainerDataDumper\obj\Debug\TrainerDataDumper.vbproj.GenerateResource.Cache
+D:\Github\ROM-Hack-Template-Tools\TrainerDataDumper\TrainerDataDumper\obj\Debug\TrainerDataDumper.pdb

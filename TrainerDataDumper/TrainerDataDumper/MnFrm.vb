@@ -151,18 +151,7 @@ Public Class MnFrm
 
                 OutPutFile = OutPutFile & ".byte    0x" & ReadHEX(LoadedROM, curoff + 3, 1) & "   @Trainer Pic" & vbCrLf
 
-                OutPutFile = OutPutFile & ".byte    0x" & ReadHEX(LoadedROM, curoff + 4, 1)
-                OutPutFile = OutPutFile & ", 0x" & ReadHEX(LoadedROM, curoff + 5, 1)
-                OutPutFile = OutPutFile & ", 0x" & ReadHEX(LoadedROM, curoff + 6, 1)
-                OutPutFile = OutPutFile & ", 0x" & ReadHEX(LoadedROM, curoff + 7, 1)
-                OutPutFile = OutPutFile & ", 0x" & ReadHEX(LoadedROM, curoff + 8, 1)
-                OutPutFile = OutPutFile & ", 0x" & ReadHEX(LoadedROM, curoff + 9, 1)
-                OutPutFile = OutPutFile & ", 0x" & ReadHEX(LoadedROM, curoff + 10, 1)
-                OutPutFile = OutPutFile & ", 0x" & ReadHEX(LoadedROM, curoff + 11, 1)
-                OutPutFile = OutPutFile & ", 0x" & ReadHEX(LoadedROM, curoff + 12, 1)
-                OutPutFile = OutPutFile & ", 0x" & ReadHEX(LoadedROM, curoff + 13, 1)
-                OutPutFile = OutPutFile & ", 0x" & ReadHEX(LoadedROM, curoff + 14, 1)
-                OutPutFile = OutPutFile & ", 0x" & ReadHEX(LoadedROM, curoff + 15, 1) & "   @Trainer Name" & vbCrLf
+                OutPutFile = OutPutFile & ".string    """ & GetTrainerName(LoopVar) & "$"", 12   @Trainer Name" & vbCrLf
 
                 OutPutFile = OutPutFile & ".hword    0x" & ReverseHEX(ReadHEX(LoadedROM, curoff + 16, 2)) & "   @Item 1" & vbCrLf
                 OutPutFile = OutPutFile & ".hword    0x" & ReverseHEX(ReadHEX(LoadedROM, curoff + 18, 2)) & "   @Item 2" & vbCrLf
