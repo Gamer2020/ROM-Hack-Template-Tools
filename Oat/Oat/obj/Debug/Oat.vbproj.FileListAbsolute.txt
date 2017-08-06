@@ -18,3 +18,13 @@ C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\Oat\Oat\obj\Debug\Oa
 C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\Oat\Oat\bin\Debug\Oat.exe
 C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\Oat\Oat\bin\Debug\Oat.pdb
 C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\Oat\Oat\bin\Debug\Oat.xml
+D:\Github\ROM-Hack-Template-Tools\Oat\Oat\bin\Debug\Oat.exe.config
+D:\Github\ROM-Hack-Template-Tools\Oat\Oat\obj\Debug\Oat.exe
+D:\Github\ROM-Hack-Template-Tools\Oat\Oat\obj\Debug\Oat.xml
+D:\Github\ROM-Hack-Template-Tools\Oat\Oat\bin\Debug\Oat.exe
+D:\Github\ROM-Hack-Template-Tools\Oat\Oat\bin\Debug\Oat.pdb
+D:\Github\ROM-Hack-Template-Tools\Oat\Oat\bin\Debug\Oat.xml
+D:\Github\ROM-Hack-Template-Tools\Oat\Oat\obj\Debug\Oat.vbprojResolveAssemblyReference.cache
+D:\Github\ROM-Hack-Template-Tools\Oat\Oat\obj\Debug\Oat.Resources.resources
+D:\Github\ROM-Hack-Template-Tools\Oat\Oat\obj\Debug\Oat.vbproj.GenerateResource.Cache
+D:\Github\ROM-Hack-Template-Tools\Oat\Oat\obj\Debug\Oat.pdb
