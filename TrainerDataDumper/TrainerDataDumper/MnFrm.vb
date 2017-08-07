@@ -301,10 +301,37 @@ Public Class MnFrm
 
             TrainerImagePointers = TrainerImagePointers & imagepointers & palpointers
 
+            Dim moneytableoutput As String = ".text" & vbCrLf _
+& ".thumb" & vbCrLf _
+& ".align 2" & vbCrLf & vbCrLf &
+".global Trainer_Money_Table" & vbCrLf & "Trainer_Money_Table:" & vbCrLf
+
+            Dim moneytableoffvar As Integer
+
+            Dim looper As Integer = 0
+
+            moneytableoffvar = Int32.Parse((GetString(GetINIFileLocation(), header, "TrainerMoneyTable", "")), System.Globalization.NumberStyles.HexNumber)
+
+            While 255 <> Int32.Parse(ReadHEX(LoadedROM, moneytableoffvar + (looper * 4), 1), System.Globalization.NumberStyles.HexNumber)
+
+
+                moneytableoutput = moneytableoutput & ".byte   " & Int32.Parse(ReadHEX(LoadedROM, moneytableoffvar + (looper * 4), 1), System.Globalization.NumberStyles.HexNumber) & "  @Class" & vbCrLf
+                moneytableoutput = moneytableoutput & ".byte   " & Int32.Parse(ReadHEX(LoadedROM, moneytableoffvar + (looper * 4) + 1, 1), System.Globalization.NumberStyles.HexNumber) & "  @Money Rate" & vbCrLf
+                moneytableoutput = moneytableoutput & ".hword 0x0000    @Padding" & vbCrLf
+
+                looper = looper + 1
+
+            End While
+
+            moneytableoutput = moneytableoutput & ".byte   255" & "  @Class" & vbCrLf
+            moneytableoutput = moneytableoutput & ".byte   5" & "  @Money Rate" & vbCrLf
+            moneytableoutput = moneytableoutput & ".hword 0x0000    @Padding" & vbCrLf
+
             File.WriteAllText(FolderBrowserDialog1.SelectedPath & "\TrainerImages.s", TrainerImages)
             File.WriteAllText(FolderBrowserDialog1.SelectedPath & "\TrainerData.s", OutPutFile)
             File.WriteAllText(FolderBrowserDialog1.SelectedPath & "\TrainerPokemonData.s", OutPutFile2)
             File.WriteAllText(FolderBrowserDialog1.SelectedPath & "\TrainerImageTable.s", TrainerImagePointers)
+            File.WriteAllText(FolderBrowserDialog1.SelectedPath & "\TrainerMoneyTable.s", moneytableoutput)
 
             Me.Text = "Trainer Data Dumper"
             Me.UseWaitCursor = False
