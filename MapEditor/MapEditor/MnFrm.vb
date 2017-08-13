@@ -686,6 +686,8 @@ Public Class MnFrm
 
         Dim BlockHeight As Integer = (((PrimaryBlocksInfo.Length + SecondaryBlocksInfo.Length) / 2) / 8) / 8
 
+        BlockHeight = BlockHeight + 1
+
         Dim Blockset As New Bitmap(128, BlockHeight * 16)
 
         Dim across As Integer = 0
