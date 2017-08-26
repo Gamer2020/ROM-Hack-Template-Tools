@@ -3,14 +3,14 @@ Imports System.Drawing
 Imports VB = Microsoft.VisualBasic
 Module Module1
 
-    Private FrontPalette As Color() = New Color(&H10 - 1) {}
-    Private BackPalette As Color() = New Color(&H10 - 1) {}
+    Private FrontPalette As Color() = New Color(&H11 - 1) {}
+    Private BackPalette As Color() = New Color(&H11 - 1) {}
 
     Private FrontSprite As Byte()
     Private BackSprite As Byte()
 
-    Private AnimationNormalPalette As Color() = New Color(&H10 - 1) {}
-    Private AnimationShinyPalette As Color() = New Color(&H10 - 1) {}
+    Private AnimationNormalPalette As Color() = New Color(&H11 - 1) {}
+    Private AnimationShinyPalette As Color() = New Color(&H11 - 1) {}
 
     Private AnimationNormalSprite As Byte()
     Private AnimationShinySprite As Byte()
@@ -304,8 +304,8 @@ writefiles:
             BitmapBLT(mainbitmap, ONormalFrontBitmapAnimation, 0, 0, 0, 0, &H40, &H80, Color.FromArgb(&HFF, 200, 200, &HA8))
             BitmapBLT(mainbitmap, OShinyBackBitmap, 0, 0, &HC0, 0, &H40, &H40, Color.FromArgb(&HFF, 200, 200, &HA8))
 
-            convertedimage1 = (CompressBytes(SaveBitmapToArray(ONormalFrontBitmapAnimation, AnimationNormalPalette)))
-            convertedimage2 = (CompressBytes(SaveBitmapToArray(OShinyBackBitmap, BackPalette)))
+            convertedimage1 = CompressBytes(AnimationNormalSprite)
+            convertedimage2 = CompressBytes(BackSprite)
 
             convertedpal1 = (CompressBytes(HexStringToByteArray(ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(AnimationNormalPalette(0))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(AnimationNormalPalette(1))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(AnimationNormalPalette(2))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(AnimationNormalPalette(3))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(AnimationNormalPalette(4))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(AnimationNormalPalette(5))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(AnimationNormalPalette(6))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(AnimationNormalPalette(7))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(AnimationNormalPalette(8))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(AnimationNormalPalette(9))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(AnimationNormalPalette(10))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(AnimationNormalPalette(11))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(AnimationNormalPalette(12))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(AnimationNormalPalette(13))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(AnimationNormalPalette(14))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(AnimationNormalPalette(15))), 4)))))
             convertedpal2 = (CompressBytes(HexStringToByteArray(ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(BackPalette(0))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(BackPalette(1))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(BackPalette(2))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(BackPalette(3))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(BackPalette(4))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(BackPalette(5))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(BackPalette(6))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(BackPalette(7))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(BackPalette(8))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(BackPalette(9))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(BackPalette(10))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(BackPalette(11))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(BackPalette(12))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(BackPalette(13))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(BackPalette(14))), 4)) & ReverseHEX(VB.Right("0000" & Hex(ColorToRGB16(BackPalette(15))), 4)))))
