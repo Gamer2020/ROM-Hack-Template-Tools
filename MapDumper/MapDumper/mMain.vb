@@ -266,5 +266,29 @@ Module mMain
 
     End Function
 
+    Public Function HexStringToByteArray(input As String) As Byte()
+
+        Dim output((input.Length / 2) - 1) As Byte
+        Dim loopvar As Integer
+
+        loopvar = 0
+
+        While loopvar < (input.Length / 2)
+
+            If loopvar = 0 Then
+                output(loopvar) = "&H" & input.Substring(loopvar * 2, 2)
+            Else
+                output(loopvar) = "&H" & input.Substring(loopvar * 2, 2)
+            End If
+
+            loopvar = loopvar + 1
+
+        End While
+
+
+
+        HexStringToByteArray = output
+    End Function
+
 
 End Module

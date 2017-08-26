@@ -20,3 +20,6 @@ D:\SourceTree\ROM-Hack-Template-Tools\TileConverter\TileConverter\obj\Debug\Tile
 D:\SourceTree\ROM-Hack-Template-Tools\TileConverter\TileConverter\obj\Debug\TileConverter.MnFrm.resources
 D:\SourceTree\ROM-Hack-Template-Tools\TileConverter\TileConverter\obj\Debug\TileConverter.Resources.resources
 D:\SourceTree\ROM-Hack-Template-Tools\TileConverter\TileConverter\obj\Debug\TileConverter.vbproj.GenerateResource.Cache
+C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\TileConverter\TileConverter\bin\Debug\TileConverter.exe.config
+C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\TileConverter\TileConverter\obj\Debug\TileConverter.exe
+C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\TileConverter\TileConverter\obj\Debug\TileConverter.xml

@@ -748,6 +748,66 @@ Public Class MnFrm
                 w.WriteLine(("@\Bank" & MapBank & "_Map" & MapNumber & "_Border.bin"))
             End Using
 
+            'Conversion code
+
+            If ((mMain.header2 = "BPR") Or (mMain.header2 = "BPG")) Then
+
+                'Tile Conversion
+                Dim tiles1 As String
+                Dim tiles2 As String
+                Dim tilecomb As String
+
+                tiles1 = MapTilesCompressedtoHexStringFRPrim2(0, 0, FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryTiles.bin")
+                tiles2 = MapTilesCompressedtoHexStringFRSec2(0, 0, FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryTiles.bin")
+
+                tilecomb = tiles1 & tiles2
+
+                tiles1 = tilecomb.Substring(0, 16384 * 2)
+                tiles2 = tilecomb.Substring(16384 * 2, 16384 * 2)
+
+                tiles1 = ByteArrayToHexString(CompressBytes(HexStringToByteArray(tiles1)))
+                tiles2 = ByteArrayToHexString(CompressBytes(HexStringToByteArray(tiles2)))
+
+                If File.Exists(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryTiles.bin") Then
+                    File.Delete(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryTiles.bin")
+                End If
+
+                If File.Exists(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryTiles.bin") Then
+                    File.Delete(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryTiles.bin")
+                End If
+
+                WriteHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryTiles.bin", 0, tiles1)
+                WriteHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryTiles.bin", 0, tiles2)
+
+                'Block Conversion
+                Dim blocks1 As String
+                Dim blocks2 As String
+                Dim blockscomb As String
+
+                Dim info1 As New FileInfo(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBlocks.bin")
+                Dim info2 As New FileInfo(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBlocks.bin")
+
+                blocks1 = ReadHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBlocks.bin", 0, info1.Length)
+                blocks2 = ReadHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBlocks.bin", 0, info2.Length)
+
+                blockscomb = blocks1 & blocks2
+
+                blocks1 = blockscomb.Substring(0, (512 * 2) * 16)
+                blocks2 = blockscomb.Substring(((512 * 2) * 16), (blockscomb.Length - ((512 * 2) * 16)))
+
+                If File.Exists(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBlocks.bin") Then
+                    File.Delete(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBlocks.bin")
+                End If
+
+                If File.Exists(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBlocks.bin") Then
+                    File.Delete(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBlocks.bin")
+                End If
+
+                WriteHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBlocks.bin", 0, blocks1)
+                WriteHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBlocks.bin", 0, blocks2)
+
+            End If
+
             Me.Text = "Map Dumper"
             Me.UseWaitCursor = False
             Me.Enabled = True
@@ -1336,13 +1396,13 @@ Public Class MnFrm
 
         outputtext = outputtext & "    .long    Bank" & MapBank & "_Map" & MapNumber & "_SecondaryTileset" & "  @Secondary Tileset" & vbCrLf
 
-        BorderHeight = ("&H" & (ReadHEX(LoadedROM, Map_Footer + 24, 1)))
-        BorderWidth = ("&H" & (ReadHEX(LoadedROM, Map_Footer + 25, 1)))
+        'BorderHeight = ("&H" & (ReadHEX(LoadedROM, Map_Footer + 24, 1)))
+        'BorderWidth = ("&H" & (ReadHEX(LoadedROM, Map_Footer + 25, 1)))
 
-        outputtext = outputtext & "    .byte    " & BorderHeight & "  @Border Height" & vbCrLf
-        outputtext = outputtext & "    .byte    " & BorderWidth & "  @Border Width" & vbCrLf
+        'outputtext = outputtext & "    .byte    " & BorderHeight & "  @Border Height" & vbCrLf
+        'outputtext = outputtext & "    .byte    " & BorderWidth & "  @Border Width" & vbCrLf
 
-        BorderData = ReadHEX(LoadedROM, BorderPointer, (BorderHeight * BorderWidth) * 2)
+        BorderData = ReadHEX(LoadedROM, BorderPointer, (2 * 2) * 2)
 
         MapPermData = ReadHEX(LoadedROM, MapDataPointer, (MapHeight * MapWidth) * 2)
 
@@ -1375,10 +1435,9 @@ Public Class MnFrm
 
         PrimaryBehaviourPointer = ("&H" & ReverseHEX(ReadHEX(LoadedROM, PrimaryTilesetPointer + 20, 4))) - &H8000000
 
-        outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, PrimaryTilesetPointer + 16, 4)) & "  @Animation routine" & vbCrLf
-
         outputtext = outputtext & "    .long    Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviours" & "  @behavioural_bg_bytes" & vbCrLf
 
+        outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, PrimaryTilesetPointer + 16, 4)) & "  @Animation routine" & vbCrLf
 
         PrimaryPals = ReadHEX(LoadedROM, PrimaryPalPointer, 7 * (16 * 2))
 
@@ -1426,10 +1485,9 @@ Public Class MnFrm
 
         SecondaryBehaviourPointer = ("&H" & ReverseHEX(ReadHEX(LoadedROM, SecondaryTilesetPointer + 20, 4))) - &H8000000
 
-        outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, SecondaryTilesetPointer + 16, 4)) & "  @Animation routine" & vbCrLf
-
         outputtext = outputtext & "    .long    Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviours" & "  @behavioural_bg_bytes" & vbCrLf
 
+        outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, SecondaryTilesetPointer + 16, 4)) & "  @Animation routine" & vbCrLf
 
         SecondaryPals = ReadHEX(LoadedROM, SecondaryPalPointer, 13 * (16 * 2))
 
