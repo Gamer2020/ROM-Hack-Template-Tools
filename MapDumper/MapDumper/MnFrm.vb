@@ -724,8 +724,8 @@ Public Class MnFrm
             WriteHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBlocks.bin", 0, PrimaryBlocks)
             WriteHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBlocks.bin", 0, SecondaryBlocks)
 
-            WriteHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviours.bin", 0, PrimaryBehaviours)
-            WriteHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviours.bin", 0, SecondaryBehaviours)
+            WriteHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviors.bin", 0, PrimaryBehaviors)
+            WriteHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviors.bin", 0, SecondaryBehaviors)
 
             If File.Exists(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & ".txt") Then
                 File.Delete(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & ".txt")
@@ -741,8 +741,8 @@ Public Class MnFrm
                 w.WriteLine(("@\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryPal.bin"))
                 w.WriteLine(("@\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBlocks.bin"))
                 w.WriteLine(("@\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBlocks.bin"))
-                w.WriteLine(("@\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviours.bin"))
-                w.WriteLine(("@\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviours.bin"))
+                w.WriteLine(("@\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviors.bin"))
+                w.WriteLine(("@\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviors.bin"))
                 w.WriteLine(("@\Bank" & MapBank & "_Map" & MapNumber & "_MapData.bin"))
                 w.WriteLine(MapHeight)
                 w.WriteLine(MapWidth)
@@ -830,8 +830,8 @@ Public Class MnFrm
                 Dim behaviors2 As String = ""
                 Dim behaviorscomb As String = ""
 
-                Dim info3 As New FileInfo(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviours.bin")
-                Dim info4 As New FileInfo(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviours.bin")
+                Dim info3 As New FileInfo(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviors.bin")
+                Dim info4 As New FileInfo(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviors.bin")
 
                 Dim loopvar As Integer
 
@@ -839,8 +839,8 @@ Public Class MnFrm
 
                 While loopvar < info3.Length
 
-                    behaviors1 = behaviors1 & VB.Right("00" & ReadHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviours.bin", 0 + loopvar, 1), 2)
-                    behaviors1 = behaviors1 & VB.Right("00" & ReadHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviours.bin", 0 + loopvar + 2, 1), 2)
+                    behaviors1 = behaviors1 & VB.Right("00" & ReadHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviors.bin", 0 + loopvar, 1), 2)
+                    behaviors1 = behaviors1 & VB.Right("00" & ReadHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviors.bin", 0 + loopvar + 2, 1), 2)
 
                     loopvar = loopvar + 4
 
@@ -850,8 +850,8 @@ Public Class MnFrm
 
                 While loopvar < info4.Length
 
-                    behaviors2 = behaviors2 & VB.Right("00" & ReadHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviours.bin", 0 + loopvar, 1), 2)
-                    behaviors2 = behaviors2 & VB.Right("00" & ReadHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviours.bin", 0 + loopvar + 1, 2), 2)
+                    behaviors2 = behaviors2 & VB.Right("00" & ReadHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviors.bin", 0 + loopvar, 1), 2)
+                    behaviors2 = behaviors2 & VB.Right("00" & ReadHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviors.bin", 0 + loopvar + 1, 2), 2)
 
                     loopvar = loopvar + 4
 
@@ -865,16 +865,16 @@ Public Class MnFrm
                 conbehaviors1 = behaviorscomb.Substring(0, (512 * 2) * 2)
                 conbehaviors2 = behaviorscomb.Substring(((512 * 2) * 2), (behaviorscomb.Length - ((512 * 2) * 2)) - 1)
 
-                If File.Exists(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviours.bin") Then
-                    File.Delete(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviours.bin")
+                If File.Exists(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviors.bin") Then
+                    File.Delete(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviors.bin")
                 End If
 
-                If File.Exists(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviours.bin") Then
-                    File.Delete(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviours.bin")
+                If File.Exists(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviors.bin") Then
+                    File.Delete(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviors.bin")
                 End If
 
-                WriteHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviours.bin", 0, conbehaviors1)
-                WriteHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviours.bin", 0, conbehaviors2)
+                WriteHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviors.bin", 0, conbehaviors1)
+                WriteHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviors.bin", 0, conbehaviors2)
 
             End If
 
@@ -989,7 +989,7 @@ Public Class MnFrm
 
         PrimaryBehaviourPointer = ("&H" & ReverseHEX(ReadHEX(LoadedROM, PrimaryTilesetPointer + 16, 4))) - &H8000000
 
-        outputtext = outputtext & "    .long    Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviours" & "  @behavioural_bg_bytes" & vbCrLf
+        outputtext = outputtext & "    .long    Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviors" & "  @behavioural_bg_bytes" & vbCrLf
         outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, PrimaryTilesetPointer + 20, 4)) & "  @Animation routine" & vbCrLf
 
         PrimaryPals = ReadHEX(LoadedROM, PrimaryPalPointer, 6 * (16 * 2))
@@ -1007,7 +1007,7 @@ Public Class MnFrm
 
         PrimaryBlocks = ReadHEX(LoadedROM, PrimaryBlockSetPointer, 16 * 512)
 
-        PrimaryBehaviours = ReadHEX(LoadedROM, PrimaryBehaviourPointer, 2 * 512)
+        PrimaryBehaviors = ReadHEX(LoadedROM, PrimaryBehaviourPointer, 2 * 512)
 
         'Secondary Tileset
 
@@ -1038,7 +1038,7 @@ Public Class MnFrm
 
         SecondaryBehaviourPointer = ("&H" & ReverseHEX(ReadHEX(LoadedROM, SecondaryTilesetPointer + 16, 4))) - &H8000000
 
-        outputtext = outputtext & "    .long    Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviours" & "  @behavioural_bg_bytes" & vbCrLf
+        outputtext = outputtext & "    .long    Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviors" & "  @behavioural_bg_bytes" & vbCrLf
         outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, SecondaryTilesetPointer + 20, 4)) & "  @Animation routine" & vbCrLf
 
         SecondaryPals = ReadHEX(LoadedROM, SecondaryPalPointer, 13 * (16 * 2))
@@ -1056,7 +1056,7 @@ Public Class MnFrm
 
         SecondaryBlocks = ReadHEX(LoadedROM, SecondaryBlockSetPointer, (Int32.Parse((GetString(AppPath & "ini\roms.ini", header, "NumberOfTilesInTilset" & Hex(SecondaryTilesetPointer), "")), System.Globalization.NumberStyles.HexNumber) + 1) * 16)
 
-        SecondaryBehaviours = ReadHEX(LoadedROM, SecondaryBehaviourPointer, (Int32.Parse((GetString(AppPath & "ini\roms.ini", header, "NumberOfTilesInTilset" & Hex(SecondaryTilesetPointer), "")), System.Globalization.NumberStyles.HexNumber) + 1) * 2)
+        SecondaryBehaviors = ReadHEX(LoadedROM, SecondaryBehaviourPointer, (Int32.Parse((GetString(AppPath & "ini\roms.ini", header, "NumberOfTilesInTilset" & Hex(SecondaryTilesetPointer), "")), System.Globalization.NumberStyles.HexNumber) + 1) * 2)
 
         'Events
 
@@ -1366,8 +1366,8 @@ Public Class MnFrm
 
         outputtext = outputtext & ".align 2" & vbCrLf
 
-        outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviours:" & vbCrLf
-        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "/Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviours.bin""" & vbCrLf
+        outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviors:" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "/Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviors.bin""" & vbCrLf
 
         outputtext = outputtext & vbCrLf
 
@@ -1394,8 +1394,8 @@ Public Class MnFrm
 
         outputtext = outputtext & ".align 2" & vbCrLf
 
-        outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviours:" & vbCrLf
-        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "/Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviours.bin""" & vbCrLf
+        outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviors:" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "/Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviors.bin""" & vbCrLf
 
     End Sub
 
@@ -1505,7 +1505,7 @@ Public Class MnFrm
 
         PrimaryBehaviourPointer = ("&H" & ReverseHEX(ReadHEX(LoadedROM, PrimaryTilesetPointer + 20, 4))) - &H8000000
 
-        outputtext = outputtext & "    .long    Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviours" & "  @behavioural_bg_bytes" & vbCrLf
+        outputtext = outputtext & "    .long    Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviors" & "  @behavioural_bg_bytes" & vbCrLf
 
         outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, PrimaryTilesetPointer + 16, 4)) & "  @Animation routine" & vbCrLf
 
@@ -1524,7 +1524,7 @@ Public Class MnFrm
 
         PrimaryBlocks = ReadHEX(LoadedROM, PrimaryBlockSetPointer, 16 * 640)
 
-        PrimaryBehaviours = ReadHEX(LoadedROM, PrimaryBehaviourPointer, 4 * 640)
+        PrimaryBehaviors = ReadHEX(LoadedROM, PrimaryBehaviourPointer, 4 * 640)
 
         'Secondary Tileset
 
@@ -1555,7 +1555,7 @@ Public Class MnFrm
 
         SecondaryBehaviourPointer = ("&H" & ReverseHEX(ReadHEX(LoadedROM, SecondaryTilesetPointer + 20, 4))) - &H8000000
 
-        outputtext = outputtext & "    .long    Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviours" & "  @behavioural_bg_bytes" & vbCrLf
+        outputtext = outputtext & "    .long    Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviors" & "  @behavioural_bg_bytes" & vbCrLf
 
         outputtext = outputtext & "    .long    0x" & ReverseHEX(ReadHEX(LoadedROM, SecondaryTilesetPointer + 16, 4)) & "  @Animation routine" & vbCrLf
 
@@ -1577,7 +1577,7 @@ Public Class MnFrm
         'MsgBox(Int32.Parse((GetString(AppPath & "ini\roms.ini", header, "NumberOfTilesInTilset" & Hex(SecondaryTilesetPointer), ""))))
         'MsgBox((Int32.Parse((GetString(AppPath & "ini\roms.ini", header, "NumberOfTilesInTilset" & Hex(SecondaryTilesetPointer), "")), System.Globalization.NumberStyles.HexNumber)))
 
-        SecondaryBehaviours = ReadHEX(LoadedROM, SecondaryBehaviourPointer, (Int32.Parse((GetString(AppPath & "ini\roms.ini", header, "NumberOfTilesInTilset" & Hex(SecondaryTilesetPointer), "")), System.Globalization.NumberStyles.HexNumber) + 1) * 4)
+        SecondaryBehaviors = ReadHEX(LoadedROM, SecondaryBehaviourPointer, (Int32.Parse((GetString(AppPath & "ini\roms.ini", header, "NumberOfTilesInTilset" & Hex(SecondaryTilesetPointer), "")), System.Globalization.NumberStyles.HexNumber) + 1) * 4)
 
         'Events
 
@@ -1887,8 +1887,8 @@ Public Class MnFrm
 
         outputtext = outputtext & ".align 2" & vbCrLf
 
-        outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviours:" & vbCrLf
-        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "/Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviours.bin""" & vbCrLf
+        outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviors:" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "/Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviors.bin""" & vbCrLf
 
         outputtext = outputtext & vbCrLf
 
@@ -1915,8 +1915,8 @@ Public Class MnFrm
 
         outputtext = outputtext & ".align 2" & vbCrLf
 
-        outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviours:" & vbCrLf
-        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "/Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviours.bin""" & vbCrLf
+        outputtext = outputtext & "Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviors:" & vbCrLf
+        outputtext = outputtext & " .incbin ""map_data/Bank" & MapBank & "_Map" & MapNumber & "/Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviors.bin""" & vbCrLf
 
     End Sub
 

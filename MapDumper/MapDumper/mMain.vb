@@ -82,8 +82,8 @@ Module mMain
     Public PrimaryBlocks As String
     Public SecondaryBlocks As String
 
-    Public PrimaryBehaviours As String
-    Public SecondaryBehaviours As String
+    Public PrimaryBehaviors As String
+    Public SecondaryBehaviors As String
 
     Public BorderData As String
     Public MapPermData As String

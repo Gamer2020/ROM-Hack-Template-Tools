@@ -53,3 +53,14 @@ C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\MapDumper\MapDumper\
 C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\MapDumper\MapDumper\obj\Debug\MapDumper.Resources.resources
 C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\MapDumper\MapDumper\obj\Debug\MapDumper.vbproj.GenerateResource.Cache
 C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\MapDumper\MapDumper\obj\Debug\MapDumper.pdb
+D:\Github\ROM-Hack-Template-Tools\MapDumper\MapDumper\bin\Debug\MapDumper.exe.config
+D:\Github\ROM-Hack-Template-Tools\MapDumper\MapDumper\obj\Debug\MapDumper.exe
+D:\Github\ROM-Hack-Template-Tools\MapDumper\MapDumper\obj\Debug\MapDumper.xml
+D:\Github\ROM-Hack-Template-Tools\MapDumper\MapDumper\bin\Debug\MapDumper.exe
+D:\Github\ROM-Hack-Template-Tools\MapDumper\MapDumper\bin\Debug\MapDumper.pdb
+D:\Github\ROM-Hack-Template-Tools\MapDumper\MapDumper\bin\Debug\MapDumper.xml
+D:\Github\ROM-Hack-Template-Tools\MapDumper\MapDumper\obj\Debug\MapDumper.vbprojResolveAssemblyReference.cache
+D:\Github\ROM-Hack-Template-Tools\MapDumper\MapDumper\obj\Debug\MapDumper.MnFrm.resources
+D:\Github\ROM-Hack-Template-Tools\MapDumper\MapDumper\obj\Debug\MapDumper.Resources.resources
+D:\Github\ROM-Hack-Template-Tools\MapDumper\MapDumper\obj\Debug\MapDumper.vbproj.GenerateResource.Cache
+D:\Github\ROM-Hack-Template-Tools\MapDumper\MapDumper\obj\Debug\MapDumper.pdb
