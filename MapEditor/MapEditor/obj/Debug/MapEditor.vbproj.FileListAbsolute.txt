@@ -56,3 +56,11 @@ C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\MapEditor\MapEditor\
 D:\Github\ROM-Hack-Template-Tools\MapEditor\MapEditor\bin\Debug\MapEditor.exe.config
 D:\Github\ROM-Hack-Template-Tools\MapEditor\MapEditor\obj\Debug\MapEditor.exe
 D:\Github\ROM-Hack-Template-Tools\MapEditor\MapEditor\obj\Debug\MapEditor.xml
+D:\Github\ROM-Hack-Template-Tools\MapEditor\MapEditor\bin\Debug\MapEditor.exe
+D:\Github\ROM-Hack-Template-Tools\MapEditor\MapEditor\bin\Debug\MapEditor.pdb
+D:\Github\ROM-Hack-Template-Tools\MapEditor\MapEditor\bin\Debug\MapEditor.xml
+D:\Github\ROM-Hack-Template-Tools\MapEditor\MapEditor\obj\Debug\MapEditor.vbprojResolveAssemblyReference.cache
+D:\Github\ROM-Hack-Template-Tools\MapEditor\MapEditor\obj\Debug\MapEditor.MnFrm.resources
+D:\Github\ROM-Hack-Template-Tools\MapEditor\MapEditor\obj\Debug\MapEditor.Resources.resources
+D:\Github\ROM-Hack-Template-Tools\MapEditor\MapEditor\obj\Debug\MapEditor.vbproj.GenerateResource.Cache
+D:\Github\ROM-Hack-Template-Tools\MapEditor\MapEditor\obj\Debug\MapEditor.pdb

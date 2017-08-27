@@ -1861,8 +1861,8 @@ Public Class MnFrm
             BlockBottomPictureBox.Image = BlockBottomToBitmap(TextBox6.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInBlockEditor)
             BlockTopPictureBox.Image = BlockTopToBitmap(TextBox6.Text, TextBox1.Text, TextBox4.Text, SelectedBlockInBlockEditor)
 
-            BehaviorComboBox.SelectedIndex = "&H" & ReadHEX(TextBox7.Text, SelectedBlockInBlockEditor * 2, 1)
-            BackgroundComboBox.SelectedIndex = "&H" & ReadHEX(TextBox7.Text, 1 + (SelectedBlockInBlockEditor * 2), 1)
+            BehaviorComboBox.SelectedIndex = "&H" & ReadHEX(TextBox7.Text, (SelectedBlockInBlockEditor * 2) - (512 * 2), 1)
+            BackgroundComboBox.SelectedIndex = "&H" & ReadHEX(TextBox7.Text, 1 + (SelectedBlockInBlockEditor * 2) - (512 * 2), 1)
         End If
 
         SelectionStatus.Text = "Selected Block: " & SelectedBlockInBlockEditor
