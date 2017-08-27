@@ -299,8 +299,8 @@ Public Class MnFrm
 
             While loopvar < info4.Length
 
-                behaviours2 = behaviours1 & VB.Right("00" & ReadHEX(TextBox7.Text, 0 + loopvar, 1), 2)
-                behaviours2 = behaviours1 & VB.Right("00" & ReadHEX(TextBox7.Text, 0 + loopvar + 2, 1), 2)
+                behaviours2 = behaviours2 & VB.Right("00" & ReadHEX(TextBox7.Text, 0 + loopvar, 1), 2)
+                behaviours2 = behaviours2 & VB.Right("00" & ReadHEX(TextBox7.Text, 0 + loopvar + 2, 1), 2)
 
                 loopvar = loopvar + 4
 

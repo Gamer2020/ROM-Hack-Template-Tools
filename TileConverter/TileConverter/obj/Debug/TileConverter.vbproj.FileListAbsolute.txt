@@ -23,3 +23,11 @@ D:\SourceTree\ROM-Hack-Template-Tools\TileConverter\TileConverter\obj\Debug\Tile
 C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\TileConverter\TileConverter\bin\Debug\TileConverter.exe.config
 C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\TileConverter\TileConverter\obj\Debug\TileConverter.exe
 C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\TileConverter\TileConverter\obj\Debug\TileConverter.xml
+C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\TileConverter\TileConverter\bin\Debug\TileConverter.exe
+C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\TileConverter\TileConverter\bin\Debug\TileConverter.pdb
+C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\TileConverter\TileConverter\bin\Debug\TileConverter.xml
+C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\TileConverter\TileConverter\obj\Debug\TileConverter.vbprojResolveAssemblyReference.cache
+C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\TileConverter\TileConverter\obj\Debug\TileConverter.MnFrm.resources
+C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\TileConverter\TileConverter\obj\Debug\TileConverter.Resources.resources
+C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\TileConverter\TileConverter\obj\Debug\TileConverter.vbproj.GenerateResource.Cache
+C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\TileConverter\TileConverter\obj\Debug\TileConverter.pdb

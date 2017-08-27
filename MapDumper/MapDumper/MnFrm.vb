@@ -1,6 +1,7 @@
 ﻿Imports System.IO
 Imports System.Windows.Forms.Application
 Imports System.Net
+Imports VB = Microsoft.VisualBasic
 
 Imports System.IO.Directory
 
@@ -806,6 +807,75 @@ Public Class MnFrm
                 WriteHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBlocks.bin", 0, blocks1)
                 WriteHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBlocks.bin", 0, blocks2)
 
+                'Pal Conversion
+                Dim pals1 As String
+                Dim pals2 As String
+
+                pals1 = ReadHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryPal.bin", 0, ((16 * 2) * 6))
+                pals2 = ReadHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryPal.bin", 0, ((16 * 2) * 7)) & ReadHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryPal.bin", ((16 * 2) * 7), ((16 * 2) * 6))
+
+                If File.Exists(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryPal.bin") Then
+                    File.Delete(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryPal.bin")
+                End If
+
+                If File.Exists(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryPal.bin") Then
+                    File.Delete(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryPal.bin")
+                End If
+
+                WriteHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryPal.bin", 0, pals1)
+                WriteHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryPal.bin", 0, pals2)
+
+                'Behavior Conversion
+                Dim behaviors1 As String = ""
+                Dim behaviors2 As String = ""
+                Dim behaviorscomb As String = ""
+
+                Dim info3 As New FileInfo(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviours.bin")
+                Dim info4 As New FileInfo(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviours.bin")
+
+                Dim loopvar As Integer
+
+                loopvar = 0
+
+                While loopvar < info3.Length
+
+                    behaviors1 = behaviors1 & VB.Right("00" & ReadHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviours.bin", 0 + loopvar, 1), 2)
+                    behaviors1 = behaviors1 & VB.Right("00" & ReadHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviours.bin", 0 + loopvar + 2, 1), 2)
+
+                    loopvar = loopvar + 4
+
+                End While
+
+                loopvar = 0
+
+                While loopvar < info4.Length
+
+                    behaviors2 = behaviors2 & VB.Right("00" & ReadHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviours.bin", 0 + loopvar, 1), 2)
+                    behaviors2 = behaviors2 & VB.Right("00" & ReadHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviours.bin", 0 + loopvar + 1, 2), 2)
+
+                    loopvar = loopvar + 4
+
+                End While
+
+                behaviorscomb = behaviors1 & behaviors2
+
+                Dim conbehaviors1 As String = ""
+                Dim conbehaviors2 As String = ""
+
+                conbehaviors1 = behaviorscomb.Substring(0, (512 * 2) * 2)
+                conbehaviors2 = behaviorscomb.Substring(((512 * 2) * 2), (behaviorscomb.Length - ((512 * 2) * 2)) - 1)
+
+                If File.Exists(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviours.bin") Then
+                    File.Delete(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviours.bin")
+                End If
+
+                If File.Exists(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviours.bin") Then
+                    File.Delete(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviours.bin")
+                End If
+
+                WriteHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_PrimaryBehaviours.bin", 0, conbehaviors1)
+                WriteHEX(FolderBrowserDialog1.SelectedPath & "\Bank" & MapBank & "_Map" & MapNumber & "_SecondaryBehaviours.bin", 0, conbehaviors2)
+
             End If
 
             Me.Text = "Map Dumper"
@@ -1503,6 +1573,9 @@ Public Class MnFrm
         End If
 
         SecondaryBlocks = ReadHEX(LoadedROM, SecondaryBlockSetPointer, (Int32.Parse((GetString(AppPath & "ini\roms.ini", header, "NumberOfTilesInTilset" & Hex(SecondaryTilesetPointer), "")), System.Globalization.NumberStyles.HexNumber) + 1) * 16)
+
+        'MsgBox(Int32.Parse((GetString(AppPath & "ini\roms.ini", header, "NumberOfTilesInTilset" & Hex(SecondaryTilesetPointer), ""))))
+        'MsgBox((Int32.Parse((GetString(AppPath & "ini\roms.ini", header, "NumberOfTilesInTilset" & Hex(SecondaryTilesetPointer), "")), System.Globalization.NumberStyles.HexNumber)))
 
         SecondaryBehaviours = ReadHEX(LoadedROM, SecondaryBehaviourPointer, (Int32.Parse((GetString(AppPath & "ini\roms.ini", header, "NumberOfTilesInTilset" & Hex(SecondaryTilesetPointer), "")), System.Globalization.NumberStyles.HexNumber) + 1) * 4)
 
