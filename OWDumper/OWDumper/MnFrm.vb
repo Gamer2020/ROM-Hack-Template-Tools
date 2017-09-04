@@ -119,8 +119,9 @@ Public Class MnFrm
 
                 OutPutFile = OutPutFile & "@Sprite " & LoopVar & vbCrLf
                 OutPutFile = OutPutFile & ".short    0x" & ReverseHEX(ReadHEX(LoadedROM, curoff, 2)) & "   @tiles_tag" & vbCrLf
-                OutPutFile = OutPutFile & ".short    0x" & ReverseHEX(ReadHEX(LoadedROM, curoff + 2, 2)) & "   @pal_num" & vbCrLf
-                OutPutFile = OutPutFile & ".short    0x" & ReverseHEX(ReadHEX(LoadedROM, curoff + 4, 2)) & "   @pal_tag_2" & vbCrLf
+                OutPutFile = OutPutFile & ".byte    0x" & ReverseHEX(ReadHEX(LoadedROM, curoff + 2, 1)) & "   @pal_num" & vbCrLf
+                OutPutFile = OutPutFile & ".byte    0x" & ReverseHEX(ReadHEX(LoadedROM, curoff + 3, 1)) & "   @Unused?" & vbCrLf
+                OutPutFile = OutPutFile & ".short    0x" & ReverseHEX(ReadHEX(LoadedROM, curoff + 4, 2)) & "   @pal_tag_2?" & vbCrLf
                 OutPutFile = OutPutFile & ".short    0x" & ReverseHEX(ReadHEX(LoadedROM, curoff + 6, 2)) & "   @field_6" & vbCrLf
                 OutPutFile = OutPutFile & ".long    0x" & ReverseHEX(ReadHEX(LoadedROM, curoff + 8, 4)) & "   @pos_neg_center" & vbCrLf
                 OutPutFile = OutPutFile & ".byte    0x" & ReverseHEX(ReadHEX(LoadedROM, curoff + 12, 1)) & "   @pal_slot_and_unknown" & vbCrLf
