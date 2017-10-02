@@ -464,32 +464,32 @@ Module WichuSpriteFunctions
         Return Color.FromArgb(&HFF, red, green, blue)
     End Function
 
-    Public Function SaveBitmapToArray(ByRef bitmap As Bitmap, ByRef palette As Color()) As Object
-        Dim buffer As Byte() = New Byte((CInt(Math.Round(CDbl(((CDbl((bitmap.Height * bitmap.Width)) / 2) - 1)))) + 1) - 1) {}
-        Dim num8 As Double = ((CDbl(bitmap.Height) / 8) - 1)
-        Dim i As Double = 0
-        Do While (i <= num8)
-            Dim num9 As Double = ((CDbl(bitmap.Width) / 8) - 1)
-            Dim j As Double = 0
-            Do While (j <= num9)
-                Dim num6 As Integer = 0
+    Public Function SaveBitmapToArray(ByRef bitmap As System.Drawing.Bitmap, ByRef palette As Color()) As Object
+        Dim num As Integer = 0
+        Dim numArray(CInt(Math.Round(CDbl((bitmap.Height * bitmap.Width)) / 2 - 1)) + 1 - 1) As Byte
+        Dim height As Double = CDbl(bitmap.Height) / 8 - 1
+        Dim num1 As Double = 0
+        Do
+            Dim width As Double = CDbl(bitmap.Width) / 8 - 1
+            Dim num2 As Double = 0
+            Do
+                Dim num3 As Integer = 0
                 Do
-                    Dim num7 As Integer = 0
+                    Dim num4 As Integer = 0
                     Do
-                        Dim num3 As Integer
-                        Dim index As Byte = CByte(Array.IndexOf(Of Color)(palette, bitmap.GetPixel(CInt(Math.Round(CDbl(((j * 8) + (num7 * 2))))), CInt(Math.Round(CDbl(((i * 8) + num6)))))))
-                        Dim num2 As Byte = CByte(Array.IndexOf(Of Color)(palette, bitmap.GetPixel(CInt(Math.Round(CDbl((((j * 8) + (num7 * 2)) + 1)))), CInt(Math.Round(CDbl(((i * 8) + num6)))))))
-                        buffer(num3) = CByte((CByte((num2 << 4)) Or index))
-                        num3 += 1
-                        num7 += 1
-                    Loop While (num7 <= 3)
-                    num6 += 1
-                Loop While (num6 <= 7)
-                j += 1
-            Loop
-            i += 1
-        Loop
-        Return buffer
+                        Dim num5 As Byte = CByte(Array.IndexOf(Of Color)(palette, bitmap.GetPixel(CInt(Math.Round(num2 * 8 + CDbl((num4 * 2)))), CInt(Math.Round(num1 * 8 + CDbl(num3))))))
+                        Dim num6 As Byte = CByte(Array.IndexOf(Of Color)(palette, bitmap.GetPixel(CInt(Math.Round(num2 * 8 + CDbl((num4 * 2)) + 1)), CInt(Math.Round(num1 * 8 + CDbl(num3))))))
+                        numArray(num) = CByte((num6 << 4)) Or num5
+                        num = num + 1
+                        num4 = num4 + 1
+                    Loop While num4 <= 3
+                    num3 = num3 + 1
+                Loop While num3 <= 7
+                num2 += 1
+            Loop While num2 <= width
+            num1 += 1
+        Loop While num1 <= height
+        Return numArray
     End Function
 
     Public Sub TransparentBitmap(ByRef bitmap As Bitmap)
