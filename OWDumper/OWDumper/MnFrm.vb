@@ -209,6 +209,12 @@ Public Class MnFrm
 & ".thumb" & vbCrLf _
 & ".align 2" & vbCrLf & vbCrLf
 
+            Dim OutPutFile3 As String = ".text" & vbCrLf _
+& ".thumb" & vbCrLf _
+& ".align 2" & vbCrLf & vbCrLf _
+& ".global OW_Pointer_Table" & vbCrLf _
+& "OW_Pointer_Table:" & vbCrLf & vbCrLf
+
             Dim LoopVar As Integer = 0
             Dim curoff As Integer
             Dim offvar As Integer
@@ -223,7 +229,10 @@ Public Class MnFrm
 
                 curoff = offvar + (36 * (LoopVar))
 
-                OutPutFile = OutPutFile & "@Sprite " & LoopVar & vbCrLf
+                OutPutFile3 = OutPutFile3 & ".word  OW_Header" & LoopVar & "" & vbCrLf
+
+                OutPutFile = OutPutFile & ".global OW_Header" & LoopVar & vbCrLf _
+                        & "OW_Header" & LoopVar & ":" & vbCrLf & vbCrLf
                 OutPutFile = OutPutFile & ".short    0x" & ReverseHEX(ReadHEX(LoadedROM, curoff, 2)) & "   @Starter Bytes" & vbCrLf
                 OutPutFile = OutPutFile & ".byte    0x" & ReverseHEX(ReadHEX(LoadedROM, curoff + 2, 1)) & "   @pal_num" & vbCrLf
                 OutPutFile = OutPutFile & ".byte    0x" & ReverseHEX(ReadHEX(LoadedROM, curoff + 3, 1)) & "   @?" & vbCrLf
@@ -265,6 +274,7 @@ Public Class MnFrm
 
             File.WriteAllText(FolderBrowserDialog1.SelectedPath & "\OWData.s", OutPutFile)
             File.WriteAllText(FolderBrowserDialog1.SelectedPath & "\OWSpriteData.s", OutPutFile2)
+            File.WriteAllText(FolderBrowserDialog1.SelectedPath & "\OWPointerTable.s", OutPutFile3)
 
             Me.Text = "OW Dumper"
             Me.UseWaitCursor = False
