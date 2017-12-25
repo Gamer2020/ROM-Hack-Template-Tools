@@ -20,3 +20,14 @@ C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\OWDumper\OWDumper\ob
 C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\OWDumper\OWDumper\obj\Debug\OWDumper.MnFrm.resources
 C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\OWDumper\OWDumper\obj\Debug\OWDumper.Resources.resources
 C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\OWDumper\OWDumper\obj\Debug\OWDumper.vbproj.GenerateResource.Cache
+D:\Github\ROM-Hack-Template-Tools\OWDumper\OWDumper\bin\Debug\OWDumper.exe.config
+D:\Github\ROM-Hack-Template-Tools\OWDumper\OWDumper\obj\Debug\OWDumper.exe
+D:\Github\ROM-Hack-Template-Tools\OWDumper\OWDumper\obj\Debug\OWDumper.xml
+D:\Github\ROM-Hack-Template-Tools\OWDumper\OWDumper\bin\Debug\OWDumper.exe
+D:\Github\ROM-Hack-Template-Tools\OWDumper\OWDumper\bin\Debug\OWDumper.pdb
+D:\Github\ROM-Hack-Template-Tools\OWDumper\OWDumper\bin\Debug\OWDumper.xml
+D:\Github\ROM-Hack-Template-Tools\OWDumper\OWDumper\obj\Debug\OWDumper.vbprojResolveAssemblyReference.cache
+D:\Github\ROM-Hack-Template-Tools\OWDumper\OWDumper\obj\Debug\OWDumper.MnFrm.resources
+D:\Github\ROM-Hack-Template-Tools\OWDumper\OWDumper\obj\Debug\OWDumper.Resources.resources
+D:\Github\ROM-Hack-Template-Tools\OWDumper\OWDumper\obj\Debug\OWDumper.vbproj.GenerateResource.Cache
+D:\Github\ROM-Hack-Template-Tools\OWDumper\OWDumper\obj\Debug\OWDumper.pdb

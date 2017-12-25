@@ -36,7 +36,7 @@ Public Class MnFrm
                 System.IO.Directory.Delete(AppPath & "PokeExpansion-master\", True)
             End If
 
-            DownloadFile("https://github.com/DizzyEggg/PokeExpansion/archive/master.zip", AppPath & "temp\PokeExpansion.zip")
+            DownloadFile("https://github.com/Gamer2020/PokeExpansion/archive/master.zip", AppPath & "temp\PokeExpansion.zip")
 
             Unzipfile(AppPath & "temp\PokeExpansion.zip", AppPath & "")
         End If
@@ -57,7 +57,7 @@ Public Class MnFrm
                 System.IO.Directory.Delete(AppPath & "Pokemon-Emerald-Battle-Engine-Upgrade-master\", True)
             End If
 
-            DownloadFile("https://github.com/KDSKardabox/Pokemon-Emerald-Battle-Engine-Upgrade/archive/master.zip", AppPath & "temp\Pokemon-Emerald-Battle-Engine-Upgrade.zip")
+            DownloadFile("https://github.com/Gamer2020/Pokemon-Emerald-Battle-Engine-Upgrade/archive/master.zip", AppPath & "temp\Pokemon-Emerald-Battle-Engine-Upgrade.zip")
             Unzipfile(AppPath & "temp\Pokemon-Emerald-Battle-Engine-Upgrade.zip", AppPath & "")
 
         End If
@@ -101,7 +101,7 @@ Public Class MnFrm
                 System.IO.Directory.Delete(AppPath & "ItemTmTutorExpansion-master\", True)
             End If
 
-            DownloadFile("https://github.com/DizzyEggg/ItemTmTutorExpansion/archive/master.zip", AppPath & "temp\ItemTmTutorExpansion.zip")
+            DownloadFile("https://github.com/Gamer2020/ItemTmTutorExpansion/archive/master.zip", AppPath & "temp\ItemTmTutorExpansion.zip")
 
             Unzipfile(AppPath & "temp\ItemTmTutorExpansion.zip", AppPath & "")
 

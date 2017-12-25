@@ -16,3 +16,6 @@ C:\Users\Gamer2020\Google Drive\RomBusters\rom-hack-template-tools\ProjectCompil
 C:\Users\Gamer2020\Google Drive\RomBusters\rom-hack-template-tools\ProjectCompiler\ProjectCompiler\obj\Debug\ProjectCompiler.exe
 C:\Users\Gamer2020\Google Drive\RomBusters\rom-hack-template-tools\ProjectCompiler\ProjectCompiler\obj\Debug\ProjectCompiler.xml
 C:\Users\Gamer2020\Google Drive\RomBusters\rom-hack-template-tools\ProjectCompiler\ProjectCompiler\obj\Debug\ProjectCompiler.pdb
+D:\Github\ROM-Hack-Template-Tools\ProjectCompiler\ProjectCompiler\bin\Debug\ProjectCompiler.exe.config
+D:\Github\ROM-Hack-Template-Tools\ProjectCompiler\ProjectCompiler\obj\Debug\ProjectCompiler.exe
+D:\Github\ROM-Hack-Template-Tools\ProjectCompiler\ProjectCompiler\obj\Debug\ProjectCompiler.xml

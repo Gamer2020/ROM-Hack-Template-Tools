@@ -21,3 +21,14 @@ C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\ProjectManager\Proje
 C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\ProjectManager\ProjectManager\obj\Debug\ProjectManager.Resources.resources
 C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\ProjectManager\ProjectManager\obj\Debug\ProjectManager.vbproj.GenerateResource.Cache
 C:\Users\Gamer2020\Documents\GitHub\ROM-Hack-Template-Tools\ProjectManager\ProjectManager\obj\Debug\ProjectManager.pdb
+D:\Github\ROM-Hack-Template-Tools\ProjectManager\ProjectManager\bin\Debug\ProjectManager.exe.config
+D:\Github\ROM-Hack-Template-Tools\ProjectManager\ProjectManager\obj\Debug\ProjectManager.exe
+D:\Github\ROM-Hack-Template-Tools\ProjectManager\ProjectManager\obj\Debug\ProjectManager.xml
+D:\Github\ROM-Hack-Template-Tools\ProjectManager\ProjectManager\bin\Debug\ProjectManager.exe
+D:\Github\ROM-Hack-Template-Tools\ProjectManager\ProjectManager\bin\Debug\ProjectManager.pdb
+D:\Github\ROM-Hack-Template-Tools\ProjectManager\ProjectManager\bin\Debug\ProjectManager.xml
+D:\Github\ROM-Hack-Template-Tools\ProjectManager\ProjectManager\obj\Debug\ProjectManager.vbprojResolveAssemblyReference.cache
+D:\Github\ROM-Hack-Template-Tools\ProjectManager\ProjectManager\obj\Debug\ProjectManager.MnFrm.resources
+D:\Github\ROM-Hack-Template-Tools\ProjectManager\ProjectManager\obj\Debug\ProjectManager.Resources.resources
+D:\Github\ROM-Hack-Template-Tools\ProjectManager\ProjectManager\obj\Debug\ProjectManager.vbproj.GenerateResource.Cache
+D:\Github\ROM-Hack-Template-Tools\ProjectManager\ProjectManager\obj\Debug\ProjectManager.pdb
