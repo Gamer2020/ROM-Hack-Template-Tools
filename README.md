@@ -1,3 +1,6 @@
+Please use Pokeemerald! This will be left here as a proof of concept!
+================
+
 ROM Hack Template Tools
 ===================
 
