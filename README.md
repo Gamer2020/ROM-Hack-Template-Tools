@@ -1,4 +1,4 @@
-Please use Pokeemerald! This will be left here as a proof of concept!
+Please use Pokeemerald! This will be left here as a proof of concept! Maybe someone can learn from the code?
 ================
 
 ROM Hack Template Tools
